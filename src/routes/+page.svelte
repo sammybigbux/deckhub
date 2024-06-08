@@ -50,10 +50,10 @@
 <div class="center-container">
   <div class="card p-4">
     <h1 class="card-header">Welcome to Deckhub!</h1>
-    <p class="card-content p-4">I made this website to provide top-notch flashcards for students and test-takers. Would you like to find out how?</p>
+    <p class="card-content p-4">I made this website to provide gold-standard flashcard decks for students and test-takers. Would you like to browse our products or hear how we ensure that our flashcard decks are the best available?</p>
     <div class="button-container">
-      <button type="button" class="btn bg-primary-500 card-hover">Yes</button>
-      <button type="button" class="btn bg-secondary-500 card-hover">Nope just sign me up</button>
+      <button type="button" class="btn bg-primary-500 card-hover">Browse</button>
+      <a href="/about"><button type="button" class="btn bg-secondary-500 card-hover">About</button></a>
     </div>
   </div>
 </div>
