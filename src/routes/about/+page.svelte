@@ -41,8 +41,8 @@
   ul li {
     margin: 10px 0;
   }
-</style>
 
+</style>
 <div class="container">  
   <h2>Our Story</h2>
   <p>
