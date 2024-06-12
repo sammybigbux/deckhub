@@ -33,7 +33,15 @@
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<a
-					class="btn btn-sm variant-ghost-surface"
+					class="btn btn-md variant-ghost-primary"
+					href="/search"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Search
+				</a>
+				<a
+					class="btn btn-md variant-ghost-secondary"
 					href="https://github.com/sammybigbux/deckhub/blob/main/README.md"
 					target="_blank"
 					rel="noreferrer"
