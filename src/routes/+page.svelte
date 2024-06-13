@@ -1,4 +1,23 @@
 <script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC-ZOP0oH3IISFl3Qwzc7rGnbEB5VwYOps",
+  authDomain: "deckhubapp.firebaseapp.com",
+  projectId: "deckhubapp",
+  storageBucket: "deckhubapp.appspot.com",
+  messagingSenderId: "1086653848406",
+  appId: "1:1086653848406:web:ad7fa7ec34c3061cc694f7"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 </script>
 
 <style>
