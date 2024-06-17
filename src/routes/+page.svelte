@@ -37,7 +37,6 @@ const auth = getAuth(app);
     padding: 20px; /* Adjust the padding as needed */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    background-color: white;
     width: 100%;
     max-width: 600px; /* Optional: limit the width of the card */
   }

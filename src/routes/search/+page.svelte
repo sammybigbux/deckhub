@@ -1,28 +1,29 @@
 <script>
     import { writable, derived } from 'svelte/store';
     import { goto } from '$app/navigation';
-  
+    import { isLoggedIn } from '../../stores/auth'; // Adjust the import path as needed
+
     let searchQuery = writable('');
-  
+
     const exams = writable([
         {
             name: 'AWS Certified Solutions Architect',
             icon: '🖥️',
-            title: 'aws-certified-solutions-architect', // Make sure the path matches the dynamic route
+            title: 'aws-certified-solutions-architect',
             length: 200,
             lastUpdated: '2024-06-01'
         },
         {
             name: 'Google Cloud Professional Data Engineer',
             icon: '☁️',
-            title: 'google-cloud-professional-data-engineer', // Make sure the path matches the dynamic route
+            title: 'google-cloud-professional-data-engineer',
             length: 180,
             lastUpdated: '2024-05-15'
         },
         {
             name: 'Microsoft Certified: Azure Fundamentals',
             icon: '🔧',
-            title: 'microsoft-certified-azure-fundamentals', // Make sure the path matches the dynamic route
+            title: 'microsoft-certified-azure-fundamentals',
             length: 220,
             lastUpdated: '2024-04-20'
         }
@@ -39,7 +40,7 @@
     }
 
     function navigateToExam(exam) {
-        goto(`/${exam.title}`); // Use goto for navigation
+        goto(`/${exam.title}`);
     }
 </script>
 
@@ -78,19 +79,32 @@
     .exam-content {
         display: flex;
         align-items: center;
+        flex: 1;
     }
     .exam-icon {
         font-size: 1.5em;
         margin-right: 12px;
     }
+    .exam-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
     .exam-title {
         font-size: 1em;
         color: #fff; /* Ensure title text is white */
+        flex: 1;
     }
     .exam-details {
-        text-align: right;
+        display: flex;
+        flex-direction: column;
         font-size: 0.9em;
         color: #ddd; /* Slightly lighter text for details */
+        margin-left: auto; /* Push details to the right */
+    }
+    .btn {
+        margin-left: 12px; /* Add some space between details and button */
     }
     @media (max-width: 600px) {
         .exam-title {
@@ -114,12 +128,19 @@
             <li class="exam-item bg-gradient-to-br variant-gradient-tertiary-secondary" on:click={() => navigateToExam(exam)}>
                 <div class="exam-content">
                     <div class="exam-icon">{exam.icon}</div>
-                    <div class="exam-title">{exam.name}</div>
+                    <div class="exam-info">
+                        <div class="exam-title">{exam.name}</div>
+                        <div class="exam-details">
+                            <span>{exam.length} cards</span>
+                            <span>{exam.lastUpdated}</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="exam-details">
-                    <div>{exam.length} cards</div>
-                    <div>{exam.lastUpdated}</div>
-                </div>
+                {#if $isLoggedIn}
+                    <button class="btn bg-primary-500 card-hover">Buy</button>
+                {:else}
+                    <button class="btn bg-primary-500 card-hover">Login to download</button>
+                {/if}
             </li>
         {/each}
     </ul>
