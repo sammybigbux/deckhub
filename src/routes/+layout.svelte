@@ -22,41 +22,7 @@
     import { storePopup } from '@skeletonlabs/skeleton';
     storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
-    import { initializeApp } from 'firebase/app';
-    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
-    import { isLoggedIn } from '../stores/auth'; // Import the shared store
-
-	const firebaseConfig = {
-		apiKey: "AIzaSyC-ZOP0oH3IISFl3Qwzc7rGnbEB5VwYOps",
-		authDomain: "deckhubapp.firebaseapp.com",
-		projectId: "deckhubapp",
-		storageBucket: "deckhubapp.appspot.com",
-		messagingSenderId: "1086653848406",
-		appId: "1:1086653848406:web:ad7fa7ec34c3061cc694f7"
-	};
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-
-    async function loginWithGoogle() {
-        try {
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-            console.log('User signed in:', user);
-            isLoggedIn.set(true);
-        } catch (error) {
-            console.error('Error during sign-in:', error);
-        }
-    }
-
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            isLoggedIn.set(true);
-        } else {
-            isLoggedIn.set(false);
-        }
-    });
+    import { loginWithGoogle, isLoggedIn } from '$lib/firebase'
 </script>
 
 <style>
@@ -83,9 +49,11 @@
                     Search
                 </a>
                 {#if $isLoggedIn}
-                    <button class="btn btn-md variant-ghost-secondary login-btn">
-                        My Decks
-                    </button>
+                    <a href="/my-cards">
+                        <button class="btn btn-md variant-ghost-secondary login-btn">
+                            My Decks
+                        </button>
+                    </a>
                 {:else}
                     <button class="btn btn-md variant-ghost-secondary login-btn" on:click={loginWithGoogle}>
                         Log in

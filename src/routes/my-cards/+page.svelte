@@ -1,7 +1,10 @@
 <script lang='ts'>
+
+    // Subscribe to the userName store
+    $: userDisplayName = $userName ? $userName.split(' ')[0] : ''; // Access the value using $userName 
     import { writable, derived } from 'svelte/store';
-    import { auth, db, isLoggedIn} from '$lib/firebase';
-    import { collection, getDocs, doc, updateDoc, arrayUnion } from 'firebase/firestore';
+    import { userName, auth, db, isLoggedIn } from '$lib/firebase';
+    import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
     import { onMount } from 'svelte';
 
     let searchQuery = writable('');
@@ -17,40 +20,36 @@
 
     let decks = writable<Deck[]>([]);
 
-    const filteredDecks = derived([searchQuery, decks], ([$searchQuery, $decks]) => {
-        return $decks.filter(deck =>
+    const filteredDecks = derived(
+        [searchQuery, decks, isLoggedIn, userName], // Add userName as dependency 
+        ([$searchQuery, $decks, $isLoggedIn, $userName]) => {
+
+        if (!$isLoggedIn) { 
+            return []; 
+        }
+
+        // Get the currently logged in user
+        const currentUser = auth.currentUser;
+
+        if (!currentUser) {
+            console.log("No current user")
+            return [];
+        }
+
+        // Get the user's owned deck names (adjust property name if needed)
+        const userDecks = currentUser.decks_owned; 
+
+        // Filter decks
+        return $decks.filter(deck => 
+            userDecks.includes(deck.name) && // Check by name
             deck.name.toLowerCase().includes($searchQuery.toLowerCase())
         );
-    });
+        }
+    );
 
     function handleInput(event) {
         searchQuery.set(event.target.value);
     }
-
-    async function addDeckToUser(deckName: string) { // Correctly takes deckName
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-        const userRef = doc(db, 'users', currentUser.uid);
-        await updateDoc(userRef, {
-            decks_owned: arrayUnion(deckName) 
-        });
-        console.log("Deck added to user's profile!");
-        }
-    }
-    async function handleBuyClick(deckName: string) { 
-        try {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-            await addDeckToUser(deckName); // Pass deckName, not currentUser.uid
-            console.log(`${deckName} added to your decks!`); 
-        } else {
-            console.error("User not logged in."); 
-        }
-        } catch (error) {
-        console.error("Error adding deck to user:", error); 
-        }
-    }
-
     onMount(async () => {
         try {
             const querySnapshot = await getDocs(collection(db, 'decks'));
@@ -70,6 +69,11 @@
 </script>
 
 <style>
+    h1 {
+    font-size: 3em; /* Adjust font size as needed */
+    text-align: center; /* Center the text */
+    padding-bottom: 35px;
+    }
     .search-container {
         padding: 16px;
     }
@@ -142,6 +146,7 @@
 </style>
 
 <div class="search-container">
+    <h1>{userDisplayName}'s Decks</h1>
     <input
         type="text"
         class="search-bar"
@@ -166,16 +171,9 @@
                     </div>
                 </div>
                 {#if $isLoggedIn}
-                    <button 
-                        class="btn bg-primary-500 card-hover" 
-                        on:click={() => handleBuyClick(deck.name)} 
-                    >
-                        Buy
-                    </button>
+                    <a href="/my-cards"><button class="btn bg-primary-500 card-hover">Buy</button></a>
                 {:else}
-                    <button class="btn bg-primary-500 card-hover">
-                        Login to download
-                    </button>
+                    <button class="btn bg-primary-500 card-hover">Login to download</button>
                 {/if}
             </div>
         {/each}
