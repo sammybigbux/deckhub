@@ -1,68 +1,71 @@
-<script lang='ts'>
+<script lang="ts">
     import { writable, derived } from 'svelte/store';
-    import { auth, db, isLoggedIn} from '$lib/firebase';
-    import { collection, getDocs, doc, updateDoc, arrayUnion } from 'firebase/firestore';
+    import { userName, auth, db, isLoggedIn } from '$lib/firebase';
+    import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
     import { onMount } from 'svelte';
 
     let searchQuery = writable('');
 
-    interface Deck { // Define the structure of your Deck object
-        id?: string; // Optional if you're using Firestore generated IDs
+    interface Deck {
+        id?: string;
         icon: string;
         name: string;
         length: number;
         lastUpdated: Date;
-        // ... other properties of your Card object ...
     }
 
     let decks = writable<Deck[]>([]);
+    let userDecks = writable<string[]>([]);
 
-    const filteredDecks = derived([searchQuery, decks], ([$searchQuery, $decks]) => {
-        return $decks.filter(deck =>
-            deck.name.toLowerCase().includes($searchQuery.toLowerCase())
-        );
-    });
+    const filteredDecks = derived(
+        [searchQuery, decks, isLoggedIn, userDecks],
+        ([$searchQuery, $decks, $isLoggedIn, $userDecks]) => {
+            if (!$isLoggedIn) {
+                return [];
+            }
+
+            // Filter decks
+            return $decks.filter(deck =>
+                deck.name.toLowerCase().includes($searchQuery.toLowerCase())
+            );
+        }
+    );
 
     function handleInput(event) {
         searchQuery.set(event.target.value);
     }
 
-    async function addDeckToUser(deckName: string) { // Correctly takes deckName
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-        const userRef = doc(db, 'users', currentUser.uid);
-        await updateDoc(userRef, {
-            decks_owned: arrayUnion(deckName) 
-        });
-        console.log("Deck added to user's profile!");
-        }
-    }
-    async function handleBuyClick(deckName: string) { 
-        try {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-            await addDeckToUser(deckName); // Pass deckName, not currentUser.uid
-            console.log(`${deckName} added to your decks!`); 
-        } else {
-            console.error("User not logged in."); 
-        }
-        } catch (error) {
-        console.error("Error adding deck to user:", error); 
-        }
+    async function handleBuyClick(deckName: string) {
+        // Implement the buy logic here
     }
 
     onMount(async () => {
         try {
+            // Fetch all decks
             const querySnapshot = await getDocs(collection(db, 'decks'));
             const deckData: Deck[] = querySnapshot.docs.map((doc) => ({
-                ...doc.data(), 
+                ...doc.data(),
                 id: doc.id,
-                icon: doc.data().icon as string, // Make sure this is a string in Firestore
-                name: doc.data().name as string, // Make sure this is a string in Firestore
-                length: doc.data().length as number, // Make sure this is a number in Firestore
-                lastUpdated: doc.data().lastUpdated.toDate(), // Assuming lastUpdated is a Firestore Timestamp
+                icon: doc.data().icon as string,
+                name: doc.data().name as string,
+                length: doc.data().length as number,
+                lastUpdated: doc.data().lastUpdated.toDate(),
             }));
             decks.set(deckData);
+
+            // Fetch user-owned decks
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    userDecks.set(userData.decks_owned || []);
+                } else {
+                    console.log('No such user document!');
+                }
+            } else {
+                console.log('No current user');
+            }
         } catch (e) {
             console.error('Error getting documents: ', e);
         }
@@ -70,6 +73,9 @@
 </script>
 
 <style>
+    .owned-deck {
+        background-color: #e0ffe0; /* Example color for owned decks */
+    }
     .search-container {
         padding: 16px;
     }
@@ -150,7 +156,7 @@
     />
     <ul class="deck-list">
         {#each $filteredDecks as deck}
-            <div class="deck-item bg-gradient-to-br variant-gradient-tertiary-secondary">
+            <div class="deck-item { $userDecks.includes(deck.name) ? 'variant-gradient-warning-error' : ''} bg-gradient-to-br variant-gradient-tertiary-secondary">
                 <div class="deck-content">
                     <div class="deck-icon">{deck.icon}</div>
                     <div class="deck-info">
@@ -166,12 +172,16 @@
                     </div>
                 </div>
                 {#if $isLoggedIn}
-                    <button 
-                        class="btn bg-primary-500 card-hover" 
-                        on:click={() => handleBuyClick(deck.name)} 
-                    >
-                        Buy
-                    </button>
+                    {#if $userDecks.includes(deck.name)}
+                        <a href="/my-cards" class="btn bg-secondary-500 card-hover">My Cards</a>
+                    {:else}
+                        <button 
+                            class="btn bg-primary-500 card-hover" 
+                            on:click={() => handleBuyClick(deck.name)} 
+                        >
+                            Buy
+                        </button>
+                    {/if}
                 {:else}
                     <button class="btn bg-primary-500 card-hover">
                         Login to download

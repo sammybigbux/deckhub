@@ -1,7 +1,5 @@
-<script lang='ts'>
-
-    // Subscribe to the userName store
-    $: userDisplayName = $userName ? $userName.split(' ')[0] : ''; // Access the value using $userName 
+<script lang="ts">
+    $: userDisplayName = $userName ? $userName.split(' ')[0] : ''; // Access the value using $userName
     import { writable, derived } from 'svelte/store';
     import { userName, auth, db, isLoggedIn } from '$lib/firebase';
     import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
@@ -9,59 +7,63 @@
 
     let searchQuery = writable('');
 
-    interface Deck { // Define the structure of your Deck object
-        id?: string; // Optional if you're using Firestore generated IDs
+    interface Deck {
+        id?: string;
         icon: string;
         name: string;
         length: number;
         lastUpdated: Date;
-        // ... other properties of your Card object ...
     }
 
     let decks = writable<Deck[]>([]);
+    let userDecks = writable<string[]>([]);
 
     const filteredDecks = derived(
-        [searchQuery, decks, isLoggedIn, userName], // Add userName as dependency 
-        ([$searchQuery, $decks, $isLoggedIn, $userName]) => {
+        [searchQuery, decks, isLoggedIn, userDecks],
+        ([$searchQuery, $decks, $isLoggedIn, $userDecks]) => {
+            if (!$isLoggedIn) {
+                return [];
+            }
 
-        if (!$isLoggedIn) { 
-            return []; 
-        }
-
-        // Get the currently logged in user
-        const currentUser = auth.currentUser;
-
-        if (!currentUser) {
-            console.log("No current user")
-            return [];
-        }
-
-        // Get the user's owned deck names (adjust property name if needed)
-        const userDecks = currentUser.decks_owned; 
-
-        // Filter decks
-        return $decks.filter(deck => 
-            userDecks.includes(deck.name) && // Check by name
-            deck.name.toLowerCase().includes($searchQuery.toLowerCase())
-        );
+            // Filter decks
+            return $decks.filter(deck =>
+                $userDecks.includes(deck.name) &&
+                deck.name.toLowerCase().includes($searchQuery.toLowerCase())
+            );
         }
     );
 
     function handleInput(event) {
         searchQuery.set(event.target.value);
     }
+
     onMount(async () => {
         try {
+            // Fetch all decks
             const querySnapshot = await getDocs(collection(db, 'decks'));
             const deckData: Deck[] = querySnapshot.docs.map((doc) => ({
-                ...doc.data(), 
+                ...doc.data(),
                 id: doc.id,
-                icon: doc.data().icon as string, // Make sure this is a string in Firestore
-                name: doc.data().name as string, // Make sure this is a string in Firestore
-                length: doc.data().length as number, // Make sure this is a number in Firestore
-                lastUpdated: doc.data().lastUpdated.toDate(), // Assuming lastUpdated is a Firestore Timestamp
+                icon: doc.data().icon as string,
+                name: doc.data().name as string,
+                length: doc.data().length as number,
+                lastUpdated: doc.data().lastUpdated.toDate(),
             }));
             decks.set(deckData);
+
+            // Fetch user-owned decks
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    userDecks.set(userData.decks_owned || []);
+                } else {
+                    console.log('No such user document!');
+                }
+            } else {
+                console.log('No current user');
+            }
         } catch (e) {
             console.error('Error getting documents: ', e);
         }
@@ -155,7 +157,7 @@
     />
     <ul class="deck-list">
         {#each $filteredDecks as deck}
-            <div class="deck-item bg-gradient-to-br variant-gradient-tertiary-secondary">
+            <div class="deck-item bg-gradient-to-br variant-gradient-warning-error">
                 <div class="deck-content">
                     <div class="deck-icon">{deck.icon}</div>
                     <div class="deck-info">
@@ -170,11 +172,7 @@
                         </div>
                     </div>
                 </div>
-                {#if $isLoggedIn}
-                    <a href="/my-cards"><button class="btn bg-primary-500 card-hover">Buy</button></a>
-                {:else}
-                    <button class="btn bg-primary-500 card-hover">Login to download</button>
-                {/if}
+                    <a href="/my-cards"><button class="btn bg-primary-500 card-hover">Download</button></a>
             </div>
         {/each}
     </ul>
