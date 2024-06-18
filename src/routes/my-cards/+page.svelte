@@ -1,5 +1,5 @@
 <script lang="ts">
-    $: userDisplayName = $userName ? $userName.split(' ')[0] : ''; // Access the value using $userName
+    $: userDisplayName = $userName ? $userName.split(' ')[0] : 'User'; // Access the value using $userName
     import { writable, derived } from 'svelte/store';
     import { userName, auth, db, isLoggedIn } from '$lib/firebase';
     import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
@@ -172,7 +172,7 @@
                         </div>
                     </div>
                 </div>
-                    <a href="/my-cards"><button class="btn bg-primary-500 card-hover">Download</button></a>
+                    <button class="btn bg-primary-500 card-hover">Download</button>
             </div>
         {/each}
     </ul>

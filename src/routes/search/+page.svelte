@@ -1,8 +1,9 @@
 <script lang="ts">
     import { writable, derived } from 'svelte/store';
-    import { userName, auth, db, isLoggedIn } from '$lib/firebase';
+    import { auth, db, isLoggedIn } from '$lib/firebase';
     import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
     import { onMount } from 'svelte';
+    import { userDecks } from '../../stores/auth';
 
     let searchQuery = writable('');
 
@@ -15,15 +16,10 @@
     }
 
     let decks = writable<Deck[]>([]);
-    let userDecks = writable<string[]>([]);
 
     const filteredDecks = derived(
         [searchQuery, decks, isLoggedIn, userDecks],
         ([$searchQuery, $decks, $isLoggedIn, $userDecks]) => {
-            if (!$isLoggedIn) {
-                return [];
-            }
-
             // Filter decks
             return $decks.filter(deck =>
                 deck.name.toLowerCase().includes($searchQuery.toLowerCase())
@@ -173,13 +169,13 @@
                 </div>
                 {#if $isLoggedIn}
                     {#if $userDecks.includes(deck.name)}
-                        <a href="/my-cards" class="btn bg-secondary-500 card-hover">My Cards</a>
+                        <a href="/my-cards" class="btn bg-success-500 card-hover">My Cards</a>
                     {:else}
                         <button 
-                            class="btn bg-primary-500 card-hover" 
+                            class="btn bg-success-500 card-hover" 
                             on:click={() => handleBuyClick(deck.name)} 
                         >
-                            Buy
+                            Purchase
                         </button>
                     {/if}
                 {:else}

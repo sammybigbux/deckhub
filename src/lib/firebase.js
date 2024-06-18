@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 import { writable } from 'svelte/store'; 
+import { userDecks } from '../stores/auth';
 
 // Create a store for the authentication state
 export const isLoggedIn = writable(false); // Initially assume not logged in
@@ -67,5 +68,17 @@ onAuthStateChanged(auth, (user) => {
         isLoggedIn.set(false);
     }
 });
+
+export async function logout() {
+    try {
+        await signOut(auth);
+        console.log('User signed out');
+        isLoggedIn.set(false);
+        userName.set('');
+        userDecks.set([])
+    } catch (error) {
+        console.error('Error during sign-out:', error);
+    }
+}
 
 export {auth, provider, db}; // Export auth and provider if needed elsewhere

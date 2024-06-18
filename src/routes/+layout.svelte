@@ -22,7 +22,7 @@
     import { storePopup } from '@skeletonlabs/skeleton';
     storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
-    import { loginWithGoogle, isLoggedIn } from '$lib/firebase'
+    import { loginWithGoogle, isLoggedIn, logout } from '$lib/firebase'
 </script>
 
 <style>
@@ -41,26 +41,27 @@
             </svelte:fragment>
             <svelte:fragment slot="trail">
                 <a
-                    class="btn btn-md variant-ghost-primary"
+                    class="btn btn-md variant-glass-primary"
                     href="/search"
-                    target="_blank"
-                    rel="noreferrer"
                 >
                     Search
                 </a>
                 {#if $isLoggedIn}
-                    <a href="/my-cards">
-                        <button class="btn btn-md variant-ghost-secondary login-btn">
-                            My Decks
-                        </button>
-                    </a>
+                <a href="/my-cards">
+                    <button class="btn btn-md variant-glass-secondary login-btn">
+                        My Decks
+                    </button>
+                </a>
+                <button class="btn btn-md variant-glass-tertiary login-btn" on:click={logout}>
+                    Log out
+                </button>
                 {:else}
-                    <button class="btn btn-md variant-ghost-secondary login-btn" on:click={loginWithGoogle}>
+                    <button class="btn btn-md variant-glass-secondary login-btn" on:click={loginWithGoogle}>
                         Log in
                     </button>
                 {/if}
                 <a
-                    class="btn btn-md variant-ghost-tertiary"
+                    class="btn btn-md variant-glass-success"
                     href="https://github.com/sammybigbux/deckhub/blob/main/README.md"
                     target="_blank"
                     rel="noreferrer"
