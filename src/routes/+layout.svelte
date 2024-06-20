@@ -62,11 +62,9 @@
                 {/if}
                 <a
                     class="btn btn-md variant-glass-success"
-                    href="https://github.com/sammybigbux/deckhub/blob/main/README.md"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/bounty"
                 >
-                    GitHub
+                    Bounty
                 </a>
             </svelte:fragment>
         </AppBar>

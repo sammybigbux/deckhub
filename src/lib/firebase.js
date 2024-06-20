@@ -33,6 +33,7 @@ export async function loginWithGoogle() {
 
         // Check if user exists in Firestore
         await createUserIfNotExists(user.uid, user.displayName);
+        window.location.reload();
 
     } catch (error) {
         console.error('Error during sign-in:', error);
@@ -75,7 +76,8 @@ export async function logout() {
         console.log('User signed out');
         isLoggedIn.set(false);
         userName.set('');
-        userDecks.set([])
+        userDecks.set([]);
+        window.location.reload(); // Force a refresh after signing out
     } catch (error) {
         console.error('Error during sign-out:', error);
     }
