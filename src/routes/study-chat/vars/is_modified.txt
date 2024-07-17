@@ -1,0 +1,2 @@
+0
+# A switch for term_manager.py to tell +page.svelte when a term update has happened
