@@ -1,27 +1,55 @@
 <script>
-    import { onMount } from 'svelte';
-  
-    // Define locked variables
-    let understand_locked = true;
-    let apply_locked = true;
-    let practice_locked = true;
-  </script>
-  
-  <style>
-    .center-container {
+  import { onMount } from 'svelte';
+  import { Avatar, ProgressBar } from '@skeletonlabs/skeleton';
+
+  // Define locked variables
+  let understand_locked = true;
+  let apply_locked = true;
+
+  // Progress data for each section
+  let learnProgress = { solvedTerms: 0, totalTerms: 0 };
+  let understandProgress = { solvedTerms: 0, totalTerms: 0 };
+  let applyProgress = { solvedTerms: 0, totalTerms: 0 };
+
+  // Function to retrieve terms data from different endpoints
+  async function retrieveTermsData(endpoint, progress) {
+      const response = await fetch(endpoint, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+      const data = await response.json();
+      progress.totalTerms = data.totalTerms;
+      progress.solvedTerms = data.solvedTerms;
+
+      // Check progress to unlock next section
+      if (progress === learnProgress && progress.solvedTerms === progress.totalTerms) {
+          understand_locked = false;
+      }
+      if (progress === understandProgress && progress.solvedTerms === progress.totalTerms) {
+          apply_locked = false;
+      }
+  }
+
+  // On mount, fetch progress data for each section
+  onMount(async () => {
+      await retrieveTermsData('http://localhost:5000/get_terms_data', learnProgress);
+      await retrieveTermsData('http://localhost:5001/get_terms_data', understandProgress);
+      await retrieveTermsData('http://localhost:5003/get_terms_data', applyProgress);
+  });
+</script>
+
+<style>
+  .center-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       gap: 2rem; /* Space between the cards and the button */
-    }
-    .card-container {
+  }
+  .card-container {
       display: flex;
       justify-content: center;
       gap: 2rem; /* Space between the cards */
-    }
-    .card {
+  }
+  .card {
       position: relative; /* For positioning the lock icon */
       width: 250px;
       height: 250px;
@@ -31,26 +59,26 @@
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-    }
-    .card-header {
+  }
+  .card-header {
       font-size: 2rem; /* Bigger title */
       text-align: center;
       margin: 1rem 0;
-    }
-    .card-content {
+  }
+  .card-content {
       flex-grow: 1;
       padding: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-    }
-    .button-container {
+  }
+  .button-container {
       display: flex;
       width: 100%;
       height: 50%;
-    }
-    .button-container a {
+  }
+  .button-container a {
       flex: 1;
       display: flex;
       align-items: center;
@@ -61,40 +89,28 @@
       font-size: 1.2rem; /* Better styled text */
       font-weight: bold;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    .button-study {
+  }
+  .button-study {
       background-color: orange;
       border-radius: 0; /* Override btn class */
-    }
-    .button-evaluate {
+  }
+  .button-evaluate {
       background-color: darkgreen;
       border-radius: 0; /* Override btn class */
-    }
-    .button-study:hover {
+  }
+  .button-study:hover {
       background-color: darkorange;
-    }
-    .button-evaluate:hover {
+  }
+  .button-evaluate:hover {
       background-color: green;
-    }
-    .practice-button-container {
+  }
+  .locked {
       position: relative;
-      width: calc(3 * 250px + 2 * 2rem); /* Width of three cards plus the gaps between them */
-    }
-    .practice-button {
-      width: 100%;
-      text-align: center;
-      font-size: 1.5rem;
-      padding: 1rem;
-      margin-top: 2rem;
-      position: relative; /* For positioning the lock icon */
-    }
-    .locked {
-      position: relative;
-    }
-    .locked .card-content {
+  }
+  .locked .card-content {
       margin-bottom: 3rem; /* Space for lock icon */
-    }
-    .locked::after {
+  }
+  .locked::after {
       content: '🔒';
       font-size: 3rem;
       color: rgba(0, 0, 0, 0.5);
@@ -102,66 +118,89 @@
       bottom: 10%;
       left: 50%;
       transform: translate(-50%, -50%);
-    }
-    .button-locked {
-      background-color: gray;
-      cursor: not-allowed;
-      bottom: 20%;
-    }
-    .lock-overlay {
-      position: absolute;
-      top: 62%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+  }
+  .progress-bars-container {
       display: flex;
       justify-content: center;
-      align-items: center;
-    }
-    .lock-overlay::after {
-      content: '🔒';
-      font-size: 3rem;
-      color: rgba(0, 0, 0, 0.5);
-    }
-  </style>
-  
-  <div class="center-container">
-    <div class="card-container">
+      gap: 2rem; /* Space between the progress bars */
+      margin-top: 0.25rem; /* Further reduced space between the cards and progress bars */
+  }
+  .progress-bar {
+      width: 250px; /* Same width as the card */
+  }
+</style>
+
+<div class="center-container">
+  <div class="card-container">
       <div class="card">
-        <h1 class="card-header">Learn</h1>
-        <p class="card-content">Gain new knowledge and familiarity with key terms.</p>
-        <div class="button-container">
-          <a href="/study-learn" class="btn button-study">Study</a>
-          <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
-        </div>
+          <h1 class="card-header">Learn</h1>
+          <p class="card-content">Gain new knowledge and familiarity with key terms.</p>
+          <div class="button-container">
+              <a href="/study-learn" class="btn button-study">Study</a>
+              <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
+          </div>
       </div>
       <div class="card {understand_locked ? 'locked' : ''}">
-        <h1 class="card-header">Understand</h1>
-        <p class="card-content">Deepen your comprehension and grasp complex concepts.</p>
-        {#if !understand_locked}
-        <div class="button-container">
-          <a href="/study" class="btn button-study">Study</a>
-          <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
-        </div>
-        {/if}
+          <h1 class="card-header">Understand</h1>
+          <p class="card-content">Deepen your comprehension and grasp complex concepts.</p>
+          {#if !understand_locked}
+          <div class="button-container">
+              <a href="/study" class="btn button-study">Study</a>
+              <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
+          </div>
+          {/if}
       </div>
       <div class="card {apply_locked ? 'locked' : ''}">
-        <h1 class="card-header">Apply</h1>
-        <p class="card-content">Put your knowledge to use and solve real-world problems.</p>
-        {#if !apply_locked}
-        <div class="button-container">
-          <a href="/study" class="btn button-study">Study</a>
-          <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
-        </div>
-        {/if}
+          <h1 class="card-header">Apply</h1>
+          <p class="card-content">Put your knowledge to use and solve real-world problems.</p>
+          {#if !apply_locked}
+          <div class="button-container">
+              <a href="/study" class="btn button-study">Study</a>
+              <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
+          </div>
+          {/if}
       </div>
-    </div>
-    <div class="practice-button-container">
-      <a href="/practice" class="btn variant-filled-surface practice-button {practice_locked ? 'button-locked' : ''}">
-        Practice exam questions
-      </a>
-      {#if practice_locked}
-      <div class="lock-overlay"></div>
-      {/if}
-    </div>
   </div>
-  
+  <div class="progress-bars-container">
+      <div class="progress-bar">
+          <ProgressBar
+              value={learnProgress.solvedTerms}
+              max={learnProgress.totalTerms}
+              height="h-6"
+              rounded="rounded-md"
+              transition="transition-[width]"
+              meter={learnProgress.solvedTerms === learnProgress.totalTerms ? 'bg-green-500' : 'bg-yellow-500'}
+              track="bg-surface-200"
+              labelledby="progress-label"
+          />
+      </div>
+      <div class="progress-bar">
+          {#if !understand_locked}
+              <ProgressBar
+                  value={understandProgress.solvedTerms}
+                  max={understandProgress.totalTerms}
+                  height="h-6"
+                  rounded="rounded-md"
+                  transition="transition-[width]"
+                  meter={understandProgress.solvedTerms === understandProgress.totalTerms ? 'bg-green-500' : 'bg-yellow-500'}
+                  track="bg-surface-200"
+                  labelledby="progress-label"
+              />
+          {/if}
+      </div>
+      <div class="progress-bar">
+          {#if !apply_locked}
+              <ProgressBar
+                  value={applyProgress.solvedTerms}
+                  max={applyProgress.totalTerms}
+                  height="h-6"
+                  rounded="rounded-md"
+                  transition="transition-[width]"
+                  meter={applyProgress.solvedTerms === applyProgress.totalTerms ? 'bg-green-500' : 'bg-yellow-500'}
+                  track="bg-surface-200"
+                  labelledby="progress-label"
+              />
+          {/if}
+      </div>
+  </div>
+</div>

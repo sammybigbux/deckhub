@@ -1592,7 +1592,7 @@
             "option4": "Managing user sessions",
             "answer": "option1"
         },
-        "AWS Control Tower Gaurd Rails": {
+        "AWS Control Tower Guard Rails": {
             "question": "What are 'AWS Control Tower Guard Rails'?",
             "option1": "Pre-configured governance rules to enforce policies and compliance in your AWS environment",
             "option2": "Security features for encrypting data in transit",
@@ -1680,7 +1680,7 @@
             "option4": "Methods for managing AWS billing",
             "answer": "option1"
         },
-        "Detective Gaurdrail": {
+        "Detective Guardrail": {
             "question": "What is a 'Detective Guardrail' in AWS Control Tower?",
             "option1": "A rule that continuously monitors compliance with best practices and policies",
             "option2": "A service for encrypting data in transit",
@@ -5554,8 +5554,8 @@
             "option4": "A managed service that makes it easy to securely connect and manage IoT devices and data from those devices at scale",
             "answer": "option4"
         },
-        "JDPC Driver": {
-            "question": "What is a 'JDPC Driver'?",
+        "JDBC Driver": {
+            "question": "What is a 'JDBC Driver'?",
             "option1": "A fully managed service that makes it easy to build and run applications that use Apache Kafka to process streaming data",
             "option2": "A storage format that organizes data by columns rather than by rows, which can improve query performance and reduce storage costs",
             "option3": "A technique used to divide large datasets into smaller, more manageable parts based on certain criteria (e.g., date, region) to improve query performance and scalability",

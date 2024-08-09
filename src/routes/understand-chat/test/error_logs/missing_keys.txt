@@ -1,0 +1,5 @@
+Category: High Availability and Scalability, Term: answer, Missing Keys: ['question', 'option2', 'option3', 'option4', 'answer']
+Category: EC2 Basics, Term: Short-Term vs. Long-Term Workloads, Missing Keys: ['answer']
+Category: EC2 Basics, Term: answer, Missing Keys: ['question', 'option1', 'option3', 'option4', 'answer']
+Category: EC2 advanced, Term: ENI Availability Zone Boundaries, Missing Keys: ['answer']
+Category: EC2 advanced, Term: answer, Missing Keys: ['question', 'option1', 'option2', 'option4', 'answer']

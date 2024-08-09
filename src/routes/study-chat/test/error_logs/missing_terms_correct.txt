@@ -1,0 +1,3 @@
+Section: Access Management, Term: AWS Control Tower Guard Rails
+Section: Access Management, Term: Detective Guardrail
+Section: Data Analytics, Term: JDBC Driver

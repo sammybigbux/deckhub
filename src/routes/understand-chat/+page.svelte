@@ -40,7 +40,7 @@
             avatar: 48,
             name: 'AI Coach',
             timestamp: `Today @ ${getCurrentTimestamp()}`,
-            message: 'Hi! This is your **AI coach** for the AWS SAA-03 exam. The goal of this section is to help you recall terms and definitions related to the exam by answering and getting feedback on multiple choice questions. Are you ready to get started?',
+            message: 'Hi! This is your **AI coach** for the AWS SAA-03 exam. The goal of this section is to help you understand concepts related to the exam by answering and getting feedback on multiple choice questions. Are you ready to get started?',
             color: 'variant-soft-primary'
         }
     ];

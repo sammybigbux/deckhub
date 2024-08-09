@@ -4,14 +4,14 @@ import time
 from functools import lru_cache
 
 class TermManager:
-    def __init__(self, file_path='terms_fixed.json'):
+    def __init__(self, file_path='terms.json'):
         self.file_path = file_path
         self.data = self._read_json()
         self.related_terms = self._get_related_terms()
-        self.completion = self._calculate_completion()
+        self.completion = self._calculate_completion() # not used
         self.term_questions = self._get_term_questions()
         self.correct_answer = False
-        self.section = "Databases"
+        self.section = "Networking"
         self.rt_responses = self._get_rt_responses()
         self.correct_responses = self._get_correct_responses()
         self.incorrect_responses = self._get_incorrect_responses()
@@ -75,6 +75,7 @@ class TermManager:
         return self.correct_responses[self.section][term]
     
     def get_incorrect_response(self, term, answer):
+        print(f"Term: {term}, Answer: {answer} from the term manager yields {self.incorrect_responses[self.section][term][answer]}")
         return self.incorrect_responses[self.section][term][answer]
 
     def get_not_passed_terms(self, section):

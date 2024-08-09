@@ -880,7 +880,7 @@
         "VCPU": false
     },
     "Databases": {
-        "Amazon Athena": false,
+        "Amazon Athena": true,
         "Amazon Aurora": false,
         "Amazon DocumentDB": false,
         "Amazon DynamoDB": false,

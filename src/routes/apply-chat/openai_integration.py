@@ -18,7 +18,7 @@ client = OpenAI(api_key=api_key)
 # Define the assistant ID from an environment variable
 assistant_id = "asst_dlHW5pVVkce0IWgKZzz77tTm"
 
-term_manager = TermManager('terms_fixed.json')
+term_manager = TermManager('terms.json')
 
 def create_thread():
     start_time = time.time()
@@ -175,7 +175,7 @@ def get_incorrect_response():
 @app.route('/update_section', methods=['POST'])
 def update_section_endpoint():
     data = request.json
-    term_manager.section = data['section'].capitalize()
+    term_manager.section = data['section']
     print("Changed section to ", term_manager.section)
     return jsonify({'message': f"Sure, here are the remaining sections {term_manager.section}"}), 200
 

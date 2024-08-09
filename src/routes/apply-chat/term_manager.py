@@ -97,7 +97,7 @@ class TermManager:
 
     def update_status(self, term):
         start_time = time.time()
-        section = self.section.capitalize()
+        section = self.section
         if section in self.data and term in self.data[section]:
             self.correct_answer = True
             print(f"!!!!!!!!The term {term} in section {section} has been updated to True!!!!!!!!!")

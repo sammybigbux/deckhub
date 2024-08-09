@@ -18,7 +18,7 @@ client = OpenAI(api_key=api_key)
 # Define the assistant ID from an environment variable
 assistant_id = "asst_dlHW5pVVkce0IWgKZzz77tTm"
 
-term_manager = TermManager('terms_fixed.json')
+term_manager = TermManager('terms.json')
 
 def create_thread():
     start_time = time.time()
@@ -162,6 +162,7 @@ def get_correct_response():
     data = request.json
     term = data.get('term')
     response = term_manager.get_correct_response(term)
+    print(f"Response from get_correct_response: {response}")
     return jsonify({'explanation': response.get('explanation'), 'elaborate': response.get('elaborate')}), 200
 
 @app.route('/get_incorrect_response', methods=['POST'])
@@ -170,6 +171,7 @@ def get_incorrect_response():
     term = data.get('term')
     userAnswer = data.get('userAnswer')
     response = term_manager.get_incorrect_response(term, userAnswer)
+    print(f"Response from get_incorrect_response: {response}")
     return jsonify({'explanation': response.get('explanation'), 'elaborate': response.get('elaborate')}), 200
 
 @app.route('/update_section', methods=['POST'])

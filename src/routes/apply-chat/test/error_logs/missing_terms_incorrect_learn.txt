@@ -1,0 +1,3 @@
+Section: Networking, Term: Suppose you need to enable private access to S3 and DynamoDB from within your VPC. Which VPC endpoint type would you use?, Missing Incorrect Answer: Interface VPC Endpoint.
+Section: Networking, Term: Suppose you need to enable private access to S3 and DynamoDB from within your VPC. Which VPC endpoint type would you use?, Missing Incorrect Answer: Transit Gateway.
+Section: Networking, Term: Suppose you need to enable private access to S3 and DynamoDB from within your VPC. Which VPC endpoint type would you use?, Missing Incorrect Answer: VPN Connections.

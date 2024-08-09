@@ -1,0 +1,1 @@
+Term missing in section EC2 Instance Storage: Managing Long-term Storage Costs: Imagine you have a large number of EBS snapshots that need to be stored long-term but are infrequently accessed. How would you use the EBS Snapshot Archive to reduce storage costs, and what considerations should you keep in mind?
