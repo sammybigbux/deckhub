@@ -2,13 +2,14 @@ import json
 import random
 import time
 from functools import lru_cache
+from pathlib import Path
 
 class TermManager:
-    def __init__(self, file_path='terms.json'):
-        self.file_path = file_path
+    def __init__(self, file_path='terms.json', data_dir="learn_data"):
+        self.data_dir = Path(data_dir) / "outputs"
+        self.file_path = self.data_dir / file_path
         self.data = self._read_json()
         self.related_terms = self._get_related_terms()
-        self.completion = self._calculate_completion() # not used
         self.term_questions = self._get_term_questions()
         self.correct_answer = False
         self.section = "Networking"
@@ -27,29 +28,34 @@ class TermManager:
     @lru_cache(maxsize=None)
     def _get_related_terms(self):
         start_time = time.time()
-        with open("related_terms.json", 'r') as f:
+        related_terms_path = self.data_dir / "related_terms.json"
+        with open(related_terms_path, 'r') as f:
             result = json.load(f)
         print(f"_get_related_terms took {time.time() - start_time} seconds")
         return result
 
     @lru_cache(maxsize=None)
     def _get_term_questions(self):
-        with open("questions.json", 'r') as f:
+        questions_path = self.data_dir / "questions.json"
+        with open(questions_path, 'r') as f:
             result = json.load(f)
         return result
     
     def _get_rt_responses(self):
-        with open("related_terms_data.json", 'r') as f:
+        rt_responses_path = self.data_dir / "related_terms_data.json"
+        with open(rt_responses_path, 'r') as f:
             result = json.load(f)
         return result
 
     def _get_incorrect_responses(self):
-        with open("incorrect_response_api.json", 'r') as f:
+        incorrect_responses_path = self.data_dir / "incorrect_response_api.json"
+        with open(incorrect_responses_path, 'r') as f:
             result = json.load(f)
         return result
     
     def _get_correct_responses(self):
-        with open("correct_response_api.json", 'r') as f:
+        correct_responses_path = self.data_dir / "correct_response_api.json"
+        with open(correct_responses_path, 'r') as f:
             result = json.load(f)
         return result
 
@@ -75,7 +81,6 @@ class TermManager:
         return self.correct_responses[self.section][term]
     
     def get_incorrect_response(self, term, answer):
-        print(f"Term: {term}, Answer: {answer} from the term manager yields {self.incorrect_responses[self.section][term][answer]}")
         return self.incorrect_responses[self.section][term][answer]
 
     def get_not_passed_terms(self, section):
@@ -119,16 +124,9 @@ class TermManager:
         print(f"Trying to get the terms from this section: {self.section}")
         return "\n".join([term for term in self.data[self.section] if not self.data[self.section][term]])
 
-    def get_completion(self):
-        start_time = time.time()
-        result = self.completion
-        print(f"get_completion took {time.time() - start_time} seconds")
-        return result
-
     def reload_data(self):
         start_time = time.time()
         self.data = self._read_json()
-        self.completion = self._calculate_completion()
         print(f"reload_data took {time.time() - start_time} seconds")
 
     def retrieve_question(self, section, term=None):
