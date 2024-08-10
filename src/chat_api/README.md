@@ -1,4 +1,4 @@
-# Project Name
+# Deckhub Chat API
 
 This backend is to serve all the data needed for the chat functionality. It uses Flask to serve different modules (Learn, Understand, Apply) on different ports. Each module is managed by its own instance of `TermManager`, which loads and processes data from specific directories.
 
