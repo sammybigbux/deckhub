@@ -14,15 +14,10 @@ The root directory contains the following important files and directories:
 
 ### 3. **`apply_data/`, `learn_data/`, `understand_data/`**
    - These three directories correspond to the different modules (Apply, Learn, Understand). Each directory contains:
+   - **`data/`**
      - **`input/`**: Contains raw data files used to generate the output data. This data is processed by scripts in the `data_scripts/` folder.
      - **`output/`**: Contains the processed data files that are served by the Flask server.
-
-### 4. **`data_scripts/`**
-   - Contains scripts used to generate the output data. These scripts process the raw data from the `input/` directories and produce the JSON files that are served by the Flask server from the `output/` directories.
-
-### 5. **`data/`**
-   - This directory contains the primary data for the application, organized into the aforementioned input and output subdirectories within the `apply_data`, `learn_data`, and `understand_data` directories. The data in these folders is used by the corresponding `TermManager` instances for each module.
-
+   - **`data_scripts/`** contains scripts used to generate the output data. These scripts process the raw data from the `input/` directories and produce the JSON files that are served by the Flask server from the `output/` directories.
 
 ## Running the backend server
 
