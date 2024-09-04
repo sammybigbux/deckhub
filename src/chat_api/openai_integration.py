@@ -12,14 +12,16 @@ import openai
 import re
 from dotenv import load_dotenv
 
-# Load environment variables
+# Setup Open AI client
 load_dotenv()
 api_key = os.getenv("API_KEY")
 client = OpenAI(api_key=api_key)
 
 # Define the assistant ID from an environment variable
+# This assistant is for answering questions
 assistant_id = "asst_dlHW5pVVkce0IWgKZzz77tTm"
 
+# Set up term manager and port
 def create_term_manager(port):
     if port == 5000:
         data_dir = "learn_data"
@@ -29,16 +31,14 @@ def create_term_manager(port):
         data_dir = "apply_data"
     else:
         raise ValueError("Port number not recognized for any module.")
-    return TermManager('terms_fixed.json', data_dir)
+    return TermManager(data_dir)
+
+port = int(os.getenv('PORT', 5000)) 
+term_manager = create_term_manager(port)
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
-
-@app.before_first_request
-def setup_term_manager():
-    global term_manager
-    port = request.environ['SERVER_PORT']
-    term_manager = create_term_manager(int(port))
 
 def create_thread():
     start_time = time.time()
@@ -189,5 +189,4 @@ def get_remaining_terms():
     return jsonify({'message': f"Sure, here are the remaining terms:\n{term_manager.get_remaining_terms()}"}), 200
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)

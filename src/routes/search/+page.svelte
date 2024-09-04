@@ -1,7 +1,6 @@
 <script lang="ts">
     import { writable, derived } from 'svelte/store';
-    import { auth, db, isLoggedIn } from '$lib/firebase';
-    import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+    import { isLoggedIn, idToken, userName } from '$lib/firebase'; // Import auth and userName here
     import { onMount } from 'svelte';
     import { userDecks } from '../../stores/auth';
 
@@ -16,11 +15,18 @@
     }
 
     let decks = writable<Deck[]>([]);
+    let loaded = writable(false);
+    userDecks.subscribe(value => console.log("userDecks value:", value));
+
+    // Derive userDisplayName from userName
+    const userDisplayName = derived(userName, $userName => $userName ? $userName.split(' ')[0] : 'User');
+    console.log('userDisplayName derived from userName:', $userDisplayName);
 
     const filteredDecks = derived(
         [searchQuery, decks, isLoggedIn, userDecks],
         ([$searchQuery, $decks, $isLoggedIn, $userDecks]) => {
             // Filter decks
+            if (!$isLoggedIn || !$userDecks) return [];
             return $decks.filter(deck =>
                 deck.name.toLowerCase().includes($searchQuery.toLowerCase())
             );
@@ -31,46 +37,62 @@
         searchQuery.set(event.target.value);
     }
 
-    async function handleBuyClick(deckName: string) {
-        // Implement the buy logic here
-    }
-
     onMount(async () => {
         try {
-            // Fetch all decks
-            const querySnapshot = await getDocs(collection(db, 'decks'));
-            const deckData: Deck[] = querySnapshot.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-                icon: doc.data().icon as string,
-                name: doc.data().name as string,
-                length: doc.data().length as number,
-                lastUpdated: doc.data().lastUpdated.toDate(),
-            }));
-            decks.set(deckData);
-
-            // Fetch user-owned decks
-            const currentUser = auth.currentUser;
-            if (currentUser) {
-                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
-                if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    userDecks.set(userData.decks_owned || []);
-                } else {
-                    console.log('No such user document!');
+            console.log('Fetching all decks...');
+            const response = await fetch('http://127.0.0.1:5000/get_decks', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            } else {
-                console.log('No current user');
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch decks');
             }
+
+            const deckData: Deck[] = await response.json();
+            decks.set(deckData);
+            console.log('All Deck Data:', deckData);
+
+            // Wait for idToken to be set before fetching user decks
+            idToken.subscribe(async (token) => {
+                if (token && isLoggedIn) {
+                    console.log('Fetching user decks...');
+                    console.log('Sending this authorization token to get_user_decks: ', token);
+
+                    const userResponse = await fetch('http://127.0.0.1:5000/get_user_decks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (!userResponse.ok) {
+                        throw new Error('Failed to fetch user decks');
+                    }
+
+                    const userDeckData = await userResponse.json();
+                    userDecks.set(userDeckData);
+
+                    loaded.set(true);
+                } else {
+                    userDecks.set([]);
+                }
+            });
+
         } catch (e) {
-            console.error('Error getting documents: ', e);
+            console.error('Error getting decks:', e);
         }
     });
 </script>
 
 <style>
-    .owned-deck {
-        background-color: #e0ffe0; /* Example color for owned decks */
+    h1 {
+        font-size: 3em; /* Adjust font size as needed */
+        text-align: center; /* Center the text */
+        padding-bottom: 35px;
     }
     .search-container {
         padding: 16px;
@@ -94,7 +116,6 @@
         justify-content: space-between;
         padding: 12px;
         border-bottom: 1px solid #eee;
-        background-color: #333; /* Darker Skeleton UI color */
         border-radius: 8px;
         margin-bottom: 8px;
         transition: background 0.3s;
@@ -144,6 +165,7 @@
 </style>
 
 <div class="search-container">
+    <h1>{$userDisplayName}'s Decks</h1>
     <input
         type="text"
         class="search-bar"
@@ -152,38 +174,30 @@
     />
     <ul class="deck-list">
         {#each $filteredDecks as deck}
-            <div class="deck-item { $userDecks.includes(deck.name) ? 'variant-gradient-warning-error' : ''} bg-gradient-to-br variant-gradient-tertiary-secondary">
+            <div
+                class="deck-item"
+                class:bg-gradient-to-br={true}
+                class:variant-gradient-warning-error={$userDecks.includes(deck.name)}
+                class:variant-filled-tertiary={!$userDecks.includes(deck.name)}
+            >
                 <div class="deck-content">
                     <div class="deck-icon">{deck.icon}</div>
                     <div class="deck-info">
                         <div class="deck-title">{deck.name}</div>
                         <div class="deck-details">
                             <span>{deck.length} cards</span>
-                            <span>{new Intl.DateTimeFormat('en-US', { 
-                                month: '2-digit', 
-                                day: '2-digit', 
-                                year: 'numeric' 
-                            }).format(deck.lastUpdated)}</span>
                         </div>
                     </div>
                 </div>
-                {#if $isLoggedIn}
-                    {#if $userDecks.includes(deck.name)}
-                        <a href="/my-cards" class="btn bg-success-500 card-hover">My Cards</a>
-                    {:else}
-                        <button 
-                            class="btn bg-success-500 card-hover" 
-                            on:click={() => handleBuyClick(deck.name)} 
-                        >
-                            Purchase
-                        </button>
-                    {/if}
-                {:else}
-                    <button class="btn bg-primary-500 card-hover">
-                        Login to download
-                    </button>
-                {/if}
+                <button class="btn" 
+                    class:variant-filled-success={$userDecks.includes(deck.name)} 
+                    class:variant-filled-error={!$userDecks.includes(deck.name)}>
+                    {$userDecks.includes(deck.name) ? 'Download' : 'Purchase'}
+                </button>
             </div>
         {/each}
     </ul>
 </div>
+
+
+

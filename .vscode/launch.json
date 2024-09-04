@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": [
+                "--incognito",  // Opens Chrome in incognito mode
+                "--disable-web-security", // (Use cautiously) Disables web security
+                "--disable-blink-features=AutomationControlled"
+            ]
+        }
+    ]
+}

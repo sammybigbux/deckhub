@@ -5,27 +5,24 @@ from functools import lru_cache
 from pathlib import Path
 
 class TermManager:
-    def __init__(self, file_path='terms.json', data_dir="learn_data"):
-        self.data_dir = Path(data_dir) / "outputs"
-        self.file_path = self.data_dir / file_path
+    def __init__(self, data_dir="learn_data"):
+        self.data_dir = Path(data_dir) / "data" / "outputs"
+        self.terms_path = self.data_dir / "terms.json"
         self.data = self._read_json()
         self.related_terms = self._get_related_terms()
         self.term_questions = self._get_term_questions()
-        self.correct_answer = False
         self.section = "Networking"
         self.rt_responses = self._get_rt_responses()
         self.correct_responses = self._get_correct_responses()
         self.incorrect_responses = self._get_incorrect_responses()
 
-    @lru_cache(maxsize=None)
     def _read_json(self):
         start_time = time.time()
-        with open(self.file_path, 'r') as f:
+        with open(self.terms_path, 'r') as f:
             result = json.load(f)
         print(f"_read_json took {time.time() - start_time} seconds")
         return result
 
-    @lru_cache(maxsize=None)
     def _get_related_terms(self):
         start_time = time.time()
         related_terms_path = self.data_dir / "related_terms.json"
@@ -34,7 +31,6 @@ class TermManager:
         print(f"_get_related_terms took {time.time() - start_time} seconds")
         return result
 
-    @lru_cache(maxsize=None)
     def _get_term_questions(self):
         questions_path = self.data_dir / "questions.json"
         with open(questions_path, 'r') as f:
@@ -61,7 +57,7 @@ class TermManager:
 
     def _write_json(self):
         start_time = time.time()
-        with open(self.file_path, 'w') as f:
+        with open(self.terms_path, 'w') as f:
             json.dump(self.data, f, indent=4)
         print(f"_write_json took {time.time() - start_time} seconds")
 
@@ -105,8 +101,6 @@ class TermManager:
         start_time = time.time()
         section = self.section.capitalize()
         if section in self.data and term in self.data[section]:
-            self.correct_answer = True
-            print(f"!!!!!!!!The term {term} in section {section} has been updated to True!!!!!!!!!")
             self.data[section][term] = True
             self._write_json()
         else:
