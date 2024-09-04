@@ -24,6 +24,8 @@ const provider = new GoogleAuthProvider();
 export const isLoggedIn = writable(false); // Set to false initially
 export let userName = writable("");
 export let idToken = writable(""); // Store the Firebase ID token
+export let userID = writable(""); // Store the Firebase user ID
+export const userId = writable(null);  // New store to track the user ID
 
 // Utility function to check if localStorage is available
 function isLocalStorageAvailable() {
@@ -61,10 +63,12 @@ onAuthStateChanged(auth, async (user) => {
         idToken.set(token);
         isLoggedIn.set(true);
         userName.set(user.displayName || "User");
+        userId.set(user.uid);  // Set the user ID in the store
     } else {
         isLoggedIn.set(false);
         userName.set("");
         idToken.set("");
+        userId.set(null);  // Clear the user ID when logged out
         userDecks.set([]); // Clear user decks
     }
 });

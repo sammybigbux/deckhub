@@ -3,11 +3,14 @@ import random
 import time
 from functools import lru_cache
 from pathlib import Path
+import firebase_admin
+
 
 class TermManager:
-    def __init__(self, data_dir="learn_data"):
+    def __init__(self, data_dir="learn_data", userID=None):
+        self.userID = userID
         self.data_dir = Path(data_dir) / "data" / "outputs"
-        self.terms_path = self.data_dir / "terms.json"
+        self.terms_path = self.data_dir / userID /  "terms.json"
         self.data = self._read_json()
         self.related_terms = self._get_related_terms()
         self.term_questions = self._get_term_questions()
@@ -16,11 +19,13 @@ class TermManager:
         self.correct_responses = self._get_correct_responses()
         self.incorrect_responses = self._get_incorrect_responses()
 
+
     def _read_json(self):
-        start_time = time.time()
+        user_dir = self.data_dir / self.userID
+        user_dir.mkdir(parents=True, exist_ok=True)
         with open(self.terms_path, 'r') as f:
             result = json.load(f)
-        print(f"_read_json took {time.time() - start_time} seconds")
+
         return result
 
     def _get_related_terms(self):

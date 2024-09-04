@@ -1,11 +1,283 @@
+import os
+import json
+import time
+from functools import lru_cache
+from openai import OpenAI
+from typing_extensions import override
+from openai import AssistantEventHandler
+from term_manager import TermManager  # Assuming the TermManager is in term_manager.py
 from flask import Flask, request, jsonify
-from firebase_admin_init import db
+from flask_cors import CORS
+import openai
+import re
+from dotenv import load_dotenv
+from pathlib import Path
+
+from firebase_admin_init import db, bucket
 from firebase_admin import firestore, auth
 from datetime import datetime, timedelta, timezone
-from flask_cors import CORS
+
+# Setup Open AI client
+load_dotenv()
+api_key = os.getenv("API_KEY")
+client = OpenAI(api_key=api_key)
+
+# Define the assistant ID from an environment variable
+# This assistant is for answering questions
+assistant_id = "asst_dlHW5pVVkce0IWgKZzz77tTm"
+
+# Set up term manager and port
+def create_term_manager(port, userID):
+    if port == 5000:
+        data_dir = "learn_data"
+    elif port == 5001:
+        data_dir = "understand_data"
+    elif port == 5002:
+        data_dir = "apply_data"
+    else:
+        raise ValueError("Port number not recognized for any module.")
+    return TermManager(data_dir, userID)
+
+port = int(os.getenv('PORT', 5000)) 
+term_manager = None # Initialize term manager with user info later
+
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # Enable CORS for all routes
+
+# helper functions
+def create_thread():
+    start_time = time.time()
+    thread = client.beta.threads.create()
+    print(f"create_thread took {time.time() - start_time} seconds")
+    return thread.id
+
+# Function to handle the terms.json file for each user
+def manage_user_json(userID):
+    try:
+        # Define local directory and file path for storing terms.json
+        local_dir = f'/tmp/{userID}'
+        os.makedirs(local_dir, exist_ok=True)
+        
+        local_file_path = os.path.join(local_dir, 'terms.json')
+
+        # Create a reference to the file in Firebase Cloud Storage
+        blob = bucket.blob(f'{userID}/terms.json')
+
+        if blob.exists():
+            # If the file exists in Cloud Storage, download it
+            blob.download_to_filename(local_file_path)
+            print(f'Downloaded {userID}/terms.json to {local_file_path}')
+        else:
+            # If the file does not exist, use the default file from term_manager.data_dir
+            default_file_path = Path(term_manager.data_dir) / "terms.json"
+            if not default_file_path.exists():
+                print(f"Default terms.json file not found at {default_file_path}")
+                return None
+
+            # Copy the default terms.json to the user's directory
+            with open(default_file_path, 'r') as default_file:
+                with open(local_file_path, 'w') as user_file:
+                    user_file.write(default_file.read())
+
+            print(f'Created default {local_file_path} from {default_file_path}')
+        
+        return local_file_path
+
+    except Exception as e:
+        print(f"Error managing terms.json for user {userID}: {e}")
+        return None
+
+def download_user_json(userID):
+    try:
+        # Define local directory and file path for storing terms.json
+        local_dir = term_manager.data_dir / f'{userID}'
+        os.makedirs(local_dir, exist_ok=True)
+        
+        local_file_path = os.path.join(local_dir, 'terms.json')
+
+        # Create a reference to the file in Firebase Cloud Storage
+        blob = bucket.blob(f'{userID}/terms.json')
+
+        # Download the file to the local directory
+        blob.download_to_filename(local_file_path)
+
+        print(f'Downloaded {userID}/terms.json to {local_file_path}')
+        return local_file_path
+    except Exception as e:
+        print(f"Error downloading terms.json for user {userID}: {e}")
+        return None
+
+# TODO: Implement this function
+# def upload_user_json(userID, local_file_path):
+#     try:
+#         blob = bucket.blob(f'{userID}/terms.json')
+#         blob.upload_from_filename(local_file_path)
+#         print(f'Uploaded {local_file_path} to {userID}/terms.json in Cloud Storage')
+#     except Exception as e:
+#         print(f"Error uploading {local_file_path} for user {userID}: {e}")
+
+class ResponseEventHandler(AssistantEventHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.response_text = []
+
+    @override
+    def on_text_created(self, text) -> None:
+        self.response_text.append(text.value)
+
+    @override
+    def on_text_delta(self, delta, snapshot):
+        self.response_text.append(delta.value)
+
+    def get_response(self):
+        full_response = ''.join(self.response_text)
+        return full_response
+
+def run_assistant_query(thread_id, query):
+    start_time = time.time()
+    runs = client.beta.threads.runs.list(thread_id=thread_id)
+    active_runs = [run for run in runs if run.status in ['in_progress', 'requires_action']]
+    if active_runs:
+        terminate_start_time = time.time()
+        for active_run in active_runs:
+            client.beta.threads.runs.terminate(
+                thread_id=thread_id,
+                run_id=active_run.id
+            )
+        print(f"Terminate active runs took {time.time() - terminate_start_time} seconds")
+
+    client.beta.threads.messages.create(
+        thread_id=thread_id,
+        role="user",
+        content=query,
+    )
+
+    event_handler = ResponseEventHandler()
+
+    with client.beta.threads.runs.stream(
+        thread_id=thread_id,
+        assistant_id=assistant_id,
+        event_handler=event_handler
+    ) as stream:
+        stream.until_done()
+
+    return event_handler.get_response()
+
+@app.route('/start_thread', methods=['POST'])
+def start_thread_endpoint():
+    thread_id = create_thread()
+    return jsonify({'thread_id': thread_id})
+
+@app.route('/send_message', methods=['POST'])
+def send_message_endpoint():
+    data = request.json
+    thread_id = data['thread_id']
+    message = data['message']
+    response = run_assistant_query(thread_id, message)
+    return jsonify({'response': response})
+
+@app.route('/update_status', methods=['POST'])
+def update_status():
+    data = request.json
+    if not data or 'term' not in data:
+        return jsonify({'error': 'Invalid request data'}), 400
+    term = data.get('term')
+    term_manager.update_status(term)
+    return jsonify({'message': f'Status for {term} updated successfully'}), 200
+
+@app.route('/initialize_env', methods=['POST'])
+def initialize_with_user_information():
+    global term_manager
+    userID = request.json.get('userID')
+    if not userID:
+        return jsonify({"error": "No user information provided"}), 400
+    
+    # Download or create the terms.json file for the user
+    terms_json_path = manage_user_json(userID)
+    
+    if not terms_json_path:
+        return jsonify({"error": "Failed to initialize terms.json"}), 500
+
+    # Initialize term_manager with userID and downloaded/created terms.json file
+    term_manager = create_term_manager(userID, terms_json_path)
+    
+    return jsonify({"message": "Environment initialized successfully"}), 200
+
+
+
+@app.route('/get_terms_data', methods=['GET'])
+def get_terms_data():
+    total_terms = term_manager.get_total_terms()
+    solved_terms = term_manager.get_solved_terms()
+    return jsonify({'totalTerms': total_terms, 'solvedTerms': solved_terms})
+
+@app.route('/reset_terms', methods=['POST'])
+def reset_terms():
+    term_manager.reset_all_terms()
+    return jsonify({'message': 'All terms reset successfully'})
+
+@app.route('/pass_all_terms', methods=['POST'])
+def pass_all_terms():
+    term_manager.pass_all_terms()
+    return jsonify({'message': 'All terms passed successfully'})
+
+@app.route('/get_question', methods=['POST'])
+def get_question():
+    data = request.json
+    section = term_manager.section
+    term = data.get('term')
+    question_dict = term_manager.retrieve_question(section, term)
+    return jsonify(question_dict)
+
+@app.route('/get_correct_response', methods=['POST'])
+def get_correct_response():
+    data = request.json
+    term = data.get('term')
+    response = term_manager.get_correct_response(term)
+    return jsonify({'explanation': response.get('explanation'), 'elaborate': response.get('elaborate')}), 200
+
+@app.route('/get_incorrect_response', methods=['POST'])
+def get_incorrect_response():
+    data = request.json
+    term = data.get('term')
+    userAnswer = data.get('userAnswer')
+    response = term_manager.get_incorrect_response(term, userAnswer)
+    return jsonify({'explanation': response.get('explanation'), 'elaborate': response.get('elaborate')}), 200
+
+@app.route('/update_section', methods=['POST'])
+def update_section_endpoint():
+    data = request.json
+    term_manager.section = data['section'].capitalize()
+    return jsonify({'message': f"Sure, here are the remaining sections {term_manager.section}"}), 200
+
+@app.route('/get_remaining_sections', methods=['POST'])
+def get_remaining_sections():
+    return jsonify({'message': f"Sure, here are the remaining sections:\n{term_manager.get_remaining_sections()}"}), 200
+
+@app.route('/retrieve_related_term_response', methods=['POST'])
+def get_related_term_response():
+    data = request.get_json()
+    term = data.get('term')
+    related_term = data.get('related_term')
+    if term and related_term:
+        try:
+            response = term_manager.get_rt_response(term, related_term)
+            if response:
+                return jsonify({
+                    'related_term_definition': response.get('definition'),
+                    'related_term_explanation': response.get('connection')
+                }), 200
+            else:
+                return jsonify({'error': 'No related term response found'}), 404
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    else:
+        return jsonify({'error': 'Invalid request. Both term and related_term are required.'}), 400
+
+@app.route('/get_remaining_terms', methods=['POST'])
+def get_remaining_terms():
+    return jsonify({'message': f"Sure, here are the remaining terms:\n{term_manager.get_remaining_terms()}"}), 200
 
 # endpoint for creating new user
 @app.route('/create_user_if_not_exists', methods=['POST'])
@@ -136,4 +408,4 @@ def toggle_upvote():
     return jsonify({"message": "Upvote toggled successfully."}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)

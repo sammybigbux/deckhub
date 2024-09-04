@@ -1,7 +1,14 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import { Avatar, ProgressBar } from '@skeletonlabs/skeleton';
     import { marked } from 'marked';
+    import { userId } from '../../lib/firebase';
+
+    // Initialize the user ID to grab terms.json data
+    let uid = null;
+    const unsubscribe = userId.subscribe(value => {
+        uid = value;
+    });
 
     marked.setOptions({ breaks: true });
     let currentTerm = '';
@@ -558,6 +565,9 @@
         await startThread();
         scrollChatBottom();
         retrieveTermsData();
+    });
+    onDestroy(() => {
+        unsubscribe();  // Unsubscribe from the userId store when the component is destroyed
     });
 </script>
 

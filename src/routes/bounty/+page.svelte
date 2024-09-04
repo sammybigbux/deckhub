@@ -1,8 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
   import { get } from 'svelte/store';
-  import { isLoggedIn, auth} from '$lib/firebase'; // Assuming you have a store managing authentication
-  const DEBUG = true;
+  import { isLoggedIn, auth} from '$lib/firebase';
   
 
 
