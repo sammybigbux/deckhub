@@ -2,7 +2,7 @@
     import { onMount, onDestroy } from 'svelte';
     import { Avatar, ProgressBar } from '@skeletonlabs/skeleton';
     import { marked } from 'marked';
-    import { userId } from '../../lib/firebase';
+    import { userID, userId } from '../../lib/firebase';
 
     // Initialize the user ID to grab terms.json data
     let uid = null;
@@ -66,6 +66,7 @@
     async function updateStatus() {
         const payload = {
             term: currentTerm,
+            userID: userID  // Add userID to the payload
         };
 
         try {
@@ -98,7 +99,18 @@
     }
 
     async function retrieveTermsData(): Promise<void> {
-        const response = await fetch('http://localhost:5000/get_terms_data', { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
+        const response = await fetch('http://localhost:5000/get_terms_data', {
+            method: 'POST',  // Change method to POST to send userID
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)  // Send userID in the body
+        });
+
         const data = await response.json();
         totalTerms = data.totalTerms;
         solvedTerms = data.solvedTerms;
@@ -106,9 +118,11 @@
 
     async function retrieveRelatedTermResponse(relatedTerm) {
         console.log("Retrieving related term response for term: ", currentTerm, "and related term: ", relatedTerm);
+        
         const payload = {
             term: currentTerm,
-            related_term: relatedTerm
+            related_term: relatedTerm,
+            userID: userID  // Add userID to the payload
         };
 
         const response = await fetch('http://localhost:5000/retrieve_related_term_response', {
@@ -158,13 +172,22 @@
     }
 
     async function getSections(): Promise<void> {
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
         try {
             const response = await fetch('http://localhost:5000/get_remaining_sections', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)  // Send userID in the body
             });
+
             const data = await response.json();
             console.log("Getting back the section data from getSections() (frontend):", data);
+
             const sectionMessage: Message = {
                 id: messageFeed.length,
                 host: false,
@@ -174,6 +197,7 @@
                 message: data.message,
                 color: 'variant-soft-primary'
             };
+
             messageFeed = [...messageFeed, sectionMessage];
         } catch (error) {
             console.error('Error updating section:', error);
@@ -181,13 +205,22 @@
     }
 
     async function getTerms(): Promise<void> {
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
         try {
             const response = await fetch('http://localhost:5000/get_remaining_terms', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)  // Send userID in the body
             });
+
             const data = await response.json();
             console.log("Getting back the term data from getTerms() (frontend):", data);
+
             const sectionMessage: Message = {
                 id: messageFeed.length,
                 host: false,
@@ -197,6 +230,7 @@
                 message: data.message,
                 color: 'variant-soft-primary'
             };
+
             messageFeed = [...messageFeed, sectionMessage];
         } catch (error) {
             console.error('Error updating section:', error);
@@ -205,11 +239,17 @@
 
     async function retrieveQuestion(term: string | null = null): Promise<void> {
         related_terms = [];
+        const payload = {
+            thread_id: threadId,
+            term: term,
+            userID: userID  // Add userID to the payload
+        };
+
         try {
             const response = await fetch('http://localhost:5000/get_question', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ thread_id: threadId, term }) // Sending the term if provided
+                body: JSON.stringify(payload)  // Send userID in the body
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -235,44 +275,56 @@
             };
             messageFeed = [...messageFeed, questionMessage];
             currentTerm = data.term;
-            currentQuestionData = data
+            currentQuestionData = data;
         } catch (error) {
             console.error('Error retrieving question:', error);
         }
     }
 
-    async function retrieveCorrectResponse(term) {
-    try {
-        const response = await fetch('http://localhost:5000/get_correct_response', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ term: term })
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log('Getting back the answer response data from retrieveCorrectResponse():', data);
-        currentAnswerResponse = data;
-        return data;
-    } catch (error) {
-        console.error('Error retrieving answer response:', error);
-        return null; // Return null in case of error
-    }
-}
 
-    async function retrieveIncorrectResponse(term, userAnswer) {
+    async function retrieveCorrectResponse(term) {
+        const payload = {
+            term: term,
+            userID: userID  // Add userID to the payload
+        };
+
         try {
-            const response = await fetch('http://localhost:5000/get_incorrect_response', {
+            const response = await fetch('http://localhost:5000/get_correct_response', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ term: term, userAnswer: userAnswer })
+                body: JSON.stringify(payload)  // Send userID in the body
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            console.log('Getting back the answer response data from retrieveInorrectResponse():', data);
+            console.log('Getting back the answer response data from retrieveCorrectResponse():', data);
+            currentAnswerResponse = data;
+            return data;
+        } catch (error) {
+            console.error('Error retrieving answer response:', error);
+            return null; // Return null in case of error
+        }
+    }
+
+    async function retrieveIncorrectResponse(term, userAnswer) {
+        const payload = {
+            term: term,
+            userAnswer: userAnswer,
+            userID: userID  // Add userID to the payload
+        };
+
+        try {
+            const response = await fetch('http://localhost:5000/get_incorrect_response', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)  // Send userID in the body
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Getting back the answer response data from retrieveIncorrectResponse():', data);
             currentAnswerResponse = data;
             return data;
         } catch (error) {
@@ -344,7 +396,16 @@
     }
 
     async function resetTerms(): Promise<void> {
-        const response = await fetch('http://localhost:5000/reset_terms', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
+        const response = await fetch('http://localhost:5000/reset_terms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)  // Send userID in the body
+        });
+
         if (response.ok) {
             solvedTerms = 0; // Reset the solvedTerms when terms are reset
             const resetMessage: Message = {
@@ -360,8 +421,18 @@
         }
     }
 
+
     async function passAllTerms(): Promise<void> {
-        const response = await fetch('http://localhost:5000/pass_all_terms', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
+        const response = await fetch('http://localhost:5000/pass_all_terms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)  // Send userID in the body
+        });
+
         if (response.ok) {
             solvedTerms = totalTerms; // Mark all terms as solved
             const passedMessage: Message = {
@@ -529,7 +600,10 @@
     function updateSection(section: string): void {
         // Define the endpoint and payload
         const endpoint = 'http://localhost:5000/update_section';
-        const payload = { section: section };
+        const payload = { 
+            section: section,
+            userID: userID  // Add userID to the payload
+        };
 
         // Send a POST request to the /update_section endpoint with the section data
         fetch(endpoint, {
@@ -540,13 +614,13 @@
 
         // Add a message to the thread without waiting for a response
         let message = {
-                    section: section,
-                    term: 'Select next question or choose a term',
-                    question: "",
-                    options: [],
-                    answer: ''
-                }
-        console.log(`Section has been updated to ${section}`)
+            section: section,
+            term: 'Select next question or choose a term',
+            question: "",
+            options: [],
+            answer: ''
+        };
+        console.log(`Section has been updated to ${section}`);
 
         // Add a message from the AI saying "Section has been updated to [section]"
         const botMessage: Message = {
@@ -560,13 +634,56 @@
         };
         messageFeed = [...messageFeed, botMessage];
     }
+    
+    // Function to initialize the environment on mount
+    async function initializeEnv() {
+        const payload = { userID: userID };  // Add userID to the payload
+
+        try {
+            const response = await fetch('http://localhost:5000/initialize_env', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to initialize environment: ${response.statusText}`);
+            }
+            console.log('Environment initialized successfully.');
+        } catch (error) {
+            console.error('Error initializing environment:', error);
+        }
+    }
+
+    // Function to clean up the environment on destroy
+    async function cleanupEnv() {
+        const payload = { userID: userID };  // Add userID to the payload
+
+        try {
+            const response = await fetch('http://localhost:5000/cleanup_env', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to clean up environment: ${response.statusText}`);
+            }
+            console.log('Environment cleaned up successfully.');
+        } catch (error) {
+            console.error('Error cleaning up environment:', error);
+        }
+    }
 
     onMount(async () => {
+        await initializeEnv();  // Initialize the environment in the backend (data download and processing)
         await startThread();
         scrollChatBottom();
         retrieveTermsData();
     });
+
     onDestroy(() => {
+        cleanupEnv();  // Clean up the environment on component teardown
         unsubscribe();  // Unsubscribe from the userId store when the component is destroyed
     });
 </script>
