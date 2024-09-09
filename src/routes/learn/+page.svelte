@@ -136,8 +136,8 @@
           <h1 class="card-header">Learn</h1>
           <p class="card-content">Gain new knowledge and familiarity with key terms.</p>
           <div class="button-container">
-              <a href="/study-learn" class="btn button-study">Study</a>
-              <a href="/evaluate" class="btn button-evaluate">Evaluate</a>
+              <a href="/learn-multiple" class="btn button-study">Standard</a>
+              <a href="/learn-open" class="btn button-evaluate">Turbo</a>
           </div>
       </div>
       <div class="card {understand_locked ? 'locked' : ''}">

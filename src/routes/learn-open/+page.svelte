@@ -2,7 +2,8 @@
     import { onMount, onDestroy } from 'svelte';
     import { Avatar, ProgressBar } from '@skeletonlabs/skeleton';
     import { marked } from 'marked';
-    import { userID, userId } from '../../lib/firebase';
+    import { userId } from '../../lib/firebase';
+    import { get } from 'svelte/store';
 
     // Initialize the user ID to grab terms.json data
     let uid = null;
@@ -57,6 +58,23 @@
     let totalTerms = 1;
     let solvedTerms = 0;
 
+    async function getUserID() {
+        return new Promise((resolve, reject) => {
+            const uid = get(userId);  // Get current value of userId
+            if (uid) {
+                resolve(uid);  // If userID is already set, return it
+            } else {
+                // Wait for userID to be populated
+                const unsubscribe = userId.subscribe(value => {
+                    if (value) {
+                        resolve(value);
+                        unsubscribe();  // Unsubscribe once the userID is populated
+                    }
+                });
+            }
+        });
+    }
+
     async function startThread(): Promise<void> {
         const response = await fetch('http://localhost:5000/start_thread', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
         const data = await response.json();
@@ -64,6 +82,7 @@
     }
 
     async function updateStatus() {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             term: currentTerm,
             userID: userID  // Add userID to the payload
@@ -99,25 +118,32 @@
     }
 
     async function retrieveTermsData(): Promise<void> {
-        const payload = {
-            userID: userID  // Add userID to the payload
-        };
+        try {
+            const userID = await getUserID();  // Wait for userID to be populated
 
-        const response = await fetch('http://localhost:5000/get_terms_data', {
-            method: 'POST',  // Change method to POST to send userID
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)  // Send userID in the body
-        });
+            const payload = {
+                userID: userID  // Add userID to the payload
+            };
 
-        const data = await response.json();
-        totalTerms = data.totalTerms;
-        solvedTerms = data.solvedTerms;
+            const response = await fetch('http://localhost:5000/get_terms_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)  // Send userID in the body
+            });
+
+            const data = await response.json();
+            totalTerms = data.totalTerms;
+            solvedTerms = data.solvedTerms;
+        } catch (error) {
+            console.error('Error retrieving terms data:', error);
+        }
     }
 
     async function retrieveRelatedTermResponse(relatedTerm) {
         console.log("Retrieving related term response for term: ", currentTerm, "and related term: ", relatedTerm);
+        const userID = await getUserID();  // Wait for userID to be populated
         
         const payload = {
             term: currentTerm,
@@ -172,11 +198,13 @@
     }
 
     async function getSections(): Promise<void> {
-        const payload = {
-            userID: userID  // Add userID to the payload
-        };
-
         try {
+            const userID = await getUserID();  // Wait for userID to be populated
+
+            const payload = {
+                userID: userID  // Add userID to the payload
+            };
+
             const response = await fetch('http://localhost:5000/get_remaining_sections', {
                 method: 'POST',
                 headers: { 
@@ -205,6 +233,7 @@
     }
 
     async function getTerms(): Promise<void> {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             userID: userID  // Add userID to the payload
         };
@@ -239,6 +268,7 @@
 
     async function retrieveQuestion(term: string | null = null): Promise<void> {
         related_terms = [];
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             thread_id: threadId,
             term: term,
@@ -283,6 +313,7 @@
 
 
     async function retrieveCorrectResponse(term) {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             term: term,
             userID: userID  // Add userID to the payload
@@ -308,6 +339,7 @@
     }
 
     async function retrieveIncorrectResponse(term, userAnswer) {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             term: term,
             userAnswer: userAnswer,
@@ -326,6 +358,8 @@
             const data = await response.json();
             console.log('Getting back the answer response data from retrieveIncorrectResponse():', data);
             currentAnswerResponse = data;
+            console.log("Incorrect answer response:", data);
+            console.log("Related terms that should be rendered with incorrect response: ", related_terms);
             return data;
         } catch (error) {
             console.error('Error retrieving answer response:', error);
@@ -396,6 +430,7 @@
     }
 
     async function resetTerms(): Promise<void> {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             userID: userID  // Add userID to the payload
         };
@@ -423,6 +458,7 @@
 
 
     async function passAllTerms(): Promise<void> {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             userID: userID  // Add userID to the payload
         };
@@ -453,7 +489,8 @@
     }
 
     function getCurrentTimestamp(): string {
-        return new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        let timestamp = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        return timestamp;
     }
 
     async function addMessage(messageContent = ''): Promise<void> {
@@ -597,8 +634,9 @@
         return formattedMessage;
     }
 
-    function updateSection(section: string): void {
+    async function updateSection(section: string): Promise<void> {
         // Define the endpoint and payload
+        const userID = await getUserID();  // Wait for userID to be populated
         const endpoint = 'http://localhost:5000/update_section';
         const payload = { 
             section: section,
@@ -637,7 +675,8 @@
     
     // Function to initialize the environment on mount
     async function initializeEnv() {
-        const payload = { userID: userID };  // Add userID to the payload
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = { userID: userID, module: 'learn' };  // Add userID to the payload
 
         try {
             const response = await fetch('http://localhost:5000/initialize_env', {
@@ -657,6 +696,7 @@
 
     // Function to clean up the environment on destroy
     async function cleanupEnv() {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = { userID: userID };  // Add userID to the payload
 
         try {
@@ -676,15 +716,16 @@
     }
 
     onMount(async () => {
-        await initializeEnv();  // Initialize the environment in the backend (data download and processing)
-        await startThread();
+        await initializeEnv();  // Ensure initializeEnv completes first
+
+        // Run other functions after initialization is complete
         scrollChatBottom();
-        retrieveTermsData();
+        await retrieveTermsData();  // This will now only run after initializeEnv completes
     });
 
     onDestroy(() => {
-        cleanupEnv();  // Clean up the environment on component teardown
-        unsubscribe();  // Unsubscribe from the userId store when the component is destroyed
+        cleanupEnv();
+
     });
 </script>
 
@@ -730,7 +771,7 @@
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
@@ -738,12 +779,12 @@
                             {:else if bubble.message.includes('Correct!')}
                                 <div class="green-div btn card-hover" on:click={() => displayAnswerElaborateResponse(true)}>
                                     <div class="header">Correct!</div>
-                                    <p class="text-content">{@html renderMarkdown(bubble.message.split('Correct!')[1])}[1]}</p>
+                                    <p class="text-content">{@html renderMarkdown(bubble.message.split('Correct!')[1])}</p>
                                 </div>
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
@@ -756,7 +797,7 @@
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
@@ -769,7 +810,7 @@
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
@@ -820,7 +861,7 @@
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => retrieveQuestion()}>Retrieve question</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getSections()}>Remaining Sections</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getTerms()}>Remaining Terms</button>
-            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => addMessage('This is the greatest piece of software ever thank you for making it')}>Thank the Dev</button>
+            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => addMessage('This is the greatest piece of software ever thank you for making it')}>Toggle Multiple Choice</button>
         </div>
         <div class="input-group grid-cols-[1fr_auto] rounded-container-token">
             <textarea

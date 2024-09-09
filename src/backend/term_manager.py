@@ -8,13 +8,19 @@ from pathlib import Path
 
 class TermManager:
     def __init__(self, module_name="learn_data", userID=None):
+        print(f"Tm initializing")
         self.userID = userID
         self.terms_path = Path(module_name) / userID / "terms.json"
         self.section = "Networking"  # Default section; can be set dynamically
         self.terms = self._read_json()  # Only terms.json is read and written locally
+        print(f"If you see this then tm initialized")
+        self.total_terms = sum([len(self.terms[section]) for section in self.terms])
+        self.solved_terms = sum([len([term for term in self.terms[section] if self.terms[section][term]]) for section in self.terms])
+        
 
     def _read_json(self):
         """Read the user's terms.json."""
+        print(f"Trying to read json at {self.terms_path}")
         user_dir = self.terms_path.parent
         user_dir.mkdir(parents=True, exist_ok=True)
         with open(self.terms_path, 'r') as f:
@@ -54,6 +60,7 @@ class TermManager:
         section = self.section.capitalize()
         if section in self.terms and term in self.terms[section]:
             self.terms[section][term] = True
+            self.solved_terms += 1
         else:
             raise ValueError(f"Term '{term}' not found in section '{section}'")
 
@@ -64,6 +71,14 @@ class TermManager:
     def get_remaining_terms(self):
         """Get terms that haven't been solved for the current section."""
         return "\n".join([term for term in self.terms[self.section] if not self.terms[self.section][term]])
+    
+    def get_total_terms(self):
+        """Get the total number of terms in the user's terms.json."""
+        return self.total_terms
+    
+    def get_solved_terms(self):
+        """Get the total number of terms that have been solved."""
+        return self.solved_terms
 
     def reset_all_terms(self):
         """Reset the status of all terms in self.terms to False."""
@@ -80,3 +95,9 @@ class TermManager:
     def reload_terms(self):
         """Reload the user's terms.json data."""
         self.terms = self._read_json()
+
+    def get_remaining_sections(self):
+        start_time = time.time()
+        result = "\n".join(section for section, terms in self.terms.items() if not all(terms.values()))
+        print(f"get_remaining_sections took {time.time() - start_time} seconds")
+        return result
