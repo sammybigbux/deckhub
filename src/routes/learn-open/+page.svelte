@@ -7,9 +7,15 @@
 
     // Initialize the user ID to grab terms.json data
     let uid = null;
+    let multi_enabled = true;
     const unsubscribe = userId.subscribe(value => {
         uid = value;
     });
+
+    let messageQueue: string[] = [];
+    let isProcessingQueue = false;
+    let currentQuestion = {};
+    let currentContextString = 'No previous question';
 
     marked.setOptions({ breaks: true });
     let currentTerm = '';
@@ -57,6 +63,10 @@
     let threadId = '';
     let totalTerms = 1;
     let solvedTerms = 0;
+
+    function toggle_multi() {
+        multi_enabled = !multi_enabled;
+    }
 
     async function getUserID() {
         return new Promise((resolve, reject) => {
@@ -110,12 +120,44 @@
 
 
     async function sendMessage(query: string): Promise<{ response: any, updateStatusCalled: boolean }> {
-        const response = await fetch('http://localhost:5000/send_message', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ thread_id: threadId, message: query }) });
-        console.log("Waiting for message from GPT")
+        query = `Last question: ${currentContextString} User input: ${query}`;
+        console.log("Query going to the GPT: ", query);
+        const response = await fetch('http://localhost:5000/send_message', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ thread_id: threadId, message: query }) 
+        });
+        console.log("Waiting for message from GPT");
         const data = await response.json();
-        console.log("Message from the GPT: {data}", data)
+        console.log("Message from the GPT: ", data);
         return data;
     }
+
+    // Function to prevent case where multiple messages are sent in quick succession
+    async function processMessageQueue() {
+    if (isProcessingQueue) return;  // Prevent multiple simultaneous executions
+        isProcessingQueue = true;
+
+        while (messageQueue.length > 0) {
+            const query = messageQueue.shift();  // Get the first message from the queue
+            if (query) {
+                try {
+                    // Send the message and wait for it to finish before continuing
+                    await fetch('http://localhost:5000/send_message', { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' }, 
+                        body: JSON.stringify({ thread_id: threadId, message: query }) 
+                    });
+                    console.log(`Message sent: ${query}`);
+                } catch (error) {
+                    console.error(`Error sending message: ${query}`, error);
+                }
+            }
+        }
+
+        isProcessingQueue = false;  // Reset after all messages have been processed
+    }
+
 
     async function retrieveTermsData(): Promise<void> {
         try {
@@ -306,11 +348,22 @@
             messageFeed = [...messageFeed, questionMessage];
             currentTerm = data.term;
             currentQuestionData = data;
+
+            currentQuestion = questionMessage.message;
+
+            // send update to AI for context, can ignore error messages since we set the typing
+            currentContextString = `
+            Section: ${questionMessage.message.section}
+            Term: ${questionMessage.message.term}
+            Question: ${questionMessage.message.question}
+            Options: ${questionMessage.message.options.join(', ')}
+            Answer: ${questionMessage.message.answer}
+            `;
+            console.log('context string is:', currentContextString);
         } catch (error) {
             console.error('Error retrieving question:', error);
         }
     }
-
 
     async function retrieveCorrectResponse(term) {
         const userID = await getUserID();  // Wait for userID to be populated
@@ -717,10 +770,10 @@
 
     onMount(async () => {
         await initializeEnv();  // Ensure initializeEnv completes first
-
         // Run other functions after initialization is complete
         scrollChatBottom();
         await retrieveTermsData();  // This will now only run after initializeEnv completes
+        startThread();
     });
 
     onDestroy(() => {

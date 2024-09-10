@@ -53,23 +53,17 @@ class UserManager:
             return None
 
     def initialize_user_session(self, userID, module_type):
-        print(f"Initializing user session for {userID} with module type {module_type}")
         # Initialize the user session and download the terms.json file
-        print(f"Getting module name")
         module_name = self.get_module_name(module_type)
-        print(f"Managing terms json path")
         terms_json_path = self.manage_user_json(userID, module_name)
-        print(f"If youre seeing this then manage_user_json worked, path is {terms_json_path}")
         if not terms_json_path:
             raise Exception(f"Failed to initialize terms.json for user {userID}")
 
         # Store the term_manager and module type in the dictionary
-        print(f"I bet its the dictionary")
         self.term_managers[userID] = {
             "term_manager": TermManager(module_name=module_name, userID=userID),
             "module": module_type
         }
-        print(f"If youre seeing this then the dictionary worked")
 
     def cleanup_user_session(self, userID):
         # Upload the user's terms.json file back to Cloud Storage and clean up local files

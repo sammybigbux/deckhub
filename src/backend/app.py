@@ -93,9 +93,11 @@ def start_thread_endpoint():
 
 @app.route('/send_message', methods=['POST'])
 def send_message_endpoint():
+
     data = request.json
     thread_id = data['thread_id']
     message = data['message']
+    print("Message from frontend: ", message)
 
     def run_assistant_query(thread_id, query):
         start_time = time.time()
