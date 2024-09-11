@@ -65,6 +65,7 @@
     let solvedTerms = 0;
 
     function toggle_multi() {
+        console.log("Multi switched to:", !multi_enabled);
         multi_enabled = !multi_enabled;
     }
 
@@ -135,27 +136,27 @@
 
     // Function to prevent case where multiple messages are sent in quick succession
     async function processMessageQueue() {
-    if (isProcessingQueue) return;  // Prevent multiple simultaneous executions
-        isProcessingQueue = true;
+        if (isProcessingQueue) return;  // Prevent multiple simultaneous executions
+            isProcessingQueue = true;
 
-        while (messageQueue.length > 0) {
-            const query = messageQueue.shift();  // Get the first message from the queue
-            if (query) {
-                try {
-                    // Send the message and wait for it to finish before continuing
-                    await fetch('http://localhost:5000/send_message', { 
-                        method: 'POST', 
-                        headers: { 'Content-Type': 'application/json' }, 
-                        body: JSON.stringify({ thread_id: threadId, message: query }) 
-                    });
-                    console.log(`Message sent: ${query}`);
-                } catch (error) {
-                    console.error(`Error sending message: ${query}`, error);
+            while (messageQueue.length > 0) {
+                const query = messageQueue.shift();  // Get the first message from the queue
+                if (query) {
+                    try {
+                        // Send the message and wait for it to finish before continuing
+                        await fetch('http://localhost:5000/send_message', { 
+                            method: 'POST', 
+                            headers: { 'Content-Type': 'application/json' }, 
+                            body: JSON.stringify({ thread_id: threadId, message: query }) 
+                        });
+                        console.log(`Message sent: ${query}`);
+                    } catch (error) {
+                        console.error(`Error sending message: ${query}`, error);
+                    }
                 }
             }
-        }
 
-        isProcessingQueue = false;  // Reset after all messages have been processed
+            isProcessingQueue = false;  // Reset after all messages have been processed
     }
 
 
@@ -567,7 +568,7 @@
             avatar: 48,
             name: 'AI Coach',
             timestamp: `Today @ ${getCurrentTimestamp()}`,
-            message: '🤖',
+            message: '🤖',  // Initial placeholder message
             color: 'variant-soft-primary'
         };
         messageFeed = [...messageFeed, botMessage];
@@ -581,47 +582,67 @@
 
         // Animate robot emojis while waiting for the response
         const interval = setInterval(() => {
-            if (typeof botMessage.message === 'string') {
+            if (typeof botMessage.message === 'string' && botMessage.message.endsWith('🤖')) {
                 botMessage.message += '🤖';
                 messageFeed = [...messageFeed];
             }
         }, 1000);
 
-        const { response, updateStatusCalled } = await sendMessage(messageToSend);
+        // Buffer to accumulate streamed content
+        let buffer = '';
 
-        clearInterval(interval);
+        // Function to format the message based on the keywords and bullet points
+        function formatMessage(text) {
+            // Ensure that there is a new line after '**Context**'
+            text = text.replace(/(\*\*Context\*\*)/g, '$1<br>');
 
-        // Check if response is a JSON string
-        console.log("Here the response from the GPT: {response}", response)
-        console.log("response is of type: ", typeof response)
-        let parsedResponse;
-        if (response.startsWith('{')) {
-            try {
-                parsedResponse = JSON.parse(response);
-                console.log('Parsed response:', parsedResponse);
+            // Ensure two new lines before '**Explanation**' and one new line after
+            text = text.replace(/(\*\*Explanation\*\*)/g, '<br><br>$1<br>');
 
-                // Ensure all properties are correctly assigned
-                botMessage.message = {
-                    section: parsedResponse.section || '',
-                    term: parsedResponse.term || '',
-                    question: parsedResponse.question || '',
-                    options: parsedResponse.options || [],
-                    answer: parsedResponse.answer || ''
-                };
-                console.log('Bot message:', botMessage.message);
+            // Ensure two new lines before '**Why you should know**' and one new line after
+            text = text.replace(/(\*\*Why you should know\*\*)/g, '<br><br>$1<br>');
 
-            } catch (e) {
-                console.error('Failed to parse response as JSON:', e);
-                botMessage.message = response;
-            }
-        } else {
-            botMessage.message = response.replace(/^(\w+)\1/, '$1'); // Remove repeating words
+            // Ensure a new line before each bullet point (-) to fix Markdown rendering
+            text = text.replace(/(- )/g, '<br>- ');
+
+            return text;
         }
-        messageFeed = [...messageFeed];
 
-        setTimeout(() => {
-            scrollChatBottom('smooth');
-        }, 0);
+        // Open an EventSource to stream the response
+        const eventSource = new EventSource(`http://localhost:5000/send_message?thread_id=${threadId}&message=${encodeURIComponent(messageToSend)}`);
+
+        eventSource.onmessage = function(event) {
+            clearInterval(interval);  // Stop the bot emoji animation when the first chunk arrives
+
+            // Clear the message when the first chunk arrives to remove the emojis
+            if (botMessage.message.includes('🤖')) {
+                botMessage.message = '';  // Clear the emoji placeholders
+            }
+
+            // Accumulate tokens in the buffer
+            buffer += event.data;
+
+            // Format and update the bot's message as it streams in
+            botMessage.message = formatMessage(buffer);
+            messageFeed = [...messageFeed];
+
+            setTimeout(() => {
+                scrollChatBottom('smooth');
+            }, 0);
+        };
+
+        eventSource.onerror = function(err) {
+            console.error("EventSource failed:", err);
+            botMessage.message = "Sorry, something went wrong.";
+            messageFeed = [...messageFeed];
+            eventSource.close();
+            clearInterval(interval);
+        };
+
+        eventSource.addEventListener('end', () => {
+            // Clean up once the stream is done
+            eventSource.close();
+        });
     }
 
     function onPromptKeydown(event: KeyboardEvent): void {
@@ -788,7 +809,7 @@
             {#if bubble.host === false}
                 <div class="grid grid-cols-[auto_1fr] gap-2">
                     <Avatar src={`https://i.pravatar.cc/?img=${bubble.avatar}`} width="w-12" />
-                    <div class="card p-4 variant-soft rounded-tl-none space-y-2">
+                    <div class={`card p-4 variant-soft rounded-tl-none space-y-2 ${!multi_enabled ? 'bg-different-color' : 'purple'}`}>
                         {#if typeof bubble.message === 'object'}
                             <header class="flex justify-between items-center card-header">
                                 <p class="text-lg font-bold">{bubble.message.section} - {bubble.message.term}</p>
@@ -796,9 +817,15 @@
                             </header>
                             <section class="p-4">
                                 <p class="text-lg font-bold"><strong>{@html renderMarkdown(bubble.message.question)}</strong></p>
-                                {#each bubble.message.options as option, index}
-                                    <p class="mb-4"><button class="option-btn card-hover btn bg-primary-500 card-hover rounded-container-token" on:click={() => displayAnswerResponse("option" + (index + 1))}>{option}</button></p>
-                                {/each}
+                                {#if multi_enabled === true}
+                                    {#each bubble.message.options as option, index}
+                                        <p class="mb-4">
+                                            <button class="option-btn card-hover btn bg-primary-500 card-hover rounded-container-token" on:click={() => displayAnswerResponse("option" + (index + 1))}>
+                                                {option}
+                                            </button>
+                                        </p>
+                                    {/each}
+                                {/if}
                             </section>
                         {:else if isSectionList(bubble.message)}
                             <div class="grid grid-cols-2 auto-rows-max gap-2">
@@ -816,7 +843,6 @@
                             {@html formatMessage(bubble.message)}
                         {:else}
                             {#if bubble.message.includes('Not quite')}
-                                <!-- Custom rendering for "Not quite" messages -->
                                 <div class="red-div btn card-hover" on:click={() => displayAnswerElaborateResponse(false)}>
                                     <div class="header">Incorrect</div>
                                     <p class="text-content">{@html renderMarkdown(bubble.message)}</p>
@@ -857,7 +883,7 @@
                                 </div>
                             {:else if bubble.message.includes('Incorrect Explanation')}
                                 <div class="red-div btn card-hover">
-                                    <div class="header">Inorrect Explanation</div>
+                                    <div class="header">Incorrect Explanation</div>
                                     <p class="text-content">{@html bubble.message.split('Incorrect Explanation:')[1]}</p>
                                 </div>
                                 <div class="blue-div btn card-hover">
@@ -876,7 +902,7 @@
                 </div>
             {:else}
                 <div class="grid grid-cols-[1fr_auto] gap-2">
-                    <div class="card p-4 rounded-tr-none space-y-2 {bubble.color}">
+                    <div class={`card p-4 rounded-tr-none space-y-2 ${!multi_enabled ? 'bg-different-color' : ''}`}>
                         <header class="flex justify-between items-center">
                             <p class="font-bold">{bubble.name}</p>
                             <small class="opacity-50">{bubble.timestamp}</small>
@@ -914,7 +940,7 @@
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => retrieveQuestion()}>Retrieve question</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getSections()}>Remaining Sections</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getTerms()}>Remaining Terms</button>
-            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => addMessage('This is the greatest piece of software ever thank you for making it')}>Toggle Multiple Choice</button>
+            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => toggle_multi()}>Toggle Multiple Choice</button>
         </div>
         <div class="input-group grid-cols-[1fr_auto] rounded-container-token">
             <textarea
@@ -987,6 +1013,11 @@
 
     .flex-wrap {
         justify-content: center; /* Center align the buttons within the div */
+    }
+
+    .bg-different-color {
+        background-color: #3a043a; /* This sets the background color to purple */
+        color: white; /* Optional: Sets the text color to white for better contrast */
     }
 </style>
 
