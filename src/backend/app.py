@@ -86,11 +86,23 @@ def get_user_id_and_term_manager(data):
 @app.route('/start_thread', methods=['POST'])
 def start_thread_endpoint():
     def create_thread():
-        start_time = time.time()
         thread = client.beta.threads.create()
         return thread.id
     thread_id = create_thread()
     return jsonify({'thread_id': thread_id})
+
+@app.route('/set_assistant_id', methods=['POST'])
+def set_assistant_id():
+    global assistant_id 
+    assistant_id = request.json.get('assistant_id')
+    if not assistant_id:
+        return jsonify({"error": "Assistant ID is required"}), 400
+
+    # Logic to handle setting the assistant_id goes here
+    print(f"Switching to assistant with ID: {assistant_id}")
+
+    return jsonify({"message": f"Switched to assistant with ID: {assistant_id}"}), 200
+        
 
 @app.route('/send_message', methods=['GET'])
 def send_message_endpoint():
@@ -166,6 +178,7 @@ def update_status():
         return jsonify({'message': f'Status for {term} updated successfully'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
 
 @app.route('/initialize_env', methods=['POST'])
 def initialize_with_user_information():

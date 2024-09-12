@@ -16,6 +16,7 @@
     let isProcessingQueue = false;
     let currentQuestion = {};
     let currentContextString = 'No previous question';
+    let ai_difficulty = '';
 
     marked.setOptions({ breaks: true });
     let currentTerm = '';
@@ -64,9 +65,43 @@
     let totalTerms = 1;
     let solvedTerms = 0;
 
+    function change_difficulty(level) {
+        ai_difficulty = level;
+        console.log("Difficulty changed to:", ai_difficulty);
+    }
+
     function toggle_multi() {
         console.log("Multi switched to:", !multi_enabled);
         multi_enabled = !multi_enabled;
+        let assistant_id;
+        // send post request to /set_assistant_id
+        if (multi_enabled) {
+            assistant_id = "asst_dlHW5pVVkce0IWgKZzz77tTm"
+        }
+        else {
+            assistant_id = "asst_nNVXAaTrW1jldqOYqjKkkhjj"
+        }
+
+        // switch the assistant we are using
+        fetch('http://localhost:5000/set_assistant_id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                assistant_id: assistant_id
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Assistant ID switched successfully to `, assistant_id);
+            } else {
+                console.error('Failed to switch assistant ID:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
 
     async function getUserID() {
@@ -121,7 +156,7 @@
 
 
     async function sendMessage(query: string): Promise<{ response: any, updateStatusCalled: boolean }> {
-        query = `Last question: ${currentContextString} User input: ${query}`;
+        query = `Last question: ${currentContextString} User input: ${query} Pass difficulty: ${ai_difficulty}`;
         console.log("Query going to the GPT: ", query);
         const response = await fetch('http://localhost:5000/send_message', { 
             method: 'POST', 
@@ -384,6 +419,7 @@
             }
             const data = await response.json();
             console.log('Getting back the answer response data from retrieveCorrectResponse():', data);
+            console.log("Correct answer response:", data);
             currentAnswerResponse = data;
             return data;
         } catch (error) {
@@ -467,6 +503,7 @@
 
     function displayAnswerElaborateResponse(correct) {
         const data = currentAnswerResponse;
+        console.log("This is currentAnswerResponse when we try to grab the elaborate part:", data);
         if (data) { // Ensure data is not null
             const response_message = {
                 id: messageFeed.length,
@@ -643,6 +680,9 @@
             // Clean up once the stream is done
             eventSource.close();
         });
+        if (botMessage.message.includes("Correct!")) {
+                updateStatus();
+            }
     }
 
     function onPromptKeydown(event: KeyboardEvent): void {
@@ -843,7 +883,11 @@
                             {@html formatMessage(bubble.message)}
                         {:else}
                             {#if bubble.message.includes('Not quite')}
-                                <div class="red-div btn card-hover" on:click={() => displayAnswerElaborateResponse(false)}>
+                                <div class="red-div btn card-hover" on:click={() => {
+                                    if (multi_enabled) {
+                                        displayAnswerElaborateResponse(false); // Only run this if multi_enabled is false
+                                    }
+                                }}>
                                     <div class="header">Incorrect</div>
                                     <p class="text-content">{@html renderMarkdown(bubble.message)}</p>
                                 </div>
@@ -856,7 +900,11 @@
                                     </div>
                                 </div>
                             {:else if bubble.message.includes('Correct!')}
-                                <div class="green-div btn card-hover" on:click={() => displayAnswerElaborateResponse(true)}>
+                                <div class="green-div btn card-hover" on:click={() => {
+                                    if (multi_enabled) {
+                                        displayAnswerElaborateResponse(true); // Only run this if multi_enabled is false
+                                    }
+                                }}>
                                     <div class="header">Correct!</div>
                                     <p class="text-content">{@html renderMarkdown(bubble.message.split('Correct!')[1])}</p>
                                 </div>
@@ -871,7 +919,13 @@
                             {:else if bubble.message.includes('Correct Explanation')}
                                 <div class="green-div btn card-hover">
                                     <div class="header">Correct Explanation</div>
-                                    <p class="text-content">{@html bubble.message.split('Correct Explanation:')[1]}</p>
+                                    <p class="text-content">
+                                        {#if bubble.message.split('Correct Explanation:')[1]?.trim().length > 10}
+                                            {@html bubble.message.split('Correct Explanation:')[1]}
+                                        {:else}
+                                            Since this question was answered in 'open response mode', please ask the AI your question directly.
+                                        {/if}
+                                    </p>
                                 </div>
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
@@ -884,8 +938,15 @@
                             {:else if bubble.message.includes('Incorrect Explanation')}
                                 <div class="red-div btn card-hover">
                                     <div class="header">Incorrect Explanation</div>
-                                    <p class="text-content">{@html bubble.message.split('Incorrect Explanation:')[1]}</p>
+                                    <p class="text-content">
+                                        {#if bubble.message.split('Incorrect Explanation:')[1]?.trim().length > 10}
+                                            {@html bubble.message.split('Incorrect Explanation:')[1]}
+                                        {:else}
+                                            Since this question was answered in 'open response mode', please ask the AI your question directly.
+                                        {/if}
+                                    </p>
                                 </div>
+                        
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
@@ -956,6 +1017,13 @@
                 Send
             </button>
         </div>
+        {#if !multi_enabled} 
+            <div class="grid grid-cols-3 gap-2 mb-2 mt-2">
+                <button class="btn bg-success-500 card-hover rounded-container-token" on:click={() => change_difficulty('easy')}>Easy</button>
+                <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => change_difficulty('medium')}>Medium</button>
+                <button class="btn bg-error-500 card-hover rounded-container-token" on:click={() => change_difficulty('hard')}>Hard</button>
+            </div>
+        {/if}
     </section>
 </div>
 
