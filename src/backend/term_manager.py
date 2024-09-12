@@ -8,12 +8,10 @@ from pathlib import Path
 
 class TermManager:
     def __init__(self, module_name="learn_data", userID=None):
-        print(f"Tm initializing")
         self.userID = userID
         self.terms_path = Path(module_name) / userID / "terms.json"
         self.section = "Networking"  # Default section; can be set dynamically
         self.terms = self._read_json()  # Only terms.json is read and written locally
-        print(f"If you see this then tm initialized")
         self.total_terms = sum([len(self.terms[section]) for section in self.terms])
         self.solved_terms = sum([len([term for term in self.terms[section] if self.terms[section][term]]) for section in self.terms])
         
@@ -28,6 +26,7 @@ class TermManager:
 
     def write_terms_to_file(self):
         """Write the stored terms to the user's terms.json at the end of the session."""
+        print(f"Writing terms to {self.terms_path}")
         with open(self.terms_path, 'w') as f:
             json.dump(self.terms, f, indent=4)
 
@@ -58,11 +57,13 @@ class TermManager:
     def update_status(self, term):
         """Update the status of a term in self.terms without writing to terms.json."""
         section = self.section.capitalize()
+        print(f"Now updating status of {term} in {section}")
         if section in self.terms and term in self.terms[section]:
             self.terms[section][term] = True
             self.solved_terms += 1
         else:
             raise ValueError(f"Term '{term}' not found in section '{section}'")
+        print(f"Confirming that value of {term} in {section} is now {self.terms[section][term]}")
 
     def get_not_passed_terms(self, section):
         """Retrieve terms that have not yet been passed for a section."""
@@ -75,16 +76,16 @@ class TermManager:
     def get_total_terms(self):
         """Get the total number of terms in the user's terms.json."""
         return self.total_terms
-    
-    def get_solved_terms(self):
-        """Get the total number of terms that have been solved."""
-        return self.solved_terms
 
     def reset_all_terms(self):
         """Reset the status of all terms in self.terms to False."""
         for section in self.terms:
             for term in self.terms[section]:
                 self.terms[section][term] = False
+
+    def get_solved_terms(self):
+        """Get the total number of terms that have been solved."""
+        return self.solved_terms
 
     def pass_all_terms(self):
         """Mark all terms in self.terms as passed (True)."""

@@ -41,7 +41,7 @@ UNDERSTAND_DATA = load_json(static_data_dir / 'understand_data.json')
 APPLY_DATA = load_json(static_data_dir / 'apply_data.json')
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, supports_credentials=True, origins=['http://localhost:5173'])
 
 
 user_manager = UserManager()
@@ -197,9 +197,15 @@ def initialize_with_user_information():
 
 @app.route('/cleanup_env', methods=['POST'])
 def cleanup_user_session():
-    userID = request.json.get('userID')
+    if request.is_json:
+        userID = request.json.get('userID')  # Handle JSON payload from fetch()
+    else:
+        data = request.data.decode('utf-8')  # Decode the blob data from sendBeacon
+        userID = json.loads(data).get('userID')  # Parse the JSON string
+
     if not userID:
         return jsonify({"error": "No user information provided"}), 400
+
     try:
         user_manager.cleanup_user_session(userID)
         return jsonify({"message": "User session cleaned up successfully"}), 200

@@ -67,8 +67,11 @@ class UserManager:
 
     def cleanup_user_session(self, userID):
         # Upload the user's terms.json file back to Cloud Storage and clean up local files
+        print("Cleaning up user session...")
         try:
             module_name = self.get_module_name(self.term_managers[userID]["module"])
+            
+            self.term_managers[userID]["term_manager"].write_terms_to_file()
             terms_directory = Path(f'{module_name}') / f'{userID}'
             terms_path = terms_directory / 'terms.json'
 

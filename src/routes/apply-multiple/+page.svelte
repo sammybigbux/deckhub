@@ -57,7 +57,7 @@
             avatar: 48,
             name: 'AI Coach',
             timestamp: `Today @ ${getCurrentTimestamp()}`,
-            message: 'Hi! This is your **AI coach** for the AWS SAA-03 exam. The goal of this section is to help you recall terms and definitions related to the exam by answering and getting feedback on multiple choice questions. Are you ready to get started?',
+            message: 'Hi! This is your **AI coach** for the AWS SAA-03 exam. The goal of this section is to help you react to real life scenarios like the ones on the exam by answering and getting feedback on multiple choice questions. Are you ready to get started?',
             color: 'variant-soft-primary'
         }
     ];
@@ -792,7 +792,7 @@
     // Function to initialize the environment on mount
     async function initializeEnv() {
         const userID = await getUserID();  // Wait for userID to be populated
-        const payload = { userID: userID, module: 'learn' };  // Add userID to the payload
+        const payload = { userID: userID, module: 'apply' };  // Add userID to the payload
 
         try {
             const response = await fetch('http://localhost:5000/initialize_env', {
@@ -1029,11 +1029,10 @@
             </div>
             <button class="btn bg-success-500 card-hover rounded-container-token" on:click={passAllTerms}>Got it</button>
         </div>
-        <div class="grid grid-cols-4 gap-2 mb-2 mt-2">
+        <div class="grid grid-cols-3 gap-2 mb-2 mt-2">
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => retrieveQuestion()}>Retrieve question</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getSections()}>Remaining Sections</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getTerms()}>Remaining Terms</button>
-            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => toggle_multi()}>Toggle Multiple Choice</button>
         </div>
         <div class="input-group grid-cols-[1fr_auto] rounded-container-token">
             <textarea
@@ -1049,13 +1048,6 @@
                 Send
             </button>
         </div>
-        {#if !multi_enabled} 
-            <div class="grid grid-cols-3 gap-2 mb-2 mt-2">
-                <button class="btn bg-success-500 card-hover rounded-container-token" on:click={() => change_difficulty('easy')}>Easy</button>
-                <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => change_difficulty('medium')}>Medium</button>
-                <button class="btn bg-error-500 card-hover rounded-container-token" on:click={() => change_difficulty('hard')}>Hard</button>
-            </div>
-        {/if}
     </section>
 </div>
 

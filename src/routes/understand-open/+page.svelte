@@ -1,7 +1,24 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import { Avatar, ProgressBar } from '@skeletonlabs/skeleton';
     import { marked } from 'marked';
+    import { userId } from '../../lib/firebase';
+    import { get } from 'svelte/store';
+    
+
+    // Initialize the user ID to grab terms.json data
+    let uid = null;
+    let multi_enabled = true;
+    const unsubscribe = userId.subscribe(value => {
+        uid = value;
+    });
+
+    let messageQueue: string[] = [];
+    let isProcessingQueue = false;
+    let currentQuestion = {};
+    let currentContextString = 'No previous question';
+    let ai_difficulty = '';
+    let cleanupEnvTriggered = false; // ensure that cleanup is only called once
 
     marked.setOptions({ breaks: true });
     let currentTerm = '';
@@ -40,7 +57,7 @@
             avatar: 48,
             name: 'AI Coach',
             timestamp: `Today @ ${getCurrentTimestamp()}`,
-            message: 'Hi! This is your **AI coach** for the AWS SAA-03 exam. The goal of this section is to help you recall terms and definitions related to the exam by answering and getting feedback on multiple choice questions. Are you ready to get started?',
+            message: 'Hi! This is your **AI coach** for the AWS SAA-03 exam. The goal of this section is to help you understand the relationships between terms and definitions from the last section by answering and getting feedback on multiple choice and open-ended questions. Are you ready to get started?',
             color: 'variant-soft-primary'
         }
     ];
@@ -50,6 +67,62 @@
     let totalTerms = 1;
     let solvedTerms = 0;
 
+    function change_difficulty(level) {
+        ai_difficulty = level;
+        console.log("Difficulty changed to:", ai_difficulty);
+    }
+
+    function toggle_multi() {
+        console.log("Multi switched to:", !multi_enabled);
+        multi_enabled = !multi_enabled;
+        let assistant_id;
+        // send post request to /set_assistant_id
+        if (multi_enabled) {
+            assistant_id = "asst_dlHW5pVVkce0IWgKZzz77tTm"
+        }
+        else {
+            assistant_id = "asst_nNVXAaTrW1jldqOYqjKkkhjj"
+        }
+
+        // switch the assistant we are using
+        fetch('http://localhost:5000/set_assistant_id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                assistant_id: assistant_id
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Assistant ID switched successfully to `, assistant_id);
+            } else {
+                console.error('Failed to switch assistant ID:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    async function getUserID() {
+        return new Promise((resolve, reject) => {
+            const uid = get(userId);  // Get current value of userId
+            if (uid) {
+                resolve(uid);  // If userID is already set, return it
+            } else {
+                // Wait for userID to be populated
+                const unsubscribe = userId.subscribe(value => {
+                    if (value) {
+                        resolve(value);
+                        unsubscribe();  // Unsubscribe once the userID is populated
+                    }
+                });
+            }
+        });
+    }
+
     async function startThread(): Promise<void> {
         const response = await fetch('http://localhost:5000/start_thread', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
         const data = await response.json();
@@ -57,8 +130,10 @@
     }
 
     async function updateStatus() {
+        const userID = await getUserID();  // Wait for userID to be populated
         const payload = {
             term: currentTerm,
+            userID: userID  // Add userID to the payload
         };
 
         try {
@@ -83,25 +158,77 @@
 
 
     async function sendMessage(query: string): Promise<{ response: any, updateStatusCalled: boolean }> {
-        const response = await fetch('http://localhost:5000/send_message', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ thread_id: threadId, message: query }) });
-        console.log("Waiting for message from GPT")
+        query = `Last question: ${currentContextString} User input: ${query} Pass difficulty: ${ai_difficulty}`;
+        console.log("Query going to the GPT: ", query);
+        const response = await fetch('http://localhost:5000/send_message', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ thread_id: threadId, message: query }) 
+        });
+        console.log("Waiting for message from GPT");
         const data = await response.json();
-        console.log("Message from the GPT: {data}", data)
+        console.log("Message from the GPT: ", data);
         return data;
     }
 
+    // Function to prevent case where multiple messages are sent in quick succession
+    async function processMessageQueue() {
+        if (isProcessingQueue) return;  // Prevent multiple simultaneous executions
+            isProcessingQueue = true;
+
+            while (messageQueue.length > 0) {
+                const query = messageQueue.shift();  // Get the first message from the queue
+                if (query) {
+                    try {
+                        // Send the message and wait for it to finish before continuing
+                        await fetch('http://localhost:5000/send_message', { 
+                            method: 'POST', 
+                            headers: { 'Content-Type': 'application/json' }, 
+                            body: JSON.stringify({ thread_id: threadId, message: query }) 
+                        });
+                        console.log(`Message sent: ${query}`);
+                    } catch (error) {
+                        console.error(`Error sending message: ${query}`, error);
+                    }
+                }
+            }
+
+            isProcessingQueue = false;  // Reset after all messages have been processed
+    }
+
+
     async function retrieveTermsData(): Promise<void> {
-        const response = await fetch('http://localhost:5000/get_terms_data', { method: 'GET', headers: { 'Content-Type': 'application/json' } });
-        const data = await response.json();
-        totalTerms = data.totalTerms;
-        solvedTerms = data.solvedTerms;
+        try {
+            const userID = await getUserID();  // Wait for userID to be populated
+
+            const payload = {
+                userID: userID  // Add userID to the payload
+            };
+
+            const response = await fetch('http://localhost:5000/get_terms_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)  // Send userID in the body
+            });
+
+            const data = await response.json();
+            totalTerms = data.totalTerms;
+            solvedTerms = data.solvedTerms;
+        } catch (error) {
+            console.error('Error retrieving terms data:', error);
+        }
     }
 
     async function retrieveRelatedTermResponse(relatedTerm) {
         console.log("Retrieving related term response for term: ", currentTerm, "and related term: ", relatedTerm);
+        const userID = await getUserID();  // Wait for userID to be populated
+        
         const payload = {
             term: currentTerm,
-            related_term: relatedTerm
+            related_term: relatedTerm,
+            userID: userID  // Add userID to the payload
         };
 
         const response = await fetch('http://localhost:5000/retrieve_related_term_response', {
@@ -152,12 +279,23 @@
 
     async function getSections(): Promise<void> {
         try {
+            const userID = await getUserID();  // Wait for userID to be populated
+
+            const payload = {
+                userID: userID  // Add userID to the payload
+            };
+
             const response = await fetch('http://localhost:5000/get_remaining_sections', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)  // Send userID in the body
             });
+
             const data = await response.json();
             console.log("Getting back the section data from getSections() (frontend):", data);
+
             const sectionMessage: Message = {
                 id: messageFeed.length,
                 host: false,
@@ -167,6 +305,7 @@
                 message: data.message,
                 color: 'variant-soft-primary'
             };
+
             messageFeed = [...messageFeed, sectionMessage];
         } catch (error) {
             console.error('Error updating section:', error);
@@ -174,13 +313,23 @@
     }
 
     async function getTerms(): Promise<void> {
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
         try {
             const response = await fetch('http://localhost:5000/get_remaining_terms', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)  // Send userID in the body
             });
+
             const data = await response.json();
             console.log("Getting back the term data from getTerms() (frontend):", data);
+
             const sectionMessage: Message = {
                 id: messageFeed.length,
                 host: false,
@@ -190,6 +339,7 @@
                 message: data.message,
                 color: 'variant-soft-primary'
             };
+
             messageFeed = [...messageFeed, sectionMessage];
         } catch (error) {
             console.error('Error updating section:', error);
@@ -198,11 +348,18 @@
 
     async function retrieveQuestion(term: string | null = null): Promise<void> {
         related_terms = [];
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = {
+            thread_id: threadId,
+            term: term,
+            userID: userID  // Add userID to the payload
+        };
+
         try {
             const response = await fetch('http://localhost:5000/get_question', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ thread_id: threadId, term }) // Sending the term if provided
+                body: JSON.stringify(payload)  // Send userID in the body
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -228,45 +385,73 @@
             };
             messageFeed = [...messageFeed, questionMessage];
             currentTerm = data.term;
-            currentQuestionData = data
+            currentQuestionData = data;
+
+            currentQuestion = questionMessage.message;
+
+            // send update to AI for context, can ignore error messages since we set the typing
+            currentContextString = `
+            Section: ${questionMessage.message.section}
+            Term: ${questionMessage.message.term}
+            Question: ${questionMessage.message.question}
+            Options: ${questionMessage.message.options.join(', ')}
+            Answer: ${questionMessage.message.answer}
+            `;
+            console.log('context string is:', currentContextString);
         } catch (error) {
             console.error('Error retrieving question:', error);
         }
     }
 
     async function retrieveCorrectResponse(term) {
-    try {
-        const response = await fetch('http://localhost:5000/get_correct_response', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ term: term })
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log('Getting back the answer response data from retrieveCorrectResponse():', data);
-        currentAnswerResponse = data;
-        return data;
-    } catch (error) {
-        console.error('Error retrieving answer response:', error);
-        return null; // Return null in case of error
-    }
-}
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = {
+            term: term,
+            userID: userID  // Add userID to the payload
+        };
 
-    async function retrieveIncorrectResponse(term, userAnswer) {
         try {
-            const response = await fetch('http://localhost:5000/get_incorrect_response', {
+            const response = await fetch('http://localhost:5000/get_correct_response', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ term: term, userAnswer: userAnswer })
+                body: JSON.stringify(payload)  // Send userID in the body
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            console.log('Getting back the answer response data from retrieveInorrectResponse():', data);
+            console.log('Getting back the answer response data from retrieveCorrectResponse():', data);
+            console.log("Correct answer response:", data);
             currentAnswerResponse = data;
+            return data;
+        } catch (error) {
+            console.error('Error retrieving answer response:', error);
+            return null; // Return null in case of error
+        }
+    }
+
+    async function retrieveIncorrectResponse(term, userAnswer) {
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = {
+            term: term,
+            userAnswer: userAnswer,
+            userID: userID  // Add userID to the payload
+        };
+
+        try {
+            const response = await fetch('http://localhost:5000/get_incorrect_response', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)  // Send userID in the body
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('Getting back the answer response data from retrieveIncorrectResponse():', data);
+            currentAnswerResponse = data;
+            console.log("Incorrect answer response:", data);
+            console.log("Related terms that should be rendered with incorrect response: ", related_terms);
             return data;
         } catch (error) {
             console.error('Error retrieving answer response:', error);
@@ -320,6 +505,7 @@
 
     function displayAnswerElaborateResponse(correct) {
         const data = currentAnswerResponse;
+        console.log("This is currentAnswerResponse when we try to grab the elaborate part:", data);
         if (data) { // Ensure data is not null
             const response_message = {
                 id: messageFeed.length,
@@ -337,7 +523,17 @@
     }
 
     async function resetTerms(): Promise<void> {
-        const response = await fetch('http://localhost:5000/reset_terms', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
+        const response = await fetch('http://localhost:5000/reset_terms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)  // Send userID in the body
+        });
+
         if (response.ok) {
             solvedTerms = 0; // Reset the solvedTerms when terms are reset
             const resetMessage: Message = {
@@ -353,8 +549,19 @@
         }
     }
 
+
     async function passAllTerms(): Promise<void> {
-        const response = await fetch('http://localhost:5000/pass_all_terms', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = {
+            userID: userID  // Add userID to the payload
+        };
+
+        const response = await fetch('http://localhost:5000/pass_all_terms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)  // Send userID in the body
+        });
+
         if (response.ok) {
             solvedTerms = totalTerms; // Mark all terms as solved
             const passedMessage: Message = {
@@ -375,7 +582,8 @@
     }
 
     function getCurrentTimestamp(): string {
-        return new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        let timestamp = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        return timestamp;
     }
 
     async function addMessage(messageContent = ''): Promise<void> {
@@ -399,7 +607,7 @@
             avatar: 48,
             name: 'AI Coach',
             timestamp: `Today @ ${getCurrentTimestamp()}`,
-            message: '🤖',
+            message: '🤖',  // Initial placeholder message
             color: 'variant-soft-primary'
         };
         messageFeed = [...messageFeed, botMessage];
@@ -413,47 +621,70 @@
 
         // Animate robot emojis while waiting for the response
         const interval = setInterval(() => {
-            if (typeof botMessage.message === 'string') {
+            if (typeof botMessage.message === 'string' && botMessage.message.endsWith('🤖')) {
                 botMessage.message += '🤖';
                 messageFeed = [...messageFeed];
             }
         }, 1000);
 
-        const { response, updateStatusCalled } = await sendMessage(messageToSend);
+        // Buffer to accumulate streamed content
+        let buffer = '';
 
-        clearInterval(interval);
+        // Function to format the message based on the keywords and bullet points
+        function formatMessage(text) {
+            // Ensure that there is a new line after '**Context**'
+            text = text.replace(/(\*\*Context\*\*)/g, '$1<br>');
 
-        // Check if response is a JSON string
-        console.log("Here the response from the GPT: {response}", response)
-        console.log("response is of type: ", typeof response)
-        let parsedResponse;
-        if (response.startsWith('{')) {
-            try {
-                parsedResponse = JSON.parse(response);
-                console.log('Parsed response:', parsedResponse);
+            // Ensure two new lines before '**Explanation**' and one new line after
+            text = text.replace(/(\*\*Explanation\*\*)/g, '<br><br>$1<br>');
 
-                // Ensure all properties are correctly assigned
-                botMessage.message = {
-                    section: parsedResponse.section || '',
-                    term: parsedResponse.term || '',
-                    question: parsedResponse.question || '',
-                    options: parsedResponse.options || [],
-                    answer: parsedResponse.answer || ''
-                };
-                console.log('Bot message:', botMessage.message);
+            // Ensure two new lines before '**Why you should know**' and one new line after
+            text = text.replace(/(\*\*Why you should know\*\*)/g, '<br><br>$1<br>');
 
-            } catch (e) {
-                console.error('Failed to parse response as JSON:', e);
-                botMessage.message = response;
-            }
-        } else {
-            botMessage.message = response.replace(/^(\w+)\1/, '$1'); // Remove repeating words
+            // Ensure a new line before each bullet point (-) to fix Markdown rendering
+            text = text.replace(/(- )/g, '<br>- ');
+
+            return text;
         }
-        messageFeed = [...messageFeed];
 
-        setTimeout(() => {
-            scrollChatBottom('smooth');
-        }, 0);
+        // Open an EventSource to stream the response
+        const eventSource = new EventSource(`http://localhost:5000/send_message?thread_id=${threadId}&message=${encodeURIComponent(messageToSend)}`);
+
+        eventSource.onmessage = function(event) {
+            clearInterval(interval);  // Stop the bot emoji animation when the first chunk arrives
+
+            // Clear the message when the first chunk arrives to remove the emojis
+            if (botMessage.message.includes('🤖')) {
+                botMessage.message = '';  // Clear the emoji placeholders
+            }
+
+            // Accumulate tokens in the buffer
+            buffer += event.data;
+
+            // Format and update the bot's message as it streams in
+            botMessage.message = formatMessage(buffer);
+            messageFeed = [...messageFeed];
+
+            setTimeout(() => {
+                scrollChatBottom('smooth');
+            }, 0);
+        };
+
+        eventSource.onerror = function(err) {
+            console.error("EventSource failed:", err);
+            botMessage.message = "Sorry, something went wrong.";
+            messageFeed = [...messageFeed];
+            eventSource.close();
+            clearInterval(interval);
+        };
+
+        eventSource.addEventListener('end', () => {
+            // Clean up once the stream is done
+            eventSource.close();
+        });
+        if (botMessage.message.includes("Correct!")) {
+                updateStatus();
+            }
     }
 
     function onPromptKeydown(event: KeyboardEvent): void {
@@ -519,10 +750,14 @@
         return formattedMessage;
     }
 
-    function updateSection(section: string): void {
+    async function updateSection(section: string): Promise<void> {
         // Define the endpoint and payload
+        const userID = await getUserID();  // Wait for userID to be populated
         const endpoint = 'http://localhost:5000/update_section';
-        const payload = { section: section };
+        const payload = { 
+            section: section,
+            userID: userID  // Add userID to the payload
+        };
 
         // Send a POST request to the /update_section endpoint with the section data
         fetch(endpoint, {
@@ -533,13 +768,13 @@
 
         // Add a message to the thread without waiting for a response
         let message = {
-                    section: section,
-                    term: 'Select next question or choose a term',
-                    question: "",
-                    options: [],
-                    answer: ''
-                }
-        console.log(`Section has been updated to ${section}`)
+            section: section,
+            term: 'Select next question or choose a term',
+            question: "",
+            options: [],
+            answer: ''
+        };
+        console.log(`Section has been updated to ${section}`);
 
         // Add a message from the AI saying "Section has been updated to [section]"
         const botMessage: Message = {
@@ -553,11 +788,90 @@
         };
         messageFeed = [...messageFeed, botMessage];
     }
+    
+    // Function to initialize the environment on mount
+    async function initializeEnv() {
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = { userID: userID, module: 'understand' };  // Add userID to the payload
+
+        try {
+            const response = await fetch('http://localhost:5000/initialize_env', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to initialize environment: ${response.statusText}`);
+            }
+            console.log('Environment initialized successfully.');
+        } catch (error) {
+            console.error('Error initializing environment:', error);
+        }
+    }
+
+    // Function to clean up the environment on destroy
+    async function cleanupEnv() {
+        const userID = await getUserID();  // Wait for userID to be populated
+        const payload = { userID: userID };  // Add userID to the payload
+
+        try {
+            const response = await fetch('http://localhost:5000/cleanup_env', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',  // Ensure credentials (cookies) are included
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to clean up environment: ${response.statusText}`);
+            }
+            console.log('Environment cleaned up successfully.');
+        } catch (error) {
+            console.error('Error cleaning up environment:', error);
+        }
+    }
+
+    // Function to send a cleanup request before the page unloads
+    async function sendCleanupEnv() {
+        const userID = await getUserID();  // Replace with actual userID logic
+        const payload = JSON.stringify({ userID: userID });
+        
+        // Use Blob to send JSON data via sendBeacon
+        const blob = new Blob([payload], { type: 'application/json' });
+        navigator.sendBeacon('http://localhost:5000/cleanup_env', blob);
+    }
 
     onMount(async () => {
-        await startThread();
+        await initializeEnv();  // Ensure initializeEnv completes first
+        // Run other functions after initialization is complete
         scrollChatBottom();
-        retrieveTermsData();
+        await retrieveTermsData();  // This will now only run after initializeEnv completes
+        startThread();
+
+        // Ensure window object exists before using it (for SSR compatibility)
+        if (typeof window !== 'undefined') {
+            window.addEventListener('beforeunload', (event) => {
+                if (!cleanupEnvTriggered) {
+                    cleanupEnvTriggered = true;
+                    // Use navigator.sendBeacon for cleanup before the page unloads
+                    sendCleanupEnv();
+                }
+            });
+        }
+    });
+
+    onDestroy(async () => {
+        // Cleanup logic when navigating away within the app
+        if (!cleanupEnvTriggered) {
+            await cleanupEnv();  // Await the cleanup to ensure it completes
+            cleanupEnvTriggered = true;
+        }
+
+        // Ensure window object exists before using it (for SSR compatibility)
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('beforeunload', sendCleanupEnv);
+        }
     });
 </script>
 
@@ -567,7 +881,7 @@
             {#if bubble.host === false}
                 <div class="grid grid-cols-[auto_1fr] gap-2">
                     <Avatar src={`https://i.pravatar.cc/?img=${bubble.avatar}`} width="w-12" />
-                    <div class="card p-4 variant-soft rounded-tl-none space-y-2">
+                    <div class={`card p-4 variant-soft rounded-tl-none space-y-2 ${!multi_enabled ? 'bg-different-color' : 'purple'}`}>
                         {#if typeof bubble.message === 'object'}
                             <header class="flex justify-between items-center card-header">
                                 <p class="text-lg font-bold">{bubble.message.section} - {bubble.message.term}</p>
@@ -575,9 +889,15 @@
                             </header>
                             <section class="p-4">
                                 <p class="text-lg font-bold"><strong>{@html renderMarkdown(bubble.message.question)}</strong></p>
-                                {#each bubble.message.options as option, index}
-                                    <p class="mb-4"><button class="option-btn card-hover btn bg-primary-500 card-hover rounded-container-token" on:click={() => displayAnswerResponse("option" + (index + 1))}>{option}</button></p>
-                                {/each}
+                                {#if multi_enabled === true}
+                                    {#each bubble.message.options as option, index}
+                                        <p class="mb-4">
+                                            <button class="option-btn card-hover btn bg-primary-500 card-hover rounded-container-token" on:click={() => displayAnswerResponse("option" + (index + 1))}>
+                                                {option}
+                                            </button>
+                                        </p>
+                                    {/each}
+                                {/if}
                             </section>
                         {:else if isSectionList(bubble.message)}
                             <div class="grid grid-cols-2 auto-rows-max gap-2">
@@ -595,28 +915,35 @@
                             {@html formatMessage(bubble.message)}
                         {:else}
                             {#if bubble.message.includes('Not quite')}
-                                <!-- Custom rendering for "Not quite" messages -->
-                                <div class="red-div btn card-hover" on:click={() => displayAnswerElaborateResponse(false)}>
+                                <div class="red-div btn card-hover" on:click={() => {
+                                    if (multi_enabled) {
+                                        displayAnswerElaborateResponse(false); // Only run this if multi_enabled is false
+                                    }
+                                }}>
                                     <div class="header">Incorrect</div>
                                     <p class="text-content">{@html renderMarkdown(bubble.message)}</p>
                                 </div>
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
                                 </div>
                             {:else if bubble.message.includes('Correct!')}
-                                <div class="green-div btn card-hover" on:click={() => displayAnswerElaborateResponse(true)}>
+                                <div class="green-div btn card-hover" on:click={() => {
+                                    if (multi_enabled) {
+                                        displayAnswerElaborateResponse(true); // Only run this if multi_enabled is false
+                                    }
+                                }}>
                                     <div class="header">Correct!</div>
-                                    <p class="text-content">{@html renderMarkdown(bubble.message.split('Correct!')[1])}[1]}</p>
+                                    <p class="text-content">{@html renderMarkdown(bubble.message.split('Correct!')[1])}</p>
                                 </div>
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
@@ -624,25 +951,38 @@
                             {:else if bubble.message.includes('Correct Explanation')}
                                 <div class="green-div btn card-hover">
                                     <div class="header">Correct Explanation</div>
-                                    <p class="text-content">{@html bubble.message.split('Correct Explanation:')[1]}</p>
+                                    <p class="text-content">
+                                        {#if bubble.message.split('Correct Explanation:')[1]?.trim().length > 10}
+                                            {@html bubble.message.split('Correct Explanation:')[1]}
+                                        {:else}
+                                            Since this question was answered in 'open response mode', please ask the AI your question directly.
+                                        {/if}
+                                    </p>
                                 </div>
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
                                 </div>
                             {:else if bubble.message.includes('Incorrect Explanation')}
                                 <div class="red-div btn card-hover">
-                                    <div class="header">Inorrect Explanation</div>
-                                    <p class="text-content">{@html bubble.message.split('Incorrect Explanation:')[1]}</p>
+                                    <div class="header">Incorrect Explanation</div>
+                                    <p class="text-content">
+                                        {#if bubble.message.split('Incorrect Explanation:')[1]?.trim().length > 10}
+                                            {@html bubble.message.split('Incorrect Explanation:')[1]}
+                                        {:else}
+                                            Since this question was answered in 'open response mode', please ask the AI your question directly.
+                                        {/if}
+                                    </p>
                                 </div>
+                        
                                 <div class="blue-div btn card-hover">
                                     <div class="header">If you want to learn more</div>
                                     <div class="flex justify-center flex-wrap gap-2 mt-4">
-                                        {#each related_terms as relatedTerm}
+                                        {#each Object.keys(related_terms) as relatedTerm}
                                             <button class="btn bg-secondary-500 card-hover rounded-container-token" on:click={() => displayRelatedTermResponse(currentTerm, relatedTerm)}>{relatedTerm}</button>
                                         {/each}
                                     </div>
@@ -655,7 +995,7 @@
                 </div>
             {:else}
                 <div class="grid grid-cols-[1fr_auto] gap-2">
-                    <div class="card p-4 rounded-tr-none space-y-2 {bubble.color}">
+                    <div class={`card p-4 rounded-tr-none space-y-2 ${!multi_enabled ? 'bg-different-color' : ''}`}>
                         <header class="flex justify-between items-center">
                             <p class="font-bold">{bubble.name}</p>
                             <small class="opacity-50">{bubble.timestamp}</small>
@@ -693,7 +1033,7 @@
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => retrieveQuestion()}>Retrieve question</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getSections()}>Remaining Sections</button>
             <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => getTerms()}>Remaining Terms</button>
-            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => addMessage('This is the greatest piece of software ever thank you for making it')}>Thank the Dev</button>
+            <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => toggle_multi()}>Toggle Multiple Choice</button>
         </div>
         <div class="input-group grid-cols-[1fr_auto] rounded-container-token">
             <textarea
@@ -709,6 +1049,13 @@
                 Send
             </button>
         </div>
+        {#if !multi_enabled} 
+            <div class="grid grid-cols-3 gap-2 mb-2 mt-2">
+                <button class="btn bg-success-500 card-hover rounded-container-token" on:click={() => change_difficulty('easy')}>Easy</button>
+                <button class="btn bg-primary-500 card-hover rounded-container-token" on:click={() => change_difficulty('medium')}>Medium</button>
+                <button class="btn bg-error-500 card-hover rounded-container-token" on:click={() => change_difficulty('hard')}>Hard</button>
+            </div>
+        {/if}
     </section>
 </div>
 
@@ -766,6 +1113,11 @@
 
     .flex-wrap {
         justify-content: center; /* Center align the buttons within the div */
+    }
+
+    .bg-different-color {
+        background-color: #3a043a; /* This sets the background color to purple */
+        color: white; /* Optional: Sets the text color to white for better contrast */
     }
 </style>
 
