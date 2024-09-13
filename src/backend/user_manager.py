@@ -1,5 +1,5 @@
 from pathlib import Path
-from firebase_admin_init import storage
+from firebase_admin_init_local import storage
 from term_manager import TermManager
 import os
 

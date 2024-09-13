@@ -9,16 +9,22 @@ import openai
 import re
 from dotenv import load_dotenv
 from pathlib import Path
-
-from firebase_admin_init import db, bucket, storage
 from firebase_admin import firestore, auth
 from datetime import datetime, timedelta, timezone
 from user_manager import UserManager
 from response_event_handler import ResponseEventHandler
 
-# Setup Open AI client
-load_dotenv()
-api_key = os.getenv("API_KEY")
+LOCAL = os.environ.get('LOCAL', 'True') == 'True'
+
+if LOCAL:
+    from firebase_admin_init_local import db, bucket
+else:
+    from firebase_admin_init_cloud import db, bucket
+
+
+if os.environ.get('LOCAL') == 'True':
+    load_dotenv()
+api_key = os.environ.get('OPENAI_API_KEY').replace("'", "")
 client = OpenAI(api_key=api_key)
 
 # Define the assistant ID from an environment variable
@@ -486,4 +492,4 @@ def toggle_upvote():
     return jsonify({"message": "Upvote toggled successfully."}), 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

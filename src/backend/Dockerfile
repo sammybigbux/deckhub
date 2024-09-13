@@ -1,24 +1,20 @@
-# Use an official Python runtime as a base image
+# Use an official Python runtime as the base image
 FROM python:3.11-slim
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any necessary dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy website_backend and chat_backend directories into the container
-COPY website_backend/ /app/website_backend/
-COPY chat_backend/ /app/chat_backend/
+# Expose the port your app will run on
+EXPOSE 8080
 
-# Copy data directories used by term_manager.py
-COPY chat_backend/apply_data /app/chat_backend/apply_data
-COPY chat_backend/learn_data /app/chat_backend/learn_data
-COPY chat_backend/understand_data /app/chat_backend/understand_data
+# Set environment variables for Flask (if you're using Flask)
+ENV PORT 8080
 
-# Expose port 5000 for Flask
-EXPOSE 5000
-
-# Start the Flask app (adjust command based on your setup)
-CMD ["python", "website_backend/app.py"]
+# Run the application
+CMD ["python", "app.py"]

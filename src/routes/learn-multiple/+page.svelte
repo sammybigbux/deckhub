@@ -88,7 +88,7 @@
         }
 
         // switch the assistant we are using
-        fetch('http://localhost:8080/set_assistant_id', {
+        fetch('${base_url}/set_assistant_id', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -127,7 +127,7 @@
     }
 
     async function startThread(): Promise<void> {
-        const response = await fetch('http://localhost:8080/start_thread', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
+        const response = await fetch('${base_url}/start_thread', { method: 'POST', headers: { 'Content-Type': 'application/json' } });
         const data = await response.json();
         threadId = data.thread_id;
     }
@@ -140,7 +140,7 @@
         };
 
         try {
-            const response = await fetch('http://localhost:8080/update_status', {
+            const response = await fetch('${base_url}/update_status', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -163,7 +163,7 @@
     async function sendMessage(query: string): Promise<{ response: any, updateStatusCalled: boolean }> {
         query = `Last question: ${currentContextString} User input: ${query} Pass difficulty: ${ai_difficulty}`;
         console.log("Query going to the GPT: ", query);
-        const response = await fetch('http://localhost:8080/send_message', { 
+        const response = await fetch('${base_url}/send_message', { 
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify({ thread_id: threadId, message: query }) 
@@ -184,7 +184,7 @@
                 if (query) {
                     try {
                         // Send the message and wait for it to finish before continuing
-                        await fetch('http://localhost:8080/send_message', { 
+                        await fetch('${base_url}/send_message', { 
                             method: 'POST', 
                             headers: { 'Content-Type': 'application/json' }, 
                             body: JSON.stringify({ thread_id: threadId, message: query }) 
@@ -208,7 +208,7 @@
                 userID: userID  // Add userID to the payload
             };
 
-            const response = await fetch('http://localhost:8080/get_terms_data', {
+            const response = await fetch('${base_url}/get_terms_data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -234,7 +234,7 @@
             userID: userID  // Add userID to the payload
         };
 
-        const response = await fetch('http://localhost:8080/retrieve_related_term_response', {
+        const response = await fetch('${base_url}/retrieve_related_term_response', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -288,7 +288,7 @@
                 userID: userID  // Add userID to the payload
             };
 
-            const response = await fetch('http://localhost:8080/get_remaining_sections', {
+            const response = await fetch('${base_url}/get_remaining_sections', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -322,7 +322,7 @@
         };
 
         try {
-            const response = await fetch('http://localhost:8080/get_remaining_terms', {
+            const response = await fetch('${base_url}/get_remaining_terms', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
@@ -359,7 +359,7 @@
         };
 
         try {
-            const response = await fetch('http://localhost:8080/get_question', {
+            const response = await fetch('${base_url}/get_question', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)  // Send userID in the body
@@ -414,7 +414,7 @@
         };
 
         try {
-            const response = await fetch('http://localhost:8080/get_correct_response', {
+            const response = await fetch('${base_url}/get_correct_response', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)  // Send userID in the body
@@ -442,7 +442,7 @@
         };
 
         try {
-            const response = await fetch('http://localhost:8080/get_incorrect_response', {
+            const response = await fetch('${base_url}/get_incorrect_response', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)  // Send userID in the body
@@ -531,7 +531,7 @@
             userID: userID  // Add userID to the payload
         };
 
-        const response = await fetch('http://localhost:8080/reset_terms', {
+        const response = await fetch('${base_url}/reset_terms', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)  // Send userID in the body
@@ -559,7 +559,7 @@
             userID: userID  // Add userID to the payload
         };
 
-        const response = await fetch('http://localhost:8080/pass_all_terms', {
+        const response = await fetch('${base_url}/pass_all_terms', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)  // Send userID in the body
@@ -651,7 +651,7 @@
         }
 
         // Open an EventSource to stream the response
-        const eventSource = new EventSource(`http://localhost:8080/send_message?thread_id=${threadId}&message=${encodeURIComponent(messageToSend)}`);
+        const eventSource = new EventSource(`${base_url}/send_message?thread_id=${threadId}&message=${encodeURIComponent(messageToSend)}`);
 
         eventSource.onmessage = function(event) {
             clearInterval(interval);  // Stop the bot emoji animation when the first chunk arrives
@@ -756,7 +756,7 @@
     async function updateSection(section: string): Promise<void> {
         // Define the endpoint and payload
         const userID = await getUserID();  // Wait for userID to be populated
-        const endpoint = 'http://localhost:8080/update_section';
+        const endpoint = '${base_url}/update_section';
         const payload = { 
             section: section,
             userID: userID  // Add userID to the payload
@@ -798,7 +798,7 @@
         const payload = { userID: userID, module: 'learn' };  // Add userID to the payload
 
         try {
-            const response = await fetch('http://localhost:8080/initialize_env', {
+            const response = await fetch('${base_url}/initialize_env', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -819,7 +819,7 @@
         const payload = { userID: userID };  // Add userID to the payload
 
         try {
-            const response = await fetch('http://localhost:8080/cleanup_env', {
+            const response = await fetch('${base_url}/cleanup_env', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',  // Ensure credentials (cookies) are included
@@ -842,7 +842,7 @@
         
         // Use Blob to send JSON data via sendBeacon
         const blob = new Blob([payload], { type: 'application/json' });
-        navigator.sendBeacon('http://localhost:8080/cleanup_env', blob);
+        navigator.sendBeacon('${base_url}/cleanup_env', blob);
     }
 
     onMount(async () => {
