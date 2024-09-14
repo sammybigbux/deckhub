@@ -9,6 +9,8 @@
         ? 'http://localhost:8080' // Your local backend URL
         : 'https://deckhub-backend-1086653848406.us-central1.run.app'
 
+    console.log("Base URL:", base_url);
+
     // Initialize the user ID to grab terms.json data
     let uid = null;
     let multi_enabled = true;
