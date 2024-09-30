@@ -25,14 +25,14 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token for authentication
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DECKHUBAPP }}  # Firebase service account key
           channelId: live  # Deploy to the live channel on Firebase
-          projectId: deckhubapp  # Firebase project ID
+          projectId: ${{ secrets.GCP_PROJECT }}  # Firebase project ID
 
       # Step 4: Set up Google Cloud SDK for Cloud Run
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}  # Google Cloud project ID
-          service_account_key: ${{ secrets.GCP_SA_KEY }}  # Google Cloud service account key
+          project_id: ${{ secrets.GCP_PROJECT }}  # Google Cloud project ID
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
       # Step 5: Authenticate Docker with GCR
       - name: Authenticate Docker with GCR
@@ -41,18 +41,18 @@ jobs:
       # Step 6: Build the Docker image for Cloud Run
       - name: Build the Docker image for Cloud Run
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/backend-cloud:${{ github.sha }} .
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} .
 
       # Step 7: Push the Docker image to GCR
       - name: Push the Docker image to GCR
         run: |
-          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/backend-cloud:${{ github.sha }}
+          docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
 
       # Step 8: Deploy the backend to Google Cloud Run
       - name: Deploy the backend to Cloud Run
         run: |
           gcloud run deploy deckhub-backend \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/backend-cloud:${{ github.sha }} \
+            --image gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
