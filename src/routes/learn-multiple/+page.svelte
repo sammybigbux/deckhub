@@ -803,7 +803,8 @@
             const response = await fetch(`${base_url}/initialize_env`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                credentials: 'include',  // Add this if you're using credentials (cookies, auth tokens)
+                body: JSON.stringify(payload)  // The payload should include userID and module
             });
 
             if (!response.ok) {

@@ -3,7 +3,7 @@ import json
 import time
 from functools import lru_cache
 from openai import OpenAI
-from flask import Flask, request, jsonify, Response, stream_with_context
+from flask import Flask, request, jsonify, Response, stream_with_context, make_response
 from flask_cors import CORS
 import openai
 import re
@@ -186,8 +186,18 @@ def update_status():
         return jsonify({'error': str(e)}), 500
     
 
-@app.route('/initialize_env', methods=['POST'])
+@app.route('/initialize_env', methods=['POST', 'OPTIONS'])
 def initialize_with_user_information():
+    # Handle preflight OPTIONS request
+    if request.method == 'OPTIONS':
+        response = make_response('', 204)
+        response.headers["Access-Control-Allow-Origin"] = request.headers.get('Origin')
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        return response
+
+    # Actual POST request handling
     userID = request.json.get('userID')
     module_type = request.json.get('module')  # Learn, Understand, or Apply
     if not userID or not module_type:
