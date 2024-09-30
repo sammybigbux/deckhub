@@ -47,7 +47,7 @@ UNDERSTAND_DATA = load_json(static_data_dir / 'understand_data.json')
 APPLY_DATA = load_json(static_data_dir / 'apply_data.json')
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=['http://localhost:5173'])
+CORS(app, supports_credentials=True, origins=['http://localhost:5173', 'https://deckhubapp.web.app'])
 
 
 user_manager = UserManager()
