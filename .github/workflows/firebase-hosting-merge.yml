@@ -18,20 +18,18 @@ jobs:
       - name: Install dependencies and build frontend
         run: npm ci && npm run build
 
-      # Step 3: Deploy frontend to Firebase Hosting
-      - name: Deploy frontend to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DECKHUBAPP }}  # Firebase service account key
-          channelId: live  # Deploy to the live channel in Firebase Hosting
-          projectId: deckhubapp  # Firebase project ID
-
-      # Step 4: Authenticate with Google Cloud
+      # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
+
+      # Step 4: Deploy frontend to Firebase Hosting
+      - name: Deploy frontend to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate with Firebase Hosting
+          projectId: deckhubapp  # Firebase project ID
 
       # Step 5: Verify Google Cloud Authentication
       - name: Verify Google Cloud Authentication
