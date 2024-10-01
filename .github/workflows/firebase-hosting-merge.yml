@@ -24,13 +24,14 @@ jobs:
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
-      # Step 4: Deploy frontend to Firebase Hosting
+      # Step 4: Deploy frontend to Firebase Hosting (live)
       - name: Deploy frontend to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate with Firebase Hosting
           firebaseServiceAccount: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Use the same service account key for Firebase Hosting
           projectId: deckhubapp  # Firebase project ID
+          channelId: live  # Deploy directly to the live (production) channel
 
       # Step 5: Verify Google Cloud Authentication
       - name: Verify Google Cloud Authentication
