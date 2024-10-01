@@ -8,7 +8,7 @@ import json
 
 def access_secret_version(secret_id="DECKHUB_FIREBASE_KEY", version_id="latest"):
     client = secretmanager.SecretManagerServiceClient()
-    project_id = os.environ.get('GOOGLE_CLOUD_PROJECT')
+    project_id = 'deckhubapp'
     name = f"projects/{project_id}/secrets/{secret_id}/versions/{version_id}"
     response = client.access_secret_version(name=name)
     return response.payload.data.decode('UTF-8')
