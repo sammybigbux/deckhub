@@ -10,21 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
+      # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies and build the frontend
+      # Install dependencies and build the frontend
       - name: Install dependencies and build frontend
         run: npm ci && npm run build
 
-      # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
+      # Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
-      # Step 4: Deploy frontend to Firebase Hosting (live)
+      # Deploy frontend to Firebase Hosting (live)
       - name: Deploy frontend to Firebase Hosting (live)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -33,32 +33,32 @@ jobs:
           projectId: deckhubapp  # Firebase project ID
           channelId: live  # Deploy to the live (production) channel
 
-      # Step 5: Verify Google Cloud Authentication
+      # Verify Google Cloud Authentication
       - name: Verify Google Cloud Authentication
         run: |
           gcloud config list project
 
-      # Step 6: Set up Google Cloud SDK for Cloud Run
+      # Set up Google Cloud SDK for Cloud Run
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT }}  # Google Cloud project ID
 
-      # Step 7: Authenticate Docker with GCR
+      # Authenticate Docker with GCR
       - name: Authenticate Docker with GCR
         run: gcloud auth configure-docker
 
-      # Step 8: Build Docker image for backend (correct path to the Dockerfile)
+      # Build Docker image for backend (correct path to the Dockerfile)
       - name: Build Docker image for backend
         run: |
           docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} ./src/backend
 
-      # Step 9: Push Docker image to GCR
+      # Push Docker image to GCR
       - name: Push Docker image to GCR
         run: |
           docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
 
-      # Step 10: Deploy the backend to Google Cloud Run (production)
+      # Deploy the backend to Google Cloud Run (production)
       - name: Deploy backend to Cloud Run
         run: |
           gcloud run deploy deckhub-backend \
