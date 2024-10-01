@@ -52,3 +52,11 @@ jobs:
             --allow-unauthenticated \
             --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
             --set-env-vars "LOCAL=False"
+
+      # Step 8: Run backend tests
+      - name: Run backend tests
+        env:
+          TEST_ENV_URL: "https://deckhub-backend-staging-1086653848406.us-central1.run.app"  # Staging backend URL
+        run: |
+          cd src/backend
+          python3 -m unittest discover -s test -p "test_session.py"
