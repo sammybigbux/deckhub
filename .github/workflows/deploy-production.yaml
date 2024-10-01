@@ -42,7 +42,7 @@ jobs:
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
-          project_id: ${{ secrets.GCP_PROJECT }}  # Google Cloud project ID
+          project_id: deckhubapp  # Google Cloud project ID
 
       # Authenticate Docker with GCR
       - name: Authenticate Docker with GCR
@@ -51,20 +51,23 @@ jobs:
       # Build Docker image for backend (correct path to the Dockerfile)
       - name: Build Docker image for backend
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} ./src/backend
+          docker build -t gcr.io/deckhubapp/backend-cloud:${{ github.sha }} ./src/backend
 
       # Push Docker image to GCR
       - name: Push Docker image to GCR
         run: |
-          docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
+          docker push gcr.io/deckhubapp/backend-cloud:${{ github.sha }}
 
       # Deploy the backend to Google Cloud Run (production)
       - name: Deploy backend to Cloud Run
         run: |
           gcloud run deploy deckhub-backend \
-            --image gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} \
+            --image gcr.io/deckhubapp/backend-cloud:${{ github.sha }} \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
             --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
             --set-env-vars "LOCAL=False"
+
+      - name: Here is the URL
+        run: echo "Find the production site at https://deckhub.web.app/"
