@@ -1,7 +1,12 @@
 from pathlib import Path
-from firebase_admin_init_local import storage
 from term_manager import TermManager
 import os
+
+LOCAL = os.environ.get('LOCAL', 'True') == 'True'
+if LOCAL:
+    from firebase_admin_init_local import storage
+else:
+    from firebase_admin_init_cloud import storage
 
 class UserManager:
     def __init__(self):
