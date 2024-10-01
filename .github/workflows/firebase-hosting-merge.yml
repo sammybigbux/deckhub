@@ -1,9 +1,9 @@
-name: Deploy Frontend to Firebase Hosting and Backend to Cloud Run on merge
+name: Deploy to staging on merge into staging branch
 
 on:
   push:
     branches:
-      - main
+      - staging  # Only triggers on pushes to the staging branch
 
 jobs:
   build_and_deploy:
@@ -24,14 +24,14 @@ jobs:
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
-      # Step 4: Deploy frontend to Firebase Hosting (live)
-      - name: Deploy frontend to Firebase Hosting
+      # Step 4: Deploy frontend to Firebase Hosting (staging)
+      - name: Deploy frontend to Firebase Hosting (staging)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate with Firebase Hosting
           firebaseServiceAccount: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Use the same service account key for Firebase Hosting
           projectId: deckhubapp  # Firebase project ID
-          channelId: live  # Deploy directly to the live (production) channel
+          channelId: staging  # Deploy to the staging channel
 
       # Step 5: Verify Google Cloud Authentication
       - name: Verify Google Cloud Authentication
@@ -58,10 +58,10 @@ jobs:
         run: |
           docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
 
-      # Step 10: Deploy the backend to Google Cloud Run
+      # Step 10: Deploy the backend to Google Cloud Run (staging)
       - name: Deploy backend to Cloud Run
         run: |
-          gcloud run deploy deckhub-backend \
+          gcloud run deploy deckhub-backend-staging \
             --image gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} \
             --platform managed \
             --region us-central1 \
