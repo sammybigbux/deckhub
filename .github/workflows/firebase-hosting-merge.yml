@@ -33,27 +33,32 @@ jobs:
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
-      # Step 5: Set up Google Cloud SDK for Cloud Run
+      # Step 5: Verify Google Cloud Authentication
+      - name: Verify Google Cloud Authentication
+        run: |
+          gcloud config list project
+
+      # Step 6: Set up Google Cloud SDK for Cloud Run
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT }}  # Google Cloud project ID
 
-      # Step 6: Authenticate Docker with GCR
+      # Step 7: Authenticate Docker with GCR
       - name: Authenticate Docker with GCR
         run: gcloud auth configure-docker
 
-      # Step 7: Build Docker image for backend (correct path to the Dockerfile)
+      # Step 8: Build Docker image for backend (correct path to the Dockerfile)
       - name: Build Docker image for backend
         run: |
           docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} ./src/backend
 
-      # Step 8: Push Docker image to GCR
+      # Step 9: Push Docker image to GCR
       - name: Push Docker image to GCR
         run: |
           docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
 
-      # Step 9: Deploy the backend to Google Cloud Run
+      # Step 10: Deploy the backend to Google Cloud Run
       - name: Deploy backend to Cloud Run
         run: |
           gcloud run deploy deckhub-backend \
@@ -61,4 +66,5 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}"
+            --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
+            --set-env-vars "LOCAL=False"
