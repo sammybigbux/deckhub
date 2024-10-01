@@ -1,0 +1,38 @@
+name: Deploy Frontend to Staging on merge into staging
+
+on:
+  push:
+    branches:
+      - staging  # Triggers on any merge into the staging branch
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install dependencies and build the frontend
+      - name: Install dependencies and build frontend
+        run: npm ci && npm run build
+
+      # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
+
+      # Step 4: Deploy frontend to Firebase Hosting (staging)
+      - name: Deploy frontend to Firebase Hosting (staging)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate with Firebase Hosting
+          firebaseServiceAccount: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Use the same service account key for Firebase Hosting
+          projectId: deckhubapp  # Firebase project ID
+          channelId: staging  # Deploy to the staging channel
+
+      # Step 5: Echo the staging URL
+      - name: Echo staging URL
+        run: echo "Staging URL -> https://deckhubapp--staging-8dva1oxn.web.app/"
