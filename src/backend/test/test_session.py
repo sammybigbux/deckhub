@@ -22,6 +22,9 @@ class TestEnvManagement(unittest.TestCase):
         self.default_terms_path = self.parent_dir / "learn_data_terms.json"
         self.cloud_terms_path = f"learn_data/{self.userID}/terms.json"
 
+        # Backend URL (staging or production) set via environment variable
+        self.base_url = os.getenv('TEST_ENV_URL', 'http://localhost:5000')  # Fallback to localhost for local tests
+
     def test_initialize_and_cleanup_env(self):
         """Test the /initialize_env and /cleanup_env endpoints."""
         
@@ -34,7 +37,7 @@ class TestEnvManagement(unittest.TestCase):
         self.assertTrue(self.default_terms_path.exists(), "Default learn_data_terms.json should exist locally")
 
         # Call the /initialize_env endpoint with the userID and module type
-        url = "http://localhost:5000/initialize_env"
+        url = f"{self.base_url}/initialize_env"
         payload = {
             "userID": self.userID,
             "module": self.module_type
@@ -47,7 +50,7 @@ class TestEnvManagement(unittest.TestCase):
 
         # --- Test cleanup_env ---
         # Call the /cleanup_env endpoint with the userID
-        url = "http://localhost:5000/cleanup_env"
+        url = f"{self.base_url}/cleanup_env"
         payload = {
             "userID": self.userID
         }
