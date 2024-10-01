@@ -3,7 +3,7 @@ name: Deploy Frontend to Firebase Hosting and Backend to Cloud Run on merge
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
+      - main
 
 jobs:
   build_and_deploy:
@@ -27,28 +27,33 @@ jobs:
           channelId: live  # Deploy to the live channel in Firebase Hosting
           projectId: deckhubapp  # Firebase project ID
 
-      # Step 4: Set up Google Cloud SDK for Cloud Run
+      # Step 4: Authenticate with Google Cloud
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
+
+      # Step 5: Set up Google Cloud SDK for Cloud Run
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT }}  # Google Cloud project ID
-          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
-      # Step 5: Authenticate Docker with Google Container Registry (GCR)
+      # Step 6: Authenticate Docker with GCR
       - name: Authenticate Docker with GCR
         run: gcloud auth configure-docker
 
-      # Step 6: Build the Docker image for the backend
+      # Step 7: Build Docker image for backend (correct path to the Dockerfile)
       - name: Build Docker image for backend
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} .
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} ./src/backend
 
-      # Step 7: Push Docker image to GCR
+      # Step 8: Push Docker image to GCR
       - name: Push Docker image to GCR
         run: |
           docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
 
-      # Step 8: Deploy the backend to Google Cloud Run
+      # Step 9: Deploy the backend to Google Cloud Run
       - name: Deploy backend to Cloud Run
         run: |
           gcloud run deploy deckhub-backend \
