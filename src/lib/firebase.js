@@ -24,8 +24,8 @@ const provider = new GoogleAuthProvider();
 export const isLoggedIn = writable(false); // Set to false initially
 export let userName = writable("");
 export let idToken = writable(""); // Store the Firebase ID token
-export let userID = writable(""); // Store the Firebase user ID
 export const userId = writable(null);  // New store to track the user ID
+export const stripeCustomerIdStore = writable(null);  // New store to track the Stripe customer ID
 
 // Utility function to check if localStorage is available
 function isLocalStorageAvailable() {
@@ -88,15 +88,19 @@ export async function loginWithGoogle() {
         isLoggedIn.set(true);
         userName.set(user.displayName || 'User');
 
-        // Call the backend to create the user if it doesn't exist
-        await createUserOnBackend(user.uid, user.displayName, token);
+        // Call the backend to create the user if it doesn't exist and get Stripe customer ID
+        const stripeCustomerId = await createUserOnBackend(user.uid, user.displayName, user.email, token);
+        if (stripeCustomerId) {
+            stripeCustomerIdStore.set(stripeCustomerId); // Store the Stripe customer ID for later use
+            console.log('Stripe customer ID successfully set on login:', stripeCustomerId);
+        }
     } catch (error) {
         console.error('Error during sign-in:', error);
     }
 }
 
 // Function to create a user on the backend if it doesn't exist
-async function createUserOnBackend(userId, displayName, idToken) {
+async function createUserOnBackend(userId, displayName, email, idToken) {
     try {
         const response = await fetch('http://127.0.0.1:5000/create_user_if_not_exists', {
             method: 'POST',
@@ -104,13 +108,18 @@ async function createUserOnBackend(userId, displayName, idToken) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${idToken}`
             },
-            body: JSON.stringify({ display_name: displayName })
+            body: JSON.stringify({ display_name: displayName, email: email, user_id: userId })
         });
 
         const result = await response.json();
         console.log(result.message);
+        
+        // Return the Stripe customer ID
+        return result.stripe_customer_id;
+
     } catch (error) {
         console.error('Error creating user on backend:', error);
+        return null;
     }
 }
 
@@ -123,6 +132,7 @@ export async function logout() {
         userName.set('');
         idToken.set('');
         userDecks.set([]);
+        stripeCustomerIdStore.set(null);
     } catch (error) {
         console.error('Error during sign-out:', error);
     }

@@ -13,7 +13,9 @@ from firebase_admin import firestore, auth
 from datetime import datetime, timedelta, timezone
 from user_manager import UserManager
 from response_event_handler import ResponseEventHandler
+import stripe
 
+load_dotenv()
 LOCAL = os.environ.get('LOCAL', 'True') == 'True'
 
 if LOCAL:
@@ -22,9 +24,9 @@ else:
     from firebase_admin_init_cloud import db, bucket
 
 
-if os.environ.get('LOCAL') == 'True':
-    load_dotenv()
 api_key = os.environ.get('OPENAI_API_KEY').replace("'", "")
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY').replace("'", "")
+webhook_secret = os.environ.get('WEBHOOK_SECRET').replace("'", "")
 client = OpenAI(api_key=api_key)
 
 # Define the assistant ID from an environment variable
@@ -371,37 +373,95 @@ def get_remaining_terms():
     return jsonify({'message': f"Sure, here are the remaining terms:\n{remaining_terms}"}), 200
 
 
-
-
-
 # The below endpoints are mainly for interacting with firebase for the purpose of the rest of the website (not the chat part)
 @app.route('/create_user_if_not_exists', methods=['POST'])
 def create_user_if_not_exists():
+    print("Function called: /create_user_if_not_exists")
+    
+    # Try to retrieve the request data and authorization header
     data = request.json
-    id_token = request.headers.get('Authorization').split('Bearer ')[1]
+    print(f"Request data: {data}")
+
+    auth_header = request.headers.get('Authorization')
+    print(f"Authorization header: {auth_header}")
+
+    if not auth_header:
+        print("Authorization header is missing")
+        return jsonify({"error": "Authorization header is missing"}), 400
 
     try:
-        # Verify the ID token and get the user's UID
+        # Extract and verify the ID token
+        id_token = auth_header.split('Bearer ')[1]
+        print(f"ID Token: {id_token}")
+
         decoded_token = auth.verify_id_token(id_token)
+        print(f"Decoded token: {decoded_token}")
+
         user_id = decoded_token['uid']
+        print(f"User ID from decoded token: {user_id}")
+
         display_name = data.get('display_name', '')
+        email = data.get('email', '')
+        print(f"Display name: {display_name}, Email: {email}")
 
+        user_id = data.get('user_id', user_id)
+        print(f"Final user ID: {user_id}")
+
+        # Check if user exists in Firestore
         user_ref = db.collection('users').document(user_id)
-        user_doc = user_ref.get()
+        print(f"User reference object: {user_ref}")
 
-        if not user_doc.exists:
-            # Create a new user document in Firestore
-            user_ref.set({
-                'displayName': display_name,
-                'decks_owned': []  # Initialize with an empty array
-            })
-            return jsonify({"message": "New user created in Firestore!"}), 200
-        else:
-            return jsonify({"message": "User already exists in Firestore."}), 200
+        # Wrap the Firestore access in a try-except block for better error handling
+        try:
+            # Get the document and check if it exists
+            user_doc = user_ref.get()
+
+            if not user_doc.exists:
+                # User does not exist, create a new Stripe customer and Firestore user
+                print("User does not exist. Creating new user.")
+                
+                # Create a new Stripe customer
+                customer = stripe.Customer.create(
+                    email=email,
+                    metadata={'user_id': user_id}
+                )
+                print(f"Stripe customer created: {customer}")
+
+                # Create a new user document in Firestore
+                user_ref.set({
+                    'displayName': display_name,
+                    'decks_owned': [],
+                    'email': email,
+                    'stripe_customer_id': customer['id'],
+                    'user_id': user_id
+                })
+                print(f"User created in Firestore: {user_id}")
+
+                return jsonify({
+                    "message": "New user created in Firestore!",
+                    "stripe_customer_id": customer['id']
+                }), 200
+
+            else:
+                # User already exists, fetch the stripe_customer_id from the document
+                stripe_customer_id = user_doc.get('stripe_customer_id')
+                print(f"User already exists. Stripe customer ID: {stripe_customer_id}")
+
+                return jsonify({
+                    "message": "User already exists in Firestore.",
+                    "stripe_customer_id": stripe_customer_id
+                }), 200
+
+        except Exception as firestore_error:
+            print(f"Error accessing Firestore document: {firestore_error}")
+            return jsonify({"error": "Failed to access Firestore document"}), 500
 
     except Exception as e:
         print(f"Error creating user: {e}")
-        return jsonify({"error": "Failed to create user"}), 500
+        return jsonify({"error": f"Failed to create user: {str(e)}"}), 500
+
+
+
 
 
 # endpoints for search page
@@ -501,5 +561,89 @@ def toggle_upvote():
     request_ref.update(request_data)
     return jsonify({"message": "Upvote toggled successfully."}), 200
 
+# This section is for endpoints related to payment processing using Stripe. 
+# The first endpoint creates a new Stripe Checkout session, and the second endpoint handles the webhook event when a payment is completed. 
+# The webhook endpoint is used to update the user's data in the backend after a successful payment.
+@app.route('/api/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    data = request.get_json()
+
+    try:
+        # Use the Stripe customer ID from the request
+        stripe_customer_id = data['stripe_customer_id']  # The Stripe customer ID from the frontend
+
+        # Create a new Stripe Checkout session
+        session = stripe.checkout.Session.create(
+            customer=stripe_customer_id,  # Ensure the session is tied to the correct Stripe customer
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price': data['price_id'],  # Use the price_id from Stripe
+                    'quantity': 50,
+                },
+            ],
+            mode='payment',
+            success_url='http://localhost:5173/payment-success',
+            cancel_url='http://localhost:5173/search',
+            metadata={
+                'user_id': data['user_id'],  # Firebase user ID
+                'product_name': data['product_name']  # Pass product name (or ID) for use in the webhook
+            }
+        )
+
+        # Return the session ID to the client
+        return jsonify({'id': session.id})
+    
+    except Exception as e:
+        return jsonify(error=str(e)), 403
+
+@app.route('/webhook', methods=['POST'])
+def webhook_received():
+    event = None
+    payload = request.data.decode('utf-8')
+    sig_header = request.headers.get('Stripe-Signature')
+
+    try:
+        event = stripe.Webhook.construct_event(payload, sig_header, webhook_secret)
+
+    except ValueError as e:
+        return 'Invalid payload', 400
+
+    except stripe.error.SignatureVerificationError as e:
+        return 'Invalid signature', 400
+
+    # Handle the event types
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+
+        # Retrieve the Stripe customer ID from the session
+        stripe_customer_id = session['customer']
+
+        # Retrieve the customer metadata (which contains the Firebase user_id)
+        customer = stripe.Customer.retrieve(stripe_customer_id)
+        user_id = customer.metadata['user_id']  # Firebase user ID
+
+        # Retrieve product information from the session
+        product_name = session['metadata']['product_name']  # Ensure this is passed during checkout session creation
+
+        # Now you have the user_id and the product_name, so update Firebase
+        db = firestore.client()
+
+        # Get the user's document reference
+        user_ref = db.collection('users').document(user_id)
+
+        # Update the decks_owned array
+        user_ref.update({
+            'decks_owned': firestore.ArrayUnion([product_name])
+        })
+
+        print(f"Product {product_name} added to user {user_id}'s decks_owned")
+
+    return 'Success', 200
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    if LOCAL:
+        app.run(host='localhost', port=5000, debug=True)
+    else:
+        app.run(host='0.0.0.0', port=8080, debug=True)

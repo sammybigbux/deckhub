@@ -2,7 +2,8 @@ from pathlib import Path
 from term_manager import TermManager
 import os
 
-LOCAL = False
+LOCAL = os.environ.get('LOCAL', 'True') == 'True'
+
 if LOCAL:
     from firebase_admin_init_local import storage
 else:
