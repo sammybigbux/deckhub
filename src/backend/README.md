@@ -4,6 +4,7 @@ This backend is to serve all the data needed for the chat functionality. It uses
 
 ## Directory Structure
 
+
 The root directory contains the following important files and directories:
 
 ### 1. **`openai_integration.py`**
