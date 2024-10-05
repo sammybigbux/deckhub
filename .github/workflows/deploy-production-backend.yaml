@@ -51,7 +51,7 @@ jobs:
             --region us-central1 \
             --allow-unauthenticated \
             --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
-            --set-env-vars "LOCAL=False" /
+            --set-env-vars "LOCAL=False" \
             --set-env-vars "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}" \
             --set-env-vars "WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}"
 
