@@ -1,6 +1,6 @@
 # DeckHub - Certification Prep Platform
 
-DeckHub is an interactive learning platform that uses modern cognitive research to help students prepare for certification exams. The platform provides multiple-choice and open-ended question formats and offers real-time feedback to guide learners through exam-related content. Our goal is to improve how students learn and retain information through intelligent systems powered by machine learning and data-driven insights.
+[DeckHub](https://deckhubapp.web.app/) is an interactive learning platform that uses modern cognitive research to help students prepare for certification exams. The platform provides multiple-choice and open-ended question formats and offers real-time feedback to guide learners through exam-related content. Our goal is to improve how students learn and retain information through intelligent systems powered by machine learning and data-driven insights.
 
 ### Initial Setup
 Secure files from Google Drive are required to host this locally but if you push to `staging` branch the Github Actions will deploy to Google Cloud.
