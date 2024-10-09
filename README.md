@@ -1,33 +1,28 @@
-# DeckHub - Exam Prep Platform
+# DeckHub - Certification Prep Platform
 
 DeckHub is an interactive learning platform that uses modern cognitive research to help students prepare for certification exams. The platform provides multiple-choice and open-ended question formats and offers real-time feedback to guide learners through exam-related content. Our goal is to improve how students learn and retain information through intelligent systems powered by machine learning and data-driven insights.
 
 ### Initial Setup
 Secure files from Google Drive are required to host this locally but if you push to `staging` branch the Github Actions will deploy to Google Cloud.
 
-1. **Install Vite and dependencies:**
-   - If you encounter an error where `vite` is not recognized, run the following commands to install Vite globally and the necessary dependencies:
+1. **Install dependencies:**
      ```bash
-     npm install -g vite
      npm install
      ```
 
 2. **Set up a `.env` file in the main directory:**
-   - Create a `.env` file in the main directory with the following content:
      ```bash
      LOCAL=True
      OPEN_API_KEY=(your OpenAI key)
      ```
 
 3. **Set up a `.env` file in the backend directory:**
-   - Create a `.env` file in the `/src/backend` directory with the following content:
      ```bash
      STRIPE_SECRET_KEY=(your Stripe secret key)
      WEBHOOK_SECRET=(your webhook secret)
      ```
 
 4. **Navigate to the backend directory and install Python requirements:**
-   - `cd` into `/src/backend` and install the backend dependencies:
      ```bash
      pip install -r requirements.txt
      ```
@@ -55,7 +50,7 @@ Secure files from Google Drive are required to host this locally but if you push
      ```
 
 ## Project Structure
-The project consists of the following main components:
+You can find a guide to each section in the README.md files in their respective directories. The project consists of the following main components:
 
 - **Frontend**: Located in the `/routes` directory, the frontend is built using Vite and Svelte. It handles the user interface, interactions, and communication with the backend services.
 
