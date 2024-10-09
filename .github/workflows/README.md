@@ -1,4 +1,4 @@
-### GitHub Actions CI/CD System Summary
+# GitHub Actions CI/CD System Summary
 
 The project uses GitHub Actions to automate the deployment of both the backend and frontend. Separate workflows handle deployments to the production and staging environments for both the backend and frontend.
 
