@@ -67,5 +67,3 @@ Key components include:
 - Initializes the Firebase Admin SDK for local use.
 - Initializes Firestore and Cloud Storage connections.
 
-
-
