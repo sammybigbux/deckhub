@@ -28,8 +28,10 @@ jobs:
           cd src/backend
           python3 app.py &  # Run app.py in the background
 
-      # Step 4: Run the backend tests
+      # Step 4: Run the backend tests with TEST_ENV_URL set to production URL
       - name: Run backend tests
+        env:
+          TEST_ENV_URL: "https://deckhub-backend-1086653848406.us-central1.run.app"  # Production URL
         run: |
           cd src/backend
           python3 -m unittest discover -s test -p "test_session.py"
