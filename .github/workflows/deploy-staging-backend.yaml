@@ -57,6 +57,12 @@ jobs:
             --set-env-vars "BASE_URL=https://deckhub-backend-staging-1086653848406.us-central1.run.app"
 
       # Step 8: Run backend tests
+      - name: Install Python dependencies
+        run: |
+          cd src/backend
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          
       - name: Run backend tests
         env:
           TEST_ENV_URL: "https://deckhub-backend-staging-1086653848406.us-central1.run.app"  # Staging backend URL
