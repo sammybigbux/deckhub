@@ -14,9 +14,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies and build the frontend
+      # Step 2: Install dependencies and build the frontend with BASE_URL for staging
       - name: Install dependencies and build frontend
-        run: npm ci && npm run build
+        run: |
+          echo "VITE_BASE_URL=https://deckhub-backend-staging-1086653848406.us-central1.run.app" > .env.staging
+          npm ci
+          npm run build
 
       # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
       - name: Authenticate with Google Cloud

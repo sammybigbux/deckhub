@@ -2,10 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { stripeCustomerIdStore, userId } from '$lib/firebase'; // Import auth and userName here
 import { get } from 'svelte/store';
 
-const isLocalhost = false
-const base_url = isLocalhost
-    ? 'http://localhost:8080' // Your local backend URL
-    : 'https://deckhub-backend-1086653848406.us-central1.run.app'
+const base_url = import.meta.env.VITE_BASE_URL;
 
 let stripePromise;
 

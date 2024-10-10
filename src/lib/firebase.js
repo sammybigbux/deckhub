@@ -4,6 +4,7 @@ import { getFirestore } from 'firebase/firestore';
 import { writable } from 'svelte/store'; 
 import { userDecks } from '../stores/auth';
 
+
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyC-ZOP0oH3IISFl3Qwzc7rGnbEB5VwYOps",
@@ -24,6 +25,7 @@ const provider = new GoogleAuthProvider();
 export const isLoggedIn = writable(false); // Set to false initially
 export let userName = writable("");
 export let idToken = writable(""); // Store the Firebase ID token
+export let userID = writable(""); // Store the Firebase user ID
 export const userId = writable(null);  // New store to track the user ID
 export const stripeCustomerIdStore = writable(null);  // New store to track the Stripe customer ID
 
