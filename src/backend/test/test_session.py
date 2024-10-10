@@ -7,6 +7,7 @@ from pathlib import Path
 # Add the directory above 'tests' to sys.path to import firebase_admin_init
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
+# Use the correct firebase admin initialization based on the environment
 if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
     from firebase_admin_init_local import bucket
 else:
@@ -19,12 +20,12 @@ class TestEnvManagement(unittest.TestCase):
         # Path to the directory one level above /tests
         self.parent_dir = Path(__file__).resolve().parent.parent
 
-        # Local path setup
+        # Local path setup using Path to ensure OS compatibility
         self.userID = "z1rAKDTurnWksoMbTpaEiZc3cEF3"
         self.module_type = "learn"
-        self.local_terms_path = self.parent_dir / f"learn_data/{self.userID}/terms.json"
+        self.local_terms_path = self.parent_dir / "learn_data" / self.userID / "terms.json"
         self.default_terms_path = self.parent_dir / "learn_data_terms.json"
-        self.cloud_terms_path = f"learn_data/{self.userID}/terms.json"
+        self.cloud_terms_path = f"learn_data/{self.userID}/terms.json"  # Firebase path remains as string
 
         # Backend URL (staging or production) set via environment variable
         self.base_url = os.getenv('TEST_ENV_URL', 'http://localhost:5000')  # Fallback to localhost for local tests
@@ -76,11 +77,11 @@ class TestEnvManagement(unittest.TestCase):
         """Clean up any remaining files."""
         # Remove the local file if it exists
         if self.local_terms_path.exists():
-            os.remove(self.local_terms_path)
+            self.local_terms_path.unlink()  # Use pathlib's unlink to remove the file
 
         # Clean up the local directory if it exists and is empty
-        if self.local_terms_path.parent.exists() and not os.listdir(self.local_terms_path.parent):
-            os.rmdir(self.local_terms_path.parent)
+        if self.local_terms_path.parent.exists() and not any(self.local_terms_path.parent.iterdir()):
+            self.local_terms_path.parent.rmdir()
 
 if __name__ == '__main__':
     unittest.main()
