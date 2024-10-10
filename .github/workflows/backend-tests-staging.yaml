@@ -1,0 +1,35 @@
+name: Run Backend Tests on merge into main
+
+on:
+  push:
+    branches:
+      - main  # Trigger on merges to the main branch
+    paths:
+      - 'src/backend/**'  # Only trigger if there are changes in the backend directory
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment and install dependencies
+      - name: Set up Python environment
+        run: |
+          cd src/backend
+          pip install -r requirements.txt
+
+      # Step 3: Start the backend (app.py) in the background
+      - name: Run backend
+        run: |
+          cd src/backend
+          python3 app.py &  # Run app.py in the background
+
+      # Step 4: Run the backend tests
+      - name: Run backend tests
+        run: |
+          cd src/backend
+          python3 -m unittest discover -s test -p "test_session.py"
