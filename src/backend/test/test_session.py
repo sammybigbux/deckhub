@@ -6,7 +6,11 @@ from pathlib import Path
 
 # Add the directory above 'tests' to sys.path to import firebase_admin_init
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from backend.firebase_admin_init_local import storage, bucket
+
+if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
+    from firebase_admin_init_local import bucket
+else:
+    from firebase_admin_init_cloud import bucket
 
 class TestEnvManagement(unittest.TestCase):
 
