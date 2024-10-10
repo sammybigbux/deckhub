@@ -1,9 +1,9 @@
-name: Run Backend Tests on merge into main
+name: Run Backend Tests on merge into staging
 
 on:
   push:
     branches:
-      - staging  # Trigger on merges to the main branch
+      - staging  # Trigger on merges to the staging branch
     paths:
       - 'src/backend/**'  # Only trigger if there are changes in the backend directory
 
@@ -28,8 +28,10 @@ jobs:
           cd src/backend
           python3 app.py &  # Run app.py in the background
 
-      # Step 4: Run the backend tests
+      # Step 4: Run the backend tests with TEST_ENV_URL set to staging URL
       - name: Run backend tests
+        env:
+          TEST_ENV_URL: "https://deckhub-backend-staging-1086653848406.us-central1.run.app"  # Staging URL
         run: |
           cd src/backend
           python3 -m unittest discover -s test -p "test_session.py"
