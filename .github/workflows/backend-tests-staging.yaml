@@ -3,7 +3,7 @@ name: Run Backend Tests on merge into main
 on:
   push:
     branches:
-      - main  # Trigger on merges to the main branch
+      - staging  # Trigger on merges to the main branch
     paths:
       - 'src/backend/**'  # Only trigger if there are changes in the backend directory
 
