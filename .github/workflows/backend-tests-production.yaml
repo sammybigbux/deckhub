@@ -36,6 +36,8 @@ jobs:
 
       # Step 5: Start the backend (app.py) in the background
       - name: Run backend
+        env:
+          TEST_ENV_URL: "https://deckhub-backend-1086653848406.us-central1.run.app"  # Production backend URL
         run: |
           cd src/backend
           python3 app.py &  # Run app.py in the background
