@@ -20,7 +20,7 @@ class TestEnvManagement(unittest.TestCase):
         self.parent_dir = Path(__file__).resolve().parent.parent
 
         # Local path setup
-        self.userID = "z1rAKDTurnWksoMbTpaEiZc3cEF3"
+        self.userID = "JPqzMvLnJSQvfxw841ibYWDyqVl2"
         self.module_type = "learn"
         self.local_terms_path = self.parent_dir / f"learn_data/{self.userID}/terms.json"
         self.default_terms_path = self.parent_dir / "learn_data_terms.json"
