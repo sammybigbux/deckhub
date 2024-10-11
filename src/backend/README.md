@@ -7,7 +7,7 @@ The backend primarily consists of:
   - `TermManager`: Manages the terms and their statuses for each user.
 - **Firebase Initialization Files**:
   - `firebase_admin_init_cloud.py`: Initializes Firebase Admin SDK for cloud deployments using credentials stored in Secret Manager.
-  - `firebase_admin_init_local.py`: Initializes Firebase Admin SDK for local deployments using a service account file stored locally.
+  - `firebase_admin_init_local.py`: Initializes Firebase Admin SDK for local deployments using a service account file stored locally. 
 
 ## Application Workflow
 
