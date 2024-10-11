@@ -69,7 +69,7 @@
                     console.log('Fetching user decks...');
                     console.log('Sending this authorization token to get_user_decks: ', token);
 
-                    const userResponse = await fetch('http://127.0.0.1:5000/get_user_decks', {
+                    const userResponse = await fetch(`${base_url}/get_user_decks`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
