@@ -50,7 +50,6 @@
 
     onMount(async () => {
         try {
-            console.log('Fetching all decks...');
             const response = await fetch(`${base_url}/get_decks`, {
                 method: 'GET',
                 headers: {

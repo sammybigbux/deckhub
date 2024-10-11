@@ -68,14 +68,44 @@ onAuthStateChanged(auth, async (user) => {
         isLoggedIn.set(true);
         userName.set(user.displayName || "User");
         userId.set(user.uid);  // Set the user ID in the store
+        
+        // Fetch Stripe customer ID from backend if it exists
+        const stripeCustomerId = await fetchStripeCustomerId(user.uid);
+        if (stripeCustomerId) {
+            stripeCustomerIdStore.set(stripeCustomerId); // Store the Stripe customer ID
+            console.log('Stripe customer ID set after authentication:', stripeCustomerId);
+        } else {
+            console.warn('No Stripe customer ID found for this user');
+        }
+
     } else {
+        // Handle the logged out state
         isLoggedIn.set(false);
         userName.set("");
         idToken.set("");
         userId.set(null);  // Clear the user ID when logged out
+        stripeCustomerIdStore.set(null);  // Clear the Stripe customer ID
         userDecks.set([]); // Clear user decks
     }
 });
+
+// Function to fetch Stripe customer ID from the backend
+async function fetchStripeCustomerId(userId) {
+    try {
+        const response = await fetch(`${base_url}/get-stripe-customer-id`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_id: userId }),  // Pass user ID to the backend
+        });
+        const data = await response.json();
+        return data.stripe_customer_id;  // Return Stripe customer ID from backend response
+    } catch (error) {
+        console.error('Error fetching Stripe customer ID:', error);
+        return null;
+    }
+}
 
 // Function to handle Google login
 export async function loginWithGoogle() {

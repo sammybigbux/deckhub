@@ -486,6 +486,7 @@ def create_checkout_session():
     
     except Exception as e:
         return jsonify(error=str(e)), 403
+
 @app.route('/webhook', methods=['POST'])
 def webhook_received():
     event = None
@@ -517,6 +518,22 @@ def webhook_received():
         })
         print(f"Product {product_name} added to user {user_id}'s decks_owned")
     return 'Success', 200
+
+@app.route('/get-stripe-customer-id', methods=['POST'])
+def get_stripe_customer_id():
+    data = request.get_json()
+    user_id = data['user_id']
+    
+    # Fetch the Stripe customer ID from the database for the given user ID
+    user_ref = db.collection('users').document(user_id)
+    user_doc = user_ref.get()
+    
+    if user_doc.exists:
+        stripe_customer_id = user_doc.to_dict().get('stripe_customer_id', None)
+        return jsonify({'stripe_customer_id': stripe_customer_id})
+    else:
+        return jsonify({'error': 'User not found'}), 404
+
 if __name__ == '__main__':
     if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
         app.run(host='localhost', port=5000, debug=True)
