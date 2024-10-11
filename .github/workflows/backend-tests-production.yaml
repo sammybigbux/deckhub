@@ -34,8 +34,8 @@ jobs:
           cd src/backend
           pip install -r requirements.txt
 
-      # Step 5: Start the backend (app.py) in the background with environment variables
-      - name: Run backend
+      # Step 5: Start the Flask server in the background using nohup and run tests
+      - name: Run backend and tests
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
@@ -43,12 +43,6 @@ jobs:
           TEST_ENV_URL: "https://deckhub-backend-1086653848406.us-central1.run.app"  # Production backend URL
         run: |
           cd src/backend
-          python3 app.py &  # Run app.py in the background
-
-      # Step 6: Run backend tests with TEST_ENV_URL set to production URL
-      - name: Run backend tests
-        env:
-          TEST_ENV_URL: "https://deckhub-backend-1086653848406.us-central1.run.app"  # Production backend URL
-        run: |
-          cd src/backend
+          nohup python3 app.py &  # Run Flask server in the background using nohup
+          sleep 5  # Give the server time to start up
           python3 -m unittest discover -s test -p "test_session.py"
