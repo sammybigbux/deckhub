@@ -2,9 +2,7 @@ from pathlib import Path
 from term_manager import TermManager
 import os
 
-LOCAL = os.environ.get('LOCAL', 'True') == 'True'
-
-if LOCAL:
+if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
     from firebase_admin_init_local import storage
 else:
     from firebase_admin_init_cloud import storage
