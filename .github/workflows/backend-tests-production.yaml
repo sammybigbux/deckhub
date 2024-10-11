@@ -16,19 +16,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Google Cloud credentials
-      - name: Set up Google Cloud credentials
-        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > ${HOME}/gcloud_key.json
+      # Step 2: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
-      # Step 3: Set GOOGLE_APPLICATION_CREDENTIALS environment variable
-      - name: Set GOOGLE_APPLICATION_CREDENTIALS
-        run: |
-          export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcloud_key.json"
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/gcloud_key.json"
+      # Step 3: Set up Google Cloud SDK
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}
 
-      # Step 4: Set up Python environment and install dependencies
-      - name: Set up Python environment
+      # Step 4: Install dependencies for the backend
+      - name: Install Python dependencies
         run: |
           cd src/backend
           pip install -r requirements.txt
@@ -39,11 +40,10 @@ jobs:
           cd src/backend
           python3 app.py &  # Run app.py in the background
 
-      # Step 6: Run the backend tests with TEST_ENV_URL set to production URL
+      # Step 6: Run backend tests with TEST_ENV_URL set to production URL
       - name: Run backend tests
         env:
           TEST_ENV_URL: "https://deckhub-backend-1086653848406.us-central1.run.app"  # Production backend URL
-          GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/gcloud_key.json"
         run: |
           cd src/backend
           python3 -m unittest discover -s test -p "test_session.py"
