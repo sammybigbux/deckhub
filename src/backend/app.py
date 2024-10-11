@@ -14,13 +14,16 @@ from datetime import datetime, timedelta, timezone
 from user_manager import UserManager
 from response_event_handler import ResponseEventHandler
 import stripe
+
 if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
     from firebase_admin_init_local import db, bucket
 else:
     from firebase_admin_init_cloud import db, bucket
-api_key = os.environ.get('OPENAI_API_KEY').replace("'", "")
-stripe.api_key = os.environ.get('STRIPE_SECRET_KEY').replace("'", "")
-webhook_secret = os.environ.get('WEBHOOK_SECRET').replace("'", "")
+
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY').replace("'", "")
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY').replace("'", "")
+webhook_secret = os.getenv('WEBHOOK_SECRET').replace("'", "")
 client = OpenAI(api_key=api_key)
 # Define the assistant ID from an environment variable
 # This assistant is for answering questions
