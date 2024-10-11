@@ -15,10 +15,7 @@ from user_manager import UserManager
 from response_event_handler import ResponseEventHandler
 import stripe
 
-load_dotenv()
-LOCAL = os.environ.get('LOCAL', 'True') == 'True'
-
-if LOCAL:
+if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
     from firebase_admin_init_local import db, bucket
 else:
     from firebase_admin_init_cloud import db, bucket
