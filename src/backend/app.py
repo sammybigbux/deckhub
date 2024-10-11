@@ -515,7 +515,7 @@ def webhook_received():
         print(f"Product {product_name} added to user {user_id}'s decks_owned")
     return 'Success', 200
 if __name__ == '__main__':
-    if LOCAL:
+    if os.getenv('TEST_ENV_URL', 'http://localhost:5000') == 'http://localhost:5000':
         app.run(host='localhost', port=5000, debug=True)
     else:
         app.run(host='0.0.0.0', port=8080, debug=True)
