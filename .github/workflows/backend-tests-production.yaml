@@ -34,9 +34,12 @@ jobs:
           cd src/backend
           pip install -r requirements.txt
 
-      # Step 5: Start the backend (app.py) in the background
+      # Step 5: Start the backend (app.py) in the background with environment variables
       - name: Run backend
         env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
           TEST_ENV_URL: "https://deckhub-backend-1086653848406.us-central1.run.app"  # Production backend URL
         run: |
           cd src/backend
