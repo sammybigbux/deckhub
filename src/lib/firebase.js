@@ -3,6 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signO
 import { getFirestore } from 'firebase/firestore';
 import { writable } from 'svelte/store'; 
 import { userDecks } from '../stores/auth';
+const base_url = import.meta.env.VITE_BASE_URL;
 
 
 // Firebase configuration
@@ -28,6 +29,7 @@ export let idToken = writable(""); // Store the Firebase ID token
 export let userID = writable(""); // Store the Firebase user ID
 export const userId = writable(null);  // New store to track the user ID
 export const stripeCustomerIdStore = writable(null);  // New store to track the Stripe customer ID
+
 
 // Utility function to check if localStorage is available
 function isLocalStorageAvailable() {
@@ -104,7 +106,7 @@ export async function loginWithGoogle() {
 // Function to create a user on the backend if it doesn't exist
 async function createUserOnBackend(userId, displayName, email, idToken) {
     try {
-        const response = await fetch('http://127.0.0.1:5000/create_user_if_not_exists', {
+        const response = await fetch(`${base_url}/create_user_if_not_exists`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
