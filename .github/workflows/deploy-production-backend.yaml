@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Triggers on any merge into the main branch
     paths:
-      - 'src/backend/**'
+      - 'src/backend/**'  # Only trigger if there are changes in the backend directory
 
 jobs:
   deploy_backend:
@@ -54,8 +54,10 @@ jobs:
             --set-env-vars "LOCAL=False" \
             --set-env-vars "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}" \
             --set-env-vars "WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}" \
-            --set-env-vars "BASE_URL=https://deckhub-backend-1086653848406.us-central1.run.app"
-      
+            --set-env-vars "BASE_URL=https://deckhub-backend-1086653848406.us-central1.run.app" \
+            --set-env-vars "TEST_ENV_URL=https://deckhub-backend-1086653848406.us-central1.run.app"
+
+      # Step 8: Confirm deployment
       - name: Backend deployed
         run: |
-           echo https://deckhub-backend-1086653848406.us-central1.run.app
+          echo "Backend successfully deployed to https://deckhub-backend-1086653848406.us-central1.run.app"
