@@ -274,8 +274,8 @@
             "Lifecycle Management and Storage Tiers in EFS"
         ],
         "special topics": [
-            "Expanding to Multiple Regions: Imagine you have an EC2 instance configured in one region and need to replicate this configuration in another region. How would you use AMIs to accomplish this?",
-            "Creating a Custom AMI for Faster Boot Times: Suppose you frequently need to launch EC2 instances with specific software pre-installed. How would you use custom AMIs to achieve faster boot and configuration times for your instances?",
+            "Expanding to Multiple Regions",
+            "Creating a Custom AMI for Faster Boot Times",
             "Compatibility with Linux-Based AMIs",
             "Functionality of Recycle Bin for EBS Snapshots",
             "Advantages of Using Nitro with io1/io2 for High IOPS",
@@ -897,26 +897,23 @@
     },
     "Containers on AWS": {
         "foundational": [
-            "How would you process objects uploaded to S3 buckets automatically without managing servers?",
-            "How would you scale a service to handle varying loads of messages in a queue?",
-            "Load Balancer Integrations with ECS",
-            "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
-            "IAM Roles for ECS Tasks and Instance Profiles",
+            "Amazon ECS Use Case",
             "Fargate Launch Type Overview",
-            "Scaling ECS Services with SQS Queue",
-            "Introduction to Docker and its Use Cases",
-            "Introduction to Amazon ECS and EC2 Launch Type"
+            "Storing Docker Images in Docker Repositories",
+            "Difference Between Docker and Virtual Machines",
+            "Dockerfile and Docker Containers",
+            "How Docker Works on an Operating System",
+            "Docker and its Use Cases",
+            "Amazon ECS and EC2 Launch Type"
         ],
         "intermediate": [
             "Scheduling Tasks with EventBridge",
             "Data Persistence on Amazon ECS with Amazon EFS",
-            "Monitoring Task States with EventBridge",
-            "How Docker Works on an Operating System",
-            "Storing Docker Images in Docker Repositories",
-            "Difference Between Docker and Virtual Machines",
-            "Getting Started with Docker: From Dockerfile to Docker Container",
             "Managing ECS Tasks with EventBridge",
-            "Which AWS service is best suited for scheduling containerized batch processing tasks?"
+            "Scheduling containerized batch processing tasks",
+            "Load Balancer Integrations with ECS",
+            "IAM Roles for ECS Tasks and Instance Profiles",
+            "Scaling ECS Services with SQS Queue"
         ],
         "special topics": []
     },
@@ -1035,4 +1032,5 @@
         ],
         "special topics": []
     }
+    
 }
