@@ -10,6 +10,7 @@
   let user = null;
   let unsubscribe;
   let isSubscribed = true;
+  const base_url = import.meta.env.VITE_BASE_URL;
 
   async function handleSubmit() {
       if (!get(isLoggedIn)) {
@@ -18,7 +19,7 @@
       }
 
       try {
-          const response = await fetch('http://127.0.0.1:5000/submit_request', {
+          const response = await fetch(`${base_url}/submit_request`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -45,7 +46,7 @@
   async function fetchRequests() {
     try {
         console.log("Starting fetch for requests...");
-        const response = await fetch('http://127.0.0.1:5000/fetch_requests');
+        const response = await fetch(`${base_url}/fetch_requests`);
         
         console.log("Received response:", response);
 
@@ -66,7 +67,7 @@
 
   async function toggleUpvote(requestId) {
       try {
-          await fetch('http://127.0.0.1:5000/toggle_upvote', {
+          await fetch(`${base_url}/toggle_upvote`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',

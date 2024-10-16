@@ -1,0 +1,48 @@
+name: Run Backend Tests on merge into staging
+
+on:
+  push:
+    branches:
+      - staging  # Trigger on merges to the staging branch
+    paths:
+      - 'src/backend/**'  # Only trigger if there are changes in the backend directory
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+
+      # Step 3: Set up Google Cloud SDK
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}
+
+      # Step 4: Install dependencies for the backend
+      - name: Install Python dependencies
+        run: |
+          cd src/backend
+          pip install -r requirements.txt
+
+      # Step 5: Start the Flask server in the background using nohup and run tests
+      - name: Run backend and tests
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+          TEST_ENV_URL: "https://deckhub-backend-staging-1086653848406.us-central1.run.app"  # Staging backend URL
+        run: |
+          cd src/backend
+          nohup python3 app.py &  # Run Flask server in the background using nohup
+          sleep 5  # Give the server time to start up
+          python3 -m unittest discover -s test -p "test_session.py"

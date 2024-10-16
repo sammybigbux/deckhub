@@ -1,5 +1,3 @@
-# firebase_admin_init_cloud.py
-
 import firebase_admin
 from firebase_admin import credentials, firestore, storage
 from google.cloud import secretmanager

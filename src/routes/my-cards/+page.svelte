@@ -2,6 +2,7 @@
     import { writable, derived } from 'svelte/store';
     import { isLoggedIn, idToken, userName } from '$lib/firebase';
     import { onMount } from 'svelte';
+    const base_url = import.meta.env.VITE_BASE_URL;
 
     let searchQuery = writable('');
 
@@ -40,7 +41,7 @@
         try {
             // Fetch all decks from the backend
             console.log('Fetching all decks...');
-            const decksResponse = await fetch('http://127.0.0.1:5000/get_decks', {
+            const decksResponse = await fetch(`${base_url}/get_decks`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,7 +69,7 @@
                     console.log('Fetching user decks...');
                     console.log('Sending this authorization token to get_user_decks: ', token);
 
-                    const userResponse = await fetch('http://127.0.0.1:5000/get_user_decks', {
+                    const userResponse = await fetch(`${base_url}/get_user_decks`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

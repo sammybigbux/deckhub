@@ -3,6 +3,9 @@
     import { isLoggedIn, idToken, userName } from '$lib/firebase'; // Import auth and userName here
     import { onMount } from 'svelte';
     import { userDecks } from '../../stores/auth';
+    import { createCheckoutSession } from '$lib/stripe';
+
+    const base_url = import.meta.env.VITE_BASE_URL;
 
     let searchQuery = writable('');
 
@@ -37,10 +40,17 @@
         searchQuery.set(event.target.value);
     }
 
+    async function handlePurchase(product_name) {
+        const productId = 'prod_QxWysKGQWOT3ft';
+        const priceId = 'price_1Q5bu4FKyW9aNIed3s7e8GYF';
+
+        // Call the function from the stripe.js file
+        await createCheckoutSession(productId, priceId, product_name);
+    }
+
     onMount(async () => {
         try {
-            console.log('Fetching all decks...');
-            const response = await fetch('http://127.0.0.1:5000/get_decks', {
+            const response = await fetch(`${base_url}/get_decks`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,7 +71,7 @@
                     console.log('Fetching user decks...');
                     console.log('Sending this authorization token to get_user_decks: ', token);
 
-                    const userResponse = await fetch('http://127.0.0.1:5000/get_user_decks', {
+                    const userResponse = await fetch(`${base_url}/get_user_decks`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -189,10 +199,17 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn" 
+                <button 
+                    class="btn" 
                     class:variant-filled-success={$userDecks.includes(deck.name)} 
-                    class:variant-filled-error={!$userDecks.includes(deck.name)}>
-                    {$userDecks.includes(deck.name) ? 'Download' : 'Purchase'}
+                    class:variant-filled-error={!$userDecks.includes(deck.name)}
+                    on:click={() => {
+                        if (!$userDecks.includes(deck.name)) {
+                            handlePurchase(deck.name);
+                        }
+                    }}
+                >
+                    {$userDecks.includes(deck.name) ? 'Open' : 'Purchase'}
                 </button>
             </div>
         {/each}
