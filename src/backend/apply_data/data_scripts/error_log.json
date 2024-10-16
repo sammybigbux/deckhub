@@ -1,0 +1,79 @@
+{
+  "section": "Containers on AWS",
+  "specificity": "foundational",
+  "concepts": [
+    "How would you process objects uploaded to S3 buckets automatically without managing servers?",
+    "How would you scale a service to handle varying loads of messages in a queue?",
+    "Load Balancer Integrations with ECS",
+    "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
+    "IAM Roles for ECS Tasks and Instance Profiles",
+    "Introduction to Docker and its Use Cases",
+    "Introduction to Amazon ECS and EC2 Launch Type"
+  ],
+  "error": "Failed after 3 attempts"
+}
+{
+  "section": "Containers on AWS",
+  "specificity": "foundational",
+  "concepts": [
+    "How would you scale a service to handle varying loads of messages in a queue?",
+    "Load Balancer Integrations with ECS",
+    "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
+    "IAM Roles for ECS Tasks and Instance Profiles",
+    "Introduction to Docker and its Use Cases"
+  ],
+  "error": "Failed after 3 attempts"
+}
+{
+  "section": "Containers on AWS",
+  "specificity": "foundational",
+  "concepts": [
+    "How would you process objects uploaded to S3 buckets automatically without managing servers?",
+    "How would you scale a service to handle varying loads of messages in a queue?",
+    "Load Balancer Integrations with ECS",
+    "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
+    "IAM Roles for ECS Tasks and Instance Profiles",
+    "Fargate Launch Type Overview",
+    "Scaling ECS Services with SQS Queue",
+    "Introduction to Docker and its Use Cases",
+    "Introduction to Amazon ECS and EC2 Launch Type"
+  ],
+  "error": "Failed after 3 attempts"
+}
+{
+  "section": "Containers on AWS",
+  "specificity": "foundational",
+  "concepts": [
+    "How would you process objects uploaded to S3 buckets automatically without managing servers?",
+    "How would you scale a service to handle varying loads of messages in a queue?",
+    "Load Balancer Integrations with ECS",
+    "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
+    "IAM Roles for ECS Tasks and Instance Profiles",
+    "Fargate Launch Type Overview",
+    "Scaling ECS Services with SQS Queue",
+    "Introduction to Docker and its Use Cases",
+    "Introduction to Amazon ECS and EC2 Launch Type"
+  ],
+  "error": "Failed after 3 attempts"
+}
+{
+  "section": "Containers on AWS",
+  "specificity": "foundational",
+  "concepts": [
+    "How would you process objects uploaded to S3 buckets automatically without managing servers?",
+    "How would you scale a service to handle varying loads of messages in a queue?",
+    "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
+    "Introduction to Docker and its Use Cases"
+  ],
+  "error": "Failed after 3 attempts"
+}
+{
+  "section": "Containers on AWS",
+  "specificity": "foundational",
+  "concepts": [
+    "How would you scale a service to handle varying loads of messages in a queue?",
+    "What service and configuration would you use to perform scheduled batch processing every hour using containers?",
+    "Introduction to Docker and its Use Cases"
+  ],
+  "error": "Failed after 3 attempts"
+}

@@ -1,0 +1,379 @@
+{
+  "High Availability and Scalability": {
+    "dynamic_scaling_with_load_balancer_question": {
+      "component_concepts": [
+        "Dynamic Scaling",
+        "Elastic Load Balancer Features",
+        "Importance of Health Checks"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "How can a business ensure high availability and efficient resource allocation when experiencing varying web traffic patterns?",
+        "option1": "Implement dynamic scaling with Elastic Load Balancer and configure health checks to automatically allocate resources based on demand.",
+        "option2": "Manually adjust server resources during peak traffic times to manage availability and performance.",
+        "option3": "Utilize a single AZ deployment with a fixed number of instances to maintain consistent traffic distribution.",
+        "option4": "Disable health checks on the load balancer to prevent unnecessary resource scaling during off-peak hours.",
+        "answer": "option1"
+      }
+    },
+    "layer7_load_balancing_question": {
+      "component_concepts": [
+        "Layer 7 Load Balancer",
+        "Load Balancing Traffic Distribution"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "A company wants to optimize their web application's traffic handling to enhance high availability and scalability. They decide to use a load balancer that can distribute HTTP requests and manage traffic based on the URL path. Which AWS load balancing strategy should they implement?",
+        "option1": "Implement a Layer 7 Load Balancer to distribute traffic based on HTTP requests and URL path.",
+        "option2": "Use a Layer 4 Load Balancer for URL path-based traffic distribution.",
+        "option3": "Leverage High Availability across multiple EC2 instances instead of using a Load Balancer.",
+        "option4": "Deploy a Vertical Scaling approach to manage traffic distribution without a Load Balancer.",
+        "answer": "option1"
+      }
+    },
+    "load_balancing_high_availability_question": {
+      "component_concepts": [
+        "Layer 4 vs Layer 7 Load Balancing",
+        "Load Distribution Across AZs",
+        "Health Management"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "A startup is designing a highly available web application architecture in AWS and wants to effectively manage incoming traffic across multiple applications hosted in various Availability Zones. They need to route traffic based on specific URL paths and ensure that the system can detect and manage unhealthy instances. Which AWS service configuration should the startup choose?",
+        "option1": "Implement an Application Load Balancer, which operates at Layer 7 to route traffic based on URL paths, and configure health checks for instance health management across multiple AZs.",
+        "option2": "Use a Network Load Balancer for Layer 4 load balancing and rely on custom scripts for health management, distributing traffic evenly across AZs.",
+        "option3": "Deploy an EC2 instance in each Availability Zone and manually configure DNS settings to distribute traffic and perform health checks.",
+        "option4": "Set up a Classic Load Balancer with health checks and use Route 53 for traffic routing based on URL paths.",
+        "answer": "option1"
+      }
+    },
+    "load_balancer_scalability_question": {
+      "component_concepts": [
+        "Implications of Load Balancers on High Availability",
+        "Vertical vs. Horizontal Scalability",
+        "Automated Scaling"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "A web application needs to handle increased loads due to a marketing campaign. Which strategies would best ensure both high availability and scalability?",
+        "option1": "Use a load balancer to distribute traffic across multiple servers and implement automated scaling to increase instances based on demand.",
+        "option2": "Increase the CPU and memory on the main server to handle additional load, ensuring high availability through hardware enhancements.",
+        "option3": "Rely on a single powerful server and manually add more servers if traffic increases significantly.",
+        "option4": "Ensure high availability by hosting the application on a single highly resilient server with comprehensive backup strategies.",
+        "answer": "option1"
+      }
+    },
+    "high_availability_routing_question": {
+      "component_concepts": [
+        "Routing Based on URL Path and Hostname",
+        "Integration with Load Balancers"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "An e-commerce company is designing an application architecture to ensure that their web services are highly available and can scale based on demand. They need to route traffic based on URL paths and hostnames. Which component should they integrate with load balancers to achieve this?",
+        "option1": "Enable an Application Load Balancer to handle routing based on URL paths and hostnames.",
+        "option2": "Integrate a Network Load Balancer and configure url-based routing.",
+        "option3": "Set up a Classic Load Balancer and use it for routing based on URL paths.",
+        "option4": "Use an Elastic Load Balancer to manage hostname routing natively.",
+        "answer": "option1"
+      }
+    },
+    "scalable_load_balancer_question": {
+      "component_concepts": [
+        "Default Settings for Cross Zone Load Balancing",
+        "Types of Managed Load Balancers",
+        "High Availability and Its Importance"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "A startup is designing a microservices architecture to ensure high availability and scalability across multiple AWS regions. Which strategy should they use to effectively manage traffic and ensure their services experience minimal downtime?",
+        "option1": "Utilize an Elastic Load Balancer (ELB) with Cross Zone Load Balancing enabled by default to distribute traffic across multiple Availability Zones.",
+        "option2": "Use a Network Load Balancer to distribute traffic across different AWS regions without enabling Cross Zone Load Balancing for cost efficiency.",
+        "option3": "Set up an Application Load Balancer without enabling Cross Zone Load Balancing to leverage instance health checks across regions.",
+        "option4": "Deploy an Internal Load Balancer across multiple AWS accounts to ensure services are hosted with redundancy.",
+        "answer": "option1"
+      }
+    },
+    "high_availability_distributed_systems_question": {
+      "component_concepts": [
+        "High Availability",
+        "Distributed Systems"
+      ],
+      "specificity": "foundational",
+      "questions": {
+        "question": "An organization needs to design a system that can handle large-scale traffic while ensuring high availability. Which architecture should they prioritize to achieve this?",
+        "option1": "Implement a load-balanced architecture with multiple instances across different availability zones.",
+        "option2": "Use a single instance with a vertically scalable server in one availability zone.",
+        "option3": "Deploy additional RAM and CPU resources to a single server to handle scale.",
+        "option4": "Utilize a region that supports only one availability zone to minimize latency.",
+        "answer": "option1"
+      }
+    },
+    "high_availability_stickiness_ssl_question": {
+      "component_concepts": [
+        "Purpose of Sticky Sessions",
+        "SSL Termination at Load Balancer",
+        "Impact of Stickiness on Load Distribution"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "An e-commerce website is hosted on AWS using an Application Load Balancer (ALB) to direct traffic to multiple EC2 instances. The company wants to ensure secure communication with clients and also implement sticky sessions to maintain session integrity for logged-in users. What are the implications of enabling sticky sessions with SSL termination at the load balancer?",
+        "option1": "Sticky sessions will help maintain session persistence, but SSL termination at the ALB will offload encryption tasks from the instances, improving their performance.",
+        "option2": "Enabling sticky sessions will evenly distribute traffic among instances, but SSL termination could increase the load on instances with high traffic.",
+        "option3": "SSL termination at the ALB will prevent any traffic imbalance caused by sticky sessions, and overall security will be improved.",
+        "option4": "Implementing sticky sessions will disable SSL termination at the ALB, requiring manual SSL management on backend instances.",
+        "answer": "option1"
+      }
+    },
+    "sni_ssl_certificates_question": {
+      "component_concepts": [
+        "SNI for Multiple Domains",
+        "Multiple SSL Certificates Handling",
+        "ALB and NLB Support for SNI"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A company needs to host multiple secure domains on a single load balancer while minimizing the complexity of its architecture. Which approach should they take to handle multiple SSL certificates for different domains efficiently?",
+        "option1": "Use Application Load Balancer (ALB) with SNI support to manage multiple SSL certificates for each domain securely.",
+        "option2": "Employ Network Load Balancer (NLB) without SNI, manually configuring separate IPs for different domain certificates.",
+        "option3": "Setup a Classic Load Balancer, as it natively handles multiple SSL certificates more effectively than ALB or NLB.",
+        "option4": "Use a single SSL certificate covering all domains and modify DNS settings to route traffic correctly.",
+        "answer": "option1"
+      }
+    },
+    "nlb_ec2_private_ip_scalability_question": {
+      "component_concepts": [
+        "Integrating NLB with EC2 Instances",
+        "Using NLB with Private IPs",
+        "Implications of Scaling"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "Your company needs to handle increased traffic efficiently and has decided to use Network Load Balancers (NLB) for their architecture. The design requires that the NLB integrate with EC2 instances using private IP addresses. How can scaling impact this architecture?",
+        "option1": "As traffic increases, the NLB can automatically scale up using private IP endpoints of EC2 instances without disrupting connections.",
+        "option2": "The addition of more EC2 instances will require manual update of private IPs within the NLB configuration, which may cause downtime.",
+        "option3": "Scaling impacts the architecture by necessitating the use of Static IP assignment to maintain session affinity with EC2 instances.",
+        "option4": "Private IPs configured in NLB mean any scaling action will lead to data loss unless a Static IP is configured in advance.",
+        "answer": "option1"
+      }
+    },
+    "security_policy_load_balancer_question": {
+      "component_concepts": [
+        "Security Policy Configuration",
+        "Implementing Stickiness for Load Balancers",
+        "ACM Certificate Management"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A company is setting up an Application Load Balancer (ALB) to serve its customer-facing website. They want to ensure that the connection is secure, maintain session persistence (stickiness), and have an automated process for managing SSL/TLS certificates. Which configuration should they implement?",
+        "option1": "Use ACM to automatically provision and renew SSL/TLS certificates, enable sticky sessions using application-based cookies, and configure a security policy that supports modern protocols.",
+        "option2": "Manually install SSL certificates on each application instance, use IP-based sticky sessions, and set a security policy that only supports legacy protocols.",
+        "option3": "Disable SSL/TLS to avoid complexity, rely on IP-based routing for persistence, and configure an unrestricted security policy.",
+        "option4": "Use a self-signed SSL certificate, implement stickiness based on duration, and apply AWS default security settings without customization.",
+        "answer": "option1"
+      }
+    },
+    "redirect_http_https_connection_draining_question": {
+      "component_concepts": [
+        "Redirecting Traffic from HTTP to HTTPS",
+        "Connection Draining in Classic Load Balancer vs. Application/Network Load Balancer"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "An e-commerce company is using Classic Load Balancers and Application Load Balancers to manage different aspects of their web architecture. They plan to redirect all HTTP traffic to HTTPS and need to handle active user connections properly during maintenance to minimize disruptions. What approaches should they take?",
+        "option1": "Implement HTTP to HTTPS redirection in Application Load Balancer and use connection draining to handle open connections gracefully on both CLB and ALB.",
+        "option2": "Directly upgrade all connections to TLS for secure handling and use health checks instead of connection draining during maintenance.",
+        "option3": "Remove the HTTP listeners and rely entirely on DNS changes for HTTPS redirection, ensuring users reconnect during maintenance.",
+        "option4": "Use Sticky Sessions to manage traffic redirection and session stability, while terminating all existing connections at once during maintenance.",
+        "answer": "option1"
+      }
+    },
+    "alb_routing_scalability_question": {
+      "component_concepts": [
+        "ALB Target Group Routing",
+        "Routing Traffic to Multiple Applications",
+        "Health Check Protocols for NLB"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "An organization is deploying multiple applications in AWS using an Application Load Balancer (ALB) and a Network Load Balancer (NLB). They need to ensure that traffic is routed correctly to the correct application and that the health of the instances is constantly monitored. What configuration should they implement to achieve high availability and scalability?",
+        "option1": "Use ALB Target Group Routing to manage traffic between applications and configure Health Check Protocols on NLB to monitor instance health.",
+        "option2": "Set static IPs at ALB to distinguish different applications and rely on certificate expiration notifications for instance health monitoring.",
+        "option3": "Implement SSL termination on ALB to handle multiple applications and use connection draining to manage health checks.",
+        "option4": "Configure Sticky Sessions within ALB to direct traffic and use instance lifecycle events for health checking.",
+        "answer": "option1"
+      }
+    },
+    "connection_handling_in_load_balancing_question": {
+      "component_concepts": [
+        "Connection Termination by Load Balancer",
+        "Connection Draining vs. Deregistration Delay",
+        "In-flight Request Handling"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A company is using Elastic Load Balancing to distribute traffic to a fleet of EC2 instances. They want to ensure that ongoing requests are not abruptly terminated when they remove or replace instances. How can they achieve this with the best configuration?",
+        "option1": "Enable Connection Draining to allow existing in-flight requests to complete before terminating connections.",
+        "option2": "Set the load balancer to immediately terminate connections when an instance is deregistered to minimize deregistration delay.",
+        "option3": "Implement a deregistration delay that immediately redirects ongoing requests to an active instance.",
+        "option4": "Disable connection termination by the load balancer to allow the applications to handle connection drop gracefully.",
+        "answer": "option1"
+      }
+    },
+    "impact_connection_drain_large_scale_question": {
+      "component_concepts": [
+        "Setting Connection Draining Parameters",
+        "Impact of Connection Draining Duration on Request Handling",
+        "High Performance Load Balancing"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A company is experiencing high traffic on their web application hosted on AWS and wants to ensure minimal disruption during server maintenance. They currently use a load balancer and are considering adjusting connection draining settings. How should they configure connection draining to maintain high performance?",
+        "option1": "Set an optimal connection draining duration that balances session persistence and release of resources for high performance.",
+        "option2": "Disable connection draining entirely to maximize availability and performance.",
+        "option3": "Set the connection draining duration to the maximum allowed to ensure all pending requests complete, which maximizes performance.",
+        "option4": "Implement a fixed duration for connection draining, unrelated to application load profile, to simplify operations.",
+        "answer": "option1"
+      }
+    },
+    "high_availability_load_balancing_question": {
+      "component_concepts": [
+        "Static IP Assignment in Load Balancing",
+        "Impact on Traffic Imbalance",
+        "Combining NLB with ALB"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A retail company wants to maintain high availability and address traffic imbalances in their AWS deployment. Their application requires both static IPs for DNS whitelisting and advanced content-based routing for web requests. Which combination of load balancers should they use to meet their needs effectively?",
+        "option1": "Combine Network Load Balancer (NLB) for static IPs and Application Load Balancer (ALB) for content-based routing to address both traffic imbalance and static IP requirements.",
+        "option2": "Use only Network Load Balancer (NLB) because it supports static IPs, which inherently balances traffic.",
+        "option3": "Deploy an Application Load Balancer (ALB) exclusively as it offers better routing features and manages IP addressing through Route 53.",
+        "option4": "Set up a single instance with Elastic IPs and manage traffic using DNS-based routing solely.",
+        "answer": "option1"
+      }
+    },
+    "alb_lambda_integration_question": {
+      "component_concepts": [
+        "Integrating ALB with Lambda Functions",
+        "Security Integration with Load Balancers",
+        "SSL vs. TLS"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A company is deploying a new application using AWS Lambda for serverless computing and wants to secure the integration with an Application Load Balancer (ALB). What approach should they take to ensure secure communication using best practices?",
+        "option1": "Integrate ALB with Lambda Functions using HTTPS and implement SSL certificates managed by AWS Certificate Manager for secure communication.",
+        "option2": "Deploy ALB with HTTP integration to Lambda, since it automatically handles security at the network layer.",
+        "option3": "Use TCP integration between ALB and Lambda to ensure secure and fast communication.",
+        "option4": "Integrate the ALB with Lambda using FTP and secure the connection with client-side SSL certificates.",
+        "answer": "option1"
+      }
+    },
+    "alb_ecs_sticky_sessions_question": {
+      "component_concepts": [
+        "Using ALB with Containers and ECS",
+        "How Sticky Sessions Work",
+        "Instance Lifecycle"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "An organization is running a containerized application on AWS ECS and wants to ensure that user requests are consistently routed to the same application instance. They also want their setup to handle failures gracefully without downtime. What combination of AWS services and configurations should they implement to achieve this?",
+        "option1": "Use an Application Load Balancer with sticky sessions enabled and set up ECS service with Auto Scaling.",
+        "option2": "Deploy a Network Load Balancer with DNS-based routing and configure ECS Fargate for high availability.",
+        "option3": "Implement Elastic IPs for each ECS instance and manually handle request routing and scaling.",
+        "option4": "Use an ALB without session stickiness and rely purely on ECS task scaling.",
+        "answer": "option1"
+      }
+    },
+    "sni_protocol_certificate_question": {
+      "component_concepts": [
+        "Certificate Expiration and Renewal",
+        "SNI Protocol"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "An organization is hosting multiple secure websites on a single EC2 instance using Application Load Balancer (ALB). They want to ensure that their SSL/TLS certificates are always valid across all hosted domains. Which strategy should they employ?",
+        "option1": "Utilize the SNI Protocol with AWS Certificate Manager to automate the certificate renewal across all hosted domains.",
+        "option2": "Manually update each SSL/TLS certificate before expiration periodically.",
+        "option3": "Use CloudFront to terminate SSL/TLS and manage certificates externally.",
+        "option4": "Opt for wildcard certificates for their domains to handle expiration automatically.",
+        "answer": "option1"
+      }
+    },
+    "network_layer_cookie_management_question": {
+      "component_concepts": [
+        "Operation at Network Layer",
+        "Application-based vs. Duration-based Cookies"
+      ],
+      "specificity": "intermediate",
+      "questions": {
+        "question": "A company is designing its web application to achieve high availability and scalability. They use a load balancer operating at the network layer to distribute incoming traffic evenly across a fleet of EC2 instances. However, they need to ensure session persistence using cookies. Which approach should they adopt to maintain session persistence effectively?",
+        "option1": "Use duration-based cookies to maintain session persistence allowing users to return and resume their sessions based on a defined time period.",
+        "option2": "Utilize network layer session tokens that are automatically managed by the load balancer to ensure consistent routing.",
+        "option3": "Adopt application-based cookies manually set and managed at the application level to strictly control session persistence routing decisions.",
+        "option4": "Enable sticky sessions at the network layer to bind user sessions to specific instances without using cookies.",
+        "answer": "option1"
+      }
+    },
+    "load_balancing_across_virtual_appliances_question": {
+      "component_concepts": [
+        "Load Balancing Across Virtual Appliances",
+        "Integration with Third-party Appliances",
+        "Connecting ALB with On-premises Servers"
+      ],
+      "specificity": "special topics",
+      "questions": {
+        "question": "Your organization relies on a mix of AWS-hosted services and on-premises servers. How can you set up a high availability architecture that integrates Application Load Balancer (ALB) with your on-premises servers and third-party appliances, while ensuring traffic is balanced across multiple virtual appliances?",
+        "option1": "Implement a hybrid architecture using AWS Direct Connect for low-latency connectivity, create a target group in the ALB that includes IP addresses of the on-premises servers, and leverage Gateway Load Balancer to distribute traffic across your virtual appliances.",
+        "option2": "Use CloudFront to cache the on-premises servers' IPs, integrate ALB with AWS VPN for secure connection, and utilize NAT Gateway to manage traffic to third-party appliances.",
+        "option3": "Deploy Route 53 health checks on the on-premises servers, use internal ALB to manage traffic, and enable VPC Peering to facilitate connections with your third-party appliances.",
+        "option4": "Set up a Virtual Private Gateway for connecting on-premises servers, use Elastic Load Balancing to handle traffic, and configure the use of EC2 Auto Scaling for virtual appliance traffic management.",
+        "answer": "option1"
+      }
+    },
+    "traffic_management_routing_question": {
+      "component_concepts": [
+        "Traffic Inspection and Management",
+        "Using Query Strings for Routing"
+      ],
+      "specificity": "special topics",
+      "questions": {
+        "question": "An e-commerce company wants to enhance its application by intelligently routing user requests based on query strings, while also inspecting incoming and outgoing traffic for security threats. What setup should they consider implementing?",
+        "option1": "Use an Application Load Balancer (ALB) to route traffic based on query strings and integrate AWS WAF for traffic inspection and management.",
+        "option2": "Employ a Network Load Balancer (NLB) for query string-based routing and deploy a third-party firewall for traffic inspection.",
+        "option3": "Utilize a Gateway Load Balancer (GWLB) to manage query strings and traffic inspection simultaneously.",
+        "option4": "Set up a Classic Load Balancer to route requests based on query strings and leverage AWS Shield for traffic inspection.",
+        "answer": "option1"
+      }
+    },
+    "alb_fixed_hostname_scalability_question": {
+      "component_concepts": [
+        "Use of Route Tables in Load Balancing",
+        "Fixed Host Name for ALB"
+      ],
+      "specificity": "special topics",
+      "questions": {
+        "question": "A company is designing a scalable web application requiring a consistent endpoint across multiple Availability Zones. They need to ensure minimal latency and efficient routing for incoming traffic using AWS services. Which configuration meets these requirements?",
+        "option1": "Utilize an Application Load Balancer (ALB) with a fixed host name and Route 53 to direct traffic, configuring proper route tables for efficient traffic distribution.",
+        "option2": "Set up an Elastic Load Balancer (ELB) and manually configure DNS settings to manage traffic flow across Availability Zones.",
+        "option3": "Deploy a Network Load Balancer (NLB) with custom DNS management to ensure consistent endpoints.",
+        "option4": "Use a Gateway Load Balancer (GWLB) with default route table settings for cross-AZ load balancing.",
+        "answer": "option1"
+      }
+    },
+    "transparent_network_gateway_question": {
+      "component_concepts": [
+        "Transparent Network Gateway Functionality",
+        "Inter AZ Data Charges for NLB and GWLB"
+      ],
+      "specificity": "special topics",
+      "questions": {
+        "question": "Your company is deploying a high-security financial application within AWS and needs to ensure transparent network gateway functionality for seamless traffic inspection without affecting performance across multiple availability zones. Additionally, the solution must minimize inter-AZ data transfer charges associated with Network Load Balancer (NLB) and Gateway Load Balancer (GWLB). What architectural strategy should you implement?",
+        "option1": "Deploy GWLB paired with NLB in each Availability Zone to ensure inspection while minimizing inter-AZ traffic, thereby reducing data transfer costs.",
+        "option2": "Implement a single GWLB across all zones, as this centralizes traffic but may increase inter-AZ data transfer charges, compromising cost efficiency.",
+        "option3": "Use a VPC Endpoint for the GWLB traffic which directs all traffic through one zone, thus incurring charges only for out-of-zone traffic.",
+        "option4": "Configure a secondary VPC Peering connection between zones which avoids using load balancers entirely, eliminating inter-AZ charges.",
+        "answer": "option1"
+      }
+    }
+  }
+}
