@@ -7,6 +7,8 @@
   import { userId } from '../../../../lib/firebase';
   import { get } from 'svelte/store';
 
+  const base_url = import.meta.env.VITE_BASE_URL;
+
   let slug = $page.params.slug;
   $: slug = $page.params.slug;
   let isHovered = false;
@@ -57,7 +59,7 @@
 
       try {
           // Send POST request to /get_user_progress
-          const response = await fetch("http://localhost:5000/get_user_progress", {
+          const response = await fetch(`${base_url}/get_user_progress`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload)

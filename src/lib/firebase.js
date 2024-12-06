@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+
 import {
     getAuth,
     signInWithPopup,
@@ -10,6 +11,8 @@ import { getFirestore } from "firebase/firestore";
 import { writable } from "svelte/store";
 import { userDecks } from "../stores/auth";
 import { get } from "svelte/store";
+
+const base_url = import.meta.env.VITE_BASE_URL;
 
 // Firebase configuration
 const firebaseConfig = {
@@ -136,7 +139,7 @@ export async function loginWithGoogle() {
 async function createUserOnBackend(userId, displayName, email, idToken) {
     try {
         const response = await fetch(
-            "http://127.0.0.1:5000/create_user_if_not_exists",
+            `${base_url}/create_user_if_not_exists`,
             {
                 method: "POST",
                 headers: {

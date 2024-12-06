@@ -14,9 +14,7 @@
   import { goto } from '$app/navigation'; // Added for navigation
 
   const isLocalhost = true;
-  const base_url = isLocalhost
-      ? 'http://localhost:5000' // Your local backend URL
-      : 'https://deckhub-backend-1086653848406.us-central1.run.app'; // Deployed backend URL
+  const base_url = import.meta.env.VITE_BASE_URL;
 
   let moduleName = "";
   let selectedSectionTitle = '';
