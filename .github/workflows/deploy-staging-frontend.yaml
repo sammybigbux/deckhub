@@ -38,4 +38,4 @@ jobs:
 
       # Step 5: Echo the staging URL
       - name: Echo staging URL
-        run: echo "Staging URL -> https://deckhubapp--staging-8dva1oxn.web.app/"
+        run: echo "Staging URL -> https://deckhubapp--staging-b0b395us.web.app/"
