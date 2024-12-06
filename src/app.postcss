@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+html,
+body {
+	@apply h-full overflow-hidden;
+}
+
+* {
+	scroll-behavior: smooth;
+}
+
+body {
+	@apply font-inter !bg-none;
+	background-color: unset !important;
+}
+
+@layer utilities {
+	.button {
+		@apply flex items-center justify-center min-w-[120px] text-[12px] font-semibold leading-[20px] px-[20px] py-3 rounded-[24px];
+	}
+
+	.primary-blue {
+		@apply bg-primary-600 text-white duration-300 hover:bg-primary-500 focus:bg-primary-800;
+	}
+
+	.outline-blue {
+		@apply bg-transparent text-white border border-primary-600 duration-300 hover:bg-primary-500;
+	}
+
+	.secondary-blue {
+		@apply text-white border duration-300 hover:bg-primary-500;
+		background-color: rgba(37, 99, 235, 0.25);
+		border-color: rgba(37, 99, 235, 0.75);
+	}
+
+	.primary-green {
+		@apply bg-secondary-800 text-white duration-300 hover:bg-secondary-600 focus:bg-secondary-900;
+	}
+
+	.outline-green {
+		@apply bg-transparent text-white border border-secondary-900 duration-300 hover:bg-secondary-600;
+	}
+
+	.secondary-green {
+		@apply text-white border duration-300 hover:bg-secondary-600;
+		background-color: rgba(9, 112, 77, 0.25);
+		border-color: rgba(9, 112, 77, 0.75);
+	}
+
+	.primary-red {
+		@apply bg-error-700 text-interface-50 duration-300 hover:bg-error-500 focus:bg-error-800;
+	}
+
+	.outline-red {
+		@apply bg-transparent text-white border border-error-600 duration-300 hover:bg-error-500;
+	}
+
+	.primary-purple {
+		@apply bg-tertiary-600 text-white duration-300 hover:bg-tertiary-500 focus:bg-tertiary-700;
+	}
+
+	.outline-purple {
+		@apply bg-transparent text-white border border-tertiary-600 duration-300 hover:bg-tertiary-500;
+	}
+
+	.secondary-purple {
+		@apply text-white border duration-300 hover:bg-tertiary-500;
+		background-color: rgba(94, 62, 183, 0.25);
+		border-color: rgba(94, 62, 183, 0.75);
+	}
+
+	.main-bg {
+		background-image: radial-gradient(at top, #1f2937 50%, #111827 100%);
+	}
+
+	.title {
+		@apply font-inter !font-semibold text-2xl !leading-[20px] text-interface-50;
+	}
+}

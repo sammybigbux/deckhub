@@ -1,0 +1,38 @@
+name: Deploy Frontend to Production on merge into main
+
+on:
+  push:
+    branches:
+      - main  # Triggers on any merge into the main branch
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install dependencies and build the frontend
+      - name: Install dependencies and build frontend
+        run: npm ci && npm run build
+
+      # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
+
+      # Step 4: Deploy frontend to Firebase Hosting (live)
+      - name: Deploy frontend to Firebase Hosting (live)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate with Firebase Hosting
+          firebaseServiceAccount: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Use the same service account key for Firebase Hosting
+          projectId: deckhubapp  # Firebase project ID
+          channelId: live  # Deploy to the live (production) channel
+
+      # Step 5: Echo the production URL
+      - name: Echo production URL
+        run: echo "Production URL -> https://deckhub.web.app/"

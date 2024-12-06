@@ -1,0 +1,28 @@
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Build
+          caches:
+            - node
+          image: node:latest
+          script:
+            - npm install
+            - npm run build
+          artifacts:
+            - build/**
+          cache:
+            key: ${CI_COMMIT_REF_SLUG}-node-modules
+            paths:
+              - node_modules/
+              
+      - step:
+          name: Deploy
+          deployment: Test
+          script:
+            - pipe: atlassian/rsync-deploy:0.12.0
+              variables:
+                USER: 'root'
+                SERVER: '164.92.88.138'
+                REMOTE_PATH: '/var/www/deckhub/frontend'
+                LOCAL_PATH: 'build/**'

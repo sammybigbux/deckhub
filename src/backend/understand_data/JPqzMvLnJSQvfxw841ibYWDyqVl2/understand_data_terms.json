@@ -1,0 +1,1024 @@
+{
+    "Networking": {
+        "special topics": {
+            "Advantages of Direct Connect: Increased Bandwidth, Lower Cost, Consistent Network Experience": false,
+            "Setting Up Virtual Private Gateway for Direct Connect": false,
+            "Accessing Both Public and Private AWS Resources via VIFs": false,
+            "Preferred Use Cases for Gateway Endpoints vs. Interface Endpoints": false,
+            "Establishing Transitive Peering Connections": false,
+            "Direct Connect for Real-Time Data Feeds and Hybrid Environments": false,
+            "Integration of Direct Connect and VPN with Transit Gateway": false,
+            "Egress Only Internet Gateway Use Case": false,
+            "VPC Traffic Mirroring Use Case": false,
+            "Cost and Scalability Considerations for VPC Endpoints": false,
+            "Connecting Multiple VPCs Through Transit Gateway": false,
+            "Simplifying Network Topologies with Transit Gateway": false,
+            "Direct Connect Cost Considerations": false,
+            "Analyzing Flow Log Data with Athena and CloudWatch Logs Insights": false,
+            "Role of IANA in Defining Private and Public IP Address Ranges": false,
+            "Connecting On-Premises Data Centers to AWS Using Direct Connect": false,
+            "Using AWS PrivateLink for Secure Network Connections": false
+        },
+        "foundational": {
+            "Role of the Default VPC in AWS Accounts": false,
+            "NAT Gateway vs. Instance": false,
+            "Role of Inbound and Outbound Rules in Security Groups and NACLs": false,
+            "DNS and Route Table Configuration for VPC Endpoints": false,
+            "Traffic Flow and Evaluation Process in Security Groups and NACLs": false,
+            "Private IP vs Public IP": false,
+            "Default NACL Behavior": false,
+            "Network ACLs and Their Default Rules": false,
+            "Understanding CIDR Notation for Defining IP Ranges": false,
+            "Range of IPs Defined by Different Subnet Masks": false,
+            "Difference Between Public and Private IP Addresses": false,
+            "Importance of CIDR in Network Security and Management": false,
+            "Managing Route Tables for Network Security": false,
+            "Components of CIDR: Base IP and Subnet Mask": false,
+            "Priority and Precedence of NACL Rules": false,
+            "Automatic Return Traffic in Stateful Security Groups": false,
+            "Using CIDR for Efficient IP Allocation in Networks": false,
+            "Impact of NACL Rules on Network Traffic": false,
+            "Internet Gateway and Its Role in Providing Internet Access": false,
+            "Using CIDR for Security Group Rules and Networking in AWS": false,
+            "Internet Connectivity in the Default VPC": false,
+            "IPv4 CIDR Block and its Significance": false,
+            "Differences Between Public and Private IP Addresses in AWS": false,
+            "Impact of Subnet Mask on the Number of Available IP Addresses": false,
+            "Private vs. Public Subnet": false,
+            "Role of NAT Gateway and Internet Gateway in Network Traffic": false,
+            "Instance-Level Security with Security Groups": false,
+            "Statefulness in Security Groups": false,
+            "Understanding Route Tables and Their Role in Traffic Routing": false,
+            "Subnet-Level Security with NACLs": false,
+            "Difference Between Security Groups and NACLs": false,
+            "Applications of Different Private IP Ranges": false
+        },
+        "intermediate": {
+            "Cross-AZ Traffic": false,
+            "Using Flow Logs to Monitor and Troubleshoot Connectivity Issues": false,
+            "Cross-Region and Cross-Account Connectivity Using Transit Gateway": false,
+            "Free Access to Amazon S3 and DynamoDB Using Gateway Endpoints": false,
+            "Public and Private IPv4 DNS Names for EC2 Instances": false,
+            "Auto-assigned Public IPv4 Addresses for Subnets": false,
+            "AWS Network Firewall Use Cases": false,
+            "Use Case for NACLs in Blocking Specific IPs": false,
+            "Using CloudFront with S3": false,
+            "Flow Logs and Their Uses": false,
+            "NAT Instance Use Case": false,
+            "NAT Gateway with High Availability": false,
+            "Difference Between Interface Endpoints and Gateway Endpoints": false,
+            "Levels of Flow Logs: VPC, Subnet, ENI": false,
+            "Statelessness in NACLs": false,
+            "Identifying Problematic IPs and Ports from Flow Logs": false,
+            "Bastion Host Use Case": false,
+            "Accessing AWS Services Privately Using VPC Endpoints": false,
+            "Networking Costs in AWS": false,
+            "High Availability vs Cost Optimization": false,
+            "IPv6 for VPC": false,
+            "Implicit and Explicit Association of Route Tables with Subnets": false,
+            "VPC Peering Use Case": false,
+            "Importance of Ephemeral Ports in Network Communication": false,
+            "NAT Gateway vs VPC Endpoint": false,
+            "Sending Flow Logs to Different AWS Services": false,
+            "ENI as an Entry Point for Private AWS Services": false,
+            "Inter-Region Traffic": false,
+            "Traffic Types and Costs": false,
+            "Optimizing Costs with Private IPs": false,
+            "S3 Data Transfer Pricing": false,
+            "Capturing Information from IP Traffic Using VPC Flow Logs": false,
+            "Subnet Allocation and Availability Zones": false
+        }
+    },
+    "High Availability and Scalability": {
+        "intermediate": {
+            "Impact of Stickiness on Load Distribution": false,
+            "Connection Termination by Load Balancer": false,
+            "In-flight Request Handling": false,
+            "SNI for Multiple Domains": false,
+            "Redirecting Traffic from HTTP to HTTPS": false,
+            "Connection Draining in Classic Load Balancer vs. Application/Network Load Balancer": false,
+            "Routing Traffic to Multiple Applications": false,
+            "Integrating NLB with EC2 Instances": false,
+            "Using NLB with Private IPs": false,
+            "SSL Termination at Load Balancer": false,
+            "Setting Connection Draining Parameters": false,
+            "ACM Certificate Management": false,
+            "Operation at Network Layer": false,
+            "Static IP Assignment in Load Balancing": false,
+            "Impact on Traffic Imbalance": false,
+            "Purpose of Sticky Sessions": false,
+            "Health Check Protocols for NLB": false,
+            "Connection Draining vs. Deregistration Delay": false,
+            "ALB and NLB Support for SNI": false,
+            "SSL vs. TLS": false,
+            "How Sticky Sessions Work": false,
+            "ALB Target Group Routing": false,
+            "Implications of Scaling": false,
+            "Instance Lifecycle": false,
+            "Application-based vs. Duration-based Cookies": false,
+            "High Performance Load Balancing": false,
+            "Certificate Expiration and Renewal": false,
+            "Security Integration with Load Balancers": false,
+            "Combining NLB with ALB": false,
+            "SNI Protocol": false,
+            "Implementing Stickiness for Load Balancers": false,
+            "Using ALB with Containers and ECS": false,
+            "Multiple SSL Certificates Handling": false,
+            "Impact of Connection Draining Duration on Request Handling": false,
+            "Security Policy Configuration": false,
+            "Integrating ALB with Lambda Functions": false
+        },
+        "foundational": {
+            "Implications of Load Balancers on High Availability": false,
+            "Distributed Systems": false,
+            "Dynamic Scaling": false,
+            "Layer 4 vs Layer 7 Load Balancing": false,
+            "Routing Based on URL Path and Hostname": false,
+            "Layer 7 Load Balancer": false,
+            "Load Balancing Traffic Distribution": false,
+            "Elastic Load Balancer Features": false,
+            "Load Distribution Across AZs": false,
+            "Vertical vs. Horizontal Scalability": false,
+            "High Availability and Its Importance": false,
+            "Default Settings for Cross Zone Load Balancing": false,
+            "Automated Scaling": false,
+            "Integration with Load Balancers": false,
+            "Importance of Health Checks": false,
+            "Types of Managed Load Balancers": false,
+            "Health Management": false
+        },
+        "special topics": {
+            "Use of Route Tables in Load Balancing": false,
+            "Traffic Inspection and Management": false,
+            "Transparent Network Gateway Functionality": false,
+            "Connecting ALB with On-premises Servers": false,
+            "Using Query Strings for Routing": false,
+            "Integration with Third-party Appliances": false,
+            "Load Balancing Across Virtual Appliances": false,
+            "Inter AZ Data Charges for NLB and GWLB": false,
+            "Fixed Host Name for ALB": false
+        }
+    },
+    "AWS Fundamentals": {
+        "foundational": {
+            "Converting Single AZ to Multi AZ": false,
+            "Automated Backups and Retention": false,
+            "Restoring from Automated Backup or Manual Snapshot": false,
+            "Aurora vs. RDS Read Replicas": false,
+            "Failover Mechanism in Multi AZ": false,
+            "Managed Database Service Benefits": false,
+            "Automated Provisioning": false,
+            "Scaling Capabilities": false,
+            "Disaster Recovery with Multi AZ": false,
+            "High Availability Mechanisms in Aurora": false,
+            "Continuous Backups": false,
+            "Scaling Reads with Read Replicas": false,
+            "Controlling Network Access with Security Groups": false,
+            "Aurora Storage Auto Expansion": false,
+            "Replication Process in Aurora": false,
+            "No SSH Access for RDS and Aurora": false
+        },
+        "intermediate": {
+            "Non-Public Accessibility of RDS Proxy": false,
+            "Automated Database Instantiation with Aurora Serverless": false,
+            "Manual DB Snapshots for Long-Term Storage": false,
+            "Aurora Performance Improvements": false,
+            "Integration with AWS Secrets Manager": false,
+            "Read Replica Multi AZ Setup": false,
+            "Differences between RDS and RDS Custom": false,
+            "Caching Invalidation": false,
+            "How RDS Proxy Improves Efficiency": false,
+            "IAM Authentication for Redis": false,
+            "Cost-Saving Trick Using Snapshots": false,
+            "Cross Region Replication in Aurora": false,
+            "IAM Roles for Database Authentication": false,
+            "Cloning Aurora Databases": false,
+            "Promoting Read Replicas to Independent Databases": false,
+            "ElastiCache Data Loading Patterns: Lazy Loading, Write Through, Session Store": false,
+            "Comparison of Redis and Memcached": false,
+            "Aurora Backup Similarities to RDS": false,
+            "DNS Name and Failover": false,
+            "Storing Audit Logs in CloudWatch": false,
+            "RDS Proxy and Failover": false,
+            "IAM Authentication and RDS Proxy": false,
+            "Replica Auto Scaling for High Read Traffic": false,
+            "Purpose of ElastiCache": false,
+            "Redis Features: Multi AZ, Auto-Failover, Read Replicas, Data Durability": false,
+            "Purpose of RDS Proxy": false,
+            "Benefits of Using Caches": false
+        },
+        "special topics": {
+            "Importance of Database Snapshots in RDS Custom": false,
+            "Memcached and SASL-Based Authentication": false,
+            "Memcached Features: Multi-Node, Sharding, No High Availability": false,
+            "Aurora Machine Learning Integration": false,
+            "Use Cases for Aurora Machine Learning": false,
+            "Redis AUTH and Security Groups": false,
+            "Defining Custom Endpoints for Workload Optimization": false,
+            "Deactivating Automation Mode for Customization": false,
+            "Disaster Recovery with Aurora Global Database": false,
+            "Lambda Functions and RDS Proxy": false,
+            "Networking Costs for Read Replicas": false,
+            "Managing and Scaling Databases in RDS Custom": false,
+            "Access to OS and Customization in RDS Custom": false,
+            "Cross Region Replication in Global Aurora": false,
+            "ElastiCache and Application Code Changes": false
+        }
+    },
+    "EC2 Instance Storage": {
+        "special topics": {
+            "Expanding to Multiple Regions": false,
+            "Creating a Custom AMI for Faster Boot Times": false,
+            "Compatibility with Linux-Based AMIs": false,
+            "Functionality of Recycle Bin for EBS Snapshots": false,
+            "Advantages of Using Nitro with io1/io2 for High IOPS": false,
+            "Fast Snapshot Restore and Its Costs": false,
+            "Benefits and Trade-offs of EBS Snapshot Archive": false,
+            "Comparison of IOPS Between Instance Store and EBS": false,
+            "Provisioned IOPS SSD Volumes: io1 vs. io2 Block Express": false,
+            "EFS Compatibility with Linux and Use of POSIX System": false,
+            "Managing Long-term Storage Costs": false
+        },
+        "intermediate": {
+            "Transferring Data Between Availability Zones": false,
+            "Process of Encrypting an Unencrypted EBS Volume": false,
+            "Advantages of EC2 Instance Store for Performance": false,
+            "Use Cases for EFS": false,
+            "Regional Availability and Copying of AMIs": false,
+            "EFS as a Shared Network File System Across Multiple Instances and AZs": false,
+            "Latency and Network Communication": false,
+            "Minimal Impact on Latency from Encryption": false,
+            "IO Increase with Disk Size in gp2 and Independent IO in gp3 and io1": false,
+            "EFS as a Managed NFS for EC2 Instances": false,
+            "HDD Volumes: st1 vs. sc1": false,
+            "Cost and Pay-per-Use Model of EFS": false,
+            "Creating Encrypted Volumes from Snapshots": false,
+            "EC2 Instance Store vs. Network Drive": false,
+            "AMI Creation Process and EBS Snapshot Integration": false,
+            "Migrating EBS Volumes Across AZs Using Snapshots": false,
+            "Performance and Storage Classes of EFS": false,
+            "Transferring EBS Volumes Across AZs and Regions": false,
+            "Impact of EBS Volume Backups on Performance": false,
+            "Snapshot Usage for Cross-AZ Movement": false,
+            "Cost and Storage Tier Options for EFS": false,
+            "High Availability and Scalability of EFS": false,
+            "Lifecycle Management and Storage Tiers in EFS": false
+        },
+        "foundational": {
+            "Capacity Provisioning and Billing": false,
+            "Differences Between Public, Custom, and Marketplace AMIs": false,
+            "Encryption at Rest Using KMS": false,
+            "EBS Volume Use Cases: Boot Volumes, High Throughput, Low Cost": false,
+            "Automatic Handling of Encryption by EC2 and EBS": false,
+            "Default Termination Behavior of Root EBS Volumes": false,
+            "EBS Volume Attachment and Detachment": false,
+            "General Purpose SSD Volumes: gp2 vs. gp3": false,
+            "Benefits of Using Custom AMIs": false,
+            "Purpose of EBS Snapshots": false,
+            "Volatility of Instance Store with EC2 Instance Termination": false,
+            "Customizing EC2 Instances with AMIs": false,
+            "Data Volatility in EC2 Instance Store": false,
+            "Factors Defining EBS Volumes: Size, Throughput, and IOPS": false,
+            "Differences Between General Purpose and Provisioned IOPS Volumes": false,
+            "Use Cases for EC2 Instance Store": false,
+            "EBS Volume Persistence": false,
+            "AZ Boundaries for EBS Volumes": false,
+            "Benefits of EBS Volume Encryption": false,
+            "Attachment and Availability Zone Restrictions for EBS Volumes": false
+        }
+    },
+    "Encryption": {
+        "intermediate": {
+            "Encryption and Decryption processes in different regions": false,
+            "Organizing Parameters Using Hierarchies": false,
+            "Role of AWS Encryption SDK in Global Aurora encryption": false,
+            "Integration of ACM with AWS Services like ALB, CloudFront, and API Gateway": false,
+            "Differences Between Edge-optimized, Regional, and Private API Gateway Endpoints": false,
+            "Pricing structure for KMS keys and API calls": false,
+            "Use cases for KMS Multi-Region Keys in Global Tables": false,
+            "Methods for Validating Domain Ownership in ACM": false,
+            "Use cases for KMS Multi-Region Keys in Global Aurora": false,
+            "S3 Replication with Encryption": false,
+            "Security implications of using Multi-Region Keys": false,
+            "Process and Benefits of Automatic Renewal in ACM": false,
+            "Auditing API calls to KMS through CloudTrail": false,
+            "Amazon Guard Duty": false,
+            "Using ACM for Public and Private TLS Certificates": false,
+            "Scaling EC2 Instances with Auto Scaling and Load Balancing": false,
+            "Application Layer Defense with WAF and CloudFront": false,
+            "Integration of SSM Parameter Store with CloudFormation": false,
+            "Using Version Tracking for Updated Parameters": false,
+            "Types of KMS Keys: Symmetric and Asymmetric": false,
+            "Firewall Manager Use Case": false,
+            "Functionality of KMS Multi-Region Keys": false,
+            "Blocking Malicious Requests Using WAF Rate-based Rules": false,
+            "Importance of Key Material and Key ID in Multi-Region Keys": false,
+            "Amazon Macie Use Case": false,
+            "Advantages of Client-Side Encryption with Multi-Region Keys": false,
+            "Using CloudFront and Global Accelerator for Edge Location Mitigation": false,
+            "Protecting EC2 Instances with Infrastructure Layer Defense": false,
+            "Encrypted AMI Sharing Process": false,
+            "Differences between Primary and Replica Keys": false,
+            "AWS WAF Use Case": false,
+            "Accessing Secrets Manager through Parameter Store": false,
+            "AWS Secrets Manager Use Case": false,
+            "Amazon Inspector Use Case": false
+        },
+        "foundational": {
+            "The role of TLS and SSL in Encryption in Flight": false,
+            "Provisioning and Managing TLS Certificates": false,
+            "Integration of AWS KMS with IAM for authorization": false,
+            "Automatic Key Rotation and its importance": false,
+            "Role of TLS Certificates in In-flight Encryption": false,
+            "Differences between AWS Owned Keys, AWS Managed Keys, and Customer Managed Keys": false,
+            "Preventing Man-in-the-Middle Attacks using Encryption in Flight": false,
+            "How TLS Certificates enable secure communication": false,
+            "Encrypting Parameters with KMS": false,
+            "Storing Configuration and Secrets Securely": false,
+            "Differences between Encryption in Flight, Server-Side Encryption at Rest, and Client-Side Encryption": false,
+            "Server-Side Encryption processes for securely storing data": false,
+            "How Data Keys are used in Server-Side and Client-Side Encryption": false,
+            "Importance of HTTPS for secure data transmission": false,
+            "Role of IAM Permissions in Accessing Parameters": false,
+            "Ensuring data security with Client-Side Encryption where the server cannot decrypt data": false
+        }
+    },
+    "Decoupling Applications": {
+        "intermediate": {
+            "Data Ingestion and Consumption": false,
+            "Unlimited Throughput in SQS": false,
+            "Retention Periods for Messages": false,
+            "Exactly-once Send Capability": false,
+            "Handling Long Processing Times": false,
+            "Streaming Data with Kinesis": false,
+            "Data Flow and Ordering in Kinesis Data Streams": false,
+            "Security and Encryption in Kinesis": false,
+            "Using the Fan-Out Pattern": false,
+            "Data Flow and Ordering in SQS FIFO Queues": false,
+            "Integrating SQS with Auto Scaling Groups": false,
+            "Implementing Message Filtering": false,
+            "Use of Partition Key and Group ID": false,
+            "Handling Sudden Spike Loads with SQS": false,
+            "Transforming Data with Lambda": false,
+            "SQS Security Measures": false,
+            "Message Group and Deduplication": false,
+            "Subscribing to SNS Topics": false,
+            "FIFO Ordering with SNS and SQS": false,
+            "FIFO Queue Throughput": false,
+            "Data Flow in Kinesis Data Firehose": false,
+            "Comparison Between Kinesis and SQS FIFO": false,
+            "Handling Message Duplication and Ordering": false,
+            "Balancing Visibility Timeout": false,
+            "Buffering and Near Real-Time Data Processing": false,
+            "SQS as a Buffer for Database Writes": false
+        },
+        "foundational": {
+            "Decoupling Applications with Asynchronous Communication": false,
+            "FIFO Queue Ordering": false,
+            "Event-Based Communication": false,
+            "Application Communication Patterns": false,
+            "Comparison Between SQS, SNS, and Kinesis": false,
+            "Message Flow in SQS": false,
+            "Decoupling with SNS Topics": false,
+            "Decoupling Application Tiers with SQS": false,
+            "Decoupling with SQS": false,
+            "Processing Messages with Visibility Timeout": false,
+            "Publishing Messages to SNS": false,
+            "Scaling Based on Queue Length": false,
+            "Message Visibility in SQS": false,
+            "Integration with AWS Services": false
+        },
+        "special topics": {
+            "Docker Container Management on AWS": false,
+            "Direct Connection in Synchronous Communication": false,
+            "AWS vs. Third-Party Destinations": false,
+            "Managing Shards and Capacity": false,
+            "Scaling with Middleware Services": false
+        }
+    },
+    "EC2 Basics": {
+        "intermediate": {
+            "Launch Templates vs. Manual Configuration": false,
+            "Spot Instance Workloads Suitability": false,
+            "Instance Flexibility with Convertible Reserved Instances": false,
+            "Network Attached vs. Hardware Attached Storage": false,
+            "Max Spot Price vs. Current Spot Price": false,
+            "Use Cases for Memory Optimized Instances": false,
+            "Use Cases for Compute Optimized Instances": false,
+            "Spot Fleet Allocation Strategies": false,
+            "Launch Pools in Spot Fleets": false,
+            "Capacity Reservation Purpose": false,
+            "Terminating vs. Stopping Spot Instances": false,
+            "Short-Term vs. Long-Term Workloads": false,
+            "Cost Efficiency with Spot Instances": false,
+            "EC2 Instance Connect for Browser-Based Access": false,
+            "Spot Block Duration": false,
+            "Spot Request Types": false,
+            "Persistent vs. One-Time Spot Requests": false,
+            "Pricing History for Spot Instances": false,
+            "Use Cases for Storage Optimized Instances": false,
+            "Differences in Resource Allocation": false,
+            "Savings Plan Flexibility": false,
+            "Bootstrapping with EC2 User Data": false,
+            "Capacity Reservation Without Time Commitment": false,
+            "Spot Fleet Functionality": false,
+            "Optimization Types for Different Use Cases": false,
+            "Canceling Spot Requests": false
+        },
+        "foundational": {
+            "Selecting Compute Power and Memory": false,
+            "Handling Firewall Rules": false,
+            "Authorized IP Ranges": false,
+            "Instance Class, Generation, and Size": false,
+            "Inbound and Outbound Traffic Control": false,
+            "Security Group Rules": false,
+            "Choosing Operating Systems": false,
+            "Configuring Network Settings": false,
+            "Use Cases for General Purpose Instances": false,
+            "Scaling Services with ASG": false,
+            "Port Numbers and Their Uses": false,
+            "Referencing Security Groups": false,
+            "Cost Optimization Strategies": false,
+            "Distributing Load Across Machines": false
+        },
+        "special topics": {
+            "Naming Convention for EC2 Instances": false,
+            "Physical Server Reservation with Dedicated Hosts": false,
+            "Different Methods for Different Operating Systems": false,
+            "Dedicated Host Licensing": false
+        }
+    },
+    "Serverless": {
+        "intermediate": {
+            "Lambda in VPC": false,
+            "Invoking Lambda from RDS and Aurora": false,
+            "Integrating DynamoDB with Other AWS Services": false,
+            "Container Image Requirements": false,
+            "Authentication and Authorization using Cognito": false,
+            "Cost Management": false,
+            "Language Support for Lambda": false,
+            "Stream Processing with DynamoDB Streams and Kinesis": false,
+            "Performance and Consistency": false,
+            "Data Replication and Disaster Recovery": false,
+            "Real-time Data Processing": false,
+            "TTL and Data Expiry Management": false,
+            "Step function use cases": false,
+            "Integrating Cognito User Pools with API Gateway": false,
+            "API Gateway Deployment Types": false,
+            "Data Distribution and Replication": false,
+            "Real-time Streaming with API Gateway": false,
+            "Cognito Identity Pools and AWS Services Access": false
+        },
+        "foundational": {
+            "Securing API Gateway": false,
+            "Serverless Architecture": false,
+            "API Gateway Features and Benefits": false,
+            "Integration of AWS Services in Serverless Applications": false,
+            "Event-Driven Architecture": false,
+            "Using API Gateway with AWS Services": false,
+            "Pricing Model for Lambda": false,
+            "On-Demand Execution": false,
+            "Scaling and Management in Serverless Services": false,
+            "Security and IAM Integration": false,
+            "Data Storage and Retrieval in Serverless Using DynamoDB": false,
+            "Function and Purpose of API Gateway in Serverless": false,
+            "Integrating Lambda with API Gateway": false,
+            "Short Execution Times": false
+        },
+        "special topics": {
+            "Evolution of Serverless from FaaS": false,
+            "Backup and Recovery Options": false,
+            "Capacity Planning": false,
+            "Schema Evolution": false
+        }
+    },
+    "Snow Family": {
+        "foundational": {
+            "Use Cases for Different Types of Storage Gateways": false,
+            "Transferring Large Data Sets Efficiently": false,
+            "Object Storage with Amazon S3 and S3 Glacier": false,
+            "Block Storage for EC2 Instances with EBS": false,
+            "Synchronizing Data Between On-Premises and AWS": false,
+            "Data Migration and Backup with Storage Gateway": false,
+            "Physical Data Transfer with Snowcone, Snowball, and Snowmobile": false,
+            "Data Migration with Snow Family Devices": false,
+            "Bridging On-Premises and Cloud Storage with Storage Gateway": false,
+            "Data Migration and Edge Computing with Snow Family": false,
+            "Storage Gateway Deployment Options": false,
+            "Bridging On-Premises and Cloud Storage": false
+        },
+        "intermediate": {
+            "File Systems for Windows with Amazon FSx": false,
+            "Scheduled Data Synchronization with AWS DataSync": false,
+            "Scheduled Replication Tasks": false,
+            "Using DataSync with Different AWS Storage Services": false,
+            "Preserving File Permissions and Metadata": false,
+            "Scalable and Reliable Managed Service for File Transfers": false,
+            "Snowball into Glacier with S3": false,
+            "Using OpsHub for Snow Family Devices": false,
+            "Integration with AWS Services and On-Premises Systems": false,
+            "Edge Computing Capabilities": false,
+            "Local Cache for Low-Latency Access": false,
+            "Physical Storage with EC2 Instance Storage": false,
+            "Data Migration with AWS DataSync": false,
+            "Processing Data at Edge Locations": false,
+            "Network File Systems for Linux with Amazon EFS": false
+        },
+        "special topics": {
+            "Differences Between FSx for Windows File Server, Lustre, NetApp ONTAP, and OpenZFS": false,
+            "Compatibility with FSx NetApp ONTAP and FSx for OpenZFS": false,
+            "FTP, FTPS, and SFTP Interfaces with AWS Transfer Family": false,
+            "File System Deployment Options: Scratch vs. Persistent": false,
+            "Pricing Model for AWS Transfer Family": false,
+            "Integration with Authentication Systems": false,
+            "Secure File Transfers with FTPS and SFTP": false,
+            "High-Performance Computing with FSx for Lustre": false,
+            "Using FTP Protocols for Data Transfer to S3 or EFS": false,
+            "Launching Third-Party File Systems on AWS": false
+        }
+    },
+    "Data Analytics": {
+        "intermediate": {
+            "Integration with Third-Party Data Sources": false,
+            "Transforming Data Formats": false,
+            "Snapshots and Disaster Recovery in Redshift": false,
+            "Querying Data with Federated Query": false,
+            "Data Ingestion Methods for OpenSearch": false,
+            "Use cases for EMR": false,
+            "Security in OpenSearch via Cognito and IAM": false,
+            "Combining Structured and Unstructured Data": false,
+            "Real-time Data Processing with OpenSearch and Lambda": false,
+            "Cataloging Data Sets": false,
+            "Analytics Queries in OpenSearch": false,
+            "Search Capabilities in OpenSearch": false,
+            "Converting Data Formats with Glue": false,
+            "Integration with AWS Data Sources": false,
+            "Use cases for Amazon MSK for Apache Kafka": false,
+            "Improving Athena Performance": false
+        },
+        "foundational": {
+            "Data Transformation and Cleansing": false,
+            "Ingesting Data into Redshift": false,
+            "Using Redshift Spectrum for Querying S3 Data": false,
+            "Real-time Data Ingestion": false,
+            "Data Warehousing with Redshift": false,
+            "Redshift for Analytics and Data Warehousing": false,
+            "Columnar Storage and Performance Improvement": false,
+            "Extract, Transform, Load Process": false,
+            "Using SQL to Query Data in S3": false,
+            "Comparing Redshift and Athena": false,
+            "Serverless Querying with Athena": false,
+            "Analyzing Data Stored in Amazon S3": false,
+            "Real-Time Data Processing": false,
+            "Centralizing Data Storage with Data Lakes": false
+        },
+        "special topics": {
+            "User and Group Management in QuickSight": false,
+            "Role of SPICE Engine in Data Computation": false,
+            "Data Visualization with QuickSight": false,
+            "Difference Between Dashboard and Analysis": false
+        }
+    },
+    "S3 Advanced": {
+        "intermediate": {
+            "Integration with Event Bridge": false,
+            "Filtering Events": false,
+            "Performance and Cost Benefits of S3 Select": false,
+            "Failure Resilience with Byte Range Fetches": false,
+            "Exporting Metrics to S3": false,
+            "Requests per Second per Prefix": false,
+            "Authenticated Requesters": false,
+            "Reducing Network Transfers and CPU Costs": false,
+            "Event Types in S3": false,
+            "Parallelization of Uploads and Downloads": false,
+            "Integration with Lambda for Custom Actions": false,
+            "Bulk Operations on S3 Objects": false,
+            "Generating Object Lists with S3 Inventory and S3 Select": false,
+            "Prefix and Tag-based Rules": false,
+            "S3 Analytics for Lifecycle Optimization": false,
+            "Event Notification Targets": false,
+            "Transfer Acceleration Mechanism": false,
+            "Manual vs. Automated Object Movement": false,
+            "SQL for Server-Side Filtering": false
+        },
+        "special topics": {
+            "Aggregating Data Across AWS Organization": false,
+            "Difference Between Free and Paid Metrics": false,
+            "Advanced Filtering and Multiple Destinations": false,
+            "Managing Retries and Tracking Progress": false
+        },
+        "foundational": {
+            "Lifecycle Configuration": false,
+            "Storage Costs vs. Data Transfer Costs": false,
+            "Cost Allocation in S3": false,
+            "IAM Permissions for Event Notifications": false,
+            "Performance Optimization Techniques": false,
+            "Durability and Availability across Storage Classes": false,
+            "Identifying Cost Efficiencies": false,
+            "Storage Class Transitions": false,
+            "Data Protection Best Practices": false
+        }
+    },
+    "Monitoring and Auditing": {
+        "intermediate": {
+            "Integration of CloudWatch Insights with AWS Services": false,
+            "Integrating CloudTrail with CloudWatch Logs and EventBridge": false,
+            "Integrating EventBridge with CloudTrail for API Calls": false,
+            "Period Setting for High Resolution Custom Metrics": false,
+            "Monitoring Unusual Activity with CloudTrail Insights": false,
+            "AWS Managed vs. Custom Config Rules": false,
+            "Analyzing CloudTrail Logs with Athena": false,
+            "Identifying Network Users via VPC Logs": false,
+            "Monitoring Serverless Applications": false,
+            "Composite Alarms for Multiple Metrics": false,
+            "Structure of CloudWatch Logs": false,
+            "Querying Logs with CloudWatch Logs Insights": false,
+            "Creating Automated Dashboards for Application Health": false,
+            "Using Event Patterns to Filter Events": false,
+            "Exporting Logs to Amazon S3": false,
+            "Collecting and Aggregating Container Metrics": false,
+            "Triggering Notifications on Root User Sign-In": false,
+            "Scheduling Cron Jobs with EventBridge": false
+        },
+        "foundational": {
+            "Monitoring AWS Services with CloudWatch": false,
+            "Auditing and Compliance of AWS Resources": false,
+            "CloudWatch vs. CloudTrail vs. Config": false,
+            "Creating and Using Custom Metrics": false,
+            "Monitoring EC2 Instances with Status Checks and System Status Checks": false,
+            "Integration of CloudWatch Alarms with SNS and Lambda": false,
+            "Sending Logs to CloudWatch": false,
+            "Recording and Tracking Configuration Changes": false,
+            "Actions on EC2 Instances Triggered by Alarms": false
+        },
+        "special topics": {
+            "Cross-Account Event Bus Permissions": false,
+            "Analyzing Logs for Top Contributors": false,
+            "Streaming CloudWatch Metrics to Kinesis Data Firehose": false,
+            "Using Machine Learning for Application Monitoring": false,
+            "Archiving and Replaying Events": false
+        }
+    },
+    "DNS": {
+        "foundational": {
+            "Alias Records and Simple Routing Policy": false,
+            "Domain Name Resolution Process": false,
+            "Simple routing policy for single resource": false,
+            "Differences Between CNAME and Alias Records": false,
+            "Mapping Hostnames to AWS Resources": false,
+            "DNS Record Caching": false,
+            "How DNS Records Define Traffic Routing": false,
+            "Routing Policies in Route 53": false,
+            "Route 53 Health Checks": false,
+            "TTL for DNS Records": false,
+            "DNS Query Process": false,
+            "Route 53 routing policies": false,
+            "Difference Between Public and Private Hosted Zones": false,
+            "DNS Record Types in Route 53": false,
+            "Alias records for AWS resources": false
+        },
+        "intermediate": {
+            "Multiple values in simple routing policy": false,
+            "DNS Caching": false,
+            "No health checks with simple routing policy": false,
+            "Alias Record Restrictions for EC2 DNS Names": false,
+            "Effect of High vs. Low TTL on DNS Traffic": false,
+            "Hierarchical Naming Structure of DNS": false,
+            "Alias Records for Root Domains and Non-root Domains": false,
+            "Cache Invalidation Strategy": false,
+            "Alias Record Exception for TTL": false,
+            "Free Queries and Health Check Capabilities of Alias Records": false,
+            "Route 53 as a Domain Registrar": false,
+            "Roles of Different DNS Servers": false
+        },
+        "special topics": {
+            "Client-side random selection of multiple IP addresses": false
+        }
+    },
+    "IAM": {
+        "intermediate": {
+            "Combination of Password and Security Device": false,
+            "Policy Inheritance": false,
+            "Use Cases for CLI and SDK": false,
+            "Access Advisor Functionality": false,
+            "User Grouping": false,
+            "Multiple Group Memberships": false,
+            "Third-Party MFA Devices": false,
+            "Reducing Permissions Using Access Advisor": false,
+            "CLI Commands and Automation": false
+        },
+        "foundational": {
+            "Policy Purpose": false,
+            "Policy Structure": false,
+            "Password Policy Options": false,
+            "EC2 Instance and IAM Role Interaction": false,
+            "Principle of Least Privilege": false,
+            "Common Roles": false,
+            "Security Benefits of MFA": false,
+            "Access Methods: Management Console, CLI, and SDK": false,
+            "Generating and Managing Access Keys": false,
+            "IAM Roles for AWS Services vs. Physical Users": false,
+            "Root User vs. Regular Users": false,
+            "Global Service": false,
+            "Assigning Permissions to AWS Services": false,
+            "Importance of Strong Passwords": false,
+            "MFA as a Defense Mechanism": false,
+            "Inline Policy vs. Group Policy": false,
+            "Security of Access Methods: Username/Password, MFA, Access Keys": false
+        },
+        "special topics": {
+            "Programming Languages Supported by SDK": false,
+            "Group Containment": false
+        }
+    },
+    "S3 Security": {
+        "intermediate": {
+            "Simplifying Security Management with Access Points": false,
+            "Managing Security at Scale": false,
+            "Protecting Against DDoS Attacks": false,
+            "Cross-Origin Requests": false,
+            "Using Access Points for VPC and Internet Access": false,
+            "Dynamic Object Transformation with S3 Object Lambda": false,
+            "Use Cases for S3 Object Lambda": false,
+            "Retention Modes and Their Purposes": false,
+            "Configuring CORS for S3 Buckets": false,
+            "Using Legal Hold for Object Protection": false,
+            "Implementing WORM Model with Glacier Vault Lock": false,
+            "Difference Between CloudFront and S3 Replication": false,
+            "Setting Retention Periods": false,
+            "Integration of Lambda Functions with S3 Access Points": false,
+            "Differences Between S3 Glacier Vault Lock and S3 Object Lock": false
+        },
+        "foundational": {
+            "Encryption in Transit": false,
+            "Forcing Encryption with Bucket Policies": false,
+            "Types of Server-Side Encryption": false,
+            "Using KMS for Key Management": false,
+            "Defining Specific Access Policies for Different Data": false,
+            "Client-Side vs. Server-Side Encryption": false,
+            "MFA Delete": false
+        },
+        "special topics": {
+            "Caching Content at Edge Locations": false,
+            "Improving Read Performance and Reducing Latency": false,
+            "Web Browser Security Mechanism": false,
+            "Same Origin Policy": false,
+            "Reducing Data Duplication with S3 Object Lambda": false,
+            "Origins for CloudFront": false
+        }
+    },
+    "Disaster Recovery": {
+        "intermediate": {
+            "Server Migration": false,
+            "AWS Migration Hub": false,
+            "Homogeneous vs. Heterogeneous Migration": false,
+            "Resiliency and Self-Healing": false,
+            "Warm Standby": false,
+            "Supported Database Engines": false,
+            "Aurora Read Replica Method": false,
+            "AWS Application Discovery Service": false,
+            "Automated Recovery": false,
+            "AWS Application Migration Service Use Case": false,
+            "Database Migration to Aurora MySQL": false
+        },
+        "foundational": {
+            "On-Premise Strategy with Cloud": false,
+            "Database Snapshot Method": false,
+            "RPO vs. RTO": false,
+            "Cost vs. Recovery Time": false,
+            "On-premise vs. Cloud": false,
+            "Backup and Restore": false,
+            "Migrating Databases with DMS": false,
+            "Pilot Light": false,
+            "Hot Site / Multi-Site": false,
+            "AWS Backup Use Case": false,
+            "Database Migration": false
+        },
+        "special topics": {
+            "Percona XtraBackup Method": false,
+            "Amazon Linux 2 AMI Deployment": false,
+            "VMWare Cloud on AWS": false,
+            "VM Import and Export": false,
+            "MySQL Dump Utility Method": false
+        }
+    },
+    "Access Management": {
+        "intermediate": {
+            "Restricting API Calls by IP Address": false,
+            "Differences Between AWS Managed Microsoft AD, AD Connector, and Simple AD": false,
+            "Using Permission Sets to Control Access": false,
+            "Using Trust Connections to Share User Authentication Between On-Premises and AWS": false,
+            "Role of Session Policies in IAM": false,
+            "Delegating Responsibilities within Permission Boundaries": false,
+            "Defining Access for Multiple Accounts Using IAM Identity Center": false,
+            "Limiting Access to Specific AWS Regions": false,
+            "Assigning Users and Groups to Permission Sets": false,
+            "Tag-Based Access Control for EC2": false,
+            "Combining Permission Boundaries with AWS Organizations SCP": false,
+            "Restricting Access to Organization Members": false,
+            "Integrating On-Premises AD with AWS Directory Services": false
+        },
+        "foundational": {
+            "Restricting Maximum Permissions with IAM Permission Boundaries": false,
+            "Applying Permission Boundaries to Users and Roles": false,
+            "Managing Single Sign-On Across Multiple AWS Accounts and Applications": false,
+            "Differences between Identity-based and Resource-based Policies": false,
+            "Setting S3 Bucket Policies": false,
+            "Enforcing Multi-Factor Authentication": false,
+            "Impact of Explicit Deny in IAM Policies": false,
+            "Evaluating IAM Policies and Permissions": false
+        },
+        "special topics": {
+            "Role of Domain Controllers in Active Directory": false,
+            "Integrating IAM Identity Center with Third-Party Identity Providers": false,
+            "Proxying User Authentication Requests with AD Connector": false
+        }
+    },
+    "EC2 advanced": {
+        "intermediate": {
+            "Partition Placement Group: Distributed Across Racks": false,
+            "Spread Placement Group: Minimized Failure Risk": false,
+            "Benefits of Using DNS over Elastic IPs": false,
+            "Hibernate Process and RAM State Preservation": false,
+            "ENI Creation and Management": false,
+            "Cluster Placement Group: High Performance, High Risk": false,
+            "Requirements for Hibernation": false,
+            "Network Performance in Cluster Placement Groups": false,
+            "ENI Availability Zone Boundaries": false,
+            "ENI Attributes and Functions": false,
+            "Hardware Failure Isolation in Spread and Partition Groups": false,
+            "Instance Boot Process": false,
+            "Failover Using ENIs": false,
+            "Differences between IPv4 and IPv6": false
+        },
+        "foundational": {
+            "Data Persistence on Stop vs. Terminate": false,
+            "Security Groups Attached to ENIs": false,
+            "Use of Elastic IPs": false,
+            "Network Address Translation": false,
+            "Instance Type Compatibility": false,
+            "Assigning Private and Public IPs": false,
+            "Public IP vs. Private IP": false,
+            "Private Network and Internet Access": false,
+            "Network Connectivity for EC2 Instances": false
+        },
+        "special topics": {
+            "Operating System Compatibility": false
+        }
+    },
+    "S3 Basics": {
+        "foundational": {
+            "Bucket Naming Conventions": false,
+            "Object Key Structure": false,
+            "Public Access Configuration": false,
+            "IAM Permissions and API Calls": false,
+            "Encryption at Upload": false,
+            "Use Cases of S3": false,
+            "Actions in Bucket Policies": false,
+            "Cross-Account Access": false,
+            "Max Object Size and Multi-part Upload": false,
+            "Versioning in S3": false,
+            "Principle in IAM Policies": false,
+            "EC2 Instance Role": false
+        },
+        "intermediate": {
+            "CRR vs. SRR": false,
+            "Use Cases for SRR": false,
+            "Replication Mechanism": false,
+            "Effect in Bucket Policies": false,
+            "Source and Destination Buckets": false,
+            "Metadata and Tags": false,
+            "S3 as Backbone for Websites": false,
+            "Resource Block in JSON Policies": false,
+            "Use Cases for CRR": false
+        }
+    },
+    "Containers on AWS": {
+        "intermediate": {
+            "Scheduling Tasks with EventBridge": false,
+            "Data Persistence on Amazon ECS with Amazon EFS": false,
+            "How Docker Works on an Operating System": false,
+            "Storing Docker Images in Docker Repositories": false,
+            "Difference Between Docker and Virtual Machines": false,
+            "Dockerfile and Docker Containers": false,
+            "Managing ECS Tasks with EventBridge": false,
+            "Scheduling containerized batch processing tasks": false
+        },
+        "foundational": {
+            "Load Balancer Integrations with ECS": false,
+            "IAM Roles for ECS Tasks and Instance Profiles": false,
+            "Fargate Launch Type Overview": false,
+            "Scaling ECS Services with SQS Queue": false,
+            "Docker and its Use Cases": false,
+            "Amazon ECS and EC2 Launch Type": false
+        }
+    },
+    "CloudFront": {
+        "foundational": {
+            "Performance vs. Cost Trade-offs": false,
+            "Specifying Paths for Cache Invalidation": false,
+            "Impact of TTL on Content Updates": false,
+            "Forcing Cache Refresh with Invalidations": false
+        },
+        "intermediate": {
+            "Health Checks and Automated Failover": false,
+            "Difference Between CloudFront and Global Accelerator": false,
+            "Reducing Costs with Price Classes": false,
+            "Data Transfer Costs by Region": false,
+            "Using Anycast IP for Traffic Routing": false,
+            "Improving Global Application Performance with Global Accelerator": false
+        }
+    },
+    "Machine Learning": {
+        "intermediate": {
+            "Kendra Use Case": false,
+            "Comprehend Medical Use Case": false,
+            "Forecast Use Case": false,
+            "Comprehend Use Case": false,
+            "Lex + Connect Use Case": false,
+            "Transcribe Use Case": false,
+            "Polly Use Case": false,
+            "Personalize Use Case": false,
+            "Translate Use Case": false
+        },
+        "foundational": {
+            "SageMaker Use Case": false,
+            "Rekognition Use Case": false
+        }
+    },
+    "Data and Databases": {
+        "foundational": {
+            "Comparing RDBMS and NoSQL Databases": false,
+            "Selecting the Right Database for Workloads": false,
+            "Ongoing Replication Methods": false
+        },
+        "intermediate": {
+            "Use Cases for Object Store Databases": false,
+            "Internet Speed Impact on Data Transfer": false,
+            "Use cases for Kinesis Data Analytics": false,
+            "Using Snowball for Large Data Transfers": false,
+            "Constraints and Use Cases for Each Transfer Method": false
+        },
+        "special topics": {
+            "Combining Snowball with DMS": false
+        }
+    },
+    "Edge Functions": {
+        "intermediate": {
+            "Sub-Millisecond Startup Times": false,
+            "Customizing CDN Content": false
+        },
+        "foundational": {
+            "Use Cases of Edge Functions": false,
+            "CloudFront Functions vs. Lambda@Edge": false,
+            "Request and Response Modification": false,
+            "Executing Logic at the Edge": false
+        }
+    },
+    "Cloudshell": {
+        "intermediate": {
+            "File Management in Cloud Shell": false,
+            "Customizing Cloud Shell": false,
+            "Cloud Shell Environment Persistence": false,
+            "Cloud Shell vs. Terminal": false
+        },
+        "foundational": {
+            "Cloud Shell Availability": false,
+            "Command Execution in Cloud Shell": false
+        }
+    },
+    "Auto Scaling Group": {
+        "foundational": {
+            "Monitoring and Metrics": false,
+            "Metrics for Scaling": false,
+            "Dynamic Response": false,
+            "Scaling Policies": false
+        },
+        "intermediate": {
+            "Configuration Time": false,
+            "Cooldown Period": false
+        }
+    },
+    "Services": {
+        "foundational": {
+            "CloudFormation Use Case": false,
+            "AWS Cost Explorer and Anomaly Detection": false
+        },
+        "intermediate": {
+            "CloudFormation Service Role": false,
+            "AWS Batch Use Case": false,
+            "SSM Session Manager Use Case": false
+        }
+    },
+    "Account Management": {
+        "foundational": {
+            "Managing Multiple AWS Accounts": false,
+            "Organizing Accounts Using OUs": false,
+            "Billing Consolidation and Cost Savings": false,
+            "Applying SCPs for Security and Compliance": false
+        },
+        "intermediate": {
+            "Automating Account Creation": false
+        }
+    }
+}

@@ -1,0 +1,20 @@
+Section: S3 Advanced, Term: Events, Missing Incorrect Answer: Tools for managing S3 bucket policies
+Section: High Availability and Scalability, Term: Elasticity, Missing Incorrect Answer: The security level of the cloud infrastructure
+Section: Access Management, Term: AWS Control Tower Guard Rails, Missing Incorrect Answer: ALL INCORRECT ANSWERS
+Section: Access Management, Term: Detective Guardrail, Missing Incorrect Answer: ALL INCORRECT ANSWERS
+Section: EC2 Instance Storage, Term: Public AMI, Missing Incorrect Answer: A method for managing AWS billing
+Section: IAM, Term: AWS CLI, Missing Incorrect Answer: A service for monitoring AWS resources
+Section: IAM, Term: AWS CLI, Missing Incorrect Answer: A tool for automating billing processes
+Section: IAM, Term: Group, Missing Incorrect Answer: A method for granting temporary access to users
+Section: IAM, Term: Group, Missing Incorrect Answer: A tool for managing multiple IAM roles
+Section: Serverless, Term: Highly Available, Missing Incorrect Answer: A service for exporting serverless data to S3
+Section: Monitoring and Auditing, Term: CloudWatch Agent, Missing Incorrect Answer: A method for integrating monitoring services
+Section: Disaster Recovery, Term: Dependency Mappings, Missing Incorrect Answer: A method for defining recovery point objectives
+Section: Containers on AWS, Term: Amazon EKS, Missing Incorrect Answer: A registry for Docker images
+Section: Decoupling Applications, Term: Amazon SQS FIFO Queues, Missing Incorrect Answer: A component that generates and sends messages to a queue or topic in a message-oriented middleware
+Section: Encryption, Term: Amazon Guard Duty, Missing Incorrect Answer: Encryption keys fully managed by AWS services for server-side encryption
+Section: Data Analytics, Term: JDBC Driver, Missing Incorrect Answer: ALL INCORRECT ANSWERS
+Section: S3 Basics, Term: Durability, Missing Incorrect Answer: The amount of data transferred out of Amazon S3
+Section: EC2 advanced, Term: Hibernate, Missing Incorrect Answer: Data that can be passed to an EC2 instance when it is launched, typically used for automated configuration tasks
+Section: EC2 advanced, Term: Hibernate, Missing Incorrect Answer: An Elastic IP address associated with an EC2 instance for public communication over the internet
+Section: EC2 advanced, Term: Hibernate, Missing Incorrect Answer: The primary disk volume that contains the operating system and root file system of an EC2 instance

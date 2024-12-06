@@ -1,0 +1,1036 @@
+{
+    "Networking": {
+        "foundational": [
+            "Role of the Default VPC in AWS Accounts",
+            "NAT Gateway vs. Instance",
+            "Role of Inbound and Outbound Rules in Security Groups and NACLs",
+            "DNS and Route Table Configuration for VPC Endpoints",
+            "Traffic Flow and Evaluation Process in Security Groups and NACLs",
+            "Private IP vs Public IP",
+            "Default NACL Behavior",
+            "Network ACLs and Their Default Rules",
+            "Understanding CIDR Notation for Defining IP Ranges",
+            "Range of IPs Defined by Different Subnet Masks",
+            "Difference Between Public and Private IP Addresses",
+            "Importance of CIDR in Network Security and Management",
+            "Managing Route Tables for Network Security",
+            "Components of CIDR: Base IP and Subnet Mask",
+            "Priority and Precedence of NACL Rules",
+            "Automatic Return Traffic in Stateful Security Groups",
+            "Using CIDR for Efficient IP Allocation in Networks",
+            "Impact of NACL Rules on Network Traffic",
+            "Internet Gateway and Its Role in Providing Internet Access",
+            "Using CIDR for Security Group Rules and Networking in AWS",
+            "Internet Connectivity in the Default VPC",
+            "IPv4 CIDR Block and its Significance",
+            "Differences Between Public and Private IP Addresses in AWS",
+            "Impact of Subnet Mask on the Number of Available IP Addresses",
+            "Private vs. Public Subnet",
+            "Role of NAT Gateway and Internet Gateway in Network Traffic",
+            "Instance-Level Security with Security Groups",
+            "Statefulness in Security Groups",
+            "Understanding Route Tables and Their Role in Traffic Routing",
+            "Subnet-Level Security with NACLs",
+            "Difference Between Security Groups and NACLs",
+            "Applications of Different Private IP Ranges"
+        ],
+        "intermediate": [
+            "Cross-AZ Traffic",
+            "Using Flow Logs to Monitor and Troubleshoot Connectivity Issues",
+            "Cross-Region and Cross-Account Connectivity Using Transit Gateway",
+            "Free Access to Amazon S3 and DynamoDB Using Gateway Endpoints",
+            "Public and Private IPv4 DNS Names for EC2 Instances",
+            "Auto-assigned Public IPv4 Addresses for Subnets",
+            "AWS Network Firewall Use Cases",
+            "Use Case for NACLs in Blocking Specific IPs",
+            "Using CloudFront with S3",
+            "Flow Logs and Their Uses",
+            "NAT Instance Use Case",
+            "NAT Gateway with High Availability",
+            "Difference Between Interface Endpoints and Gateway Endpoints",
+            "Levels of Flow Logs: VPC, Subnet, ENI",
+            "Statelessness in NACLs",
+            "Identifying Problematic IPs and Ports from Flow Logs",
+            "Bastion Host Use Case",
+            "Accessing AWS Services Privately Using VPC Endpoints",
+            "Networking Costs in AWS",
+            "High Availability vs Cost Optimization",
+            "IPv6 for VPC",
+            "Implicit and Explicit Association of Route Tables with Subnets",
+            "VPC Peering Use Case",
+            "Importance of Ephemeral Ports in Network Communication",
+            "NAT Gateway vs VPC Endpoint",
+            "Sending Flow Logs to Different AWS Services",
+            "ENI as an Entry Point for Private AWS Services",
+            "Inter-Region Traffic",
+            "Traffic Types and Costs",
+            "Optimizing Costs with Private IPs",
+            "S3 Data Transfer Pricing",
+            "Capturing Information from IP Traffic Using VPC Flow Logs",
+            "Subnet Allocation and Availability Zones"
+        ],
+        "special topics": [
+            "Advantages of Direct Connect: Increased Bandwidth, Lower Cost, Consistent Network Experience",
+            "Setting Up Virtual Private Gateway for Direct Connect",
+            "Accessing Both Public and Private AWS Resources via VIFs",
+            "Preferred Use Cases for Gateway Endpoints vs. Interface Endpoints",
+            "Establishing Transitive Peering Connections",
+            "Direct Connect for Real-Time Data Feeds and Hybrid Environments",
+            "Integration of Direct Connect and VPN with Transit Gateway",
+            "Egress Only Internet Gateway Use Case",
+            "VPC Traffic Mirroring Use Case",
+            "Cost and Scalability Considerations for VPC Endpoints",
+            "Connecting Multiple VPCs Through Transit Gateway",
+            "Simplifying Network Topologies with Transit Gateway",
+            "Direct Connect Cost Considerations",
+            "Analyzing Flow Log Data with Athena and CloudWatch Logs Insights",
+            "Role of IANA in Defining Private and Public IP Address Ranges",
+            "Connecting On-Premises Data Centers to AWS Using Direct Connect",
+            "Using AWS PrivateLink for Secure Network Connections"
+        ]
+    },
+    "High Availability and Scalability": {
+        "foundational": [
+            "Implications of Load Balancers on High Availability",
+            "Distributed Systems",
+            "Dynamic Scaling",
+            "Layer 4 vs Layer 7 Load Balancing",
+            "Routing Based on URL Path and Hostname",
+            "Layer 7 Load Balancer",
+            "Load Balancing Traffic Distribution",
+            "Elastic Load Balancer Features",
+            "Load Distribution Across AZs",
+            "Vertical vs. Horizontal Scalability",
+            "High Availability and Its Importance",
+            "Default Settings for Cross Zone Load Balancing",
+            "Automated Scaling",
+            "Integration with Load Balancers",
+            "Importance of Health Checks",
+            "Types of Managed Load Balancers",
+            "Health Management"
+        ],
+        "intermediate": [
+            "Impact of Stickiness on Load Distribution",
+            "Connection Termination by Load Balancer",
+            "In-flight Request Handling",
+            "SNI for Multiple Domains",
+            "Redirecting Traffic from HTTP to HTTPS",
+            "Connection Draining in Classic Load Balancer vs. Application/Network Load Balancer",
+            "Routing Traffic to Multiple Applications",
+            "Integrating NLB with EC2 Instances",
+            "Using NLB with Private IPs",
+            "SSL Termination at Load Balancer",
+            "Setting Connection Draining Parameters",
+            "ACM Certificate Management",
+            "Operation at Network Layer",
+            "Static IP Assignment in Load Balancing",
+            "Impact on Traffic Imbalance",
+            "Purpose of Sticky Sessions",
+            "Health Check Protocols for NLB",
+            "Connection Draining vs. Deregistration Delay",
+            "ALB and NLB Support for SNI",
+            "SSL vs. TLS",
+            "How Sticky Sessions Work",
+            "ALB Target Group Routing",
+            "Implications of Scaling",
+            "Instance Lifecycle",
+            "Application-based vs. Duration-based Cookies",
+            "High Performance Load Balancing",
+            "Certificate Expiration and Renewal",
+            "Security Integration with Load Balancers",
+            "Combining NLB with ALB",
+            "SNI Protocol",
+            "Implementing Stickiness for Load Balancers",
+            "Using ALB with Containers and ECS",
+            "Multiple SSL Certificates Handling",
+            "Impact of Connection Draining Duration on Request Handling",
+            "Security Policy Configuration",
+            "Integrating ALB with Lambda Functions"
+        ],
+        "special topics": [
+            "Use of Route Tables in Load Balancing",
+            "Traffic Inspection and Management",
+            "Transparent Network Gateway Functionality",
+            "Connecting ALB with On-premises Servers",
+            "Using Query Strings for Routing",
+            "Integration with Third-party Appliances",
+            "Load Balancing Across Virtual Appliances",
+            "Inter AZ Data Charges for NLB and GWLB",
+            "Fixed Host Name for ALB"
+        ]
+    },
+    "AWS Fundamentals": {
+        "foundational": [
+            "Converting Single AZ to Multi AZ",
+            "Automated Backups and Retention",
+            "Restoring from Automated Backup or Manual Snapshot",
+            "Aurora vs. RDS Read Replicas",
+            "Failover Mechanism in Multi AZ",
+            "Managed Database Service Benefits",
+            "Automated Provisioning",
+            "Scaling Capabilities",
+            "Disaster Recovery with Multi AZ",
+            "High Availability Mechanisms in Aurora",
+            "Continuous Backups",
+            "Scaling Reads with Read Replicas",
+            "Controlling Network Access with Security Groups",
+            "Aurora Storage Auto Expansion",
+            "Replication Process in Aurora",
+            "No SSH Access for RDS and Aurora"
+        ],
+        "intermediate": [
+            "Non-Public Accessibility of RDS Proxy",
+            "Automated Database Instantiation with Aurora Serverless",
+            "Manual DB Snapshots for Long-Term Storage",
+            "Aurora Performance Improvements",
+            "Integration with AWS Secrets Manager",
+            "Read Replica Multi AZ Setup",
+            "Differences between RDS and RDS Custom",
+            "Caching Invalidation",
+            "How RDS Proxy Improves Efficiency",
+            "IAM Authentication for Redis",
+            "Cost-Saving Trick Using Snapshots",
+            "Cross Region Replication in Aurora",
+            "IAM Roles for Database Authentication",
+            "Cloning Aurora Databases",
+            "Promoting Read Replicas to Independent Databases",
+            "ElastiCache Data Loading Patterns: Lazy Loading, Write Through, Session Store",
+            "Comparison of Redis and Memcached",
+            "Aurora Backup Similarities to RDS",
+            "DNS Name and Failover",
+            "Storing Audit Logs in CloudWatch",
+            "RDS Proxy and Failover",
+            "IAM Authentication and RDS Proxy",
+            "Replica Auto Scaling for High Read Traffic",
+            "Purpose of ElastiCache",
+            "Redis Features: Multi AZ, Auto-Failover, Read Replicas, Data Durability",
+            "Purpose of RDS Proxy",
+            "Benefits of Using Caches"
+        ],
+        "special topics": [
+            "Importance of Database Snapshots in RDS Custom",
+            "Memcached and SASL-Based Authentication",
+            "Memcached Features: Multi-Node, Sharding, No High Availability",
+            "Aurora Machine Learning Integration",
+            "Use Cases for Aurora Machine Learning",
+            "Redis AUTH and Security Groups",
+            "Defining Custom Endpoints for Workload Optimization",
+            "Deactivating Automation Mode for Customization",
+            "Disaster Recovery with Aurora Global Database",
+            "Lambda Functions and RDS Proxy",
+            "Networking Costs for Read Replicas",
+            "Managing and Scaling Databases in RDS Custom",
+            "Access to OS and Customization in RDS Custom",
+            "Cross Region Replication in Global Aurora",
+            "ElastiCache and Application Code Changes"
+        ]
+    },
+    "EC2 Instance Storage": {
+        "foundational": [
+            "Capacity Provisioning and Billing",
+            "Differences Between Public, Custom, and Marketplace AMIs",
+            "Encryption at Rest Using KMS",
+            "EBS Volume Use Cases: Boot Volumes, High Throughput, Low Cost",
+            "Automatic Handling of Encryption by EC2 and EBS",
+            "Default Termination Behavior of Root EBS Volumes",
+            "EBS Volume Attachment and Detachment",
+            "General Purpose SSD Volumes: gp2 vs. gp3",
+            "Benefits of Using Custom AMIs",
+            "Purpose of EBS Snapshots",
+            "Volatility of Instance Store with EC2 Instance Termination",
+            "Customizing EC2 Instances with AMIs",
+            "Data Volatility in EC2 Instance Store",
+            "Factors Defining EBS Volumes: Size, Throughput, and IOPS",
+            "Differences Between General Purpose and Provisioned IOPS Volumes",
+            "Use Cases for EC2 Instance Store",
+            "EBS Volume Persistence",
+            "AZ Boundaries for EBS Volumes",
+            "Benefits of EBS Volume Encryption",
+            "Attachment and Availability Zone Restrictions for EBS Volumes"
+        ],
+        "intermediate": [
+            "Transferring Data Between Availability Zones",
+            "Process of Encrypting an Unencrypted EBS Volume",
+            "Advantages of EC2 Instance Store for Performance",
+            "Use Cases for EFS",
+            "Regional Availability and Copying of AMIs",
+            "EFS as a Shared Network File System Across Multiple Instances and AZs",
+            "Latency and Network Communication",
+            "Minimal Impact on Latency from Encryption",
+            "IO Increase with Disk Size in gp2 and Independent IO in gp3 and io1",
+            "EFS as a Managed NFS for EC2 Instances",
+            "HDD Volumes: st1 vs. sc1",
+            "Cost and Pay-per-Use Model of EFS",
+            "Creating Encrypted Volumes from Snapshots",
+            "EC2 Instance Store vs. Network Drive",
+            "AMI Creation Process and EBS Snapshot Integration",
+            "Migrating EBS Volumes Across AZs Using Snapshots",
+            "Performance and Storage Classes of EFS",
+            "Transferring EBS Volumes Across AZs and Regions",
+            "Impact of EBS Volume Backups on Performance",
+            "Snapshot Usage for Cross-AZ Movement",
+            "Cost and Storage Tier Options for EFS",
+            "High Availability and Scalability of EFS",
+            "Lifecycle Management and Storage Tiers in EFS"
+        ],
+        "special topics": [
+            "Expanding to Multiple Regions",
+            "Creating a Custom AMI for Faster Boot Times",
+            "Compatibility with Linux-Based AMIs",
+            "Functionality of Recycle Bin for EBS Snapshots",
+            "Advantages of Using Nitro with io1/io2 for High IOPS",
+            "Fast Snapshot Restore and Its Costs",
+            "Benefits and Trade-offs of EBS Snapshot Archive",
+            "Comparison of IOPS Between Instance Store and EBS",
+            "Provisioned IOPS SSD Volumes: io1 vs. io2 Block Express",
+            "EFS Compatibility with Linux and Use of POSIX System",
+            "Managing Long-term Storage Costs"
+        ]
+    },
+    "Encryption": {
+        "foundational": [
+            "The role of TLS and SSL in Encryption in Flight",
+            "Provisioning and Managing TLS Certificates",
+            "Integration of AWS KMS with IAM for authorization",
+            "Automatic Key Rotation and its importance",
+            "Role of TLS Certificates in In-flight Encryption",
+            "Differences between AWS Owned Keys, AWS Managed Keys, and Customer Managed Keys",
+            "Preventing Man-in-the-Middle Attacks using Encryption in Flight",
+            "How TLS Certificates enable secure communication",
+            "Encrypting Parameters with KMS",
+            "Storing Configuration and Secrets Securely",
+            "Differences between Encryption in Flight, Server-Side Encryption at Rest, and Client-Side Encryption",
+            "Server-Side Encryption processes for securely storing data",
+            "How Data Keys are used in Server-Side and Client-Side Encryption",
+            "Importance of HTTPS for secure data transmission",
+            "Role of IAM Permissions in Accessing Parameters",
+            "Ensuring data security with Client-Side Encryption where the server cannot decrypt data"
+        ],
+        "intermediate": [
+            "Encryption and Decryption processes in different regions",
+            "Organizing Parameters Using Hierarchies",
+            "Role of AWS Encryption SDK in Global Aurora encryption",
+            "Integration of ACM with AWS Services like ALB, CloudFront, and API Gateway",
+            "Differences Between Edge-optimized, Regional, and Private API Gateway Endpoints",
+            "Pricing structure for KMS keys and API calls",
+            "Use cases for KMS Multi-Region Keys in Global Tables",
+            "Methods for Validating Domain Ownership in ACM",
+            "Use cases for KMS Multi-Region Keys in Global Aurora",
+            "S3 Replication with Encryption",
+            "Security implications of using Multi-Region Keys",
+            "Process and Benefits of Automatic Renewal in ACM",
+            "Auditing API calls to KMS through CloudTrail",
+            "Amazon Guard Duty",
+            "Using ACM for Public and Private TLS Certificates",
+            "Scaling EC2 Instances with Auto Scaling and Load Balancing",
+            "Application Layer Defense with WAF and CloudFront",
+            "Integration of SSM Parameter Store with CloudFormation",
+            "Using Version Tracking for Updated Parameters",
+            "Types of KMS Keys: Symmetric and Asymmetric",
+            "Firewall Manager Use Case",
+            "Functionality of KMS Multi-Region Keys",
+            "Blocking Malicious Requests Using WAF Rate-based Rules",
+            "Importance of Key Material and Key ID in Multi-Region Keys",
+            "Amazon Macie Use Case",
+            "Advantages of Client-Side Encryption with Multi-Region Keys",
+            "Using CloudFront and Global Accelerator for Edge Location Mitigation",
+            "Protecting EC2 Instances with Infrastructure Layer Defense",
+            "Encrypted AMI Sharing Process",
+            "Differences between Primary and Replica Keys",
+            "AWS WAF Use Case",
+            "Accessing Secrets Manager through Parameter Store",
+            "AWS Secrets Manager Use Case",
+            "Amazon Inspector Use Case"
+        ],
+        "special topics": []
+    },
+    "Decoupling Applications": {
+        "foundational": [
+            "Decoupling Applications with Asynchronous Communication",
+            "FIFO Queue Ordering",
+            "Event-Based Communication",
+            "Application Communication Patterns",
+            "Comparison Between SQS, SNS, and Kinesis",
+            "Message Flow in SQS",
+            "Decoupling with SNS Topics",
+            "Decoupling Application Tiers with SQS",
+            "Decoupling with SQS",
+            "Processing Messages with Visibility Timeout",
+            "Publishing Messages to SNS",
+            "Scaling Based on Queue Length",
+            "Message Visibility in SQS",
+            "Integration with AWS Services"
+        ],
+        "intermediate": [
+            "Data Ingestion and Consumption",
+            "Unlimited Throughput in SQS",
+            "Retention Periods for Messages",
+            "Exactly-once Send Capability",
+            "Handling Long Processing Times",
+            "Streaming Data with Kinesis",
+            "Data Flow and Ordering in Kinesis Data Streams",
+            "Security and Encryption in Kinesis",
+            "Using the Fan-Out Pattern",
+            "Data Flow and Ordering in SQS FIFO Queues",
+            "Integrating SQS with Auto Scaling Groups",
+            "Implementing Message Filtering",
+            "Use of Partition Key and Group ID",
+            "Handling Sudden Spike Loads with SQS",
+            "Transforming Data with Lambda",
+            "SQS Security Measures",
+            "Message Group and Deduplication",
+            "Subscribing to SNS Topics",
+            "FIFO Ordering with SNS and SQS",
+            "FIFO Queue Throughput",
+            "Data Flow in Kinesis Data Firehose",
+            "Comparison Between Kinesis and SQS FIFO",
+            "Handling Message Duplication and Ordering",
+            "Balancing Visibility Timeout",
+            "Buffering and Near Real-Time Data Processing",
+            "SQS as a Buffer for Database Writes"
+        ],
+        "special topics": [
+            "Docker Container Management on AWS",
+            "Direct Connection in Synchronous Communication",
+            "AWS vs. Third-Party Destinations",
+            "Managing Shards and Capacity",
+            "Scaling with Middleware Services"
+        ]
+    },
+    "EC2 Basics": {
+        "foundational": [
+            "Selecting Compute Power and Memory",
+            "Handling Firewall Rules",
+            "Authorized IP Ranges",
+            "Instance Class, Generation, and Size",
+            "Inbound and Outbound Traffic Control",
+            "Security Group Rules",
+            "Choosing Operating Systems",
+            "Configuring Network Settings",
+            "Use Cases for General Purpose Instances",
+            "Scaling Services with ASG",
+            "Port Numbers and Their Uses",
+            "Referencing Security Groups",
+            "Cost Optimization Strategies",
+            "Distributing Load Across Machines"
+        ],
+        "intermediate": [
+            "Launch Templates vs. Manual Configuration",
+            "Spot Instance Workloads Suitability",
+            "Instance Flexibility with Convertible Reserved Instances",
+            "Network Attached vs. Hardware Attached Storage",
+            "Max Spot Price vs. Current Spot Price",
+            "Use Cases for Memory Optimized Instances",
+            "Use Cases for Compute Optimized Instances",
+            "Spot Fleet Allocation Strategies",
+            "Launch Pools in Spot Fleets",
+            "Capacity Reservation Purpose",
+            "Terminating vs. Stopping Spot Instances",
+            "Short-Term vs. Long-Term Workloads",
+            "Cost Efficiency with Spot Instances",
+            "EC2 Instance Connect for Browser-Based Access",
+            "Spot Block Duration",
+            "Spot Request Types",
+            "Persistent vs. One-Time Spot Requests",
+            "Pricing History for Spot Instances",
+            "Use Cases for Storage Optimized Instances",
+            "Differences in Resource Allocation",
+            "Savings Plan Flexibility",
+            "Bootstrapping with EC2 User Data",
+            "Capacity Reservation Without Time Commitment",
+            "Spot Fleet Functionality",
+            "Optimization Types for Different Use Cases",
+            "Canceling Spot Requests"
+        ],
+        "special topics": [
+            "Naming Convention for EC2 Instances",
+            "Physical Server Reservation with Dedicated Hosts",
+            "Different Methods for Different Operating Systems",
+            "Dedicated Host Licensing"
+        ]
+    },
+    "Serverless": {
+        "foundational": [
+            "Securing API Gateway",
+            "Serverless Architecture",
+            "API Gateway Features and Benefits",
+            "Integration of AWS Services in Serverless Applications",
+            "Event-Driven Architecture",
+            "Using API Gateway with AWS Services",
+            "Pricing Model for Lambda",
+            "On-Demand Execution",
+            "Scaling and Management in Serverless Services",
+            "Security and IAM Integration",
+            "Data Storage and Retrieval in Serverless Using DynamoDB",
+            "Function and Purpose of API Gateway in Serverless",
+            "Integrating Lambda with API Gateway",
+            "Short Execution Times"
+        ],
+        "intermediate": [
+            "Lambda in VPC",
+            "Invoking Lambda from RDS and Aurora",
+            "Integrating DynamoDB with Other AWS Services",
+            "Container Image Requirements",
+            "Authentication and Authorization using Cognito",
+            "Cost Management",
+            "Language Support for Lambda",
+            "Stream Processing with DynamoDB Streams and Kinesis",
+            "Performance and Consistency",
+            "Data Replication and Disaster Recovery",
+            "Real-time Data Processing",
+            "TTL and Data Expiry Management",
+            "Step function use cases",
+            "Integrating Cognito User Pools with API Gateway",
+            "API Gateway Deployment Types",
+            "Data Distribution and Replication",
+            "Real-time Streaming with API Gateway",
+            "Cognito Identity Pools and AWS Services Access"
+        ],
+        "special topics": [
+            "Evolution of Serverless from FaaS",
+            "Backup and Recovery Options",
+            "Capacity Planning",
+            "Schema Evolution"
+        ]
+    },
+    "Snow Family": {
+        "foundational": [
+            "Use Cases for Different Types of Storage Gateways",
+            "Transferring Large Data Sets Efficiently",
+            "Object Storage with Amazon S3 and S3 Glacier",
+            "Block Storage for EC2 Instances with EBS",
+            "Synchronizing Data Between On-Premises and AWS",
+            "Data Migration and Backup with Storage Gateway",
+            "Physical Data Transfer with Snowcone, Snowball, and Snowmobile",
+            "Data Migration with Snow Family Devices",
+            "Bridging On-Premises and Cloud Storage with Storage Gateway",
+            "Data Migration and Edge Computing with Snow Family",
+            "Storage Gateway Deployment Options",
+            "Bridging On-Premises and Cloud Storage"
+        ],
+        "intermediate": [
+            "File Systems for Windows with Amazon FSx",
+            "Scheduled Data Synchronization with AWS DataSync",
+            "Scheduled Replication Tasks",
+            "Using DataSync with Different AWS Storage Services",
+            "Preserving File Permissions and Metadata",
+            "Scalable and Reliable Managed Service for File Transfers",
+            "Snowball into Glacier with S3",
+            "Using OpsHub for Snow Family Devices",
+            "Integration with AWS Services and On-Premises Systems",
+            "Edge Computing Capabilities",
+            "Local Cache for Low-Latency Access",
+            "Physical Storage with EC2 Instance Storage",
+            "Data Migration with AWS DataSync",
+            "Processing Data at Edge Locations",
+            "Network File Systems for Linux with Amazon EFS"
+        ],
+        "special topics": [
+            "Differences Between FSx for Windows File Server, Lustre, NetApp ONTAP, and OpenZFS",
+            "Compatibility with FSx NetApp ONTAP and FSx for OpenZFS",
+            "FTP, FTPS, and SFTP Interfaces with AWS Transfer Family",
+            "File System Deployment Options: Scratch vs. Persistent",
+            "Pricing Model for AWS Transfer Family",
+            "Integration with Authentication Systems",
+            "Secure File Transfers with FTPS and SFTP",
+            "High-Performance Computing with FSx for Lustre",
+            "Using FTP Protocols for Data Transfer to S3 or EFS",
+            "Launching Third-Party File Systems on AWS"
+        ]
+    },
+    "Data Analytics": {
+        "foundational": [
+            "Data Transformation and Cleansing",
+            "Ingesting Data into Redshift",
+            "Using Redshift Spectrum for Querying S3 Data",
+            "Real-time Data Ingestion",
+            "Data Warehousing with Redshift",
+            "Redshift for Analytics and Data Warehousing",
+            "Columnar Storage and Performance Improvement",
+            "Extract, Transform, Load Process",
+            "Using SQL to Query Data in S3",
+            "Comparing Redshift and Athena",
+            "Serverless Querying with Athena",
+            "Analyzing Data Stored in Amazon S3",
+            "Real-Time Data Processing",
+            "Centralizing Data Storage with Data Lakes"
+        ],
+        "intermediate": [
+            "Integration with Third-Party Data Sources",
+            "Transforming Data Formats",
+            "Snapshots and Disaster Recovery in Redshift",
+            "Querying Data with Federated Query",
+            "Data Ingestion Methods for OpenSearch",
+            "Use cases for EMR",
+            "Security in OpenSearch via Cognito and IAM",
+            "Combining Structured and Unstructured Data",
+            "Real-time Data Processing with OpenSearch and Lambda",
+            "Cataloging Data Sets",
+            "Analytics Queries in OpenSearch",
+            "Search Capabilities in OpenSearch",
+            "Converting Data Formats with Glue",
+            "Integration with AWS Data Sources",
+            "Use cases for Amazon MSK for Apache Kafka",
+            "Improving Athena Performance"
+        ],
+        "special topics": [
+            "User and Group Management in QuickSight",
+            "Role of SPICE Engine in Data Computation",
+            "Data Visualization with QuickSight",
+            "Difference Between Dashboard and Analysis"
+        ]
+    },
+    "S3 Advanced": {
+        "foundational": [
+            "Lifecycle Configuration",
+            "Storage Costs vs. Data Transfer Costs",
+            "Cost Allocation in S3",
+            "IAM Permissions for Event Notifications",
+            "Performance Optimization Techniques",
+            "Durability and Availability across Storage Classes",
+            "Identifying Cost Efficiencies",
+            "Storage Class Transitions",
+            "Data Protection Best Practices"
+        ],
+        "intermediate": [
+            "Integration with Event Bridge",
+            "Filtering Events",
+            "Performance and Cost Benefits of S3 Select",
+            "Failure Resilience with Byte Range Fetches",
+            "Exporting Metrics to S3",
+            "Requests per Second per Prefix",
+            "Authenticated Requesters",
+            "Reducing Network Transfers and CPU Costs",
+            "Event Types in S3",
+            "Parallelization of Uploads and Downloads",
+            "Integration with Lambda for Custom Actions",
+            "Bulk Operations on S3 Objects",
+            "Generating Object Lists with S3 Inventory and S3 Select",
+            "Prefix and Tag-based Rules",
+            "S3 Analytics for Lifecycle Optimization",
+            "Event Notification Targets",
+            "Transfer Acceleration Mechanism",
+            "Manual vs. Automated Object Movement",
+            "SQL for Server-Side Filtering"
+        ],
+        "special topics": [
+            "Aggregating Data Across AWS Organization",
+            "Difference Between Free and Paid Metrics",
+            "Advanced Filtering and Multiple Destinations",
+            "Managing Retries and Tracking Progress"
+        ]
+    },
+    "Monitoring and Auditing": {
+        "foundational": [
+            "Monitoring AWS Services with CloudWatch",
+            "Auditing and Compliance of AWS Resources",
+            "CloudWatch vs. CloudTrail vs. Config",
+            "Creating and Using Custom Metrics",
+            "Monitoring EC2 Instances with Status Checks and System Status Checks",
+            "Integration of CloudWatch Alarms with SNS and Lambda",
+            "Sending Logs to CloudWatch",
+            "Recording and Tracking Configuration Changes",
+            "Actions on EC2 Instances Triggered by Alarms"
+        ],
+        "intermediate": [
+            "Integration of CloudWatch Insights with AWS Services",
+            "Integrating CloudTrail with CloudWatch Logs and EventBridge",
+            "Integrating EventBridge with CloudTrail for API Calls",
+            "Period Setting for High Resolution Custom Metrics",
+            "Monitoring Unusual Activity with CloudTrail Insights",
+            "AWS Managed vs. Custom Config Rules",
+            "Analyzing CloudTrail Logs with Athena",
+            "Identifying Network Users via VPC Logs",
+            "Monitoring Serverless Applications",
+            "Composite Alarms for Multiple Metrics",
+            "Structure of CloudWatch Logs",
+            "Querying Logs with CloudWatch Logs Insights",
+            "Creating Automated Dashboards for Application Health",
+            "Using Event Patterns to Filter Events",
+            "Exporting Logs to Amazon S3",
+            "Collecting and Aggregating Container Metrics",
+            "Triggering Notifications on Root User Sign-In",
+            "Scheduling Cron Jobs with EventBridge"
+        ],
+        "special topics": [
+            "Cross-Account Event Bus Permissions",
+            "Analyzing Logs for Top Contributors",
+            "Streaming CloudWatch Metrics to Kinesis Data Firehose",
+            "Using Machine Learning for Application Monitoring",
+            "Archiving and Replaying Events"
+        ]
+    },
+    "DNS": {
+        "foundational": [
+            "Alias Records and Simple Routing Policy",
+            "Domain Name Resolution Process",
+            "Simple routing policy for single resource",
+            "Differences Between CNAME and Alias Records",
+            "Mapping Hostnames to AWS Resources",
+            "DNS Record Caching",
+            "How DNS Records Define Traffic Routing",
+            "Routing Policies in Route 53",
+            "Route 53 Health Checks",
+            "TTL for DNS Records",
+            "DNS Query Process",
+            "Route 53 routing policies",
+            "Difference Between Public and Private Hosted Zones",
+            "DNS Record Types in Route 53",
+            "Alias records for AWS resources"
+        ],
+        "intermediate": [
+            "Multiple values in simple routing policy",
+            "DNS Caching",
+            "No health checks with simple routing policy",
+            "Alias Record Restrictions for EC2 DNS Names",
+            "Effect of High vs. Low TTL on DNS Traffic",
+            "Hierarchical Naming Structure of DNS",
+            "Alias Records for Root Domains and Non-root Domains",
+            "Cache Invalidation Strategy",
+            "Alias Record Exception for TTL",
+            "Free Queries and Health Check Capabilities of Alias Records",
+            "Route 53 as a Domain Registrar",
+            "Roles of Different DNS Servers"
+        ],
+        "special topics": [
+            "Client-side random selection of multiple IP addresses"
+        ]
+    },
+    "IAM": {
+        "foundational": [
+            "Policy Purpose",
+            "Policy Structure",
+            "Password Policy Options",
+            "EC2 Instance and IAM Role Interaction",
+            "Principle of Least Privilege",
+            "Common Roles",
+            "Security Benefits of MFA",
+            "Access Methods: Management Console, CLI, and SDK",
+            "Generating and Managing Access Keys",
+            "IAM Roles for AWS Services vs. Physical Users",
+            "Root User vs. Regular Users",
+            "Global Service",
+            "Assigning Permissions to AWS Services",
+            "Importance of Strong Passwords",
+            "MFA as a Defense Mechanism",
+            "Inline Policy vs. Group Policy",
+            "Security of Access Methods: Username/Password, MFA, Access Keys"
+        ],
+        "intermediate": [
+            "Combination of Password and Security Device",
+            "Policy Inheritance",
+            "Use Cases for CLI and SDK",
+            "Access Advisor Functionality",
+            "User Grouping",
+            "Multiple Group Memberships",
+            "Third-Party MFA Devices",
+            "Reducing Permissions Using Access Advisor",
+            "CLI Commands and Automation"
+        ],
+        "special topics": [
+            "Programming Languages Supported by SDK",
+            "Group Containment"
+        ]
+    },
+    "S3 Security": {
+        "foundational": [
+            "Encryption in Transit",
+            "Forcing Encryption with Bucket Policies",
+            "Types of Server-Side Encryption",
+            "Using KMS for Key Management",
+            "Defining Specific Access Policies for Different Data",
+            "Client-Side vs. Server-Side Encryption",
+            "MFA Delete"
+        ],
+        "intermediate": [
+            "Simplifying Security Management with Access Points",
+            "Managing Security at Scale",
+            "Protecting Against DDoS Attacks",
+            "Cross-Origin Requests",
+            "Using Access Points for VPC and Internet Access",
+            "Dynamic Object Transformation with S3 Object Lambda",
+            "Use Cases for S3 Object Lambda",
+            "Retention Modes and Their Purposes",
+            "Configuring CORS for S3 Buckets",
+            "Using Legal Hold for Object Protection",
+            "Implementing WORM Model with Glacier Vault Lock",
+            "Difference Between CloudFront and S3 Replication",
+            "Setting Retention Periods",
+            "Integration of Lambda Functions with S3 Access Points",
+            "Differences Between S3 Glacier Vault Lock and S3 Object Lock"
+        ],
+        "special topics": [
+            "Caching Content at Edge Locations",
+            "Improving Read Performance and Reducing Latency",
+            "Web Browser Security Mechanism",
+            "Same Origin Policy",
+            "Reducing Data Duplication with S3 Object Lambda",
+            "Origins for CloudFront"
+        ]
+    },
+    "Disaster Recovery": {
+        "foundational": [
+            "On-Premise Strategy with Cloud",
+            "Database Snapshot Method",
+            "RPO vs. RTO",
+            "Cost vs. Recovery Time",
+            "On-premise vs. Cloud",
+            "Backup and Restore",
+            "Migrating Databases with DMS",
+            "Pilot Light",
+            "Hot Site / Multi-Site",
+            "AWS Backup Use Case",
+            "Database Migration"
+        ],
+        "intermediate": [
+            "Server Migration",
+            "AWS Migration Hub",
+            "Homogeneous vs. Heterogeneous Migration",
+            "Resiliency and Self-Healing",
+            "Warm Standby",
+            "Supported Database Engines",
+            "Aurora Read Replica Method",
+            "AWS Application Discovery Service",
+            "Automated Recovery",
+            "AWS Application Migration Service Use Case",
+            "Database Migration to Aurora MySQL"
+        ],
+        "special topics": [
+            "Percona XtraBackup Method",
+            "Amazon Linux 2 AMI Deployment",
+            "VMWare Cloud on AWS",
+            "VM Import and Export",
+            "MySQL Dump Utility Method"
+        ]
+    },
+    "Access Management": {
+        "foundational": [
+            "Restricting Maximum Permissions with IAM Permission Boundaries",
+            "Applying Permission Boundaries to Users and Roles",
+            "Managing Single Sign-On Across Multiple AWS Accounts and Applications",
+            "Differences between Identity-based and Resource-based Policies",
+            "Setting S3 Bucket Policies",
+            "Enforcing Multi-Factor Authentication",
+            "Impact of Explicit Deny in IAM Policies",
+            "Evaluating IAM Policies and Permissions"
+        ],
+        "intermediate": [
+            "Restricting API Calls by IP Address",
+            "Differences Between AWS Managed Microsoft AD, AD Connector, and Simple AD",
+            "Using Permission Sets to Control Access",
+            "Using Trust Connections to Share User Authentication Between On-Premises and AWS",
+            "Role of Session Policies in IAM",
+            "Delegating Responsibilities within Permission Boundaries",
+            "Defining Access for Multiple Accounts Using IAM Identity Center",
+            "Limiting Access to Specific AWS Regions",
+            "Assigning Users and Groups to Permission Sets",
+            "Tag-Based Access Control for EC2",
+            "Combining Permission Boundaries with AWS Organizations SCP",
+            "Restricting Access to Organization Members",
+            "Integrating On-Premises AD with AWS Directory Services"
+        ],
+        "special topics": [
+            "Role of Domain Controllers in Active Directory",
+            "Integrating IAM Identity Center with Third-Party Identity Providers",
+            "Proxying User Authentication Requests with AD Connector"
+        ]
+    },
+    "EC2 advanced": {
+        "foundational": [
+            "Data Persistence on Stop vs. Terminate",
+            "Security Groups Attached to ENIs",
+            "Use of Elastic IPs",
+            "Network Address Translation",
+            "Instance Type Compatibility",
+            "Assigning Private and Public IPs",
+            "Public IP vs. Private IP",
+            "Private Network and Internet Access",
+            "Network Connectivity for EC2 Instances"
+        ],
+        "intermediate": [
+            "Partition Placement Group: Distributed Across Racks",
+            "Spread Placement Group: Minimized Failure Risk",
+            "Benefits of Using DNS over Elastic IPs",
+            "Hibernate Process and RAM State Preservation",
+            "ENI Creation and Management",
+            "Cluster Placement Group: High Performance, High Risk",
+            "Requirements for Hibernation",
+            "Network Performance in Cluster Placement Groups",
+            "ENI Availability Zone Boundaries",
+            "ENI Attributes and Functions",
+            "Hardware Failure Isolation in Spread and Partition Groups",
+            "Instance Boot Process",
+            "Failover Using ENIs",
+            "Differences between IPv4 and IPv6"
+        ],
+        "special topics": [
+            "Operating System Compatibility"
+        ]
+    },
+    "S3 Basics": {
+        "foundational": [
+            "Bucket Naming Conventions",
+            "Object Key Structure",
+            "Public Access Configuration",
+            "IAM Permissions and API Calls",
+            "Encryption at Upload",
+            "Use Cases of S3",
+            "Actions in Bucket Policies",
+            "Cross-Account Access",
+            "Max Object Size and Multi-part Upload",
+            "Versioning in S3",
+            "Principle in IAM Policies",
+            "EC2 Instance Role"
+        ],
+        "intermediate": [
+            "CRR vs. SRR",
+            "Use Cases for SRR",
+            "Replication Mechanism",
+            "Effect in Bucket Policies",
+            "Source and Destination Buckets",
+            "Metadata and Tags",
+            "S3 as Backbone for Websites",
+            "Resource Block in JSON Policies",
+            "Use Cases for CRR"
+        ],
+        "special topics": []
+    },
+    "Containers on AWS": {
+        "foundational": [
+            "Amazon ECS Use Case",
+            "Fargate Launch Type Overview",
+            "Storing Docker Images in Docker Repositories",
+            "Difference Between Docker and Virtual Machines",
+            "Dockerfile and Docker Containers",
+            "How Docker Works on an Operating System",
+            "Docker and its Use Cases",
+            "Amazon ECS and EC2 Launch Type"
+        ],
+        "intermediate": [
+            "Scheduling Tasks with EventBridge",
+            "Data Persistence on Amazon ECS with Amazon EFS",
+            "Managing ECS Tasks with EventBridge",
+            "Scheduling containerized batch processing tasks",
+            "Load Balancer Integrations with ECS",
+            "IAM Roles for ECS Tasks and Instance Profiles",
+            "Scaling ECS Services with SQS Queue"
+        ],
+        "special topics": []
+    },
+    "CloudFront": {
+        "foundational": [
+            "Performance vs. Cost Trade-offs",
+            "Specifying Paths for Cache Invalidation",
+            "Impact of TTL on Content Updates",
+            "Forcing Cache Refresh with Invalidations"
+        ],
+        "intermediate": [
+            "Health Checks and Automated Failover",
+            "Difference Between CloudFront and Global Accelerator",
+            "Reducing Costs with Price Classes",
+            "Data Transfer Costs by Region",
+            "Using Anycast IP for Traffic Routing",
+            "Improving Global Application Performance with Global Accelerator"
+        ],
+        "special topics": []
+    },
+    "Machine Learning": {
+        "foundational": [
+            "SageMaker Use Case",
+            "Rekognition Use Case"
+        ],
+        "intermediate": [
+            "Kendra Use Case",
+            "Comprehend Medical Use Case",
+            "Forecast Use Case",
+            "Comprehend Use Case",
+            "Lex + Connect Use Case",
+            "Transcribe Use Case",
+            "Polly Use Case",
+            "Personalize Use Case",
+            "Translate Use Case"
+        ],
+        "special topics": []
+    },
+    "Data and Databases": {
+        "foundational": [
+            "Comparing RDBMS and NoSQL Databases",
+            "Selecting the Right Database for Workloads",
+            "Ongoing Replication Methods"
+        ],
+        "intermediate": [
+            "Use Cases for Object Store Databases",
+            "Internet Speed Impact on Data Transfer",
+            "Use cases for Kinesis Data Analytics",
+            "Using Snowball for Large Data Transfers",
+            "Constraints and Use Cases for Each Transfer Method"
+        ],
+        "special topics": [
+            "Combining Snowball with DMS"
+        ]
+    },
+    "Edge Functions": {
+        "foundational": [
+            "Use Cases of Edge Functions",
+            "CloudFront Functions vs. Lambda@Edge",
+            "Request and Response Modification",
+            "Executing Logic at the Edge"
+        ],
+        "intermediate": [
+            "Sub-Millisecond Startup Times",
+            "Customizing CDN Content"
+        ],
+        "special topics": []
+    },
+    "Cloudshell": {
+        "foundational": [
+            "Cloud Shell Availability",
+            "Command Execution in Cloud Shell"
+        ],
+        "intermediate": [
+            "File Management in Cloud Shell",
+            "Customizing Cloud Shell",
+            "Cloud Shell Environment Persistence",
+            "Cloud Shell vs. Terminal"
+        ],
+        "special topics": []
+    },
+    "Auto Scaling Group": {
+        "foundational": [
+            "Monitoring and Metrics",
+            "Metrics for Scaling",
+            "Dynamic Response",
+            "Scaling Policies"
+        ],
+        "intermediate": [
+            "Configuration Time",
+            "Cooldown Period"
+        ],
+        "special topics": []
+    },
+    "Services": {
+        "foundational": [
+            "CloudFormation Use Case",
+            "AWS Cost Explorer and Anomaly Detection"
+        ],
+        "intermediate": [
+            "CloudFormation Service Role",
+            "AWS Batch Use Case",
+            "SSM Session Manager Use Case"
+        ],
+        "special topics": []
+    },
+    "Account Management": {
+        "foundational": [
+            "Managing Multiple AWS Accounts",
+            "Organizing Accounts Using OUs",
+            "Billing Consolidation and Cost Savings",
+            "Applying SCPs for Security and Compliance"
+        ],
+        "intermediate": [
+            "Automating Account Creation"
+        ],
+        "special topics": []
+    }
+    
+}

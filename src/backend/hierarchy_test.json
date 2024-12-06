@@ -1,0 +1,859 @@
+{
+    "role_of_nat_vs_instance_security_question": {
+        "weight": 0,
+        "downstream": {
+            "NAT Gateway vs. Instance": {
+                "weight": 0,
+                "downstream": {
+                    "NAT Gateway": 0,
+                    "NAT Instance": 0,
+                    "Public IP Address": 0
+                }
+            },
+            "Role of Inbound and Outbound Rules in Security Groups and NACLs": {
+                "weight": 0,
+                "downstream": {
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0,
+                    "Security Group": 0,
+                    "Network ACL (Access Control List)": 0
+                }
+            },
+            "Private vs. Public Subnet": {
+                "weight": 0,
+                "downstream": {
+                    "10.0.0.0/8 Private IP Range": 0,
+                    "172.16.0.0/12 Private IP Range": 0,
+                    "192.168.0.0/16 Private IP Range": 0,
+                    "Public IP Address": 0,
+                    "Internet Gateway": 0
+                }
+            }
+        }
+    },
+    "cidr_notation_ip_ranges": {
+        "weight": 0,
+        "downstream": {
+            "Understanding CIDR Notation for Defining IP Ranges": {
+                "weight": 0,
+                "downstream": {
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "IPv4 CIDR Block": 0,
+                    "Private IP Range": 0
+                }
+            },
+            "Range of IPs Defined by Different Subnet Masks": {
+                "weight": 0,
+                "downstream": {
+                    "/0 Subnet": 0,
+                    "/16 Subnet": 0,
+                    "/24 Subnet": 0,
+                    "Subnet Mask": 0,
+                    "CIDR (Classless Inter-Domain Routing)": 0
+                }
+            },
+            "Components of CIDR: Base IP and Subnet Mask": {
+                "weight": 0,
+                "downstream": {
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "Base IP": 0,
+                    "Subnet Mask": 0
+                }
+            }
+        }
+    },
+    "default_vpc_internet_connectivity_question": {
+        "weight": 0,
+        "downstream": {
+            "Role of the Default VPC in AWS Accounts": {
+                "weight": 0,
+                "downstream": {
+                    "Default VPC": 0,
+                    "Public IPv4 Address": 0,
+                    "Private IP Address": 0,
+                    "Subnet": 0
+                }
+            },
+            "Internet Connectivity in the Default VPC": {
+                "weight": 0,
+                "downstream": {
+                    "Default VPC": 0,
+                    "Public IPv4 Address": 0,
+                    "NAT Gateway": 0
+                }
+            }
+        }
+    },
+    "network_access_control_question": {
+        "weight": 0,
+        "downstream": {
+            "Traffic Flow and Evaluation Process in Security Groups and NACLs": {
+                "weight": 0,
+                "downstream": {
+                    "Security Group": 0,
+                    "Network ACL (Access Control List)": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0
+                }
+            },
+            "Impact of NACL Rules on Network Traffic": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Egress Only Internet Gateway": 0,
+                    "Flow Logs": 0
+                }
+            },
+            "Statefulness in Security Groups": {
+                "weight": 0,
+                "downstream": {
+                    "Stateful": 0,
+                    "Stateless": 0,
+                    "Security Group": 0
+                }
+            }
+        }
+    },
+    "default_nacl_behavior_question": {
+        "weight": 0,
+        "downstream": {
+            "Default NACL Behavior": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Default VPC": 0,
+                    "Stateless": 0
+                }
+            },
+            "Difference Between Security Groups and NACLs": {
+                "weight": 0,
+                "downstream": {
+                    "Security Group": 0,
+                    "Network ACL (Access Control List)": 0,
+                    "Stateful": 0,
+                    "Stateless": 0
+                }
+            }
+        }
+    },
+    "CIDR_network_security_question": {
+        "weight": 0,
+        "downstream": {
+            "Importance of CIDR in Network Security and Management": {
+                "weight": 0,
+                "downstream": {
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "IP Address": 0,
+                    "Subnet": 0,
+                    "IPv4 CIDR Block": 0,
+                    "Subnet Mask": 0
+                }
+            },
+            "Using CIDR for Efficient IP Allocation in Networks": {
+                "weight": 0,
+                "downstream": {
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "/0 Subnet": 0,
+                    "/32 Subnet": 0
+                }
+            },
+            "Using CIDR for Security Group Rules and Networking in AWS": {
+                "weight": 0,
+                "downstream": {
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "Security Group": 0,
+                    "IPv4 CIDR Block": 0
+                }
+            }
+        }
+    },
+    "difference_between_ips_routing_security_question": {
+        "weight": 0,
+        "downstream": {
+            "Differences Between Public and Private IP Addresses in AWS": {
+                "weight": 0,
+                "downstream": {
+                    "Private IP Address": 0,
+                    "Public IP Address": 0,
+                    "10.0.0.0/8 Private IP Range": 0,
+                    "172.16.0.0/12 Private IP Range": 0,
+                    "192.168.0.0/16 Private IP Range": 0
+                }
+            },
+            "Understanding Route Tables and Their Role in Traffic Routing": {
+                "weight": 0,
+                "downstream": {
+                    "Route Table": 0,
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "Destination Address": 0,
+                    "Route Propagation": 0
+                }
+            },
+            "Instance-Level Security with Security Groups": {
+                "weight": 0,
+                "downstream": {
+                    "Security Group": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0
+                }
+            }
+        }
+    },
+    "private_ip_vs_public_ip_question": {
+        "weight": 0,
+        "downstream": {
+            "Private IP vs Public IP": {
+                "weight": 0,
+                "downstream": {
+                    "Private IP Range": 0,
+                    "Public Internet-Routable IP Address": 0,
+                    "Private IP Address": 0,
+                    "Public IP Address": 0
+                }
+            },
+            "Internet Gateway and Its Role in Providing Internet Access": {
+                "weight": 0,
+                "downstream": {
+                    "Internet Gateway": 0,
+                    "Public IP Address": 0,
+                    "Egress Only Internet Gateway": 0
+                }
+            },
+            "Role of NAT Gateway and Internet Gateway in Network Traffic": {
+                "weight": 0,
+                "downstream": {
+                    "NAT Gateway": 0,
+                    "Internet Gateway": 0,
+                    "Public Internet-Routable IP Address": 0,
+                    "Outbound Rules": 0,
+                    "Inbound Rules": 0
+                }
+            }
+        }
+    },
+    "vpc_security_and_ip_management_question": {
+        "weight": 0,
+        "downstream": {
+            "Difference Between Public and Private IP Addresses": {
+                "weight": 0,
+                "downstream": {
+                    "Private IP Address": 0,
+                    "Public IP Address": 0,
+                    "10.0.0.0/8 Private IP Range": 0,
+                    "172.16.0.0/12 Private IP Range": 0,
+                    "192.168.0.0/16 Private IP Range": 0
+                }
+            },
+            "Managing Route Tables for Network Security": {
+                "weight": 0,
+                "downstream": {
+                    "Route Table": 0,
+                    "Route Tables": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0,
+                    "Network ACL (Access Control List)": 0
+                }
+            },
+            "Subnet-Level Security with NACLs": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Egress Only Internet Gateway": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0
+                }
+            }
+        }
+    },
+    "dns_route_table_vpc_endpoints_question": {
+        "weight": 0,
+        "downstream": {
+            "DNS and Route Table Configuration for VPC Endpoints": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Endpoints": 0,
+                    "Route Table": 0,
+                    "Public IP Address": 0,
+                    "Private IP Address": 0
+                }
+            },
+            "IPv4 CIDR Block and its Significance": {
+                "weight": 0,
+                "downstream": {
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "IPv4 CIDR Block": 0,
+                    "/0 Subnet": 0,
+                    "/16 Subnet": 0,
+                    "/24 Subnet": 0
+                }
+            }
+        }
+    },
+    "nacl_rules_priority_question": {
+        "weight": 0,
+        "downstream": {
+            "Network ACLs and Their Default Rules": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Stateless": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0
+                }
+            },
+            "Priority and Precedence of NACL Rules": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0
+                }
+            }
+        }
+    },
+    "subnet_ip_range_question": {
+        "weight": 0,
+        "downstream": {
+            "Impact of Subnet Mask on the Number of Available IP Addresses": {
+                "weight": 0,
+                "downstream": {
+                    "/8 Subnet": 0,
+                    "/16 Subnet": 0,
+                    "/24 Subnet": 0,
+                    "CIDR (Classless Inter-Domain Routing)": 0,
+                    "Subnet Mask": 0
+                }
+            },
+            "Applications of Different Private IP Ranges": {
+                "weight": 0,
+                "downstream": {
+                    "10.0.0.0/8 Private IP Range": 0,
+                    "172.16.0.0/12 Private IP Range": 0,
+                    "192.168.0.0/16 Private IP Range": 0
+                }
+            }
+        }
+    },
+    "stateful_security_groups_question": {
+        "weight": 0,
+        "downstream": {
+            "Automatic Return Traffic in Stateful Security Groups": {
+                "weight": 0,
+                "downstream": {
+                    "Security Group": 0,
+                    "Stateful": 0
+                }
+            }
+        }
+    },
+    "flow_logs_troubleshooting_question": {
+        "weight": 0,
+        "downstream": {
+            "Using Flow Logs to Monitor and Troubleshoot Connectivity Issues": {
+                "weight": 0,
+                "downstream": {
+                    "Flow Logs": 0,
+                    "VPC Flow Logs": 0,
+                    "Network ACL (Access Control List)": 0,
+                    "Security Group": 0
+                }
+            },
+            "Identifying Problematic IPs and Ports from Flow Logs": {
+                "weight": 0,
+                "downstream": {
+                    "Flow Logs": 0,
+                    "Source IP Address": 0,
+                    "Destination Port": 0
+                }
+            }
+        }
+    },
+    "nat_gateway_high_availability_question": {
+        "weight": 0,
+        "downstream": {
+            "NAT Gateway with High Availability": {
+                "weight": 0,
+                "downstream": {
+                    "NAT Gateway": 0,
+                    "Egress Only Internet Gateway": 0,
+                    "VPN Gateway (VGW)": 0
+                }
+            },
+            "Subnet Allocation and Availability Zones": {
+                "weight": 0,
+                "downstream": {
+                    "/0 Subnet": 0,
+                    "/16 Subnet": 0,
+                    "/24 Subnet": 0,
+                    "Subnet": 0,
+                    "Route Table": 0
+                }
+            },
+            "Networking Costs in AWS": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Endpoints": 0,
+                    "Direct Connect": 0,
+                    "Transit Gateway": 0
+                }
+            }
+        }
+    },
+    "network_firewall_nat_question": {
+        "weight": 0,
+        "downstream": {
+            "AWS Network Firewall Use Cases": {
+                "weight": 0,
+                "downstream": {
+                    "AWS Network Firewall": 0,
+                    "Security Group": 0,
+                    "NAT Gateway": 0,
+                    "Network ACL (Access Control List)": 0
+                }
+            },
+            "NAT Instance Use Case": {
+                "weight": 0,
+                "downstream": {
+                    "NAT Instance": 0,
+                    "Private IP Address": 0,
+                    "Public IP Address": 0
+                }
+            }
+        }
+    },
+    "vpc_peering_bastion_host_question": {
+        "weight": 0,
+        "downstream": {
+            "VPC Peering Use Case": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Peering": 0,
+                    "Transitive Peering Connection": 0,
+                    "Hub-and-Spoke Model": 0,
+                    "Route Tables": 0
+                }
+            },
+            "Bastion Host Use Case": {
+                "weight": 0,
+                "downstream": {
+                    "Bastion Host": 0,
+                    "Private IP Address": 0
+                }
+            }
+        }
+    },
+    "vpc_flow_logs_traffic_question": {
+        "weight": 0,
+        "downstream": {
+            "Flow Logs and Their Uses": {
+                "weight": 0,
+                "downstream": {
+                    "Flow Logs": 0,
+                    "VPC Flow Logs": 0
+                }
+            },
+            "Inter-Region Traffic": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Peering": 0,
+                    "Route Tables": 0,
+                    "Traffic Mirroring": 0
+                }
+            },
+            "Traffic Types and Costs": {
+                "weight": 0,
+                "downstream": {
+                    "Private IP Address": 0,
+                    "Public IP Address": 0,
+                    "VPC Endpoints": 0,
+                    "AWS Direct Connect Location": 0
+                }
+            }
+        }
+    },
+    "gateway_endpoints_vpc_endpoints_question": {
+        "weight": 0,
+        "downstream": {
+            "Free Access to Amazon S3 and DynamoDB Using Gateway Endpoints": {
+                "weight": 0,
+                "downstream": {
+                    "Gateway VPC Endpoint": 0,
+                    "AWS PrivateLink": 0
+                }
+            },
+            "Accessing AWS Services Privately Using VPC Endpoints": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Endpoints": 0,
+                    "AWS PrivateLink": 0
+                }
+            },
+            "NAT Gateway vs VPC Endpoint": {
+                "weight": 0,
+                "downstream": {
+                    "NAT Gateway": 0,
+                    "VPC Endpoints": 0,
+                    "Public IP Address": 0,
+                    "Private IP Address": 0
+                }
+            }
+        }
+    },
+    "cross_region_transit_gateway_question": {
+        "weight": 0,
+        "downstream": {
+            "Cross-Region and Cross-Account Connectivity Using Transit Gateway": {
+                "weight": 0,
+                "downstream": {
+                    "Transit Gateway": 0,
+                    "VPC Peering": 0,
+                    "Hub-and-Spoke Model": 0
+                }
+            },
+            "Sending Flow Logs to Different AWS Services": {
+                "weight": 0,
+                "downstream": {
+                    "Flow Logs": 0,
+                    "VPC Flow Logs": 0
+                }
+            },
+            "Capturing Information from IP Traffic Using VPC Flow Logs": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Flow Logs": 0,
+                    "IP Address": 0,
+                    "Destination Address": 0,
+                    "Source Address": 0
+                }
+            }
+        }
+    },
+    "ec2_ip_management_question": {
+        "weight": 0,
+        "downstream": {
+            "Public and Private IPv4 DNS Names for EC2 Instances": {
+                "weight": 0,
+                "downstream": {
+                    "Public IPv4 Address": 0,
+                    "Private IPv4 Address": 0,
+                    "EC2 Instance": 0
+                }
+            },
+            "Auto-assigned Public IPv4 Addresses for Subnets": {
+                "weight": 0,
+                "downstream": {
+                    "Auto-assign Public IPv4": 0,
+                    "Public IPv4 Address": 0,
+                    "Subnet": 0
+                }
+            }
+        }
+    },
+    "use_case_nacls_question": {
+        "weight": 0,
+        "downstream": {
+            "Use Case for NACLs in Blocking Specific IPs": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Inbound Rules": 0,
+                    "Outbound Rules": 0
+                }
+            },
+            "Statelessness in NACLs": {
+                "weight": 0,
+                "downstream": {
+                    "Network ACL (Access Control List)": 0,
+                    "Stateless": 0
+                }
+            }
+        }
+    },
+    "cloudfront_s3_high_availability_question": {
+        "weight": 0,
+        "downstream": {
+            "Using CloudFront with S3": {
+                "weight": 0,
+                "downstream": {
+                    "Public Internet-Routable IP Address": 0,
+                    "Route Table": 0,
+                    "Internet Gateway": 0
+                }
+            },
+            "High Availability vs Cost Optimization": {
+                "weight": 0,
+                "downstream": {
+                    "Transit Gateway": 0,
+                    "VPC Peering": 0,
+                    "NAT Gateway": 0
+                }
+            }
+        }
+    },
+    "ipv6_for_vpc_question": {
+        "weight": 0,
+        "downstream": {
+            "IPv6 for VPC": {
+                "weight": 0,
+                "downstream": {
+                    "IPv6": 0,
+                    "IPv6 CIDR Block": 0
+                }
+            },
+            "Implicit and Explicit Association of Route Tables with Subnets": {
+                "weight": 0,
+                "downstream": {
+                    "Route Tables": 0,
+                    "Subnet": 0,
+                    "Route Propagation": 0
+                }
+            }
+        }
+    },
+    "s3_data_transfer_pricing_question": {
+        "weight": 0,
+        "downstream": {
+            "S3 Data Transfer Pricing": {
+                "weight": 0,
+                "downstream": {}
+            },
+            "Optimizing Costs with Private IPs": {
+                "weight": 0,
+                "downstream": {
+                    "10.0.0.0/8 Private IP Range": 0,
+                    "172.16.0.0/12 Private IP Range": 0,
+                    "192.168.0.0/16 Private IP Range": 0,
+                    "Private IPv4 Address": 0
+                }
+            },
+            "Cross-AZ Traffic": {
+                "weight": 0,
+                "downstream": {
+                    "Route Table": 0,
+                    "VPC Peering": 0,
+                    "Subnet": 0,
+                    "Network ACL (Access Control List)": 0
+                }
+            }
+        }
+    },
+    "eni_flow_logs_question": {
+        "weight": 0,
+        "downstream": {
+            "Levels of Flow Logs: VPC, Subnet, ENI": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Flow Logs": 0,
+                    "Flow Logs": 0
+                }
+            },
+            "ENI as an Entry Point for Private AWS Services": {
+                "weight": 0,
+                "downstream": {
+                    "Elastic Network Interface (ENI)": 0,
+                    "AWS PrivateLink": 0,
+                    "Private IP Address": 0
+                }
+            }
+        }
+    },
+    "interface_gateway_endpoints_ephemeral_ports_question": {
+        "weight": 0,
+        "downstream": {
+            "Difference Between Interface Endpoints and Gateway Endpoints": {
+                "weight": 0,
+                "downstream": {
+                    "AWS PrivateLink": 0,
+                    "Gateway VPC Endpoint": 0,
+                    "VPC Endpoints": 0
+                }
+            },
+            "Importance of Ephemeral Ports in Network Communication": {
+                "weight": 0,
+                "downstream": {
+                    "Ephemeral Ports": 0,
+                    "Source Port": 0,
+                    "Destination Port": 0,
+                    "Network ACL (Access Control List)": 0,
+                    "Stateful": 0
+                }
+            }
+        }
+    },
+    "direct_connect_vif_access_question": {
+        "weight": 0,
+        "downstream": {
+            "Accessing Both Public and Private AWS Resources via VIFs": {
+                "weight": 0,
+                "downstream": {
+                    "AWS Direct Connect": 0,
+                    "Public IP Address": 0,
+                    "Private IP Address": 0,
+                    "Virtual Private Gateway (VGW)": 0
+                }
+            },
+            "Direct Connect for Real-Time Data Feeds and Hybrid Environments": {
+                "weight": 0,
+                "downstream": {
+                    "AWS Direct Connect Location": 0,
+                    "Dedicated Private Connection": 0,
+                    "Direct Connect Gateway": 0
+                }
+            }
+        }
+    },
+    "direct_connect_vpn_transit_gateway_question": {
+        "weight": 0,
+        "downstream": {
+            "Integration of Direct Connect and VPN with Transit Gateway": {
+                "weight": 0,
+                "downstream": {
+                    "AWS Direct Connect": 0,
+                    "VPN Connections": 0,
+                    "Transit Gateway": 0,
+                    "Direct Connect Gateway": 0,
+                    "Customer Gateway": 0
+                }
+            },
+            "Connecting Multiple VPCs Through Transit Gateway": {
+                "weight": 0,
+                "downstream": {
+                    "Transit Gateway": 0,
+                    "VPC Peering": 0,
+                    "Route Tables": 0
+                }
+            },
+            "Simplifying Network Topologies with Transit Gateway": {
+                "weight": 0,
+                "downstream": {
+                    "Transit Gateway": 0,
+                    "Hub-and-Spoke Model": 0,
+                    "Route Table": 0
+                }
+            }
+        }
+    },
+    "direct_connect_virtual_private_gateway_question": {
+        "weight": 0,
+        "downstream": {
+            "Setting Up Virtual Private Gateway for Direct Connect": {
+                "weight": 0,
+                "downstream": {
+                    "Virtual Private Gateway (VGW)": 0,
+                    "AWS Direct Connect": 0,
+                    "Customer Gateway": 0,
+                    "Direct Connect Gateway": 0
+                }
+            },
+            "Connecting On-Premises Data Centers to AWS Using Direct Connect": {
+                "weight": 0,
+                "downstream": {
+                    "AWS Direct Connect Location": 0,
+                    "Dedicated Private Connection": 0,
+                    "Direct Connect (DX)": 0
+                }
+            },
+            "Direct Connect Cost Considerations": {
+                "weight": 0,
+                "downstream": {
+                    "Direct Connect (DX)": 0,
+                    "Dedicated Private Connection": 0,
+                    "AWS Direct Connect Location": 0,
+                    "Direct Connect Gateway": 0,
+                    "Dynamic Routing": 0
+                }
+            }
+        }
+    },
+    "aws_privatelink_gateway_endpoint_question": {
+        "weight": 0,
+        "downstream": {
+            "Using AWS PrivateLink for Secure Network Connections": {
+                "weight": 0,
+                "downstream": {
+                    "AWS PrivateLink": 0,
+                    "VPC Endpoints": 0
+                }
+            },
+            "Preferred Use Cases for Gateway Endpoints vs. Interface Endpoints": {
+                "weight": 0,
+                "downstream": {
+                    "AWS PrivateLink": 0,
+                    "VPC Endpoints": 0
+                }
+            }
+        }
+    },
+    "direct_connect_advantages_question": {
+        "weight": 0,
+        "downstream": {
+            "Advantages of Direct Connect: Increased Bandwidth, Lower Cost, Consistent Network Experience": {
+                "weight": 0,
+                "downstream": {
+                    "AWS Direct Connect Location": 0,
+                    "Direct Connect (DX)": 0,
+                    "Dedicated Private Connection": 0
+                }
+            },
+            "Establishing Transitive Peering Connections": {
+                "weight": 0,
+                "downstream": {
+                    "Transitive Peering Connection": 0,
+                    "VPC Peering": 0,
+                    "Hub-and-Spoke Model": 0
+                }
+            },
+            "Cost and Scalability Considerations for VPC Endpoints": {
+                "weight": 0,
+                "downstream": {
+                    "AWS PrivateLink": 0,
+                    "Gateway VPC Endpoint": 0,
+                    "VPC Endpoints": 0
+                }
+            }
+        }
+    },
+    "flow_logs_vpc_traffic_mirroring_question": {
+        "weight": 0,
+        "downstream": {
+            "VPC Traffic Mirroring Use Case": {
+                "weight": 0,
+                "downstream": {
+                    "VPC Traffic Mirroring": 0,
+                    "Flow Logs": 0
+                }
+            },
+            "Analyzing Flow Log Data with Athena and CloudWatch Logs Insights": {
+                "weight": 0,
+                "downstream": {
+                    "Flow Logs": 0,
+                    "VPC Flow Logs": 0,
+                    "CloudWatch Logs Insights": 0
+                }
+            }
+        }
+    },
+    "egress_gateway_ip_role_question": {
+        "weight": 0,
+        "downstream": {
+            "Egress Only Internet Gateway Use Case": {
+                "weight": 0,
+                "downstream": {
+                    "Egress Only Internet Gateway": 0,
+                    "NAT Gateway": 0,
+                    "Public IPv4 Address": 0
+                }
+            },
+            "Role of IANA in Defining Private and Public IP Address Ranges": {
+                "weight": 0,
+                "downstream": {
+                    "IANA (Internet Assigned Numbers Authority)": 0,
+                    "Private IP Address": 0,
+                    "Public IP Address": 0,
+                    "IPv4": 0,
+                    "IPv6": 0
+                }
+            }
+        }
+    }
+}

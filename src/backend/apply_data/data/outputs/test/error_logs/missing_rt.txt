@@ -1,0 +1,3 @@
+AWS Fundamentals -> Scaling Database Reads: Suppose your application’s database is experiencing high read traffic, which is affecting performance. How can using Aurora’s read replicas help alleviate this issue? -> Read Replicas
+AWS Fundamentals -> Scaling Database Reads: Suppose your application’s database is experiencing high read traffic, which is affecting performance. How can using Aurora’s read replicas help alleviate this issue? -> Aurora
+AWS Fundamentals -> Scaling Database Reads: Suppose your application’s database is experiencing high read traffic, which is affecting performance. How can using Aurora’s read replicas help alleviate this issue? -> Database Scaling

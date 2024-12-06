@@ -1,0 +1,5994 @@
+{
+  "Networking": {
+    "Networking": {
+      "Setting Up Virtual Private Gateway for Direct Connect": {
+        "component_terms": [
+          "Virtual Private Gateway (VGW)",
+          "AWS Direct Connect",
+          "Customer Gateway",
+          "Direct Connect Gateway"
+        ]
+      },
+      "Accessing Both Public and Private AWS Resources via VIFs": {
+        "component_terms": [
+          "AWS Direct Connect",
+          "Public IP Address",
+          "Private IP Address",
+          "Virtual Private Gateway (VGW)"
+        ]
+      },
+      "Role of the Default VPC in AWS Accounts": {
+        "component_terms": [
+          "Default VPC",
+          "Public IPv4 Address",
+          "Private IP Address",
+          "Subnet"
+        ]
+      },
+      "Cross-AZ Traffic": {
+        "component_terms": [
+          "Route Table",
+          "VPC Peering",
+          "Subnet",
+          "Network ACL (Access Control List)"
+        ]
+      },
+      "Using Flow Logs to Monitor and Troubleshoot Connectivity Issues": {
+        "component_terms": [
+          "Flow Logs",
+          "VPC Flow Logs",
+          "Network ACL (Access Control List)",
+          "Security Group"
+        ]
+      },
+      "Cross-Region and Cross-Account Connectivity Using Transit Gateway": {
+        "component_terms": [
+          "Transit Gateway",
+          "VPC Peering",
+          "Hub-and-Spoke Model"
+        ]
+      },
+      "NAT Gateway vs. Instance": {
+        "component_terms": [
+          "NAT Gateway",
+          "NAT Instance",
+          "Public IP Address"
+        ]
+      },
+      "Free Access to Amazon S3 and DynamoDB Using Gateway Endpoints": {
+        "component_terms": [
+          "Gateway VPC Endpoint",
+          "AWS PrivateLink"
+        ]
+      },
+      "Role of Inbound and Outbound Rules in Security Groups and NACLs": {
+        "component_terms": [
+          "Inbound Rules",
+          "Outbound Rules",
+          "Security Group",
+          "Network ACL (Access Control List)"
+        ]
+      },
+      "Public and Private IPv4 DNS Names for EC2 Instances": {
+        "component_terms": [
+          "Public IPv4 Address",
+          "Private IPv4 Address",
+          "EC2 Instance"
+        ]
+      },
+      "DNS and Route Table Configuration for VPC Endpoints": {
+        "component_terms": [
+          "VPC Endpoints",
+          "Route Table",
+          "Public IP Address",
+          "Private IP Address"
+        ]
+      },
+      "Traffic Flow and Evaluation Process in Security Groups and NACLs": {
+        "component_terms": [
+          "Security Group",
+          "Network ACL (Access Control List)",
+          "Inbound Rules",
+          "Outbound Rules"
+        ]
+      },
+      "Private IP vs Public IP": {
+        "component_terms": [
+          "Private IP Range",
+          "Public Internet-Routable IP Address",
+          "Private IP Address",
+          "Public IP Address"
+        ]
+      },
+      "Default NACL Behavior": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Default VPC",
+          "Stateless"
+        ]
+      },
+      "Network ACLs and Their Default Rules": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Stateless",
+          "Inbound Rules",
+          "Outbound Rules"
+        ]
+      },
+      "Preferred Use Cases for Gateway Endpoints vs. Interface Endpoints": {
+        "component_terms": [
+          "AWS PrivateLink",
+          "VPC Endpoints"
+        ]
+      },
+      "Establishing Transitive Peering Connections": {
+        "component_terms": [
+          "Transitive Peering Connection",
+          "VPC Peering",
+          "Hub-and-Spoke Model"
+        ]
+      },
+      "Advantages of Direct Connect: Increased Bandwidth, Lower Cost, Consistent Network Experience": {
+        "component_terms": [
+          "AWS Direct Connect Location",
+          "Direct Connect (DX)",
+          "Dedicated Private Connection"
+        ]
+      },
+      "Auto-assigned Public IPv4 Addresses for Subnets": {
+        "component_terms": [
+          "Auto-assign Public IPv4",
+          "Public IPv4 Address",
+          "Subnet"
+        ]
+      },
+      "Understanding CIDR Notation for Defining IP Ranges": {
+        "component_terms": [
+          "CIDR (Classless Inter-Domain Routing)",
+          "IPv4 CIDR Block",
+          "Private IP Range"
+        ]
+      },
+      "AWS Network Firewall Use Cases": {
+        "component_terms": [
+          "AWS Network Firewall",
+          "Security Group",
+          "NAT Gateway",
+          "Network ACL (Access Control List)"
+        ]
+      },
+      "Use Case for NACLs in Blocking Specific IPs": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Inbound Rules",
+          "Outbound Rules"
+        ]
+      },
+      "Range of IPs Defined by Different Subnet Masks": {
+        "component_terms": [
+          "/0 Subnet",
+          "/16 Subnet",
+          "/24 Subnet",
+          "Subnet Mask",
+          "CIDR (Classless Inter-Domain Routing)"
+        ]
+      },
+      "Difference Between Public and Private IP Addresses": {
+        "component_terms": [
+          "Private IP Address",
+          "Public IP Address",
+          "10.0.0.0/8 Private IP Range",
+          "172.16.0.0/12 Private IP Range",
+          "192.168.0.0/16 Private IP Range"
+        ]
+      },
+      "Importance of CIDR in Network Security and Management": {
+        "component_terms": [
+          "CIDR (Classless Inter-Domain Routing)",
+          "IP Address",
+          "Subnet",
+          "IPv4 CIDR Block",
+          "Subnet Mask"
+        ]
+      },
+      "Using CloudFront with S3": {
+        "component_terms": [
+          "Public Internet-Routable IP Address",
+          "Route Table",
+          "Internet Gateway"
+        ]
+      },
+      "Flow Logs and Their Uses": {
+        "component_terms": [
+          "Flow Logs",
+          "VPC Flow Logs"
+        ]
+      },
+      "NAT Instance Use Case": {
+        "component_terms": [
+          "NAT Instance",
+          "Private IP Address",
+          "Public IP Address"
+        ]
+      },
+      "Direct Connect for Real-Time Data Feeds and Hybrid Environments": {
+        "component_terms": [
+          "AWS Direct Connect Location",
+          "Dedicated Private Connection",
+          "Direct Connect Gateway"
+        ]
+      },
+      "NAT Gateway with High Availability": {
+        "component_terms": [
+          "NAT Gateway",
+          "Egress Only Internet Gateway",
+          "VPN Gateway (VGW)"
+        ]
+      },
+      "Integration of Direct Connect and VPN with Transit Gateway": {
+        "component_terms": [
+          "AWS Direct Connect",
+          "VPN Connections",
+          "Transit Gateway",
+          "Direct Connect Gateway",
+          "Customer Gateway"
+        ]
+      },
+      "Difference Between Interface Endpoints and Gateway Endpoints": {
+        "component_terms": [
+          "AWS PrivateLink",
+          "Gateway VPC Endpoint",
+          "VPC Endpoints"
+        ]
+      },
+      "Managing Route Tables for Network Security": {
+        "component_terms": [
+          "Route Table",
+          "Route Tables",
+          "Inbound Rules",
+          "Outbound Rules",
+          "Network ACL (Access Control List)"
+        ]
+      },
+      "Levels of Flow Logs: VPC, Subnet, ENI": {
+        "component_terms": [
+          "VPC Flow Logs",
+          "Flow Logs"
+        ]
+      },
+      "Egress Only Internet Gateway Use Case": {
+        "component_terms": [
+          "Egress Only Internet Gateway",
+          "NAT Gateway",
+          "Public IPv4 Address"
+        ]
+      },
+      "Statelessness in NACLs": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Stateless"
+        ]
+      },
+      "Identifying Problematic IPs and Ports from Flow Logs": {
+        "component_terms": [
+          "Flow Logs",
+          "Source IP Address",
+          "Destination Port"
+        ]
+      },
+      "VPC Traffic Mirroring Use Case": {
+        "component_terms": [
+          "VPC Traffic Mirroring",
+          "Flow Logs"
+        ]
+      },
+      "Bastion Host Use Case": {
+        "component_terms": [
+          "Bastion Host",
+          "Private IP Address"
+        ]
+      },
+      "Accessing AWS Services Privately Using VPC Endpoints": {
+        "component_terms": [
+          "VPC Endpoints",
+          "AWS PrivateLink"
+        ]
+      },
+      "Networking Costs in AWS": {
+        "component_terms": [
+          "VPC Endpoints",
+          "Direct Connect",
+          "Transit Gateway"
+        ]
+      },
+      "Cost and Scalability Considerations for VPC Endpoints": {
+        "component_terms": [
+          "AWS PrivateLink",
+          "Gateway VPC Endpoint",
+          "VPC Endpoints"
+        ]
+      },
+      "Components of CIDR: Base IP and Subnet Mask": {
+        "component_terms": [
+          "CIDR (Classless Inter-Domain Routing)",
+          "Base IP",
+          "Subnet Mask"
+        ]
+      },
+      "High Availability vs Cost Optimization": {
+        "component_terms": [
+          "Transit Gateway",
+          "VPC Peering",
+          "NAT Gateway"
+        ]
+      },
+      "Connecting Multiple VPCs Through Transit Gateway": {
+        "component_terms": [
+          "Transit Gateway",
+          "VPC Peering",
+          "Route Tables"
+        ]
+      },
+      "Priority and Precedence of NACL Rules": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Inbound Rules",
+          "Outbound Rules"
+        ]
+      },
+      "IPv6 for VPC": {
+        "component_terms": [
+          "IPv6",
+          "IPv6 CIDR Block"
+        ]
+      },
+      "Automatic Return Traffic in Stateful Security Groups": {
+        "component_terms": [
+          "Security Group",
+          "Stateful"
+        ]
+      },
+      "Using CIDR for Efficient IP Allocation in Networks": {
+        "component_terms": [
+          "CIDR (Classless Inter-Domain Routing)",
+          "/0 Subnet",
+          "/32 Subnet"
+        ]
+      },
+      "Impact of NACL Rules on Network Traffic": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Egress Only Internet Gateway",
+          "Flow Logs"
+        ]
+      },
+      "Internet Gateway and Its Role in Providing Internet Access": {
+        "component_terms": [
+          "Internet Gateway",
+          "Public IP Address",
+          "Egress Only Internet Gateway"
+        ]
+      },
+      "Simplifying Network Topologies with Transit Gateway": {
+        "component_terms": [
+          "Transit Gateway",
+          "Hub-and-Spoke Model",
+          "Route Table"
+        ]
+      },
+      "Using CIDR for Security Group Rules and Networking in AWS": {
+        "component_terms": [
+          "CIDR (Classless Inter-Domain Routing)",
+          "Security Group",
+          "IPv4 CIDR Block"
+        ]
+      },
+      "Internet Connectivity in the Default VPC": {
+        "component_terms": [
+          "Default VPC",
+          "Public IPv4 Address",
+          "NAT Gateway"
+        ]
+      },
+      "Implicit and Explicit Association of Route Tables with Subnets": {
+        "component_terms": [
+          "Route Tables",
+          "Subnet",
+          "Route Propagation"
+        ]
+      },
+      "IPv4 CIDR Block and its Significance": {
+        "component_terms": [
+          "CIDR (Classless Inter-Domain Routing)",
+          "IPv4 CIDR Block",
+          "/0 Subnet",
+          "/16 Subnet",
+          "/24 Subnet"
+        ]
+      },
+      "Differences Between Public and Private IP Addresses in AWS": {
+        "component_terms": [
+          "Private IP Address",
+          "Public IP Address",
+          "10.0.0.0/8 Private IP Range",
+          "172.16.0.0/12 Private IP Range",
+          "192.168.0.0/16 Private IP Range"
+        ]
+      },
+      "Direct Connect Cost Considerations": {
+        "component_terms": [
+          "Direct Connect (DX)",
+          "Dedicated Private Connection",
+          "AWS Direct Connect Location",
+          "Direct Connect Gateway",
+          "Dynamic Routing"
+        ]
+      },
+      "Analyzing Flow Log Data with Athena and CloudWatch Logs Insights": {
+        "component_terms": [
+          "Flow Logs",
+          "VPC Flow Logs",
+          "CloudWatch Logs Insights"
+        ]
+      },
+      "VPC Peering Use Case": {
+        "component_terms": [
+          "VPC Peering",
+          "Transitive Peering Connection",
+          "Hub-and-Spoke Model",
+          "Route Tables"
+        ]
+      },
+      "Impact of Subnet Mask on the Number of Available IP Addresses": {
+        "component_terms": [
+          "/8 Subnet",
+          "/16 Subnet",
+          "/24 Subnet",
+          "CIDR (Classless Inter-Domain Routing)",
+          "Subnet Mask"
+        ]
+      },
+      "Private vs. Public Subnet": {
+        "component_terms": [
+          "10.0.0.0/8 Private IP Range",
+          "172.16.0.0/12 Private IP Range",
+          "192.168.0.0/16 Private IP Range",
+          "Public IP Address",
+          "Internet Gateway"
+        ]
+      },
+      "Role of NAT Gateway and Internet Gateway in Network Traffic": {
+        "component_terms": [
+          "NAT Gateway",
+          "Internet Gateway",
+          "Public Internet-Routable IP Address",
+          "Outbound Rules",
+          "Inbound Rules"
+        ]
+      },
+      "Role of IANA in Defining Private and Public IP Address Ranges": {
+        "component_terms": [
+          "IANA (Internet Assigned Numbers Authority)",
+          "Private IP Address",
+          "Public IP Address",
+          "IPv4",
+          "IPv6"
+        ]
+      },
+      "Importance of Ephemeral Ports in Network Communication": {
+        "component_terms": [
+          "Ephemeral Ports",
+          "Source Port",
+          "Destination Port",
+          "Network ACL (Access Control List)",
+          "Stateful"
+        ]
+      },
+      "NAT Gateway vs VPC Endpoint": {
+        "component_terms": [
+          "NAT Gateway",
+          "VPC Endpoints",
+          "Public IP Address",
+          "Private IP Address"
+        ]
+      },
+      "Sending Flow Logs to Different AWS Services": {
+        "component_terms": [
+          "Flow Logs",
+          "VPC Flow Logs"
+        ]
+      },
+      "Connecting On-Premises Data Centers to AWS Using Direct Connect": {
+        "component_terms": [
+          "AWS Direct Connect Location",
+          "Dedicated Private Connection",
+          "Direct Connect (DX)"
+        ]
+      },
+      "ENI as an Entry Point for Private AWS Services": {
+        "component_terms": [
+          "Elastic Network Interface (ENI)",
+          "AWS PrivateLink",
+          "Private IP Address"
+        ]
+      },
+      "Inter-Region Traffic": {
+        "component_terms": [
+          "VPC Peering",
+          "Route Tables",
+          "Traffic Mirroring"
+        ]
+      },
+      "Traffic Types and Costs": {
+        "component_terms": [
+          "Private IP Address",
+          "Public IP Address",
+          "VPC Endpoints",
+          "AWS Direct Connect Location"
+        ]
+      },
+      "Instance-Level Security with Security Groups": {
+        "component_terms": [
+          "Security Group",
+          "Inbound Rules",
+          "Outbound Rules"
+        ]
+      },
+      "Statefulness in Security Groups": {
+        "component_terms": [
+          "Stateful",
+          "Stateless",
+          "Security Group"
+        ]
+      },
+      "Understanding Route Tables and Their Role in Traffic Routing": {
+        "component_terms": [
+          "Route Table",
+          "CIDR (Classless Inter-Domain Routing)",
+          "Destination Address",
+          "Route Propagation"
+        ]
+      },
+      "Optimizing Costs with Private IPs": {
+        "component_terms": [
+          "10.0.0.0/8 Private IP Range",
+          "172.16.0.0/12 Private IP Range",
+          "192.168.0.0/16 Private IP Range",
+          "Private IPv4 Address"
+        ]
+      },
+      "Subnet-Level Security with NACLs": {
+        "component_terms": [
+          "Network ACL (Access Control List)",
+          "Egress Only Internet Gateway",
+          "Inbound Rules",
+          "Outbound Rules"
+        ]
+      },
+      "S3 Data Transfer Pricing": {
+        "component_terms": []
+      },
+      "Using AWS PrivateLink for Secure Network Connections": {
+        "component_terms": [
+          "AWS PrivateLink",
+          "VPC Endpoints"
+        ]
+      },
+      "Difference Between Security Groups and NACLs": {
+        "component_terms": [
+          "Security Group",
+          "Network ACL (Access Control List)",
+          "Stateful",
+          "Stateless"
+        ]
+      },
+      "Capturing Information from IP Traffic Using VPC Flow Logs": {
+        "component_terms": [
+          "VPC Flow Logs",
+          "IP Address",
+          "Destination Address",
+          "Source Address"
+        ]
+      },
+      "Applications of Different Private IP Ranges": {
+        "component_terms": [
+          "10.0.0.0/8 Private IP Range",
+          "172.16.0.0/12 Private IP Range",
+          "192.168.0.0/16 Private IP Range"
+        ]
+      },
+      "Subnet Allocation and Availability Zones": {
+        "component_terms": [
+          "/0 Subnet",
+          "/16 Subnet",
+          "/24 Subnet",
+          "Subnet",
+          "Route Table"
+        ]
+      }
+    }
+  },
+  "High Availability and Scalability": {
+    "High Availability and Scalability": {
+      "Connection Termination by Load Balancer": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Network Load Balancer (NLB)",
+          "Connection Draining",
+          "Health Checks",
+          "Sticky Sessions"
+        ]
+      },
+      "In-flight Request Handling": {
+        "component_terms": [
+          "Load Balancers",
+          "Session Affinity",
+          "Path-based Routing",
+          "Application-based Cookie",
+          "X-Forwarded-For"
+        ]
+      },
+      "Implications of Load Balancers on High Availability": {
+        "component_terms": [
+          "High Availability",
+          "Availability Zones (AZ)",
+          "Cross Zone Load Balancing",
+          "Health Checks",
+          "Desired Capacity"
+        ]
+      },
+      "SNI for Multiple Domains": {
+        "component_terms": [
+          "Server Name Indication (SNI)",
+          "SSL Certificate",
+          "HTTPS Listener",
+          "Public SSL Certificates",
+          "Certificate Authorities"
+        ]
+      },
+      "Distributed Systems": {
+        "component_terms": [
+          "Horizontal Scalability",
+          "Elasticity",
+          "RDS Multi AZ",
+          "EC2 Instance Types",
+          "Lambda Functions"
+        ]
+      },
+      "Use of Route Tables in Load Balancing": {
+        "component_terms": [
+          "Cross Zone Load Balancing",
+          "Health Checks"
+        ]
+      },
+      "Redirecting Traffic from HTTP to HTTPS": {
+        "component_terms": [
+          "SSL",
+          "AWS Certificate Manager (ACM)",
+          "HTTPS Listener"
+        ]
+      },
+      "Dynamic Scaling": {
+        "component_terms": [
+          "Desired Capacity",
+          "Scaling Policies",
+          "Scale In",
+          "Scale Out"
+        ]
+      },
+      "Connection Draining in Classic Load Balancer vs. Application/Network Load Balancer": {
+        "component_terms": [
+          "Connection Draining",
+          "Classic Load Balancer (CLB)",
+          "Application Load Balancer (ALB)",
+          "Deregistration Delay"
+        ]
+      },
+      "Layer 4 vs Layer 7 Load Balancing": {
+        "component_terms": [
+          "Layer 4 Load Balancer",
+          "Application Load Balancer (ALB)",
+          "Network Load Balancer (NLB)",
+          "Deep Packet Inspection"
+        ]
+      },
+      "Routing Traffic to Multiple Applications": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Host-based Routing",
+          "Path-based Routing",
+          "Sticky Sessions",
+          "Target Groups"
+        ]
+      },
+      "Integrating NLB with EC2 Instances": {
+        "component_terms": [
+          "Network Load Balancer (NLB)",
+          "EC2 Instance Types",
+          "Health Checks",
+          "Target Group",
+          "Private IP Addresses"
+        ]
+      },
+      "Traffic Inspection and Management": {
+        "component_terms": [
+          "Deep Packet Inspection",
+          "Intrusion Detection and Prevention System (IDPS)",
+          "CloudWatch Alarm",
+          "Connection Draining",
+          "Scaling Policies"
+        ]
+      },
+      "Routing Based on URL Path and Hostname": {
+        "component_terms": [
+          "Host-based Routing",
+          "Path-based Routing",
+          "Application Load Balancer (ALB)",
+          "HTTPS Listener",
+          "SSL"
+        ]
+      },
+      "Using NLB with Private IPs": {
+        "component_terms": [
+          "Network Load Balancer (NLB)",
+          "Private IP Addresses",
+          "Static IP",
+          "Health Checks",
+          "Cross Zone Load Balancing"
+        ]
+      },
+      "SSL Termination at Load Balancer": {
+        "component_terms": [
+          "SSL",
+          "HTTPS Listener",
+          "Load Balancers",
+          "In-Flight Encryption",
+          "TLS"
+        ]
+      },
+      "Transparent Network Gateway Functionality": {
+        "component_terms": [
+          "Gateway Load Balancer (GWLB)",
+          "Layer 3 Load Balancing",
+          "Layer 4 Load Balancer",
+          "Third-party Network Appliances"
+        ]
+      },
+      "Connecting ALB with On-premises Servers": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Load Balancers",
+          "Cross Zone Load Balancing",
+          "Health Checks"
+        ]
+      },
+      "Setting Connection Draining Parameters": {
+        "component_terms": [
+          "Connection Draining",
+          "Deregistration Delay",
+          "Target Groups"
+        ]
+      },
+      "ACM Certificate Management": {
+        "component_terms": [
+          "ACM",
+          "AWS Certificate Manager (ACM)",
+          "Certificate Authorities",
+          "SSL Certificate",
+          "TLS Certificate"
+        ]
+      },
+      "Layer 7 Load Balancer": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Host-based Routing",
+          "Path-based Routing",
+          "HTTP/2",
+          "Sticky Sessions"
+        ]
+      },
+      "Using Query Strings for Routing": {
+        "component_terms": [
+          "Query String-based Routing",
+          "Application-based Cookie",
+          "Session Affinity",
+          "X-Forwarded-For"
+        ]
+      },
+      "Load Balancing Traffic Distribution": {
+        "component_terms": [
+          "Cross Zone Load Balancing",
+          "Health Checks",
+          "Load Balancers",
+          "Maximum Capacity",
+          "Minimum Capacity"
+        ]
+      },
+      "Elastic Load Balancer Features": {
+        "component_terms": [
+          "Connection Draining",
+          "TCP Traffic",
+          "SSL Certificate",
+          "Deregistration Delay",
+          "Elasticity"
+        ]
+      },
+      "Integration with Third-party Appliances": {
+        "component_terms": [
+          "Third-party Network Appliances",
+          "Gateway Load Balancer (GWLB)",
+          "Intrusion Detection and Prevention System (IDPS)",
+          "Deep Packet Inspection"
+        ]
+      },
+      "Operation at Network Layer": {
+        "component_terms": [
+          "Layer 3 Load Balancing",
+          "TCP Traffic",
+          "UDP Traffic"
+        ]
+      },
+      "Static IP Assignment in Load Balancing": {
+        "component_terms": [
+          "Static IP",
+          "Network Load Balancer (NLB)",
+          "Classic Load Balancer (CLB)"
+        ]
+      },
+      "Load Distribution Across AZs": {
+        "component_terms": [
+          "Availability Zones (AZ)",
+          "Cross Zone Load Balancing",
+          "Load Balancers"
+        ]
+      },
+      "Vertical vs. Horizontal Scalability": {
+        "component_terms": [
+          "Vertical Scalability",
+          "Horizontal Scalability",
+          "Elasticity"
+        ]
+      },
+      "Impact on Traffic Imbalance": {
+        "component_terms": [
+          "Load Balancer Generated Cookie",
+          "Session Affinity",
+          "Scaling Policies"
+        ]
+      },
+      "Purpose of Sticky Sessions": {
+        "component_terms": [
+          "Sticky Sessions",
+          "Session Affinity",
+          "Load Balancer Generated Cookie"
+        ]
+      },
+      "High Availability and Its Importance": {
+        "component_terms": [
+          "High Availability",
+          "Availability Zones (AZ)",
+          "Elasticity"
+        ]
+      },
+      "Health Check Protocols for NLB": {
+        "component_terms": [
+          "Health Checks",
+          "Network Load Balancer (NLB)",
+          "Target Groups"
+        ]
+      },
+      "Impact of Stickiness on Load Distribution": {
+        "component_terms": [
+          "Sticky Sessions",
+          "Cross Zone Load Balancing",
+          "Load Balancers"
+        ]
+      },
+      "Connection Draining vs. Deregistration Delay": {
+        "component_terms": [
+          "Connection Draining",
+          "Deregistration Delay",
+          "Scaling Policies"
+        ]
+      },
+      "Default Settings for Cross Zone Load Balancing": {
+        "component_terms": [
+          "Cross Zone Load Balancing",
+          "Availability Zones (AZ)",
+          "Load Balancers"
+        ]
+      },
+      "Load Balancing Across Virtual Appliances": {
+        "component_terms": [
+          "Gateway Load Balancer (GWLB)",
+          "Third-party Network Appliances",
+          "Load Balancers"
+        ]
+      },
+      "ALB and NLB Support for SNI": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Network Load Balancer (NLB)",
+          "Server Name Indication (SNI)"
+        ]
+      },
+      "SSL vs. TLS": {
+        "component_terms": [
+          "SSL",
+          "TLS",
+          "Public SSL Certificates",
+          "SSL Certificate",
+          "TLS Certificate"
+        ]
+      },
+      "How Sticky Sessions Work": {
+        "component_terms": [
+          "Sticky Sessions",
+          "Session Affinity",
+          "Application-based Cookie",
+          "Load Balancer Generated Cookie"
+        ]
+      },
+      "ALB Target Group Routing": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Target Groups",
+          "Host-based Routing",
+          "Path-based Routing",
+          "Health Checks"
+        ]
+      },
+      "Automated Scaling": {
+        "component_terms": [
+          "Elasticity",
+          "Desired Capacity",
+          "Scaling Policies",
+          "Scale In",
+          "Scale Out"
+        ]
+      },
+      "Implications of Scaling": {
+        "component_terms": [
+          "High Availability",
+          "Horizontal Scalability",
+          "Vertical Scalability",
+          "Availability Zones (AZ)",
+          "Load Balancers"
+        ]
+      },
+      "Integration with Load Balancers": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Classic Load Balancer (CLB)",
+          "Network Load Balancer (NLB)",
+          "Gateway Load Balancer (GWLB)",
+          "Cross Zone Load Balancing"
+        ]
+      },
+      "Instance Lifecycle": {
+        "component_terms": [
+          "EC2 Instance Types",
+          "CloudWatch Alarm",
+          "In-Flight Encryption",
+          "Deregistration Delay",
+          "Connection Draining"
+        ]
+      },
+      "Importance of Health Checks": {
+        "component_terms": [
+          "Health Checks",
+          "CloudWatch Alarm",
+          "Load Balancers"
+        ]
+      },
+      "Application-based vs. Duration-based Cookies": {
+        "component_terms": [
+          "Application-based Cookie",
+          "Duration-based Cookie",
+          "Sticky Sessions"
+        ]
+      },
+      "High Performance Load Balancing": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Classic Load Balancer (CLB)",
+          "Network Load Balancer (NLB)"
+        ]
+      },
+      "Certificate Expiration and Renewal": {
+        "component_terms": [
+          "ACM",
+          "AWS Certificate Manager (ACM)",
+          "SSL Certificate"
+        ]
+      },
+      "Inter AZ Data Charges for NLB and GWLB": {
+        "component_terms": [
+          "Inter AZ Data Charges",
+          "Gateway Load Balancer (GWLB)",
+          "Availability Zones (AZ)"
+        ]
+      },
+      "Types of Managed Load Balancers": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Network Load Balancer (NLB)",
+          "Classic Load Balancer (CLB)",
+          "Load Balancers",
+          "Horizontal Scalability"
+        ]
+      },
+      "Security Integration with Load Balancers": {
+        "component_terms": [
+          "ACM",
+          "AWS Certificate Manager (ACM)",
+          "SSL",
+          "Public SSL Certificates",
+          "Certificate Authorities"
+        ]
+      },
+      "Combining NLB with ALB": {
+        "component_terms": [
+          "Network Load Balancer (NLB)",
+          "Application Load Balancer (ALB)",
+          "Cross Zone Load Balancing",
+          "Target Groups",
+          "Health Checks"
+        ]
+      },
+      "SNI Protocol": {
+        "component_terms": [
+          "Server Name Indication (SNI)",
+          "SSL Certificate",
+          "TLS",
+          "HTTPS Listener",
+          "In-Flight Encryption"
+        ]
+      },
+      "Fixed Host Name for ALB": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Host-based Routing",
+          "Static IP",
+          "Load Balancer Generated Cookie",
+          "Session Affinity"
+        ]
+      },
+      "Implementing Stickiness for Load Balancers": {
+        "component_terms": [
+          "Application-based Cookie",
+          "Sticky Sessions",
+          "Load Balancer Generated Cookie"
+        ]
+      },
+      "Using ALB with Containers and ECS": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Target Groups",
+          "ECS"
+        ]
+      },
+      "Multiple SSL Certificates Handling": {
+        "component_terms": [
+          "AWS Certificate Manager (ACM)",
+          "SSL Certificate",
+          "Public SSL Certificates"
+        ]
+      },
+      "Impact of Connection Draining Duration on Request Handling": {
+        "component_terms": [
+          "Connection Draining",
+          "Deregistration Delay",
+          "Health Checks"
+        ]
+      },
+      "Security Policy Configuration": {
+        "component_terms": [
+          "SSL",
+          "TLS",
+          "Certificate Authorities"
+        ]
+      },
+      "Health Management": {
+        "component_terms": [
+          "Health Checks",
+          "CloudWatch Alarm",
+          "Availability Zones (AZ)",
+          "Elasticity",
+          "Scaling Policies"
+        ]
+      },
+      "Integrating ALB with Lambda Functions": {
+        "component_terms": [
+          "Application Load Balancer (ALB)",
+          "Lambda Functions",
+          "Target Group",
+          "Path-based Routing",
+          "HTTP/2"
+        ]
+      }
+    }
+  },
+  "AWS Fundamentals": {
+    "AWS Fundamentals": {
+      "Converting Single AZ to Multi AZ": {
+        "component_terms": [
+          "Automatic Failover",
+          "Disaster Recovery",
+          "Cross-Region Replication"
+        ]
+      },
+      "Non-Public Accessibility of RDS Proxy": {
+        "component_terms": [
+          "RDS Proxy",
+          "IAM Authentication",
+          "SSL In-Flight Encryption"
+        ]
+      },
+      "Automated Backups and Retention": {
+        "component_terms": [
+          "Automated Backups",
+          "Manual DB Snapshots",
+          "Point-in-Time Recovery"
+        ]
+      },
+      "Automated Database Instantiation with Aurora Serverless": {
+        "component_terms": [
+          "Aurora Serverless",
+          "Database Snapshot",
+          "Cache Hit"
+        ]
+      },
+      "Manual DB Snapshots for Long-Term Storage": {
+        "component_terms": [
+          "Manual DB Snapshots",
+          "Aurora Backups",
+          "Restore Options"
+        ]
+      },
+      "Importance of Database Snapshots in RDS Custom": {
+        "component_terms": [
+          "Database Snapshot",
+          "Manual DB Snapshots",
+          "Automated Backups",
+          "Point-in-Time Recovery"
+        ]
+      },
+      "Restoring from Automated Backup or Manual Snapshot": {
+        "component_terms": [
+          "Automated Backups",
+          "Manual DB Snapshots",
+          "Point-in-Time Recovery",
+          "Restore Options"
+        ]
+      },
+      "Aurora Performance Improvements": {
+        "component_terms": [
+          "Aurora",
+          "Cache Hit",
+          "Asynchronous Replication",
+          "Read Replicas",
+          "Replica Auto Scaling"
+        ]
+      },
+      "Aurora vs. RDS Read Replicas": {
+        "component_terms": [
+          "Aurora",
+          "Read Replicas",
+          "Snapshot",
+          "Cross-Region Replication"
+        ]
+      },
+      "Failover Mechanism in Multi AZ": {
+        "component_terms": [
+          "Automatic Failover",
+          "Failover Time Reduction",
+          "Disaster Recovery"
+        ]
+      },
+      "Integration with AWS Secrets Manager": {
+        "component_terms": [
+          "AWS Secrets Manager",
+          "IAM Authentication",
+          "SSL In-Flight Encryption"
+        ]
+      },
+      "Memcached and SASL-Based Authentication": {
+        "component_terms": [
+          "Memcached",
+          "SASL-Based Authentication",
+          "Cache Hit",
+          "Cache Miss"
+        ]
+      },
+      "Read Replica Multi AZ Setup": {
+        "component_terms": [
+          "Read Replicas",
+          "Asynchronous Replication",
+          "Automatic Failover"
+        ]
+      },
+      "Managed Database Service Benefits": {
+        "component_terms": [
+          "Disaster Recovery",
+          "Automated Backups",
+          "Point-in-Time Recovery"
+        ]
+      },
+      "Differences between RDS and RDS Custom": {
+        "component_terms": [
+          "RDS",
+          "RDS Custom",
+          "Database Snapshot",
+          "Aurora"
+        ]
+      },
+      "Caching Invalidation": {
+        "component_terms": [
+          "Cache Invalidation",
+          "Cache Hit",
+          "Cache Miss"
+        ]
+      },
+      "Automated Provisioning": {
+        "component_terms": [
+          "Automated Backups",
+          "Database Snapshot",
+          "Disaster Recovery"
+        ]
+      },
+      "How RDS Proxy Improves Efficiency": {
+        "component_terms": [
+          "RDS Proxy",
+          "Connection Pooling",
+          "Reader Endpoint"
+        ]
+      },
+      "IAM Authentication for Redis": {
+        "component_terms": [
+          "IAM Authentication",
+          "Redis",
+          "Redis AUTH"
+        ]
+      },
+      "Cost-Saving Trick Using Snapshots": {
+        "component_terms": [
+          "Manual DB Snapshots",
+          "Aurora Backups",
+          "Point-in-Time Recovery"
+        ]
+      },
+      "Memcached Features: Multi-Node, Sharding, No High Availability": {
+        "component_terms": [
+          "Cache Hit",
+          "Cache Invalidation",
+          "Cache Miss",
+          "Connection Pooling",
+          "Write Through"
+        ]
+      },
+      "Aurora Machine Learning Integration": {
+        "component_terms": [
+          "Amazon SageMaker",
+          "Machine Learning Integration",
+          "AWS Secrets Manager"
+        ]
+      },
+      "Use Cases for Aurora Machine Learning": {
+        "component_terms": [
+          "Amazon Comprehend",
+          "Machine Learning Integration",
+          "Aurora"
+        ]
+      },
+      "Cross Region Replication in Aurora": {
+        "component_terms": [
+          "Cross-Region Replication",
+          "Global Aurora",
+          "Asynchronous Replication"
+        ]
+      },
+      "Redis AUTH and Security Groups": {
+        "component_terms": [
+          "Redis AUTH",
+          "IAM Authentication",
+          "SSL In-Flight Encryption"
+        ]
+      },
+      "IAM Roles for Database Authentication": {
+        "component_terms": [
+          "IAM Authentication",
+          "AWS Secrets Manager"
+        ]
+      },
+      "Cloning Aurora Databases": {
+        "component_terms": [
+          "Aurora Database Cloning",
+          "Aurora Backups",
+          "Database Snapshot"
+        ]
+      },
+      "Promoting Read Replicas to Independent Databases": {
+        "component_terms": [
+          "Read Replicas",
+          "Cross-Region Replication",
+          "Automated Backups"
+        ]
+      },
+      "ElastiCache Data Loading Patterns: Lazy Loading, Write Through, Session Store": {
+        "component_terms": [
+          "Lazy Loading",
+          "Write Through",
+          "Session Store"
+        ]
+      },
+      "Defining Custom Endpoints for Workload Optimization": {
+        "component_terms": [
+          "Custom Endpoints",
+          "Reader Endpoint",
+          "Writer Endpoint"
+        ]
+      },
+      "Scaling Capabilities": {
+        "component_terms": [
+          "Aurora Serverless",
+          "Read Replicas",
+          "Replica Auto Scaling"
+        ]
+      },
+      "Comparison of Redis and Memcached": {
+        "component_terms": [
+          "Cache Hit",
+          "Cache Miss",
+          "Cache Invalidation",
+          "Lazy Loading"
+        ]
+      },
+      "Disaster Recovery with Multi AZ": {
+        "component_terms": [
+          "Disaster Recovery",
+          "Automatic Failover",
+          "Cross-Region Replication"
+        ]
+      },
+      "Aurora Backup Similarities to RDS": {
+        "component_terms": [
+          "Aurora Backups",
+          "Automated Backups",
+          "Point-in-Time Recovery",
+          "Database Snapshot"
+        ]
+      },
+      "Deactivating Automation Mode for Customization": {
+        "component_terms": [
+          "RDS Custom",
+          "Custom Endpoints",
+          "Manual DB Snapshots"
+        ]
+      },
+      "Disaster Recovery with Aurora Global Database": {
+        "component_terms": [
+          "Disaster Recovery",
+          "Cross-Region Replication",
+          "Global Aurora"
+        ]
+      },
+      "High Availability Mechanisms in Aurora": {
+        "component_terms": [
+          "Automatic Failover",
+          "Failover Time Reduction",
+          "Synchronous Replication"
+        ]
+      },
+      "Continuous Backups": {
+        "component_terms": [
+          "Automated Backups",
+          "Point-in-Time Recovery",
+          "Aurora Backups"
+        ]
+      },
+      "Scaling Reads with Read Replicas": {
+        "component_terms": [
+          "Read Replicas",
+          "Replica Auto Scaling",
+          "Reader Endpoint"
+        ]
+      },
+      "Lambda Functions and RDS Proxy": {
+        "component_terms": [
+          "RDS Proxy",
+          "Connection Pooling",
+          "AWS Secrets Manager"
+        ]
+      },
+      "Networking Costs for Read Replicas": {
+        "component_terms": [
+          "Read Replicas",
+          "Replica Auto Scaling",
+          "Cross-Region Replication",
+          "Synchronous Replication"
+        ]
+      },
+      "DNS Name and Failover": {
+        "component_terms": [
+          "Automatic Failover",
+          "Failover Time Reduction",
+          "Global Aurora"
+        ]
+      },
+      "Storing Audit Logs in CloudWatch": {
+        "component_terms": [
+          "CloudWatch Logs",
+          "Audit Logs"
+        ]
+      },
+      "RDS Proxy and Failover": {
+        "component_terms": [
+          "RDS Proxy",
+          "Connection Pooling",
+          "Failover Time Reduction"
+        ]
+      },
+      "Controlling Network Access with Security Groups": {
+        "component_terms": [
+          "IAM Authentication",
+          "VPC (Virtual Private Cloud)"
+        ]
+      },
+      "Managing and Scaling Databases in RDS Custom": {
+        "component_terms": [
+          "RDS Custom",
+          "Aurora",
+          "Read Replicas",
+          "Database Snapshot",
+          "Automated Backups"
+        ]
+      },
+      "IAM Authentication and RDS Proxy": {
+        "component_terms": [
+          "IAM Authentication",
+          "RDS Proxy",
+          "SSL In-Flight Encryption",
+          "SASL-Based Authentication"
+        ]
+      },
+      "Replica Auto Scaling for High Read Traffic": {
+        "component_terms": [
+          "Replica Auto Scaling",
+          "Reader Endpoint",
+          "Cache Hit",
+          "Cache Miss"
+        ]
+      },
+      "Access to OS and Customization in RDS Custom": {
+        "component_terms": [
+          "RDS Custom",
+          "Custom Endpoints",
+          "Audit Logs",
+          "Point-in-Time Recovery"
+        ]
+      },
+      "Purpose of ElastiCache": {
+        "component_terms": [
+          "Memcached",
+          "Redis",
+          "Cache Invalidation",
+          "Session Store"
+        ]
+      },
+      "Aurora Storage Auto Expansion": {
+        "component_terms": [
+          "Aurora",
+          "Automated Backups",
+          "Aurora Backups",
+          "Cross-Region Replication"
+        ]
+      },
+      "Redis Features: Multi AZ, Auto-Failover, Read Replicas, Data Durability": {
+        "component_terms": [
+          "Redis",
+          "Automatic Failover",
+          "Read Replicas",
+          "Data Durability"
+        ]
+      },
+      "Purpose of RDS Proxy": {
+        "component_terms": [
+          "RDS Proxy",
+          "Connection Pooling",
+          "Automatic Failover",
+          "IAM Authentication"
+        ]
+      },
+      "Replication Process in Aurora": {
+        "component_terms": [
+          "Asynchronous Replication",
+          "Cross-Region Replication",
+          "Synchronous Replication",
+          "Aurora Database Cloning"
+        ]
+      },
+      "No SSH Access for RDS and Aurora": {
+        "component_terms": [
+          "IAM Authentication",
+          "CloudWatch Logs",
+          "Audit Logs"
+        ]
+      },
+      "Cross Region Replication in Global Aurora": {
+        "component_terms": [
+          "Cross-Region Replication",
+          "Global Aurora",
+          "Aurora Database Cloning",
+          "Read Replicas",
+          "Automatic Failover"
+        ]
+      },
+      "ElastiCache and Application Code Changes": {
+        "component_terms": [
+          "Connection Pooling",
+          "Cache Hit",
+          "Cache Miss",
+          "Lazy Loading",
+          "Cache Invalidation"
+        ]
+      },
+      "Benefits of Using Caches": {
+        "component_terms": [
+          "Cache Hit",
+          "Cache Miss",
+          "Time to Live",
+          "Write Through",
+          "Disaster Recovery"
+        ]
+      }
+    }
+  },
+  "EC2 Instance Storage": {
+    "EC2 Instance Storage": {
+      "Process of Encrypting an Unencrypted EBS Volume": {
+        "component_terms": [
+          "EBS Volume Encryption",
+          "Data at Rest Encryption",
+          "KMS (Key Management Service)"
+        ]
+      },
+      "Advantages of EC2 Instance Store for Performance": {
+        "component_terms": [
+          "Ephemeral Storage",
+          "I/O Performance",
+          "EC2 Instance Store"
+        ]
+      },
+      "Capacity Provisioning and Billing": {
+        "component_terms": [
+          "EBS Snapshots",
+          "Provisioned IOPS",
+          "Elastic Block Store (EBS)"
+        ]
+      },
+      "Use Cases for EFS": {
+        "component_terms": [
+          "EFS Standard",
+          "EFS Infrequent Access (IA)",
+          "Network Drive"
+        ]
+      },
+      "Differences Between Public, Custom, and Marketplace AMIs": {
+        "component_terms": [
+          "AWS Marketplace AMI",
+          "Custom AMI",
+          "Public AMI",
+          "Amazon Machine Image (AMI)"
+        ]
+      },
+      "Encryption at Rest Using KMS": {
+        "component_terms": [
+          "KMS (Key Management Service)",
+          "Data at Rest Encryption",
+          "EBS Volume Encryption",
+          "Encrypted Snapshots",
+          "Encryption/Decryption Mechanism"
+        ]
+      },
+      "Regional Availability and Copying of AMIs": {
+        "component_terms": [
+          "AWS Marketplace AMI",
+          "Amazon Machine Image (AMI)",
+          "Custom AMI",
+          "Copy Snapshot",
+          "AWS Global Infrastructure"
+        ]
+      },
+      "EFS as a Shared Network File System Across Multiple Instances and AZs": {
+        "component_terms": [
+          "EFS Standard",
+          "EFS Infrequent Access (IA)",
+          "Network Drive",
+          "POSIX System"
+        ]
+      },
+      "EBS Volume Use Cases: Boot Volumes, High Throughput, Low Cost": {
+        "component_terms": [
+          "Elastic Block Store (EBS)",
+          "Root EBS Volume",
+          "Provisioned IOPS",
+          "General Purpose SSD (GP2/GP3)",
+          "Delete on Termination"
+        ]
+      },
+      "Latency and Network Communication": {
+        "component_terms": [
+          "Buffer",
+          "Throughput",
+          "I/O Performance",
+          "Latency",
+          "Bursting Throughput Mode"
+        ]
+      },
+      "Automatic Handling of Encryption by EC2 and EBS": {
+        "component_terms": [
+          "Data at Rest Encryption",
+          "EBS Volume Encryption",
+          "KMS (Key Management Service)",
+          "AES-256"
+        ]
+      },
+      "Minimal Impact on Latency from Encryption": {
+        "component_terms": [
+          "I/O Performance",
+          "Throughput",
+          "Elastic Block Store (EBS)"
+        ]
+      },
+      "IO Increase with Disk Size in gp2 and Independent IO in gp3 and io1": {
+        "component_terms": [
+          "General Purpose SSD (GP2/GP3)",
+          "Provisioned IOPS",
+          "Max I/O Performance Mode",
+          "IOPS (I/O Operations Per Second)"
+        ]
+      },
+      "Expanding to Multiple Regions": {
+        "component_terms": [
+          "AWS Global Infrastructure",
+          "EBS Snapshots",
+          "Copy Snapshot"
+        ]
+      },
+      "Default Termination Behavior of Root EBS Volumes": {
+        "component_terms": [
+          "Delete on Termination",
+          "Root EBS Volume"
+        ]
+      },
+      "EBS Volume Attachment and Detachment": {
+        "component_terms": [
+          "Elastic Block Store (EBS)",
+          "EBS Snapshots",
+          "Delete on Termination",
+          "EBS Volume Encryption"
+        ]
+      },
+      "EFS as a Managed NFS for EC2 Instances": {
+        "component_terms": [
+          "EFS Standard",
+          "EFS Infrequent Access (IA)",
+          "Network Drive",
+          "Elastic Throughput Mode"
+        ]
+      },
+      "General Purpose SSD Volumes: gp2 vs. gp3": {
+        "component_terms": [
+          "General Purpose SSD (GP2/GP3)",
+          "Provisioned IOPS",
+          "I/O Performance",
+          "Throughput"
+        ]
+      },
+      "Transferring Data Between Availability Zones": {
+        "component_terms": [
+          "AWS Global Infrastructure",
+          "Data in Flight Encryption",
+          "EBS Snapshot Archive",
+          "Copy Snapshot"
+        ]
+      },
+      "Compatibility with Linux-Based AMIs": {
+        "component_terms": [
+          "Amazon Linux 2 AMI",
+          "AWS Marketplace AMI",
+          "Amazon Machine Image (AMI)",
+          "POSIX System"
+        ]
+      },
+      "HDD Volumes: st1 vs. sc1": {
+        "component_terms": [
+          "st1",
+          "sc1",
+          "Storage Tiers",
+          "I/O Performance"
+        ]
+      },
+      "Benefits of Using Custom AMIs": {
+        "component_terms": [
+          "Custom AMI",
+          "Amazon Machine Image (AMI)",
+          "Public AMI",
+          "AWS Marketplace AMI"
+        ]
+      },
+      "Cost and Pay-per-Use Model of EFS": {
+        "component_terms": [
+          "EFS Standard",
+          "EFS Infrequent Access (IA)",
+          "Cost",
+          "Elastic Throughput Mode"
+        ]
+      },
+      "Purpose of EBS Snapshots": {
+        "component_terms": [
+          "EBS Snapshots",
+          "Copy Snapshot",
+          "EBS Snapshot Archive",
+          "Encrypted Snapshots"
+        ]
+      },
+      "Functionality of Recycle Bin for EBS Snapshots": {
+        "component_terms": [
+          "Recycle Bin for EBS Snapshots",
+          "Lifecycle Policies",
+          "Delete on Termination"
+        ]
+      },
+      "Advantages of Using Nitro with io1/io2 for High IOPS": {
+        "component_terms": [
+          "EC2 Nitro",
+          "Provisioned IOPS",
+          "IOPS (I/O Operations Per Second)"
+        ]
+      },
+      "Creating Encrypted Volumes from Snapshots": {
+        "component_terms": [
+          "EBS Volume Encryption",
+          "Encrypted Snapshots",
+          "KMS (Key Management Service)"
+        ]
+      },
+      "Fast Snapshot Restore and Its Costs": {
+        "component_terms": [
+          "Fast Snapshot Restore",
+          "EBS Snapshots",
+          "Lifecycle Policies"
+        ]
+      },
+      "EC2 Instance Store vs. Network Drive": {
+        "component_terms": [
+          "EC2 Instance Store",
+          "Network Drive",
+          "Ephemeral Storage"
+        ]
+      },
+      "Benefits and Trade-offs of EBS Snapshot Archive": {
+        "component_terms": [
+          "EBS Snapshot Archive",
+          "Archive Storage Tier",
+          "Recycle Bin for EBS Snapshots"
+        ]
+      },
+      "AMI Creation Process and EBS Snapshot Integration": {
+        "component_terms": [
+          "Amazon Machine Image (AMI)",
+          "EBS Snapshots",
+          "Copy Snapshot",
+          "Custom AMI"
+        ]
+      },
+      "Comparison of IOPS Between Instance Store and EBS": {
+        "component_terms": [
+          "EC2 Instance Store",
+          "IOPS (I/O Operations Per Second)",
+          "Provisioned IOPS",
+          "General Purpose SSD (GP2/GP3)"
+        ]
+      },
+      "Volatility of Instance Store with EC2 Instance Termination": {
+        "component_terms": [
+          "Instance Store",
+          "Delete on Termination",
+          "Ephemeral Storage"
+        ]
+      },
+      "Customizing EC2 Instances with AMIs": {
+        "component_terms": [
+          "AWS Marketplace AMI",
+          "Custom AMI",
+          "Amazon Linux 2 AMI"
+        ]
+      },
+      "Migrating EBS Volumes Across AZs Using Snapshots": {
+        "component_terms": [
+          "EBS Snapshots",
+          "Recycle Bin for EBS Snapshots",
+          "EBS Volume Encryption"
+        ]
+      },
+      "Data Volatility in EC2 Instance Store": {
+        "component_terms": [
+          "Ephemeral Storage",
+          "EC2 Instance Store",
+          "Data at Rest Encryption"
+        ]
+      },
+      "Performance and Storage Classes of EFS": {
+        "component_terms": [
+          "EFS Infrequent Access (IA)",
+          "EFS Standard",
+          "Elastic Throughput Mode"
+        ]
+      },
+      "Provisioned IOPS SSD Volumes: io1 vs. io2 Block Express": {
+        "component_terms": [
+          "Provisioned IOPS",
+          "io1",
+          "io2 Block Express",
+          "I/O Performance"
+        ]
+      },
+      "Transferring EBS Volumes Across AZs and Regions": {
+        "component_terms": [
+          "EBS Snapshots",
+          "Copy Snapshot",
+          "Elastic Block Store (EBS)"
+        ]
+      },
+      "Factors Defining EBS Volumes: Size, Throughput, and IOPS": {
+        "component_terms": [
+          "Size",
+          "Throughput",
+          "IOPS (I/O Operations Per Second)",
+          "General Purpose SSD (GP2/GP3)"
+        ]
+      },
+      "Differences Between General Purpose and Provisioned IOPS Volumes": {
+        "component_terms": [
+          "General Purpose SSD (GP2/GP3)",
+          "Provisioned IOPS",
+          "IOPS (I/O Operations Per Second)",
+          "Elastic Block Store (EBS)",
+          "Max I/O Performance Mode"
+        ]
+      },
+      "Impact of EBS Volume Backups on Performance": {
+        "component_terms": [
+          "EBS Snapshots",
+          "Copy Snapshot",
+          "Fast Snapshot Restore",
+          "EBS Snapshot Archive",
+          "Delete on Termination"
+        ]
+      },
+      "Creating a Custom AMI for Faster Boot Times": {
+        "component_terms": [
+          "Custom AMI",
+          "Amazon Machine Image (AMI)",
+          "AWS Marketplace AMI",
+          "Amazon Linux 2 AMI",
+          "EC2 Nitro"
+        ]
+      },
+      "Use Cases for EC2 Instance Store": {
+        "component_terms": [
+          "EC2 Instance Store",
+          "Ephemeral Storage",
+          "Scratch Data",
+          "Data in Flight Encryption",
+          "Elastic Block Store (EBS)"
+        ]
+      },
+      "EBS Volume Persistence": {
+        "component_terms": [
+          "EBS Multi-Attach",
+          "EBS Volume Encryption",
+          "Data at Rest Encryption",
+          "Archive Storage Tier",
+          "Lifecycle Policies"
+        ]
+      },
+      "AZ Boundaries for EBS Volumes": {
+        "component_terms": [
+          "Elastic Block Store (EBS)",
+          "EBS Snapshots",
+          "EBS Multi-Attach"
+        ]
+      },
+      "EFS Compatibility with Linux and Use of POSIX System": {
+        "component_terms": [
+          "POSIX System",
+          "EFS Standard",
+          "EFS Infrequent Access (IA)"
+        ]
+      },
+      "Managing Long-term Storage Costs": {
+        "component_terms": [
+          "Archive Storage Tier",
+          "Lifecycle Policies",
+          "Storage Tiers"
+        ]
+      },
+      "Benefits of EBS Volume Encryption": {
+        "component_terms": [
+          "EBS Volume Encryption",
+          "Data at Rest Encryption",
+          "KMS (Key Management Service)"
+        ]
+      },
+      "Snapshot Usage for Cross-AZ Movement": {
+        "component_terms": [
+          "Snapshot",
+          "EBS Snapshots",
+          "Copy Snapshot"
+        ]
+      },
+      "Cost and Storage Tier Options for EFS": {
+        "component_terms": [
+          "EFS Infrequent Access (IA)",
+          "EFS Standard",
+          "Storage Tiers"
+        ]
+      },
+      "High Availability and Scalability of EFS": {
+        "component_terms": [
+          "AWS Global Infrastructure",
+          "Elastic Throughput Mode"
+        ]
+      },
+      "Attachment and Availability Zone Restrictions for EBS Volumes": {
+        "component_terms": [
+          "EBS Multi-Attach",
+          "Root EBS Volume",
+          "Availability Zone"
+        ]
+      },
+      "Lifecycle Management and Storage Tiers in EFS": {
+        "component_terms": [
+          "Lifecycle Policies",
+          "Storage Tiers",
+          "Archive Storage Tier"
+        ]
+      }
+    }
+  },
+  "Encryption": {
+    "Encryption": {
+      "Encryption and Decryption processes in different regions": {
+        "component_terms": [
+          "KMS Multi-Region Keys",
+          "AWS KMS (Key Management Service)",
+          "Symmetric Keys"
+        ]
+      },
+      "The role of TLS and SSL in Encryption in Flight": {
+        "component_terms": [
+          "Encryption in Flight",
+          "TLS Certificates",
+          "Asymmetric Keys"
+        ]
+      },
+      "Organizing Parameters Using Hierarchies": {
+        "component_terms": [
+          "Parameter Hierarchy",
+          "SSM Parameter Store",
+          "Public Parameters"
+        ]
+      },
+      "Role of AWS Encryption SDK in Global Aurora encryption": {
+        "component_terms": [
+          "AWS Encryption SDK",
+          "AWS Managed Keys",
+          "Data Key"
+        ]
+      },
+      "Provisioning and Managing TLS Certificates": {
+        "component_terms": [
+          "Automatic Renewal",
+          "Private Certificates",
+          "Public Certificates"
+        ]
+      },
+      "Integration of ACM with AWS Services like ALB, CloudFront, and API Gateway": {
+        "component_terms": [
+          "TLS Certificates",
+          "Encryption in Flight"
+        ]
+      },
+      "Integration of AWS KMS with IAM for authorization": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "Key Policies",
+          "Customer Managed Keys"
+        ]
+      },
+      "Differences Between Edge-optimized, Regional, and Private API Gateway Endpoints": {
+        "component_terms": [
+          "Edge Location Mitigation",
+          "Public Certificates"
+        ]
+      },
+      "Automatic Key Rotation and its importance": {
+        "component_terms": [
+          "Automatic Key Rotation",
+          "KMS Encryption"
+        ]
+      },
+      "Role of TLS Certificates in In-flight Encryption": {
+        "component_terms": [
+          "TLS Certificates",
+          "Encryption in Flight"
+        ]
+      },
+      "Pricing structure for KMS keys and API calls": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "Customer Managed Keys",
+          "AWS Managed Keys"
+        ]
+      },
+      "Use cases for KMS Multi-Region Keys in Global Tables": {
+        "component_terms": [
+          "KMS Multi-Region Keys",
+          "AWS Encryption SDK"
+        ]
+      },
+      "Methods for Validating Domain Ownership in ACM": {
+        "component_terms": [
+          "Public Certificates",
+          "Private Certificates",
+          "TLS Certificates"
+        ]
+      },
+      "Differences between AWS Owned Keys, AWS Managed Keys, and Customer Managed Keys": {
+        "component_terms": [
+          "AWS Owned Keys",
+          "AWS Managed Keys",
+          "Customer Managed Keys"
+        ]
+      },
+      "Use cases for KMS Multi-Region Keys in Global Aurora": {
+        "component_terms": [
+          "KMS Multi-Region Keys",
+          "Server-Side Encryption at Rest"
+        ]
+      },
+      "Preventing Man-in-the-Middle Attacks using Encryption in Flight": {
+        "component_terms": [
+          "Encryption in Flight",
+          "Man-in-the-Middle Attacks",
+          "TLS Certificates"
+        ]
+      },
+      "S3 Replication with Encryption": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "Server-Side Encryption at Rest"
+        ]
+      },
+      "How TLS Certificates enable secure communication": {
+        "component_terms": [
+          "TLS Certificates",
+          "Asymmetric Keys",
+          "Public Certificates"
+        ]
+      },
+      "Security implications of using Multi-Region Keys": {
+        "component_terms": [
+          "KMS Multi-Region Keys",
+          "Customer Managed Keys"
+        ]
+      },
+      "Process and Benefits of Automatic Renewal in ACM": {
+        "component_terms": [
+          "Automatic Renewal",
+          "Private Certificates",
+          "Public Certificates"
+        ]
+      },
+      "Auditing API calls to KMS through CloudTrail": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "Key Policies",
+          "AWS Managed Keys"
+        ]
+      },
+      "Encrypting Parameters with KMS": {
+        "component_terms": [
+          "KMS Encryption",
+          "SSM Parameter Store",
+          "Automatic Key Rotation"
+        ]
+      },
+      "Storing Configuration and Secrets Securely": {
+        "component_terms": [
+          "Configuration Storage",
+          "Secrets Storage",
+          "Parameter Policies"
+        ]
+      },
+      "Amazon Guard Duty": {
+        "component_terms": [
+          "Amazon Guard Duty",
+          "DDoS attack",
+          "Infrastructure Layer Defense"
+        ]
+      },
+      "Using ACM for Public and Private TLS Certificates": {
+        "component_terms": [
+          "Public Certificates",
+          "Private Certificates",
+          "TLS Certificates"
+        ]
+      },
+      "Scaling EC2 Instances with Auto Scaling and Load Balancing": {
+        "component_terms": [
+          "KMS Encryption",
+          "Encryption in Flight",
+          "Asymmetric Keys"
+        ]
+      },
+      "Differences between Encryption in Flight, Server-Side Encryption at Rest, and Client-Side Encryption": {
+        "component_terms": [
+          "Encryption in Flight",
+          "Server-Side Encryption at Rest",
+          "Client-Side Encryption"
+        ]
+      },
+      "Server-Side Encryption processes for securely storing data": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "Automatic Key Rotation",
+          "Customer Managed Keys"
+        ]
+      },
+      "How Data Keys are used in Server-Side and Client-Side Encryption": {
+        "component_terms": [
+          "Data Key",
+          "AWS Managed Keys",
+          "Secrets Storage"
+        ]
+      },
+      "Application Layer Defense with WAF and CloudFront": {
+        "component_terms": [
+          "AWS WAF",
+          "Application Layer Defense",
+          "DDoS attack"
+        ]
+      },
+      "Integration of SSM Parameter Store with CloudFormation": {
+        "component_terms": [
+          "SSM Parameter Store",
+          "Parameter Hierarchy",
+          "Secrets Storage"
+        ]
+      },
+      "Importance of HTTPS for secure data transmission": {
+        "component_terms": [
+          "Application Layer Defense",
+          "Encryption in Flight",
+          "TLS Certificates"
+        ]
+      },
+      "Using Version Tracking for Updated Parameters": {
+        "component_terms": [
+          "Version Tracking",
+          "Parameter Policies"
+        ]
+      },
+      "Role of IAM Permissions in Accessing Parameters": {
+        "component_terms": [
+          "Key Policies",
+          "AWS KMS (Key Management Service)"
+        ]
+      },
+      "Types of KMS Keys: Symmetric and Asymmetric": {
+        "component_terms": [
+          "Symmetric Keys",
+          "Asymmetric Keys",
+          "AWS Managed Keys",
+          "Customer Managed Keys"
+        ]
+      },
+      "Firewall Manager Use Case": {
+        "component_terms": [
+          "Firewall Manager",
+          "AWS Shield",
+          "DDoS attack",
+          "Edge Location Mitigation"
+        ]
+      },
+      "Functionality of KMS Multi-Region Keys": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "KMS Multi-Region Keys",
+          "Key Material",
+          "Key ID"
+        ]
+      },
+      "Blocking Malicious Requests Using WAF Rate-based Rules": {
+        "component_terms": [
+          "AWS WAF",
+          "WAF Rate-based Rules",
+          "Application Layer Defense",
+          "Infrastructure Layer Defense"
+        ]
+      },
+      "Importance of Key Material and Key ID in Multi-Region Keys": {
+        "component_terms": [
+          "KMS Multi-Region Keys",
+          "Key Material",
+          "Key ID",
+          "AWS KMS (Key Management Service)"
+        ]
+      },
+      "Amazon Macie Use Case": {
+        "component_terms": [
+          "Amazon Macie",
+          "Data Key",
+          "Encryption in Flight",
+          "Server-Side Encryption at Rest"
+        ]
+      },
+      "Advantages of Client-Side Encryption with Multi-Region Keys": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "KMS Multi-Region Keys",
+          "Client Managed Keys"
+        ]
+      },
+      "Ensuring data security with Client-Side Encryption where the server cannot decrypt data": {
+        "component_terms": [
+          "AWS Encryption SDK",
+          "Asymmetric Keys",
+          "Symmetric Keys"
+        ]
+      },
+      "Using CloudFront and Global Accelerator for Edge Location Mitigation": {
+        "component_terms": [
+          "Edge Location Mitigation",
+          "DDoS attack",
+          "AWS Shield"
+        ]
+      },
+      "Protecting EC2 Instances with Infrastructure Layer Defense": {
+        "component_terms": [
+          "Infrastructure Layer Defense",
+          "AWS WAF",
+          "Firewall Manager"
+        ]
+      },
+      "Encrypted AMI Sharing Process": {
+        "component_terms": [
+          "KMS Encryption",
+          "AWS Managed Keys",
+          "Key Policies"
+        ]
+      },
+      "Differences between Primary and Replica Keys": {
+        "component_terms": [
+          "AWS KMS (Key Management Service)",
+          "Replica Key",
+          "Customer Managed Keys",
+          "Automatic Key Rotation"
+        ]
+      },
+      "AWS WAF Use Case": {
+        "component_terms": [
+          "AWS WAF",
+          "Application Layer Defense",
+          "WAF Rate-based Rules"
+        ]
+      },
+      "Accessing Secrets Manager through Parameter Store": {
+        "component_terms": [
+          "SSM Parameter Store",
+          "Advanced Parameter Tier",
+          "Parameter Hierarchy"
+        ]
+      },
+      "AWS Secrets Manager Use Case": {
+        "component_terms": [
+          "Secrets Storage",
+          "AWS Managed Keys",
+          "Automatic Renewal"
+        ]
+      },
+      "Amazon Inspector Use Case": {
+        "component_terms": [
+          "Amazon Inspector",
+          "Infrastructure Layer Defense",
+          "DDoS attack"
+        ]
+      }
+    }
+  },
+  "Decoupling Applications": {
+    "Decoupling Applications": {
+      "Unlimited Throughput in SQS": {
+        "component_terms": [
+          "SQS (Simple Queue Service)",
+          "Throughput Constraints",
+          "Queue Length / Approximate Number of Messages"
+        ]
+      },
+      "Retention Periods for Messages": {
+        "component_terms": [
+          "Message Visibility Timeout",
+          "Message Filtering"
+        ]
+      },
+      "Exactly-once Send Capability": {
+        "component_terms": [
+          "Deduplication ID",
+          "Content-based Deduplication"
+        ]
+      },
+      "Decoupling Applications with Asynchronous Communication": {
+        "component_terms": [
+          "Asynchronous Communication",
+          "Pub/Sub Model",
+          "Event Producer",
+          "Event Receiver / Subscriber"
+        ]
+      },
+      "FIFO Queue Ordering": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Message Group ID",
+          "Message Ordering"
+        ]
+      },
+      "Docker Container Management on AWS": {
+        "component_terms": [
+          "Event Producer",
+          "Event Receiver / Subscriber",
+          "Asynchronous Communication"
+        ]
+      },
+      "Event-Based Communication": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Kinesis",
+          "SNS (Simple Notification Service)",
+          "Publish-Subscribe (Pub/Sub)"
+        ]
+      },
+      "Application Communication Patterns": {
+        "component_terms": [
+          "Fan-Out Pattern",
+          "Middleware",
+          "Message Filtering"
+        ]
+      },
+      "Comparison Between SQS, SNS, and Kinesis": {
+        "component_terms": [
+          "SQS (Simple Queue Service)",
+          "SNS (Simple Notification Service)",
+          "Kinesis Data Streams",
+          "Message Ordering"
+        ]
+      },
+      "Handling Long Processing Times": {
+        "component_terms": [
+          "Long polling",
+          "Message Visibility Timeout",
+          "Buffer Size"
+        ]
+      },
+      "Streaming Data with Kinesis": {
+        "component_terms": [
+          "Kinesis",
+          "Kinesis Data Streams",
+          "Kinesis Data Firehose",
+          "Consumer",
+          "Event Producer"
+        ]
+      },
+      "Data Flow and Ordering in Kinesis Data Streams": {
+        "component_terms": [
+          "Partition Key",
+          "Shards",
+          "Message Ordering",
+          "Buffer Interval",
+          "Buffer Size"
+        ]
+      },
+      "Message Flow in SQS": {
+        "component_terms": [
+          "SQS",
+          "Queue",
+          "Long polling",
+          "DeleteMessage API",
+          "Message Visibility Timeout"
+        ]
+      },
+      "Security and Encryption in Kinesis": {
+        "component_terms": [
+          "Kinesis",
+          "Asynchronous Communication",
+          "Content-based Deduplication",
+          "SQS Access Policies",
+          "Producers"
+        ]
+      },
+      "Using the Fan-Out Pattern": {
+        "component_terms": [
+          "Fan-Out Pattern",
+          "Pub/Sub Model",
+          "SNS (Simple Notification Service)",
+          "Event Receiver / Subscriber",
+          "Consumer"
+        ]
+      },
+      "Decoupling with SNS Topics": {
+        "component_terms": [
+          "SNS (Simple Notification Service)",
+          "Pub/Sub Model",
+          "Event Producer",
+          "Event Receiver / Subscriber",
+          "Fan-Out Pattern"
+        ]
+      },
+      "Decoupling Application Tiers with SQS": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Queue",
+          "Producer",
+          "Consumer",
+          "Asynchronous Communication"
+        ]
+      },
+      "Direct Connection in Synchronous Communication": {
+        "component_terms": [
+          "Synchronous Communication",
+          "Custom HTTP Endpoint",
+          "Middleware"
+        ]
+      },
+      "Data Flow and Ordering in SQS FIFO Queues": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Message Group ID",
+          "Message Ordering",
+          "Deduplication ID",
+          "Message Visibility Timeout"
+        ]
+      },
+      "Integrating SQS with Auto Scaling Groups": {
+        "component_terms": [
+          "Scaling Action",
+          "SQS Access Policies",
+          "Queue Length / Approximate Number of Messages",
+          "Throughput Constraints"
+        ]
+      },
+      "Decoupling with SQS": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "SQS Standard Queue",
+          "SendMessage API"
+        ]
+      },
+      "Data Ingestion and Consumption": {
+        "component_terms": [
+          "Event Producer",
+          "Event Receiver / Subscriber",
+          "Kinesis Data Streams",
+          "Producers",
+          "Consumers"
+        ]
+      },
+      "AWS vs. Third-Party Destinations": {
+        "component_terms": [
+          "AWS Lambda Destinations",
+          "Third-Party Destinations"
+        ]
+      },
+      "Implementing Message Filtering": {
+        "component_terms": [
+          "Message Filtering",
+          "Content-based Deduplication",
+          "SNS (Simple Notification Service)"
+        ]
+      },
+      "Processing Messages with Visibility Timeout": {
+        "component_terms": [
+          "Message Visibility Timeout",
+          "DeleteMessage API",
+          "Long polling"
+        ]
+      },
+      "Managing Shards and Capacity": {
+        "component_terms": [
+          "Shards",
+          "Throughput Constraints"
+        ]
+      },
+      "Use of Partition Key and Group ID": {
+        "component_terms": [
+          "Partition Key",
+          "Message Group ID"
+        ]
+      },
+      "Publishing Messages to SNS": {
+        "component_terms": [
+          "SNS (Simple Notification Service)",
+          "Event Producer"
+        ]
+      },
+      "Handling Sudden Spike Loads with SQS": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Long polling"
+        ]
+      },
+      "Scaling Based on Queue Length": {
+        "component_terms": [
+          "Queue Length / Approximate Number of Messages",
+          "Scaling Action"
+        ]
+      },
+      "Transforming Data with Lambda": {
+        "component_terms": [
+          "AWS Lambda Destinations",
+          "Event Producer",
+          "Event Receiver / Subscriber",
+          "Asynchronous Communication"
+        ]
+      },
+      "SQS Security Measures": {
+        "component_terms": [
+          "SQS Access Policies",
+          "Queue Length / Approximate Number of Messages",
+          "Long polling",
+          "Message Filtering"
+        ]
+      },
+      "Message Visibility in SQS": {
+        "component_terms": [
+          "Message Visibility Timeout",
+          "DeleteMessage API",
+          "ApproximateNumberOfMessages"
+        ]
+      },
+      "Message Group and Deduplication": {
+        "component_terms": [
+          "Message Group ID",
+          "Content-based Deduplication",
+          "Deduplication ID",
+          "FIFO Queue"
+        ]
+      },
+      "Subscribing to SNS Topics": {
+        "component_terms": [
+          "SNS (Simple Notification Service)",
+          "Publish-Subscribe (Pub/Sub)",
+          "Fan-Out Pattern",
+          "Custom HTTP Endpoint"
+        ]
+      },
+      "Scaling with Middleware Services": {
+        "component_terms": [
+          "Middleware",
+          "AWS Lambda Destinations",
+          "Asynchronous Communication",
+          "Scaling Action"
+        ]
+      },
+      "FIFO Ordering with SNS and SQS": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Message Group ID",
+          "Message Ordering",
+          "Message Filtering"
+        ]
+      },
+      "FIFO Queue Throughput": {
+        "component_terms": [
+          "Throughput Constraints",
+          "Queue Length / Approximate Number of Messages",
+          "Consumer"
+        ]
+      },
+      "Data Flow in Kinesis Data Firehose": {
+        "component_terms": [
+          "Kinesis Data Firehose",
+          "Data Blob",
+          "Buffer Interval",
+          "Buffer Size"
+        ]
+      },
+      "Integration with AWS Services": {
+        "component_terms": [
+          "Event Producer",
+          "Event Receiver / Subscriber",
+          "SNS (Simple Notification Service)",
+          "Kinesis"
+        ]
+      },
+      "Comparison Between Kinesis and SQS FIFO": {
+        "component_terms": [
+          "Amazon SQS FIFO Queues",
+          "Kinesis",
+          "FIFO Queue",
+          "Message Ordering"
+        ]
+      },
+      "Handling Message Duplication and Ordering": {
+        "component_terms": [
+          "Content-based Deduplication",
+          "Deduplication ID",
+          "Message Group ID"
+        ]
+      },
+      "Balancing Visibility Timeout": {
+        "component_terms": [
+          "Message Visibility Timeout",
+          "DeleteMessage API",
+          "SQS Access Policies"
+        ]
+      },
+      "Buffering and Near Real-Time Data Processing": {
+        "component_terms": [
+          "Buffer Interval",
+          "Buffer Size",
+          "Kinesis Data Streams",
+          "Asynchronous Communication"
+        ]
+      },
+      "SQS as a Buffer for Database Writes": {
+        "component_terms": [
+          "Queue",
+          "ApproximateNumberOfMessages",
+          "Long polling",
+          "SQS Standard Queue"
+        ]
+      }
+    }
+  },
+  "EC2 Basics": {
+    "EC2 Basics": {
+      "Spot Instance Workloads Suitability": {
+        "component_terms": [
+          "Spot Instances",
+          "Spot Pricing",
+          "Spot Fleet",
+          "Allocation Strategy"
+        ]
+      },
+      "Selecting Compute Power and Memory": {
+        "component_terms": [
+          "Compute Optimized Instances",
+          "Memory",
+          "Instance Class",
+          "VCPU"
+        ]
+      },
+      "Instance Flexibility with Convertible Reserved Instances": {
+        "component_terms": [
+          "Convertible Reserved Instances",
+          "Reserved Instances",
+          "Capacity Reservations"
+        ]
+      },
+      "Network Attached vs. Hardware Attached Storage": {
+        "component_terms": [
+          "EBS Volumes",
+          "Dedicated Host",
+          "Dedicated Instances"
+        ]
+      },
+      "Max Spot Price vs. Current Spot Price": {
+        "component_terms": [
+          "Max Spot Price",
+          "Spot Pricing",
+          "Spot Request"
+        ]
+      },
+      "Handling Firewall Rules": {
+        "component_terms": [
+          "Firewall",
+          "Security Groups"
+        ]
+      },
+      "Use Cases for Memory Optimized Instances": {
+        "component_terms": [
+          "Memory Optimized Instances",
+          "R5 Instances"
+        ]
+      },
+      "Use Cases for Compute Optimized Instances": {
+        "component_terms": [
+          "Compute Optimized Instances",
+          "C5 Instances"
+        ]
+      },
+      "Authorized IP Ranges": {
+        "component_terms": [
+          "Security Groups",
+          "Elastic Compute Cloud (EC2)"
+        ]
+      },
+      "Instance Class, Generation, and Size": {
+        "component_terms": [
+          "Instance Class",
+          "General Purpose Instances",
+          "Dedicated Instances"
+        ]
+      },
+      "Inbound and Outbound Traffic Control": {
+        "component_terms": [
+          "Firewall",
+          "Security Groups",
+          "HTTP",
+          "HTTPS"
+        ]
+      },
+      "Security Group Rules": {
+        "component_terms": [
+          "Security Groups",
+          "Inbound and Outbound Traffic Control",
+          "EC2 Instances"
+        ]
+      },
+      "Spot Fleet Allocation Strategies": {
+        "component_terms": [
+          "Spot Fleet",
+          "Spot Fleets Strategies",
+          "Max Spot Price"
+        ]
+      },
+      "Choosing Operating Systems": {
+        "component_terms": [
+          "Amazon Linux 2",
+          "Dedicated Host",
+          "Operating Systems"
+        ]
+      },
+      "Launch Pools in Spot Fleets": {
+        "component_terms": [
+          "Spot Fleet",
+          "Spot Instances",
+          "Launch Templates"
+        ]
+      },
+      "Capacity Reservation Purpose": {
+        "component_terms": [
+          "Capacity Reservations",
+          "On-Demand EC2 Instances",
+          "Reserved Instances"
+        ]
+      },
+      "Naming Convention for EC2 Instances": {
+        "component_terms": [
+          "EC2 Instance Connect",
+          "Instance Class",
+          "Amazon EC2"
+        ]
+      },
+      "Terminating vs. Stopping Spot Instances": {
+        "component_terms": [
+          "Spot Instances",
+          "Max Spot Price",
+          "Spot Request"
+        ]
+      },
+      "Configuring Network Settings": {
+        "component_terms": [
+          "Security Groups",
+          "Elastic Load Balancer",
+          "Firewall"
+        ]
+      },
+      "Short-Term vs. Long-Term Workloads": {
+        "component_terms": [
+          "Auto-Scaling Group (ASG)",
+          "Savings Plan",
+          "Convertible Reserved Instances"
+        ]
+      },
+      "Use Cases for General Purpose Instances": {
+        "component_terms": [
+          "General Purpose Instances",
+          "C5 Instances",
+          "T2 Micro"
+        ]
+      },
+      "Cost Efficiency with Spot Instances": {
+        "component_terms": [
+          "Spot Instances",
+          "Max Spot Price",
+          "Spot Fleet",
+          "Spot Instance Pricing"
+        ]
+      },
+      "EC2 Instance Connect for Browser-Based Access": {
+        "component_terms": [
+          "EC2 Instance Connect",
+          "SSH (Secure Shell)",
+          "RDP (Remote Desktop Protocol)"
+        ]
+      },
+      "Scaling Services with ASG": {
+        "component_terms": [
+          "Auto-Scaling Group (ASG)",
+          "Elastic Load Balancer",
+          "Capacity Reservations"
+        ]
+      },
+      "Port Numbers and Their Uses": {
+        "component_terms": [
+          "HTTP",
+          "HTTPS",
+          "FTP (File Transfer Protocol)",
+          "SSH (Secure Shell)",
+          "RDP (Remote Desktop Protocol)"
+        ]
+      },
+      "Spot Block Duration": {
+        "component_terms": [
+          "Spot Block",
+          "Spot Instances",
+          "Spot Fleet",
+          "Max Spot Price"
+        ]
+      },
+      "Referencing Security Groups": {
+        "component_terms": [
+          "Security Groups",
+          "Elastic Compute Cloud (EC2)",
+          "Firewall"
+        ]
+      },
+      "Spot Request Types": {
+        "component_terms": [
+          "Spot Request",
+          "Persistent Request",
+          "One-Time Request"
+        ]
+      },
+      "Persistent vs. One-Time Spot Requests": {
+        "component_terms": [
+          "Persistent Request",
+          "One-Time Request",
+          "Spot Instances"
+        ]
+      },
+      "Pricing History for Spot Instances": {
+        "component_terms": [
+          "Spot Instance Pricing",
+          "Max Spot Price",
+          "Spot Fleets Strategies"
+        ]
+      },
+      "Cost Optimization Strategies": {
+        "component_terms": [
+          "Savings Plan",
+          "Reserved Instances",
+          "Spot Instances",
+          "Spot Fleets Strategies",
+          "Capacity Reservations"
+        ]
+      },
+      "Use Cases for Storage Optimized Instances": {
+        "component_terms": [
+          "Storage Optimized Instances",
+          "EBS Volumes",
+          "C5 Instances",
+          "R5 Instances",
+          "Auto-Scaling Group (ASG)"
+        ]
+      },
+      "Differences in Resource Allocation": {
+        "component_terms": [
+          "Allocation Strategy",
+          "Instance Class",
+          "Dedicated Host",
+          "Dedicated Instances",
+          "Compute Optimized Instances"
+        ]
+      },
+      "Savings Plan Flexibility": {
+        "component_terms": [
+          "Savings Plan",
+          "Convertible Reserved Instances",
+          "On-Demand EC2 Instances",
+          "Spot Instances",
+          "Capacity Reservations"
+        ]
+      },
+      "Bootstrapping with EC2 User Data": {
+        "component_terms": [
+          "Amazon Linux 2",
+          "EC2 Instance Connect",
+          "Launch Templates",
+          "SSH (Secure Shell)",
+          "User Data"
+        ]
+      },
+      "Physical Server Reservation with Dedicated Hosts": {
+        "component_terms": [
+          "Dedicated Host",
+          "Dedicated Instances",
+          "Capacity Reservations"
+        ]
+      },
+      "Capacity Reservation Without Time Commitment": {
+        "component_terms": [
+          "Capacity Reservations",
+          "On-Demand EC2 Instances"
+        ]
+      },
+      "Launch Templates vs. Manual Configuration": {
+        "component_terms": [
+          "Launch Templates",
+          "EC2 Instances"
+        ]
+      },
+      "Different Methods for Different Operating Systems": {
+        "component_terms": [
+          "Amazon Linux 2",
+          "RDP (Remote Desktop Protocol)",
+          "SSH (Secure Shell)"
+        ]
+      },
+      "Dedicated Host Licensing": {
+        "component_terms": [
+          "Dedicated Host",
+          "Reserved Instances",
+          "Allocation Strategy"
+        ]
+      },
+      "Spot Fleet Functionality": {
+        "component_terms": [
+          "Spot Fleet",
+          "Allocation Strategy",
+          "Max Spot Price",
+          "Spot Instance Pricing",
+          "Spot Fleets Strategies"
+        ]
+      },
+      "Optimization Types for Different Use Cases": {
+        "component_terms": [
+          "Auto-Scaling Group (ASG)",
+          "Savings Plan",
+          "On-Demand EC2 Instances",
+          "Reserved Instances",
+          "Compute Optimized Instances"
+        ]
+      },
+      "Canceling Spot Requests": {
+        "component_terms": [
+          "Spot Request",
+          "Persistent Request",
+          "One-Time Request",
+          "Spot Block"
+        ]
+      },
+      "Distributing Load Across Machines": {
+        "component_terms": [
+          "Elastic Load Balancer",
+          "Auto-Scaling Group (ASG)",
+          "EC2 Instances",
+          "Dedicated Instances",
+          "C5 Instances"
+        ]
+      }
+    }
+  },
+  "Serverless": {
+    "Serverless": {
+      "Lambda in VPC": {
+        "component_terms": [
+          "AWS Lambda",
+          "VPC Peering",
+          "Lambda limits",
+          "Lambda Triggers"
+        ]
+      },
+      "Securing API Gateway": {
+        "component_terms": [
+          "API Gateway",
+          "Amazon Cognito",
+          "OpenID Connect",
+          "SAML"
+        ]
+      },
+      "Evolution of Serverless from FaaS": {
+        "component_terms": [
+          "Function as a Service (FaaS)",
+          "Serverless",
+          "Lambda Snapstart"
+        ]
+      },
+      "Serverless Architecture": {
+        "component_terms": [
+          "DynamoDB",
+          "Step Functions",
+          "API Gateway",
+          "Serverless"
+        ]
+      },
+      "API Gateway Features and Benefits": {
+        "component_terms": [
+          "API Gateway",
+          "REST API",
+          "Request Throttling",
+          "WebSocket Protocol"
+        ]
+      },
+      "Invoking Lambda from RDS and Aurora": {
+        "component_terms": [
+          "AWS Lambda",
+          "Function as a Service (FaaS)",
+          "DynamoDB Streams"
+        ]
+      },
+      "Integration of AWS Services in Serverless Applications": {
+        "component_terms": [
+          "API Gateway",
+          "AWS Lambda",
+          "Step Functions"
+        ]
+      },
+      "Event-Driven Architecture": {
+        "component_terms": [
+          "AWS Lambda",
+          "DynamoDB Streams",
+          "Lambda Triggers"
+        ]
+      },
+      "Integrating DynamoDB with Other AWS Services": {
+        "component_terms": [
+          "DynamoDB",
+          "AWS Backup Service",
+          "DynamoDB Stream Kinesis Adapter"
+        ]
+      },
+      "Using API Gateway with AWS Services": {
+        "component_terms": [
+          "API Gateway",
+          "REST API",
+          "AWS Lambda"
+        ]
+      },
+      "Pricing Model for Lambda": {
+        "component_terms": [
+          "AWS Lambda",
+          "Lambda limits",
+          "Request Throttling"
+        ]
+      },
+      "On-Demand Execution": {
+        "component_terms": [
+          "Function as a Service (FaaS)",
+          "On-Demand Mode",
+          "DynamoDB Streams"
+        ]
+      },
+      "Container Image Requirements": {
+        "component_terms": [
+          "AWS Lambda",
+          "Lambda Snapstart"
+        ]
+      },
+      "Backup and Recovery Options": {
+        "component_terms": [
+          "AWS Backup Service",
+          "On-Demand Backups",
+          "Export to S3"
+        ]
+      },
+      "Scaling and Management in Serverless Services": {
+        "component_terms": [
+          "Auto-scaling Capabilities",
+          "DynamoDB",
+          "Step Functions"
+        ]
+      },
+      "Authentication and Authorization using Cognito": {
+        "component_terms": [
+          "Amazon Cognito",
+          "Cognito Identity Pools",
+          "Cognito User Pools",
+          "Federated Identity",
+          "SAML",
+          "OpenID Connect"
+        ]
+      },
+      "Cost Management": {
+        "component_terms": [
+          "AWS Backup Service",
+          "On-Demand Backups",
+          "Auto-scaling Capabilities",
+          "Provision Mode",
+          "Request Throttling"
+        ]
+      },
+      "Language Support for Lambda": {
+        "component_terms": [
+          "AWS Lambda",
+          "Function as a Service (FaaS)",
+          "Lambda limits",
+          "Lambda Snapstart",
+          "Lambda Triggers"
+        ]
+      },
+      "Security and IAM Integration": {
+        "component_terms": [
+          "IAM",
+          "AWS Lambda",
+          "Security Best Practices",
+          "API Gateway"
+        ]
+      },
+      "Stream Processing with DynamoDB Streams and Kinesis": {
+        "component_terms": [
+          "DynamoDB Streams",
+          "Kinesis",
+          "DynamoDB Stream Kinesis Adapter",
+          "DynamoDB",
+          "Global Tables"
+        ]
+      },
+      "Performance and Consistency": {
+        "component_terms": [
+          "AWS Lambda",
+          "DynamoDB",
+          "Auto-scaling Capabilities",
+          "Write Capacity Units (WCU)",
+          "Read Capacity Units (RCU)"
+        ]
+      },
+      "Data Replication and Disaster Recovery": {
+        "component_terms": [
+          "AWS Backup Service",
+          "Global Tables",
+          "On-Demand Backups",
+          "DynamoDB Streams",
+          "Export to S3"
+        ]
+      },
+      "Real-time Data Processing": {
+        "component_terms": [
+          "DynamoDB Streams",
+          "AWS Lambda",
+          "DynamoDB Stream Kinesis Adapter",
+          "Step Functions",
+          "Request Throttling"
+        ]
+      },
+      "TTL and Data Expiry Management": {
+        "component_terms": [
+          "Time To Live (TTL)",
+          "Attributes",
+          "NoSQL Database",
+          "Items",
+          "Primary Key"
+        ]
+      },
+      "Data Storage and Retrieval in Serverless Using DynamoDB": {
+        "component_terms": [
+          "DynamoDB",
+          "Fully Managed Database",
+          "Sort Key",
+          "Provision Mode",
+          "On-Demand Mode"
+        ]
+      },
+      "Step function use cases": {
+        "component_terms": [
+          "Step Functions",
+          "AWS Lambda"
+        ]
+      },
+      "Function and Purpose of API Gateway in Serverless": {
+        "component_terms": [
+          "API Gateway",
+          "REST API"
+        ]
+      },
+      "Integrating Cognito User Pools with API Gateway": {
+        "component_terms": [
+          "Amazon Cognito",
+          "Cognito User Pools"
+        ]
+      },
+      "API Gateway Deployment Types": {
+        "component_terms": [
+          "API Gateway",
+          "Swagger"
+        ]
+      },
+      "Integrating Lambda with API Gateway": {
+        "component_terms": [
+          "AWS Lambda",
+          "API Gateway"
+        ]
+      },
+      "Capacity Planning": {
+        "component_terms": [
+          "Auto-scaling Capabilities",
+          "Lambda limits",
+          "Read Capacity Units (RCU)",
+          "Write Capacity Units (WCU)",
+          "Provision Mode"
+        ]
+      },
+      "Data Distribution and Replication": {
+        "component_terms": [
+          "DynamoDB",
+          "Global Tables",
+          "DynamoDB Streams",
+          "On-Demand Backups",
+          "Fully Managed Database"
+        ]
+      },
+      "Short Execution Times": {
+        "component_terms": [
+          "AWS Lambda",
+          "Function as a Service (FaaS)",
+          "Lambda Snapstart",
+          "Request Throttling"
+        ]
+      },
+      "Real-time Streaming with API Gateway": {
+        "component_terms": [
+          "API Gateway",
+          "DynamoDB Stream Kinesis Adapter",
+          "WebSocket Protocol",
+          "Serverless"
+        ]
+      },
+      "Cognito Identity Pools and AWS Services Access": {
+        "component_terms": [
+          "Cognito Identity Pools",
+          "Amazon Cognito",
+          "Federated Identity",
+          "OpenID Connect"
+        ]
+      },
+      "Schema Evolution": {
+        "component_terms": [
+          "DynamoDB",
+          "NoSQL Database",
+          "Attributes",
+          "Primary Key",
+          "Sort Key"
+        ]
+      }
+    }
+  },
+  "Snow Family": {
+    "Snow Family": {
+      "Use Cases for Different Types of Storage Gateways": {
+        "component_terms": [
+          "AWS Storage Gateway",
+          "S3 File Gateway",
+          "FSx File Gateway",
+          "Volume Gateway",
+          "Tape Gateway"
+        ]
+      },
+      "Transferring Large Data Sets Efficiently": {
+        "component_terms": [
+          "Snowball",
+          "Snowball Edge",
+          "Data Migration",
+          "AWS DataSync",
+          "Snowmobile"
+        ]
+      },
+      "File Systems for Windows with Amazon FSx": {
+        "component_terms": [
+          "Amazon FSx",
+          "Windows File Server",
+          "SMB (Server Message Block)",
+          "Lustre",
+          "OpenZFS"
+        ]
+      },
+      "Scheduled Data Synchronization with AWS DataSync": {
+        "component_terms": [
+          "AWS DataSync",
+          "DataSync Agent",
+          "Ongoing Replication",
+          "Metadata Preservation",
+          "Hybrid Cloud"
+        ]
+      },
+      "Scheduled Replication Tasks": {
+        "component_terms": [
+          "Ongoing Replication",
+          "One-Time Setup",
+          "AWS OpsHub",
+          "Edge Computing",
+          "Persistent File System"
+        ]
+      },
+      "Object Storage with Amazon S3 and S3 Glacier": {
+        "component_terms": [
+          "S3 Glacier",
+          "AWS Storage Gateway",
+          "Snowball",
+          "Amazon EFS"
+        ]
+      },
+      "Differences Between FSx for Windows File Server, Lustre, NetApp ONTAP, and OpenZFS": {
+        "component_terms": [
+          "Amazon FSx",
+          "Lustre",
+          "NetApp ONTAP",
+          "OpenZFS",
+          "Windows File Server"
+        ]
+      },
+      "Using DataSync with Different AWS Storage Services": {
+        "component_terms": [
+          "AWS DataSync",
+          "DataSync Agent",
+          "Ongoing Replication"
+        ]
+      },
+      "Block Storage for EC2 Instances with EBS": {
+        "component_terms": [
+          "EBS (Elastic Block Store)",
+          "EC2 Instance Storage"
+        ]
+      },
+      "Preserving File Permissions and Metadata": {
+        "component_terms": [
+          "Metadata Preservation",
+          "NFS (Network File System)",
+          "SMB (Server Message Block)"
+        ]
+      },
+      "Scalable and Reliable Managed Service for File Transfers": {
+        "component_terms": [
+          "AWS Transfer Family",
+          "FTPS",
+          "S3 File Gateway"
+        ]
+      },
+      "Synchronizing Data Between On-Premises and AWS": {
+        "component_terms": [
+          "AWS DataSync",
+          "Ongoing Replication",
+          "DataSync Agent"
+        ]
+      },
+      "Data Migration and Backup with Storage Gateway": {
+        "component_terms": [
+          "AWS Storage Gateway",
+          "Volume Gateway",
+          "Tape Gateway"
+        ]
+      },
+      "Physical Data Transfer with Snowcone, Snowball, and Snowmobile": {
+        "component_terms": [
+          "Snowcone",
+          "Snowball",
+          "Snowmobile",
+          "Snowball Edge",
+          "Snowball Parallel Ordering"
+        ]
+      },
+      "Compatibility with FSx NetApp ONTAP and FSx for OpenZFS": {
+        "component_terms": [
+          "NetApp ONTAP",
+          "OpenZFS",
+          "Amazon FSx"
+        ]
+      },
+      "Snowball into Glacier with S3": {
+        "component_terms": [
+          "S3 Glacier",
+          "AWS Snow Family",
+          "Data Migration"
+        ]
+      },
+      "Data Migration with Snow Family Devices": {
+        "component_terms": [
+          "Data Migration",
+          "AWS DataSync",
+          "Snowball",
+          "Snowball Edge",
+          "Snowmobile"
+        ]
+      },
+      "FTP, FTPS, and SFTP Interfaces with AWS Transfer Family": {
+        "component_terms": [
+          "AWS Transfer Family",
+          "FTPS (File Transfer Protocol over SSL)"
+        ]
+      },
+      "File System Deployment Options: Scratch vs. Persistent": {
+        "component_terms": [
+          "Scratch File System",
+          "Persistent File System",
+          "Amazon EFS",
+          "Amazon FSx"
+        ]
+      },
+      "Using OpsHub for Snow Family Devices": {
+        "component_terms": [
+          "AWS OpsHub",
+          "Snowball",
+          "Snowcone"
+        ]
+      },
+      "Pricing Model for AWS Transfer Family": {
+        "component_terms": [
+          "AWS Transfer Family",
+          "One-Time Setup",
+          "Ongoing Replication"
+        ]
+      },
+      "Integration with Authentication Systems": {
+        "component_terms": [
+          "AWS Transfer Family",
+          "Data Migration",
+          "AWS DataSync"
+        ]
+      },
+      "Integration with AWS Services and On-Premises Systems": {
+        "component_terms": [
+          "AWS DataSync",
+          "AWS Storage Gateway",
+          "Hybrid Cloud"
+        ]
+      },
+      "Edge Computing Capabilities": {
+        "component_terms": [
+          "Edge Computing",
+          "Snowball Edge",
+          "Snowcone"
+        ]
+      },
+      "Secure File Transfers with FTPS and SFTP": {
+        "component_terms": [
+          "FTPS (File Transfer Protocol over SSL)",
+          "S3 File Gateway",
+          "AWS Transfer Family"
+        ]
+      },
+      "Bridging On-Premises and Cloud Storage with Storage Gateway": {
+        "component_terms": [
+          "AWS Storage Gateway",
+          "One-Time Setup",
+          "Ongoing Replication",
+          "Volume Gateway"
+        ]
+      },
+      "Local Cache for Low-Latency Access": {
+        "component_terms": [
+          "S3 File Gateway",
+          "FSx File Gateway",
+          "Persistent File System"
+        ]
+      },
+      "High-Performance Computing with FSx for Lustre": {
+        "component_terms": [
+          "Amazon FSx",
+          "Lustre",
+          "High-Performance Computing"
+        ]
+      },
+      "Data Migration and Edge Computing with Snow Family": {
+        "component_terms": [
+          "Data Migration",
+          "Edge Computing",
+          "Snowball",
+          "Snowmobile",
+          "Snowcone"
+        ]
+      },
+      "Using FTP Protocols for Data Transfer to S3 or EFS": {
+        "component_terms": [
+          "AWS Transfer Family",
+          "FTPS (File Transfer Protocol over SSL)",
+          "NFS (Network File System)",
+          "SMB (Server Message Block)",
+          "Amazon EFS"
+        ]
+      },
+      "Storage Gateway Deployment Options": {
+        "component_terms": [
+          "AWS Storage Gateway",
+          "S3 File Gateway",
+          "FSx File Gateway",
+          "Tape Gateway",
+          "Volume Gateway"
+        ]
+      },
+      "Physical Storage with EC2 Instance Storage": {
+        "component_terms": [
+          "EC2 Instance Storage",
+          "EBS (Elastic Block Store)",
+          "Persistent File System"
+        ]
+      },
+      "Launching Third-Party File Systems on AWS": {
+        "component_terms": [
+          "AWS Transfer Family",
+          "Amazon EFS",
+          "Amazon FSx",
+          "NetApp ONTAP",
+          "OpenZFS"
+        ]
+      },
+      "Data Migration with AWS DataSync": {
+        "component_terms": [
+          "AWS DataSync",
+          "Data Migration",
+          "DataSync Agent"
+        ]
+      },
+      "Processing Data at Edge Locations": {
+        "component_terms": [
+          "Edge Computing",
+          "Snowball Edge",
+          "AWS Snow Family"
+        ]
+      },
+      "Network File Systems for Linux with Amazon EFS": {
+        "component_terms": [
+          "Amazon EFS",
+          "NFS (Network File System)",
+          "Lustre",
+          "Persistent File System"
+        ]
+      },
+      "Bridging On-Premises and Cloud Storage": {
+        "component_terms": [
+          "AWS Storage Gateway",
+          "AWS DataSync",
+          "Hybrid Cloud",
+          "Data Migration"
+        ]
+      }
+    }
+  },
+  "Data Analytics": {
+    "Data Analytics": {
+      "Integration with Third-Party Data Sources": {
+        "component_terms": [
+          "AWS Glue",
+          "Data Source Connector",
+          "DynamoDB Stream"
+        ]
+      },
+      "Transforming Data Formats": {
+        "component_terms": [
+          "Apache Parquet",
+          "ORC",
+          "Columnar Storage"
+        ]
+      },
+      "Data Transformation and Cleansing": {
+        "component_terms": [
+          "ETL Service",
+          "Glue DataBrew",
+          "Glue Elastic Views"
+        ]
+      },
+      "Ingesting Data into Redshift": {
+        "component_terms": [
+          "Redshift Cluster",
+          "S3 Copy Command",
+          "Redshift Spectrum"
+        ]
+      },
+      "Snapshots and Disaster Recovery in Redshift": {
+        "component_terms": [
+          "At-rest Encryption",
+          "In-flight Encryption",
+          "Fine-Grained Access Control"
+        ]
+      },
+      "Querying Data with Federated Query": {
+        "component_terms": [
+          "Federated Query",
+          "SQL",
+          "Glue Data Catalog"
+        ]
+      },
+      "Using Redshift Spectrum for Querying S3 Data": {
+        "component_terms": [
+          "Redshift Spectrum",
+          "Data Lake",
+          "S3 Copy Command"
+        ]
+      },
+      "Data Ingestion Methods for OpenSearch": {
+        "component_terms": [
+          "Amazon OpenSearch Service",
+          "Data Source Connector",
+          "DynamoDB Stream"
+        ]
+      },
+      "User and Group Management in QuickSight": {
+        "component_terms": [
+          "Amazon QuickSight",
+          "Fine-Grained Access Control",
+          "Column-Level Security (CLS)"
+        ]
+      },
+      "Use cases for EMR": {
+        "component_terms": [
+          "EMR",
+          "ETL Service",
+          "Glue Data Catalog"
+        ]
+      },
+      "Real-time Data Ingestion": {
+        "component_terms": [
+          "Amazon MSK for Apache Kafka",
+          "DynamoDB Stream",
+          "Glue Streaming ETL"
+        ]
+      },
+      "Data Warehousing with Redshift": {
+        "component_terms": [
+          "Redshift Cluster",
+          "Redshift Spectrum",
+          "Glue Data Catalog"
+        ]
+      },
+      "Redshift for Analytics and Data Warehousing": {
+        "component_terms": [
+          "Columnar Storage",
+          "OLAP (Online Analytical Processing)",
+          "AWS Glue"
+        ]
+      },
+      "Security in OpenSearch via Cognito and IAM": {
+        "component_terms": [
+          "Amazon OpenSearch Service",
+          "Fine-Grained Access Control",
+          "At-rest Encryption"
+        ]
+      },
+      "Role of SPICE Engine in Data Computation": {
+        "component_terms": [
+          "Amazon QuickSight",
+          "Data Partitioning",
+          "Column-Level Security (CLS)"
+        ]
+      },
+      "Columnar Storage and Performance Improvement": {
+        "component_terms": [
+          "Columnar Storage",
+          "Apache Parquet",
+          "Compression Mechanisms",
+          "Columnar Data Types"
+        ]
+      },
+      "Combining Structured and Unstructured Data": {
+        "component_terms": [
+          "Data Lake",
+          "AWS Glue",
+          "Glue Data Catalog"
+        ]
+      },
+      "Real-time Data Processing with OpenSearch and Lambda": {
+        "component_terms": [
+          "Amazon OpenSearch Service",
+          "CloudWatch Log Subscription Filter",
+          "DynamoDB Stream"
+        ]
+      },
+      "Extract, Transform, Load Process": {
+        "component_terms": [
+          "ETL Service",
+          "AWS Glue",
+          "Glue DataBrew",
+          "Glue Streaming ETL"
+        ]
+      },
+      "Using SQL to Query Data in S3": {
+        "component_terms": [
+          "SQL",
+          "Redshift Spectrum",
+          "Federated Query"
+        ]
+      },
+      "Comparing Redshift and Athena": {
+        "component_terms": [
+          "Redshift Cluster",
+          "Redshift Spectrum",
+          "Serverless Query Service"
+        ]
+      },
+      "Data Visualization with QuickSight": {
+        "component_terms": [
+          "Amazon QuickSight",
+          "Business Intelligence Service",
+          "OpenSearch Dashboards"
+        ]
+      },
+      "Serverless Querying with Athena": {
+        "component_terms": [
+          "Serverless Query Service",
+          "Federated Query",
+          "S3 Copy Command"
+        ]
+      },
+      "Analyzing Data Stored in Amazon S3": {
+        "component_terms": [
+          "Data Lake",
+          "Compression Mechanisms",
+          "Columnar Storage"
+        ]
+      },
+      "Real-Time Data Processing": {
+        "component_terms": [
+          "Amazon MSK for Apache Kafka",
+          "DynamoDB Stream",
+          "Glue Streaming ETL"
+        ]
+      },
+      "Cataloging Data Sets": {
+        "component_terms": [
+          "Glue Data Catalog",
+          "Glue Data Crawlers",
+          "Glue Studio"
+        ]
+      },
+      "Analytics Queries in OpenSearch": {
+        "component_terms": [
+          "Amazon OpenSearch Service",
+          "OpenSearch Dashboards",
+          "SQL Statements"
+        ]
+      },
+      "Centralizing Data Storage with Data Lakes": {
+        "component_terms": [
+          "Data Lake",
+          "AWS Lake Formation",
+          "Data Partitioning"
+        ]
+      },
+      "Search Capabilities in OpenSearch": {
+        "component_terms": [
+          "Amazon OpenSearch Service",
+          "Parallel Query Engine",
+          "OLAP (Online Analytical Processing)"
+        ]
+      },
+      "Converting Data Formats with Glue": {
+        "component_terms": [
+          "AWS Glue",
+          "ETL Service",
+          "Apache Parquet"
+        ]
+      },
+      "Difference Between Dashboard and Analysis": {
+        "component_terms": [
+          "Amazon QuickSight",
+          "OpenSearch Dashboards",
+          "Business Intelligence Service"
+        ]
+      },
+      "Integration with AWS Data Sources": {
+        "component_terms": [
+          "Data Source Connector",
+          "AWS Glue",
+          "Glue Data Catalog"
+        ]
+      },
+      "Use cases for Amazon MSK for Apache Kafka": {
+        "component_terms": [
+          "Amazon MSK for Apache Kafka",
+          "Data Lake",
+          "ETL Service"
+        ]
+      },
+      "Improving Athena Performance": {
+        "component_terms": [
+          "Data Partitioning",
+          "Columnar Storage",
+          "Apache Parquet"
+        ]
+      }
+    }
+  },
+  "S3 Advanced": {
+    "S3 Advanced": {
+      "Integration with Event Bridge": {
+        "component_terms": [
+          "Event Bridge",
+          "Event Notification",
+          "Events"
+        ]
+      },
+      "Aggregating Data Across AWS Organization": {
+        "component_terms": [
+          "S3 Inventory",
+          "S3 Analytics",
+          "Usage and Activity Metrics"
+        ]
+      },
+      "Filtering Events": {
+        "component_terms": [
+          "Server-Side Filtering",
+          "Prefix Rules",
+          "Object Tags"
+        ]
+      },
+      "Performance and Cost Benefits of S3 Select": {
+        "component_terms": [
+          "S3 Select",
+          "Glacier Select",
+          "S3 Baseline Performance"
+        ]
+      },
+      "Failure Resilience with Byte Range Fetches": {
+        "component_terms": [
+          "Byte Range Fetches",
+          "Lifecycle Rules",
+          "Expiration Actions"
+        ]
+      },
+      "Exporting Metrics to S3": {
+        "component_terms": [
+          "Usage and Activity Metrics",
+          "S3 Analytics"
+        ]
+      },
+      "Lifecycle Configuration": {
+        "component_terms": [
+          "Lifecycle Rules",
+          "Expiration Actions",
+          "Transition Actions"
+        ]
+      },
+      "Storage Costs vs. Data Transfer Costs": {
+        "component_terms": [
+          "S3 Storage Lens",
+          "S3 Transfer Acceleration"
+        ]
+      },
+      "Requests per Second per Prefix": {
+        "component_terms": [
+          "Prefix",
+          "Prefix Rules"
+        ]
+      },
+      "Authenticated Requesters": {
+        "component_terms": [
+          "Resource Access Policy",
+          "ACLs (Access Control Lists)"
+        ]
+      },
+      "Reducing Network Transfers and CPU Costs": {
+        "component_terms": [
+          "S3 Transfer Acceleration",
+          "Byte Range Fetches",
+          "S3 Baseline Performance"
+        ]
+      },
+      "Cost Allocation in S3": {
+        "component_terms": [
+          "Usage and Activity Metrics",
+          "S3 Inventory",
+          "Object Tags"
+        ]
+      },
+      "Event Types in S3": {
+        "component_terms": [
+          "Event Notification",
+          "Event Bridge",
+          "Events"
+        ]
+      },
+      "Parallelization of Uploads and Downloads": {
+        "component_terms": [
+          "S3 Batch Operation",
+          "S3 Transfer Acceleration"
+        ]
+      },
+      "Difference Between Free and Paid Metrics": {
+        "component_terms": [
+          "S3 Analytics",
+          "Usage and Activity Metrics"
+        ]
+      },
+      "Integration with Lambda for Custom Actions": {
+        "component_terms": [
+          "Lambda Function",
+          "Event Notification",
+          "Events"
+        ]
+      },
+      "Bulk Operations on S3 Objects": {
+        "component_terms": [
+          "S3 Batch Operation",
+          "S3 Inventory",
+          "S3 Select"
+        ]
+      },
+      "Advanced Filtering and Multiple Destinations": {
+        "component_terms": [
+          "Server-Side Filtering",
+          "Event Bridge",
+          "Object Tags"
+        ]
+      },
+      "Generating Object Lists with S3 Inventory and S3 Select": {
+        "component_terms": [
+          "S3 Inventory",
+          "S3 Select",
+          "Object Metadata"
+        ]
+      },
+      "Prefix and Tag-based Rules": {
+        "component_terms": [
+          "Prefix",
+          "Prefix Rules",
+          "Object Tags"
+        ]
+      },
+      "IAM Permissions for Event Notifications": {
+        "component_terms": [
+          "ACLs (Access Control Lists)",
+          "Resource Access Policy",
+          "Event Notification",
+          "SNS Topic",
+          "Event Bridge"
+        ]
+      },
+      "Managing Retries and Tracking Progress": {
+        "component_terms": [
+          "SQS Queue",
+          "Lambda Function",
+          "Usage and Activity Metrics"
+        ]
+      },
+      "Performance Optimization Techniques": {
+        "component_terms": [
+          "S3 Baseline Performance",
+          "S3 Transfer Acceleration",
+          "Byte Range Fetches",
+          "Edge Location"
+        ]
+      },
+      "S3 Analytics for Lifecycle Optimization": {
+        "component_terms": [
+          "S3 Analytics",
+          "Lifecycle Rules",
+          "Expiration Actions",
+          "Transition Actions"
+        ]
+      },
+      "Event Notification Targets": {
+        "component_terms": [
+          "Lambda Function",
+          "SNS Topic",
+          "SQS Queue",
+          "Event Notification"
+        ]
+      },
+      "Transfer Acceleration Mechanism": {
+        "component_terms": [
+          "S3 Transfer Acceleration",
+          "Edge Location"
+        ]
+      },
+      "Durability and Availability across Storage Classes": {
+        "component_terms": [
+          "Lifecycle Rules",
+          "S3 Storage Lens"
+        ]
+      },
+      "Identifying Cost Efficiencies": {
+        "component_terms": [
+          "S3 Analytics",
+          "S3 Inventory"
+        ]
+      },
+      "Manual vs. Automated Object Movement": {
+        "component_terms": [
+          "Lifecycle Rules",
+          "Transition Actions"
+        ]
+      },
+      "Storage Class Transitions": {
+        "component_terms": [
+          "Glacier Select",
+          "Expiration Actions"
+        ]
+      },
+      "SQL for Server-Side Filtering": {
+        "component_terms": [
+          "Server-Side Filtering",
+          "S3 Select",
+          "Object Metadata",
+          "Object Tags"
+        ]
+      },
+      "Data Protection Best Practices": {
+        "component_terms": [
+          "ACLs (Access Control Lists)",
+          "Resource Access Policy",
+          "Lifecycle Rules",
+          "Expiration Actions",
+          "Event Notification"
+        ]
+      }
+    }
+  },
+  "Monitoring and Auditing": {
+    "Monitoring and Auditing": {
+      "Monitoring AWS Services with CloudWatch": {
+        "component_terms": [
+          "CloudWatch Metrics",
+          "CloudWatch Alarms",
+          "CloudWatch Dashboard",
+          "CloudWatch Logs",
+          "CloudWatch Events"
+        ]
+      },
+      "Integrating CloudTrail with CloudWatch Logs and EventBridge": {
+        "component_terms": [
+          "CloudTrail",
+          "CloudWatch Logs",
+          "Amazon EventBridge",
+          "CloudTrail Integration",
+          "Log Groups"
+        ]
+      },
+      "Integrating EventBridge with CloudTrail for API Calls": {
+        "component_terms": [
+          "EventBridge",
+          "CloudTrail",
+          "Event Patterns",
+          "Management Events",
+          "Log Streams"
+        ]
+      },
+      "Auditing and Compliance of AWS Resources": {
+        "component_terms": [
+          "AWS Config",
+          "Compliance",
+          "Non-compliant Resources",
+          "Config Rules",
+          "Configuration History"
+        ]
+      },
+      "Period Setting for High Resolution Custom Metrics": {
+        "component_terms": [
+          "Period",
+          "CloudWatch Metrics",
+          "CloudWatch Alarms",
+          "Dimensions",
+          "Custom Config Rules"
+        ]
+      },
+      "CloudWatch vs. CloudTrail vs. Config": {
+        "component_terms": [
+          "AWS Config",
+          "CloudTrail",
+          "CloudWatch Alarms"
+        ]
+      },
+      "Creating and Using Custom Metrics": {
+        "component_terms": [
+          "CloudWatch Metrics",
+          "Dimensions"
+        ]
+      },
+      "Monitoring EC2 Instances with Status Checks and System Status Checks": {
+        "component_terms": [
+          "Status Check",
+          "System Status Check",
+          "EC2 Instance Actions"
+        ]
+      },
+      "Monitoring Unusual Activity with CloudTrail Insights": {
+        "component_terms": [
+          "CloudTrail Insights",
+          "CloudTrail Integration"
+        ]
+      },
+      "AWS Managed vs. Custom Config Rules": {
+        "component_terms": [
+          "AWS Managed Config Rules",
+          "Custom Config Rules"
+        ]
+      },
+      "Analyzing CloudTrail Logs with Athena": {
+        "component_terms": [
+          "CloudTrail",
+          "Athena",
+          "CloudWatch Logs Insights"
+        ]
+      },
+      "Cross-Account Event Bus Permissions": {
+        "component_terms": [
+          "Amazon EventBridge",
+          "Resource-Based Policies",
+          "Custom Event Bus"
+        ]
+      },
+      "Identifying Network Users via VPC Logs": {
+        "component_terms": [
+          "CloudTrail",
+          "IAM Users and Roles",
+          "CloudWatch Logs"
+        ]
+      },
+      "Monitoring Serverless Applications": {
+        "component_terms": [
+          "AWS Lambda Layer",
+          "CloudWatch Alarms",
+          "CloudWatch Application Insights"
+        ]
+      },
+      "Integration of CloudWatch Alarms with SNS and Lambda": {
+        "component_terms": [
+          "CloudWatch Alarms",
+          "SNS Notifications",
+          "AWS Lambda Layer"
+        ]
+      },
+      "Analyzing Logs for Top Contributors": {
+        "component_terms": [
+          "CloudWatch Logs Insights",
+          "CloudWatch Contributor Insights",
+          "Log Groups"
+        ]
+      },
+      "Composite Alarms for Multiple Metrics": {
+        "component_terms": [
+          "Composite Alarms",
+          "CloudWatch Alarms",
+          "Alarm States"
+        ]
+      },
+      "Sending Logs to CloudWatch": {
+        "component_terms": [
+          "CloudWatch Agent",
+          "CloudWatch Logs Agent",
+          "Log Streams"
+        ]
+      },
+      "Structure of CloudWatch Logs": {
+        "component_terms": [
+          "Log Groups",
+          "Log Streams",
+          "CloudWatch Logs"
+        ]
+      },
+      "Querying Logs with CloudWatch Logs Insights": {
+        "component_terms": [
+          "CloudWatch Logs Insights",
+          "Athena",
+          "CloudWatch Metrics"
+        ]
+      },
+      "Streaming CloudWatch Metrics to Kinesis Data Firehose": {
+        "component_terms": [
+          "CloudWatch Metrics",
+          "CloudWatch Logs Agent",
+          "Kinesis Data Firehose"
+        ]
+      },
+      "Creating Automated Dashboards for Application Health": {
+        "component_terms": [
+          "Automated Dashboard",
+          "CloudWatch Dashboard",
+          "CloudWatch Application Insights"
+        ]
+      },
+      "Using Machine Learning for Application Monitoring": {
+        "component_terms": [
+          "CloudWatch Container Insights",
+          "CloudWatch Contributor Insights",
+          "AWS Lambda Layer"
+        ]
+      },
+      "Using Event Patterns to Filter Events": {
+        "component_terms": [
+          "Event Patterns",
+          "EventBridge Rules",
+          "Custom Event Bus"
+        ]
+      },
+      "Archiving and Replaying Events": {
+        "component_terms": [
+          "Event Archive",
+          "CloudTrail Event Retention",
+          "CloudTrail Integration"
+        ]
+      },
+      "Integration of CloudWatch Insights with AWS Services": {
+        "component_terms": [
+          "CloudWatch Application Insights",
+          "CloudWatch Logs Insights",
+          "CloudWatch Metrics"
+        ]
+      },
+      "Exporting Logs to Amazon S3": {
+        "component_terms": [
+          "S3 Buckets",
+          "Log Streams",
+          "CloudTrail Integration"
+        ]
+      },
+      "Collecting and Aggregating Container Metrics": {
+        "component_terms": [
+          "CloudWatch Container Insights",
+          "CloudWatch Unified Agent",
+          "CloudWatch Metrics"
+        ]
+      },
+      "Recording and Tracking Configuration Changes": {
+        "component_terms": [
+          "AWS Config",
+          "Configuration History",
+          "CloudTrail"
+        ]
+      },
+      "Triggering Notifications on Root User Sign-In": {
+        "component_terms": [
+          "SNS Notifications",
+          "CloudTrail Insights",
+          "EventBridge Notifications"
+        ]
+      },
+      "Scheduling Cron Jobs with EventBridge": {
+        "component_terms": [
+          "Amazon EventBridge",
+          "EventBridge Rules",
+          "Event Patterns",
+          "Custom Event Bus"
+        ]
+      },
+      "Actions on EC2 Instances Triggered by Alarms": {
+        "component_terms": [
+          "CloudWatch Alarms",
+          "EC2 Instance Actions",
+          "Auto-Scaling Actions",
+          "CloudWatch Metrics"
+        ]
+      }
+    }
+  },
+  "DNS": {
+    "DNS": {
+      "Alias Records and Simple Routing Policy": {
+        "component_terms": [
+          "Alias Record",
+          "Simple Routing Policy",
+          "Amazon Route 53",
+          "Zone Apex"
+        ]
+      },
+      "Domain Name Resolution Process": {
+        "component_terms": [
+          "DNS Query",
+          "Authoritative DNS",
+          "Root DNS Server",
+          "Local DNS Server"
+        ]
+      },
+      "Simple routing policy for single resource": {
+        "component_terms": [
+          "Simple Routing Policy",
+          "Routing Policy"
+        ]
+      },
+      "Differences Between CNAME and Alias Records": {
+        "component_terms": [
+          "CNAME Record",
+          "Alias Record",
+          "Zone Apex"
+        ]
+      },
+      "Mapping Hostnames to AWS Resources": {
+        "component_terms": [
+          "A Record",
+          "Alias Record",
+          "DNS Records",
+          "Public Hosted Zone"
+        ]
+      },
+      "Multiple values in simple routing policy": {
+        "component_terms": [
+          "Simple Routing Policy",
+          "Multi-Value Answer Routing Policy",
+          "DNS Records"
+        ]
+      },
+      "DNS Record Caching": {
+        "component_terms": [
+          "TTL (Time to Live)",
+          "Local DNS Server",
+          "DNS Caching"
+        ]
+      },
+      "DNS Caching": {
+        "component_terms": [
+          "TTL (Time to Live)",
+          "Local DNS Server",
+          "DNS Query"
+        ]
+      },
+      "No health checks with simple routing policy": {
+        "component_terms": [
+          "Simple Routing Policy",
+          "Amazon Route 53"
+        ]
+      },
+      "How DNS Records Define Traffic Routing": {
+        "component_terms": [
+          "Routing Policy",
+          "DNS Records",
+          "Authoritative DNS"
+        ]
+      },
+      "Alias Record Restrictions for EC2 DNS Names": {
+        "component_terms": [
+          "Alias Record",
+          "Amazon Route 53",
+          "A Record",
+          "CNAME Record",
+          "Zone Apex"
+        ]
+      },
+      "Routing Policies in Route 53": {
+        "component_terms": [
+          "Routing Policy",
+          "Failover Routing Policy",
+          "Geolocation Routing Policy",
+          "Latency Based Routing Policy",
+          "Weighted Routing Policy"
+        ]
+      },
+      "Route 53 Health Checks": {
+        "component_terms": [
+          "DNS Query",
+          "Amazon Route 53",
+          "Failover Routing Policy",
+          "Health Check",
+          "Hosted Zone"
+        ]
+      },
+      "Effect of High vs. Low TTL on DNS Traffic": {
+        "component_terms": [
+          "TTL (Time to Live)",
+          "DNS Records",
+          "DNS Query",
+          "CNAME Record",
+          "A Record"
+        ]
+      },
+      "TTL for DNS Records": {
+        "component_terms": [
+          "TTL (Time to Live)",
+          "DNS Records",
+          "Public Hosted Zone",
+          "Private Hosted Zone",
+          "Root DNS Server"
+        ]
+      },
+      "Hierarchical Naming Structure of DNS": {
+        "component_terms": [
+          "Domain Registrar",
+          "Fully Qualified Domain Name (FQDN)",
+          "Root DNS Server",
+          "Top Level Domain (TLD)",
+          "Second Level Domain"
+        ]
+      },
+      "Alias Records for Root Domains and Non-root Domains": {
+        "component_terms": [
+          "Alias Record",
+          "CNAME Record",
+          "Zone Apex",
+          "Public Hosted Zone",
+          "Amazon Route 53"
+        ]
+      },
+      "DNS Query Process": {
+        "component_terms": [
+          "DNS Query",
+          "Authoritative DNS",
+          "Local DNS Server",
+          "Name Servers",
+          "DNS Records"
+        ]
+      },
+      "Cache Invalidation Strategy": {
+        "component_terms": [
+          "TTL (Time to Live)",
+          "Authoritative DNS",
+          "DNS Records",
+          "Root DNS Server",
+          "Local DNS Server"
+        ]
+      },
+      "Alias Record Exception for TTL": {
+        "component_terms": [
+          "Alias Record",
+          "TTL (Time to Live)",
+          "Zone File",
+          "Public Hosted Zone",
+          "Amazon Route 53"
+        ]
+      },
+      "Free Queries and Health Check Capabilities of Alias Records": {
+        "component_terms": [
+          "Amazon Route 53",
+          "Alias Record",
+          "Health Check"
+        ]
+      },
+      "Route 53 routing policies": {
+        "component_terms": [
+          "Routing Policy",
+          "Geolocation Routing Policy",
+          "Latency Based Routing Policy",
+          "Weighted Routing Policy",
+          "Failover Routing Policy"
+        ]
+      },
+      "Difference Between Public and Private Hosted Zones": {
+        "component_terms": [
+          "Public Hosted Zone",
+          "Private Hosted Zone",
+          "Hosted Zone"
+        ]
+      },
+      "Route 53 as a Domain Registrar": {
+        "component_terms": [
+          "Domain Registrar",
+          "Second Level Domain",
+          "Top Level Domain (TLD)"
+        ]
+      },
+      "DNS Record Types in Route 53": {
+        "component_terms": [
+          "A Record",
+          "CNAME Record",
+          "NS Record",
+          "AAAA Record",
+          "DNS Records"
+        ]
+      },
+      "Client-side random selection of multiple IP addresses": {
+        "component_terms": [
+          "A Record",
+          "Multi-Value Answer Routing Policy",
+          "TTL (Time to Live)"
+        ]
+      },
+      "Alias records for AWS resources": {
+        "component_terms": [
+          "Alias Record",
+          "Amazon Route 53",
+          "Zone Apex"
+        ]
+      },
+      "Roles of Different DNS Servers": {
+        "component_terms": [
+          "Authoritative DNS",
+          "Root DNS Server",
+          "Local DNS Server",
+          "Name Servers"
+        ]
+      }
+    }
+  },
+  "IAM": {
+    "IAM": {
+      "Combination of Password and Security Device": {
+        "component_terms": [
+          "Multi-Factor Authentication (MFA)",
+          "Hardware Key Fob MFA Device",
+          "Virtual MFA Device"
+        ]
+      },
+      "Policy Inheritance": {
+        "component_terms": [
+          "Inline Policy",
+          "Group",
+          "IAM Role"
+        ]
+      },
+      "Use Cases for CLI and SDK": {
+        "component_terms": [
+          "AWS CLI",
+          "AWS SDK for Python (Boto)",
+          "CLI (Command Line Interface)",
+          "SDK (Software Development Kit)"
+        ]
+      },
+      "Policy Purpose": {
+        "component_terms": [
+          "Policy",
+          "Effect",
+          "Permissions",
+          "Least Privilege Principle"
+        ]
+      },
+      "Policy Structure": {
+        "component_terms": [
+          "Statement",
+          "Action",
+          "Resource",
+          "Condition",
+          "Version Number"
+        ]
+      },
+      "Password Policy Options": {
+        "component_terms": [
+          "Password Policy",
+          "Permissions",
+          "User"
+        ]
+      },
+      "EC2 Instance and IAM Role Interaction": {
+        "component_terms": [
+          "IAM Role",
+          "Permissions",
+          "Action"
+        ]
+      },
+      "Principle of Least Privilege": {
+        "component_terms": [
+          "Least Privilege Principle",
+          "Policy",
+          "Statement"
+        ]
+      },
+      "Common Roles": {
+        "component_terms": [
+          "IAM Role",
+          "Group",
+          "CloudFormation Roles"
+        ]
+      },
+      "Security Benefits of MFA": {
+        "component_terms": [
+          "Multi-Factor Authentication (MFA)",
+          "MFA Device",
+          "Hardware Key Fob MFA Device"
+        ]
+      },
+      "Access Methods: Management Console, CLI, and SDK": {
+        "component_terms": [
+          "Management Console",
+          "AWS CLI",
+          "AWS SDK for Python (Boto)",
+          "CLI (Command Line Interface)",
+          "SDK (Software Development Kit)"
+        ]
+      },
+      "Access Advisor Functionality": {
+        "component_terms": [
+          "IAM Access Advisor (IAM)",
+          "IAM Credentials Report (IAM)",
+          "Permissions"
+        ]
+      },
+      "Generating and Managing Access Keys": {
+        "component_terms": [
+          "Access Keys",
+          "Least Privilege Principle",
+          "IAM Role"
+        ]
+      },
+      "Programming Languages Supported by SDK": {
+        "component_terms": [
+          "AWS SDK for Python (Boto)",
+          "Public APIs",
+          "API Call"
+        ]
+      },
+      "IAM Roles for AWS Services vs. Physical Users": {
+        "component_terms": [
+          "IAM Role",
+          "User",
+          "Group",
+          "Hardware Key Fob MFA Device",
+          "Virtual MFA Device"
+        ]
+      },
+      "User Grouping": {
+        "component_terms": [
+          "Group",
+          "Permissions",
+          "Inline Policy",
+          "Policy"
+        ]
+      },
+      "Root User vs. Regular Users": {
+        "component_terms": [
+          "Root Account",
+          "User",
+          "IAM Role",
+          "Least Privilege Principle"
+        ]
+      },
+      "Multiple Group Memberships": {
+        "component_terms": [
+          "Group",
+          "Permissions",
+          "Policy"
+        ]
+      },
+      "Group Containment": {
+        "component_terms": [
+          "Group",
+          "Policy",
+          "IAM Role"
+        ]
+      },
+      "Global Service": {
+        "component_terms": [
+          "AWS GovCloud",
+          "Public APIs",
+          "Region"
+        ]
+      },
+      "Third-Party MFA Devices": {
+        "component_terms": [
+          "MFA Device",
+          "Multi-Factor Authentication (MFA)",
+          "Universal 2nd Factor (U2F) Security Key",
+          "Hardware Key Fob MFA Device",
+          "Virtual MFA Device"
+        ]
+      },
+      "Assigning Permissions to AWS Services": {
+        "component_terms": [
+          "Policy",
+          "Permissions",
+          "IAM Role",
+          "Inline Policy",
+          "Least Privilege Principle"
+        ]
+      },
+      "Importance of Strong Passwords": {
+        "component_terms": [
+          "Password Policy",
+          "IAM Credentials Report (IAM)",
+          "Root Account",
+          "User",
+          "Management Console"
+        ]
+      },
+      "Reducing Permissions Using Access Advisor": {
+        "component_terms": [
+          "IAM Access Advisor (IAM)",
+          "Least Privilege Principle",
+          "Permissions",
+          "Policy",
+          "Resource"
+        ]
+      },
+      "MFA as a Defense Mechanism": {
+        "component_terms": [
+          "Multi-Factor Authentication (MFA)",
+          "MFA Device",
+          "Least Privilege Principle",
+          "IAM Role",
+          "User"
+        ]
+      },
+      "CLI Commands and Automation": {
+        "component_terms": [
+          "AWS CLI",
+          "API Call",
+          "Cloud Shell",
+          "CLI (Command Line Interface)",
+          "AWS SDK for Python (Boto)"
+        ]
+      },
+      "Inline Policy vs. Group Policy": {
+        "component_terms": [
+          "Inline Policy",
+          "Group",
+          "Statement",
+          "Effect",
+          "Permissions"
+        ]
+      },
+      "Security of Access Methods: Username/Password, MFA, Access Keys": {
+        "component_terms": [
+          "Access Keys",
+          "Multi-Factor Authentication (MFA)",
+          "MFA Device",
+          "Password Policy",
+          "Least Privilege Principle"
+        ]
+      }
+    }
+  },
+  "S3 Security": {
+    "S3 Security": {
+      "Simplifying Security Management with Access Points": {
+        "component_terms": [
+          "Access Point Policy",
+          "S3 Access Points"
+        ]
+      },
+      "Managing Security at Scale": {
+        "component_terms": [
+          "Bucket Policy",
+          "S3 Access Logs",
+          "Governance Mode",
+          "Legal Hold",
+          "Retention Period"
+        ]
+      },
+      "Encryption in Transit": {
+        "component_terms": [
+          "Encryption in Transit (SSL/TLS)",
+          "Client-Side Encryption",
+          "SSE-KMS (Server-Side Encryption with AWS KMS Keys)"
+        ]
+      },
+      "Protecting Against DDoS Attacks": {
+        "component_terms": [
+          "VPC Endpoint",
+          "CORS (Cross-Origin Resource Sharing)"
+        ]
+      },
+      "Cross-Origin Requests": {
+        "component_terms": [
+          "CORS Headers (Access-Control-Allow-Origin)",
+          "Pre-flight Request"
+        ]
+      },
+      "Using Access Points for VPC and Internet Access": {
+        "component_terms": [
+          "S3 Access Points",
+          "Access Point Policy",
+          "VPC Endpoint"
+        ]
+      },
+      "Forcing Encryption with Bucket Policies": {
+        "component_terms": [
+          "Bucket Policy",
+          "SSE-KMS (Server-Side Encryption with AWS KMS Keys)",
+          "SSE-S3 (Server-Side Encryption with Amazon S3-Managed Keys)"
+        ]
+      },
+      "Caching Content at Edge Locations": {
+        "component_terms": [
+          "CORS (Cross-Origin Resource Sharing)",
+          "CORS Headers (Access-Control-Allow-Origin)",
+          "Origin"
+        ]
+      },
+      "Dynamic Object Transformation with S3 Object Lambda": {
+        "component_terms": [
+          "S3 Object Lambda",
+          "Enriched Object",
+          "Redacted Object"
+        ]
+      },
+      "Types of Server-Side Encryption": {
+        "component_terms": [
+          "Server-Side Encryption (SSE)",
+          "SSE-C (Server-Side Encryption with Customer-Provided Keys)",
+          "SSE-KMS (Server-Side Encryption with AWS KMS Keys)",
+          "SSE-S3 (Server-Side Encryption with Amazon S3-Managed Keys)"
+        ]
+      },
+      "Use Cases for S3 Object Lambda": {
+        "component_terms": [
+          "Enriched Object",
+          "Redacted Object",
+          "S3 Object Lambda"
+        ]
+      },
+      "Using KMS for Key Management": {
+        "component_terms": [
+          "SSE-KMS (Server-Side Encryption with AWS KMS Keys)",
+          "Client-Side Encryption",
+          "Encryption in Transit (SSL/TLS)"
+        ]
+      },
+      "Retention Modes and Their Purposes": {
+        "component_terms": [
+          "Governance Mode",
+          "Compliance Mode",
+          "S3 Object Lock",
+          "Retention Period",
+          "Write Once Read Many (WORM)"
+        ]
+      },
+      "Configuring CORS for S3 Buckets": {
+        "component_terms": [
+          "CORS (Cross-Origin Resource Sharing)",
+          "CORS Headers (Access-Control-Allow-Origin)",
+          "Pre-flight Request",
+          "Origin"
+        ]
+      },
+      "Defining Specific Access Policies for Different Data": {
+        "component_terms": [
+          "Bucket Policy",
+          "Access Point Policy",
+          "Pre-signed URLs",
+          "S3 Access Points"
+        ]
+      },
+      "Improving Read Performance and Reducing Latency": {
+        "component_terms": [
+          "S3 Access Logs",
+          "CORS (Cross-Origin Resource Sharing)",
+          "Pre-signed URLs"
+        ]
+      },
+      "Using Legal Hold for Object Protection": {
+        "component_terms": [
+          "Legal Hold",
+          "Retention Period",
+          "S3 Object Lock"
+        ]
+      },
+      "Implementing WORM Model with Glacier Vault Lock": {
+        "component_terms": [
+          "Write Once Read Many (WORM)",
+          "S3 Glacier Vault Lock",
+          "Vault Lock Policy"
+        ]
+      },
+      "Client-Side vs. Server-Side Encryption": {
+        "component_terms": [
+          "Client-Side Encryption",
+          "Server-Side Encryption (SSE)",
+          "SSE-KMS (Server-Side Encryption with AWS KMS Keys)",
+          "SSE-S3 (Server-Side Encryption with Amazon S3-Managed Keys)",
+          "SSE-C (Server-Side Encryption with Customer-Provided Keys)"
+        ]
+      },
+      "Web Browser Security Mechanism": {
+        "component_terms": [
+          "CORS Headers (Access-Control-Allow-Origin)",
+          "Pre-flight Request",
+          "Encryption in Transit (SSL/TLS)"
+        ]
+      },
+      "MFA Delete": {
+        "component_terms": [
+          "Bucket Policy",
+          "S3 Access Logs"
+        ]
+      },
+      "Same Origin Policy": {
+        "component_terms": [
+          "CORS (Cross-Origin Resource Sharing)",
+          "CORS Headers (Access-Control-Allow-Origin)"
+        ]
+      },
+      "Reducing Data Duplication with S3 Object Lambda": {
+        "component_terms": [
+          "S3 Object Lambda",
+          "Enriched Object"
+        ]
+      },
+      "Difference Between CloudFront and S3 Replication": {
+        "component_terms": [
+          "Origin",
+          "S3 Access Points"
+        ]
+      },
+      "Setting Retention Periods": {
+        "component_terms": [
+          "Retention Period",
+          "S3 Object Lock",
+          "Governance Mode",
+          "Compliance Mode"
+        ]
+      },
+      "Integration of Lambda Functions with S3 Access Points": {
+        "component_terms": [
+          "S3 Access Points",
+          "Access Point Policy",
+          "Pre-signed URLs"
+        ]
+      },
+      "Differences Between S3 Glacier Vault Lock and S3 Object Lock": {
+        "component_terms": [
+          "S3 Glacier Vault Lock",
+          "S3 Object Lock",
+          "Governance Mode",
+          "Compliance Mode"
+        ]
+      },
+      "Origins for CloudFront": {
+        "component_terms": [
+          "Origin",
+          "CORS (Cross-Origin Resource Sharing)",
+          "CORS Headers (Access-Control-Allow-Origin)"
+        ]
+      }
+    }
+  },
+  "Disaster Recovery": {
+    "Disaster Recovery": {
+      "Server Migration": {
+        "component_terms": [
+          "AWS Application Migration Service",
+          "AWS Server Migration Service (SMS)",
+          "Heterogeneous Migration",
+          "Homogeneous Migration"
+        ]
+      },
+      "On-Premise Strategy with Cloud": {
+        "component_terms": [
+          "On-Premise Strategy with Cloud",
+          "Pilot Light",
+          "Hybrid Recovery",
+          "Warm Standby"
+        ]
+      },
+      "AWS Migration Hub": {
+        "component_terms": [
+          "AWS Migration Hub",
+          "Dependency Mappings",
+          "Server Utilization Information"
+        ]
+      },
+      "Database Snapshot Method": {
+        "component_terms": [
+          "AWS Backup",
+          "Backup and Restore",
+          "DMS (Database Migration Service)"
+        ]
+      },
+      "RPO vs. RTO": {
+        "component_terms": [
+          "RPO (Recovery Point Objective)",
+          "RTO (Recovery Time Objective)",
+          "Disaster",
+          "Continuous Replication"
+        ]
+      },
+      "Cost vs. Recovery Time": {
+        "component_terms": [
+          "RPO (Recovery Point Objective)",
+          "RTO (Recovery Time Objective)",
+          "Full Cloud Recovery"
+        ]
+      },
+      "On-premise vs. Cloud": {
+        "component_terms": [
+          "On-Premise Strategy with Cloud",
+          "Hybrid Recovery",
+          "Multi AZ Deployment"
+        ]
+      },
+      "Percona XtraBackup Method": {
+        "component_terms": [
+          "AWS Backup",
+          "Incremental Replication"
+        ]
+      },
+      "Backup and Restore": {
+        "component_terms": [
+          "AWS Backup",
+          "Backup and Restore"
+        ]
+      },
+      "Homogeneous vs. Heterogeneous Migration": {
+        "component_terms": [
+          "Homogeneous Migration",
+          "Heterogeneous Migration",
+          "AWS Database Migration Service (DMS)"
+        ]
+      },
+      "Resiliency and Self-Healing": {
+        "component_terms": [
+          "Resilient and Self-Healing",
+          "RPO (Recovery Point Objective)",
+          "RTO (Recovery Time Objective)"
+        ]
+      },
+      "Amazon Linux 2 AMI Deployment": {
+        "component_terms": [
+          "AWS Application Migration Service",
+          "AWS Backup"
+        ]
+      },
+      "Warm Standby": {
+        "component_terms": [
+          "Warm Standby",
+          "Hybrid Recovery"
+        ]
+      },
+      "Migrating Databases with DMS": {
+        "component_terms": [
+          "AWS Database Migration Service (DMS)",
+          "Continuous Replication",
+          "Change Data Capture"
+        ]
+      },
+      "Pilot Light": {
+        "component_terms": [
+          "Pilot Light",
+          "Full Cloud Recovery"
+        ]
+      },
+      "Supported Database Engines": {
+        "component_terms": [
+          "AWS Database Migration Service (DMS)",
+          "On-premises Database",
+          "Target Database",
+          "Source Database"
+        ]
+      },
+      "VMWare Cloud on AWS": {
+        "component_terms": [
+          "VMWare",
+          "KVM",
+          "Microsoft Hyper-V",
+          "VM Import and Export"
+        ]
+      },
+      "Aurora Read Replica Method": {
+        "component_terms": [
+          "Continuous Replication",
+          "Multi AZ Deployment",
+          "Incremental Replication"
+        ]
+      },
+      "AWS Application Discovery Service": {
+        "component_terms": [
+          "Dependency Mappings",
+          "AWS Migration Hub",
+          "Server Utilization Information"
+        ]
+      },
+      "Automated Recovery": {
+        "component_terms": [
+          "Backup and Restore",
+          "RPO (Recovery Point Objective)",
+          "RTO (Recovery Time Objective)",
+          "Resilient and Self-Healing"
+        ]
+      },
+      "AWS Application Migration Service Use Case": {
+        "component_terms": [
+          "AWS Application Migration Service",
+          "AWS Migration Hub",
+          "Dependency Mappings"
+        ]
+      },
+      "Hot Site / Multi-Site": {
+        "component_terms": [
+          "Hot Site / Multi-Site",
+          "Full Cloud Recovery",
+          "Pilot Light"
+        ]
+      },
+      "VM Import and Export": {
+        "component_terms": [
+          "VM Import and Export",
+          "ISO Image",
+          "VMWare"
+        ]
+      },
+      "MySQL Dump Utility Method": {
+        "component_terms": [
+          "AWS Database Migration Service (DMS)",
+          "On-premises Database",
+          "Backup and Restore"
+        ]
+      },
+      "AWS Backup Use Case": {
+        "component_terms": [
+          "AWS Backup",
+          "RPO (Recovery Point Objective)",
+          "RTO (Recovery Time Objective)"
+        ]
+      },
+      "Database Migration to Aurora MySQL": {
+        "component_terms": [
+          "AWS Database Migration Service (DMS)",
+          "Homogeneous Migration",
+          "Target Database",
+          "Source Database"
+        ]
+      },
+      "Database Migration": {
+        "component_terms": [
+          "AWS Application Migration Service",
+          "Backup and Restore",
+          "Continuous Replication",
+          "Full Cloud Recovery",
+          "DMS (Database Migration Service)"
+        ]
+      }
+    }
+  },
+  "Access Management": {
+    "Access Management": {
+      "Restricting API Calls by IP Address": {
+        "component_terms": [
+          "IAM Conditions",
+          "AWS IAM Identity Center"
+        ]
+      },
+      "Differences Between AWS Managed Microsoft AD, AD Connector, and Simple AD": {
+        "component_terms": [
+          "AWS Managed Microsoft AD",
+          "AD Connector",
+          "Simple AD",
+          "Domain Controller",
+          "Active Directory"
+        ]
+      },
+      "Restricting Maximum Permissions with IAM Permission Boundaries": {
+        "component_terms": [
+          "IAM Permission Boundaries",
+          "IAM Policy",
+          "AdministratorAccess"
+        ]
+      },
+      "Role of Domain Controllers in Active Directory": {
+        "component_terms": [
+          "Domain Controller",
+          "Active Directory",
+          "Forest"
+        ]
+      },
+      "Applying Permission Boundaries to Users and Roles": {
+        "component_terms": [
+          "IAM Permission Boundaries",
+          "IAM User",
+          "Permission Sets"
+        ]
+      },
+      "Using Permission Sets to Control Access": {
+        "component_terms": [
+          "Permission Sets",
+          "IAM Policy",
+          "IAM User"
+        ]
+      },
+      "Using Trust Connections to Share User Authentication Between On-Premises and AWS": {
+        "component_terms": [
+          "Trust Connection",
+          "Two-Way Trust Relationship",
+          "Active Directory"
+        ]
+      },
+      "Role of Session Policies in IAM": {
+        "component_terms": [
+          "IAM Conditions",
+          "IAM Permission Boundaries"
+        ]
+      },
+      "Managing Single Sign-On Across Multiple AWS Accounts and Applications": {
+        "component_terms": [
+          "Single Sign-On (SSO)",
+          "Custom SAML 2.0 Enabled Applications",
+          "Third-Party Identity Provider"
+        ]
+      },
+      "Differences between Identity-based and Resource-based Policies": {
+        "component_terms": [
+          "AWS Organizations SCP",
+          "Attribute-Based Access Control"
+        ]
+      },
+      "Delegating Responsibilities within Permission Boundaries": {
+        "component_terms": [
+          "IAM Permission Boundaries",
+          "IAM Policy",
+          "IAM Conditions"
+        ]
+      },
+      "Integrating IAM Identity Center with Third-Party Identity Providers": {
+        "component_terms": [
+          "AWS IAM Identity Center",
+          "Custom SAML 2.0 Enabled Applications",
+          "Third-Party Identity Provider"
+        ]
+      },
+      "Setting S3 Bucket Policies": {
+        "component_terms": [
+          "AWS S3 Full Access",
+          "IAM Policy"
+        ]
+      },
+      "Defining Access for Multiple Accounts Using IAM Identity Center": {
+        "component_terms": [
+          "Multi-Account Permission",
+          "Permission Sets",
+          "AWS Organizations SCP"
+        ]
+      },
+      "Limiting Access to Specific AWS Regions": {
+        "component_terms": [
+          "IAM User",
+          "Detecive Guardrail",
+          "Preventive Guardrail"
+        ]
+      },
+      "Assigning Users and Groups to Permission Sets": {
+        "component_terms": [
+          "IAM User",
+          "Permission Sets",
+          "AWS IAM Identity Center"
+        ]
+      },
+      "Tag-Based Access Control for EC2": {
+        "component_terms": [
+          "IAM Policy",
+          "Attribute-Based Access Control"
+        ]
+      },
+      "Proxying User Authentication Requests with AD Connector": {
+        "component_terms": [
+          "AD Connector",
+          "Active Directory",
+          "AWS Directory Services"
+        ]
+      },
+      "Enforcing Multi-Factor Authentication": {
+        "component_terms": [
+          "IAM Policy",
+          "Multi-Account Permission"
+        ]
+      },
+      "Impact of Explicit Deny in IAM Policies": {
+        "component_terms": [
+          "IAM Conditions",
+          "IAM Permission Boundaries"
+        ]
+      },
+      "Evaluating IAM Policies and Permissions": {
+        "component_terms": [
+          "IAM Policy",
+          "IAM User",
+          "IAM Conditions"
+        ]
+      },
+      "Combining Permission Boundaries with AWS Organizations SCP": {
+        "component_terms": [
+          "IAM Permission Boundaries",
+          "AWS Organizations SCP"
+        ]
+      },
+      "Restricting Access to Organization Members": {
+        "component_terms": [
+          "Multi-Account Permission",
+          "Permission Sets"
+        ]
+      },
+      "Integrating On-Premises AD with AWS Directory Services": {
+        "component_terms": [
+          "AD Connector",
+          "AWS Managed Microsoft AD",
+          "Active Directory",
+          "Trust Connection",
+          "Two-Way Trust Relationship"
+        ]
+      }
+    }
+  },
+  "EC2 advanced": {
+    "EC2 advanced": {
+      "Data Persistence on Stop vs. Terminate": {
+        "component_terms": [
+          "Stop Instance",
+          "Terminate Instance",
+          "EBS Disk",
+          "Root Volume"
+        ]
+      },
+      "Security Groups Attached to ENIs": {
+        "component_terms": [
+          "Elastic Network Interfaces (ENI)",
+          "MAC Address",
+          "Security Group"
+        ]
+      },
+      "Benefits of Using DNS over Elastic IPs": {
+        "component_terms": [
+          "Elastic IP",
+          "Public IP",
+          "Private IP"
+        ]
+      },
+      "Hibernate Process and RAM State Preservation": {
+        "component_terms": [
+          "Hibernate",
+          "In-Memory State",
+          "EBS Disk"
+        ]
+      },
+      "ENI Creation and Management": {
+        "component_terms": [
+          "Elastic Network Interfaces (ENI)",
+          "Primary Private IPv4",
+          "Secondary IPv4"
+        ]
+      },
+      "Cluster Placement Group: High Performance, High Risk": {
+        "component_terms": [
+          "Cluster Placement Group",
+          "Placement Groups",
+          "Availability Zone (AZ)"
+        ]
+      },
+      "Use of Elastic IPs": {
+        "component_terms": [
+          "Elastic IP",
+          "Public IP",
+          "Primary Private IPv4"
+        ]
+      },
+      "Network Address Translation": {
+        "component_terms": [
+          "NAT Device",
+          "Elastic Network Interfaces (ENI)",
+          "Private IP"
+        ]
+      },
+      "Operating System Compatibility": {
+        "component_terms": [
+          "EC2 User Data",
+          "EBS Disk",
+          "Operating System"
+        ]
+      },
+      "Requirements for Hibernation": {
+        "component_terms": [
+          "Hibernate",
+          "In-Memory State",
+          "Root Volume"
+        ]
+      },
+      "Network Performance in Cluster Placement Groups": {
+        "component_terms": [
+          "Cluster Placement Group",
+          "Placement Groups",
+          "Availability Zone (AZ)"
+        ]
+      },
+      "Instance Type Compatibility": {
+        "component_terms": [
+          "EBS Disk",
+          "Elastic Network Interfaces (ENI)",
+          "Root Volume"
+        ]
+      },
+      "ENI Availability Zone Boundaries": {
+        "component_terms": [
+          "Elastic Network Interfaces (ENI)",
+          "Availability Zone (AZ)"
+        ]
+      },
+      "Assigning Private and Public IPs": {
+        "component_terms": [
+          "Primary Private IPv4",
+          "Public IP",
+          "Elastic IPv4"
+        ]
+      },
+      "Public IP vs. Private IP": {
+        "component_terms": [
+          "Public IP",
+          "Private IP",
+          "Public IPv4"
+        ]
+      },
+      "Private Network and Internet Access": {
+        "component_terms": [
+          "Private IP",
+          "Elastic IP",
+          "NAT Device"
+        ]
+      },
+      "ENI Attributes and Functions": {
+        "component_terms": [
+          "Elastic Network Interfaces (ENI)",
+          "Primary Private IPv4",
+          "MAC Address"
+        ]
+      },
+      "Hardware Failure Isolation in Spread and Partition Groups": {
+        "component_terms": [
+          "Spread Placement Group",
+          "Partition Placement Group",
+          "Availability Zone (AZ)"
+        ]
+      },
+      "Spread Placement Group: Minimized Failure Risk": {
+        "component_terms": [
+          "Spread Placement Group",
+          "Placement Groups"
+        ]
+      },
+      "Instance Boot Process": {
+        "component_terms": [
+          "EC2 User Data",
+          "Root Volume",
+          "EBS Disk"
+        ]
+      },
+      "Network Connectivity for EC2 Instances": {
+        "component_terms": [
+          "Elastic IP",
+          "Private IP",
+          "Public IP",
+          "Elastic Network Interfaces (ENI)"
+        ]
+      },
+      "Failover Using ENIs": {
+        "component_terms": [
+          "Elastic Network Interfaces (ENI)",
+          "Primary Private IPv4",
+          "Secondary IPv4"
+        ]
+      },
+      "Differences between IPv4 and IPv6": {
+        "component_terms": [
+          "Elastic IPv4",
+          "Private IP",
+          "Public IPv4"
+        ]
+      },
+      "Partition Placement Group: Distributed Across Racks": {
+        "component_terms": [
+          "Partition Placement Group",
+          "Availability Zone (AZ)"
+        ]
+      }
+    }
+  },
+  "S3 Basics": {
+    "S3 Basics": {
+      "Bucket Naming Conventions": {
+        "component_terms": [
+          "Buckets",
+          "Bucket ACL",
+          "Bucket Settings for Block Public Access"
+        ]
+      },
+      "Object Key Structure": {
+        "component_terms": [
+          "Object Key",
+          "Objects",
+          "Metadata"
+        ]
+      },
+      "CRR vs. SRR": {
+        "component_terms": [
+          "Same-Region Replication (SRR)",
+          "Amazon S3",
+          "Durability"
+        ]
+      },
+      "Public Access Configuration": {
+        "component_terms": [
+          "Bucket Settings for Block Public Access",
+          "S3 Bucket Policies",
+          "User-Based Security"
+        ]
+      },
+      "Use Cases for SRR": {
+        "component_terms": [
+          "Same-Region Replication (SRR)",
+          "Amazon S3 Standard-General Purpose",
+          "Versioning"
+        ]
+      },
+      "Replication Mechanism": {
+        "component_terms": [
+          "Same-Region Replication (SRR)",
+          "Versioning",
+          "Buckets",
+          "Durability"
+        ]
+      },
+      "IAM Permissions and API Calls": {
+        "component_terms": [
+          "IAM Permissions",
+          "IAM Policies",
+          "JSON-Based Policies",
+          "User-Based Security"
+        ]
+      },
+      "Encryption at Upload": {
+        "component_terms": [
+          "Encryption Keys",
+          "Amazon S3-Security",
+          "Bucket ACL"
+        ]
+      },
+      "Use Cases of S3": {
+        "component_terms": [
+          "Amazon S3 Standard-General Purpose",
+          "Glacier Flexible Retrieval",
+          "Amazon S3 Intelligent Tiering",
+          "Tags"
+        ]
+      },
+      "Actions in Bucket Policies": {
+        "component_terms": [
+          "S3 Bucket Policies",
+          "Resource-Based Security",
+          "Bucket Settings for Block Public Access"
+        ]
+      },
+      "Cross-Account Access": {
+        "component_terms": [
+          "IAM Permissions",
+          "IAM Policies",
+          "S3 Bucket Policies",
+          "Resource-Based Security"
+        ]
+      },
+      "Effect in Bucket Policies": {
+        "component_terms": [
+          "S3 Bucket Policies",
+          "JSON-Based Policies",
+          "User-Based Security"
+        ]
+      },
+      "Source and Destination Buckets": {
+        "component_terms": [
+          "Buckets",
+          "Same-Region Replication (SRR)"
+        ]
+      },
+      "Max Object Size and Multi-part Upload": {
+        "component_terms": [
+          "Multi-part Upload",
+          "Max Object Size",
+          "Objects"
+        ]
+      },
+      "Versioning in S3": {
+        "component_terms": [
+          "Version ID",
+          "Versioning",
+          "Durability",
+          "Metadata"
+        ]
+      },
+      "Metadata and Tags": {
+        "component_terms": [
+          "Metadata",
+          "Tags",
+          "Object Key"
+        ]
+      },
+      "S3 as Backbone for Websites": {
+        "component_terms": [
+          "Amazon S3",
+          "Buckets",
+          "Durability"
+        ]
+      },
+      "Principle in IAM Policies": {
+        "component_terms": [
+          "IAM Policies",
+          "IAM Permissions",
+          "Resource-Based Security"
+        ]
+      },
+      "EC2 Instance Role": {
+        "component_terms": [
+          "IAM Permissions",
+          "IAM Policies"
+        ]
+      },
+      "Resource Block in JSON Policies": {
+        "component_terms": [
+          "JSON-Based Policies",
+          "Resource-Based Security"
+        ]
+      },
+      "Use Cases for CRR": {
+        "component_terms": [
+          "Amazon S3",
+          "Same-Region Replication (SRR)",
+          "Durability",
+          "Buckets",
+          "IAM Policies"
+        ]
+      }
+    }
+  },
+  "Containers on AWS": {
+    "Containers on AWS": {
+      "Scheduling Tasks with EventBridge": {
+        "component_terms": [
+          "EventBridge Schedule",
+          "ECS Tasks Invoked by EventBridge"
+        ]
+      },
+      "Load Balancer Integrations with ECS": {
+        "component_terms": [
+          "Load Balancer Integrations",
+          "ECS Service"
+        ]
+      },
+      "Data Persistence on Amazon ECS with Amazon EFS": {
+        "component_terms": [
+          "Data Persistence on Amazon ECS",
+          "Data Volume"
+        ]
+      },
+      "Scheduling containerized batch processing tasks": {
+        "component_terms": [
+          "ECS Task",
+          "ECS Service Auto Scaling"
+        ]
+      },
+      "IAM Roles for ECS Tasks and Instance Profiles": {
+        "component_terms": [
+          "IAM Roles for ECS Tasks",
+          "EC2 Instance Profile"
+        ]
+      },
+      "Fargate Launch Type Overview": {
+        "component_terms": [
+          "AWS Fargate",
+          "ECS Service",
+          "ECS Task"
+        ]
+      },
+      "How Docker Works on an Operating System": {
+        "component_terms": [
+          "Docker",
+          "Docker Daemon",
+          "EC2 Instance Profile"
+        ]
+      },
+      "Storing Docker Images in Docker Repositories": {
+        "component_terms": [
+          "Amazon ECR",
+          "Docker Image",
+          "Docker Repository"
+        ]
+      },
+      "Scaling ECS Services with SQS Queue": {
+        "component_terms": [
+          "ECS Service Auto Scaling",
+          "ECS Cluster",
+          "SQS Queue"
+        ]
+      },
+      "Difference Between Docker and Virtual Machines": {
+        "component_terms": [
+          "Docker",
+          "Virtual Machine"
+        ]
+      },
+      "Docker and its Use Cases": {
+        "component_terms": [
+          "Docker",
+          "Dockerfile",
+          "Docker Image",
+          "Docker Hub",
+          "Containers"
+        ]
+      },
+      "Managing ECS Tasks with EventBridge": {
+        "component_terms": [
+          "ECS Task",
+          "ECS Tasks Invoked by EventBridge",
+          "EventBridge Schedule",
+          "ECS Service Auto Scaling"
+        ]
+      },
+      "Amazon ECS and EC2 Launch Type": {
+        "component_terms": [
+          "Amazon ECS",
+          "EC2 Launch Type",
+          "AWS Fargate",
+          "EC2 Instance Profile"
+        ]
+      },
+      "Dockerfile and Docker Containers": {
+        "component_terms": [
+          "Dockerfile",
+          "Docker",
+          "Docker Repository",
+          "Data Volume",
+          "ECS Cluster"
+        ]
+      }
+    }
+  },
+  "CloudFront": {
+    "CloudFront": {
+      "Performance vs. Cost Trade-offs": {
+        "component_terms": [
+          "CloudFront",
+          "Edge Locations",
+          "Price Classes"
+        ]
+      },
+      "Health Checks and Automated Failover": {
+        "component_terms": [
+          "AWS Global Accelerator",
+          "DDoS Protection"
+        ]
+      },
+      "Difference Between CloudFront and Global Accelerator": {
+        "component_terms": [
+          "AWS Global Accelerator",
+          "Content Delivery Network (CDN)",
+          "Anycast IP"
+        ]
+      },
+      "Reducing Costs with Price Classes": {
+        "component_terms": [
+          "Price Classes",
+          "CloudFront"
+        ]
+      },
+      "Specifying Paths for Cache Invalidation": {
+        "component_terms": [
+          "CloudFront",
+          "Cloudfront Geo Restriction"
+        ]
+      },
+      "Impact of TTL on Content Updates": {
+        "component_terms": [
+          "CloudFront",
+          "Edge Locations",
+          "Content Delivery Network (CDN)"
+        ]
+      },
+      "Data Transfer Costs by Region": {
+        "component_terms": [
+          "Price Classes",
+          "CloudFront",
+          "Edge Locations"
+        ]
+      },
+      "Using Anycast IP for Traffic Routing": {
+        "component_terms": [
+          "Anycast IP",
+          "CloudFront"
+        ]
+      },
+      "Forcing Cache Refresh with Invalidations": {
+        "component_terms": [
+          "CloudFront",
+          "Edge Locations"
+        ]
+      },
+      "Improving Global Application Performance with Global Accelerator": {
+        "component_terms": [
+          "AWS Global Accelerator",
+          "CloudFront"
+        ]
+      }
+    }
+  },
+  "Machine Learning": {
+    "Machine Learning": {
+      "Kendra Use Case": {
+        "component_terms": [
+          "Kendra"
+        ]
+      },
+      "Comprehend Medical Use Case": {
+        "component_terms": [
+          "Comprehend Medical"
+        ]
+      },
+      "Forecast Use Case": {
+        "component_terms": [
+          "Forecast"
+        ]
+      },
+      "Comprehend Use Case": {
+        "component_terms": [
+          "Comprehend"
+        ]
+      },
+      "SageMaker Use Case": {
+        "component_terms": [
+          "SageMaker"
+        ]
+      },
+      "Lex + Connect Use Case": {
+        "component_terms": [
+          "Lex + Connect"
+        ]
+      },
+      "Rekognition Use Case": {
+        "component_terms": [
+          "Rekognition"
+        ]
+      },
+      "Transcribe Use Case": {
+        "component_terms": [
+          "Transcribe"
+        ]
+      },
+      "Polly Use Case": {
+        "component_terms": [
+          "Polly"
+        ]
+      },
+      "Personalize Use Case": {
+        "component_terms": [
+          "Personalize"
+        ]
+      },
+      "Translate Use Case": {
+        "component_terms": [
+          "Translate",
+          "Comprehend",
+          "Transcribe"
+        ]
+      }
+    }
+  },
+  "Edge Functions": {
+    "Edge Functions": {
+      "Sub-Millisecond Startup Times": {
+        "component_terms": [
+          "Lambda@Edge"
+        ]
+      },
+      "Use Cases of Edge Functions": {
+        "component_terms": [
+          "Viewer Request",
+          "Origin Response"
+        ]
+      },
+      "CloudFront Functions vs. Lambda@Edge": {
+        "component_terms": [
+          "Lambda@Edge",
+          "Viewer Response"
+        ]
+      },
+      "Customizing CDN Content": {
+        "component_terms": [
+          "Origin Request",
+          "Viewer Request"
+        ]
+      },
+      "Request and Response Modification": {
+        "component_terms": [
+          "Origin Request",
+          "Viewer Response"
+        ]
+      },
+      "Executing Logic at the Edge": {
+        "component_terms": [
+          "Lambda@Edge",
+          "Origin Request",
+          "Origin Response",
+          "Viewer Request",
+          "Viewer Response"
+        ]
+      }
+    }
+  },
+  "Auto Scaling Group": {
+    "Auto Scaling Group": {
+      "Monitoring and Metrics": {
+        "component_terms": [
+          "CPU Utilization",
+          "Custom Metrics",
+          "Network In/Out"
+        ]
+      },
+      "Metrics for Scaling": {
+        "component_terms": [
+          "RequestCountPerTarget",
+          "CPU Utilization",
+          "Network In/Out"
+        ]
+      },
+      "Dynamic Response": {
+        "component_terms": [
+          "Predictive Scaling",
+          "Scaling Cooldown",
+          "Step Scaling"
+        ]
+      },
+      "Configuration Time": {
+        "component_terms": [
+          "Scheduled Scaling",
+          "Simple Scaling",
+          "Step Scaling"
+        ]
+      },
+      "Scaling Policies": {
+        "component_terms": [
+          "Simple Scaling",
+          "Target Tracking Scaling",
+          "Step Scaling"
+        ]
+      },
+      "Cooldown Period": {
+        "component_terms": [
+          "Scaling Cooldown",
+          "Simple Scaling",
+          "Target Tracking Scaling"
+        ]
+      }
+    }
+  },
+  "Services": {
+    "Services": {
+      "CloudFormation Use Case": {
+        "component_terms": [
+          "CloudFormation"
+        ]
+      },
+      "CloudFormation Service Role": {
+        "component_terms": [
+          "CloudFormation"
+        ]
+      },
+      "AWS Batch Use Case": {
+        "component_terms": [
+          "AWS Batch"
+        ]
+      },
+      "AWS Cost Explorer and Anomaly Detection": {
+        "component_terms": [
+          "AWS Cost Explorer",
+          "AWS Cost Anomaly Detection"
+        ]
+      },
+      "SSM Session Manager Use Case": {
+        "component_terms": []
+      }
+    }
+  },
+  "Account Management": {
+    "Account Management": {
+      "Managing Multiple AWS Accounts": {
+        "component_terms": [
+          "AWS Organizations",
+          "Management Account",
+          "Member Account",
+          "Cross-Account Roles"
+        ]
+      },
+      "Organizing Accounts Using OUs": {
+        "component_terms": [
+          "Organizational Units (OUs)",
+          "Root OU"
+        ]
+      },
+      "Billing Consolidation and Cost Savings": {
+        "component_terms": [
+          "Consolidated Billing",
+          "Aggregated Usage",
+          "Savings Plans"
+        ]
+      },
+      "Automating Account Creation": {
+        "component_terms": [
+          "API for Account Creation"
+        ]
+      },
+      "Applying SCPs for Security and Compliance": {
+        "component_terms": [
+          "Service Control Policies (SCPs)"
+        ]
+      }
+    }
+  }
+}

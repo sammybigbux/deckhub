@@ -1,0 +1,3 @@
+EC2 Instance Storage -> AWS Global Infrastructure -> data centers
+EC2 Instance Storage -> AWS Global Infrastructure -> availability zones
+EC2 Instance Storage -> AWS Global Infrastructure -> regional presence

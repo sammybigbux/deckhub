@@ -1,0 +1,5 @@
+{
+    "Managing Long-term Storage Costs: Imagine you have a large number of EBS snapshots that need to be stored long-term but are infrequently accessed. How would you use the EBS Snapshot Archive to reduce storage costs, and what considerations should you keep in mind?": "Managing Long-term Storage Costs",
+    "Cloud Formation Service Role": "CloudFormation Service Role",
+    "Transferring Data Between Availability Zones: Suppose you need to move an EBS volume from one availability zone to another. How would you use EBS snapshots to accomplish this task?" : "Transferring Data Between Availability Zones",
+}

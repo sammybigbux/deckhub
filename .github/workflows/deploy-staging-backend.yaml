@@ -1,0 +1,64 @@
+name: Deploy Backend to Staging on backend changes
+
+on:
+  push:
+    branches:
+      - staging  # Triggers on any merge into the staging branch
+    paths:
+      - 'src/backend/**'  # Only triggers if there are changes in the backend directory
+
+jobs:
+  deploy_backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
+
+      # Step 3: Set up Google Cloud SDK for Cloud Run
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}  # Google Cloud project ID
+
+      # Step 4: Authenticate Docker with GCR
+      - name: Authenticate Docker with GCR
+        run: gcloud auth configure-docker
+
+      # Step 5: Build Docker image for backend
+      - name: Build Docker image for backend
+        run: |
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} ./src/backend
+
+      # Step 6: Push Docker image to GCR
+      - name: Push Docker image to GCR
+        run: |
+          docker push gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }}
+
+      # Step 7: Deploy the backend to Google Cloud Run (staging)
+      - name: Deploy backend to Cloud Run
+        run: |
+          gcloud run deploy deckhub-backend-staging \
+            --image gcr.io/${{ secrets.GCP_PROJECT }}/backend-cloud:${{ github.sha }} \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated \
+            --set-env-vars "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
+            --set-env-vars "LOCAL=False" /
+            --set-env-vars "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}" \
+            --set-env-vars "WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}"
+
+      # Step 8: Run backend tests
+      - name: Run backend tests
+        env:
+          TEST_ENV_URL: "https://deckhub-backend-staging-1086653848406.us-central1.run.app"  # Staging backend URL
+        run: |
+          cd src/backend
+          python3 -m unittest discover -s test -p "test_session.py"

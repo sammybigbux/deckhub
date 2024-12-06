@@ -1,0 +1,4164 @@
+{
+    "Networking": {
+      "Setting Up Virtual Private Gateway for Direct Connect": [
+        "Virtual Private Cloud (VPC)",
+        "Direct Connect Link",
+        "BGP (Border Gateway Protocol)"
+      ],
+      "Accessing Both Public and Private AWS Resources via VIFs": [
+        "Virtual Private Cloud (VPC)",
+        "Direct Connect",
+        "Virtual Interfaces (VIF)"
+      ],
+      "Role of the Default VPC in AWS Accounts": [
+        "VPC Peering",
+        "Subnets",
+        "Security Groups"
+      ],
+      "Cross-AZ Traffic": [
+        "Availability Zones",
+        "Inter-Region Connectivity",
+        "Data Transfer Costs"
+      ],
+      "Using Flow Logs to Monitor and Troubleshoot Connectivity Issues": [
+        "VPC Flow Logs",
+        "Amazon CloudWatch",
+        "Network ACLs"
+      ],
+      "Cross-Region and Cross-Account Connectivity Using Transit Gateway": [
+        "Transit Gateway Peering",
+        "VPC Attachment",
+        "Route Tables"
+      ],
+      "NAT Gateway vs. Instance": [
+        "Public IP Addressing",
+        "Subnet Types",
+        "Traffic Routing"
+      ],
+      "Free Access to Amazon S3 and DynamoDB Using Gateway Endpoints": [
+        "VPC (Virtual Private Cloud)",
+        "Endpoint Policies",
+        "PrivateLink"
+      ],
+      "Role of Inbound and Outbound Rules in Security Groups and NACLs": [
+        "Security Groups",
+        "Network Access Control Lists (NACLs)",
+        "Access Control Permissions"
+      ],
+      "Public and Private IPv4 DNS Names for EC2 Instances": [
+        "EC2 Instance",
+        "Elastic IP",
+        "VPC (Virtual Private Cloud)"
+      ],
+      "DNS and Route Table Configuration for VPC Endpoints": [
+        "VPC Endpoints",
+        "Route 53",
+        "CIDR Blocks"
+      ],
+      "Traffic Flow and Evaluation Process in Security Groups and NACLs": [
+        "Security Groups",
+        "Network Access Control Lists (NACLs)",
+        "Inbound and Outbound Rules"
+      ],
+      "Private IP vs Public IP": [
+        "Subnetting",
+        "NAT (Network Address Translation)",
+        "CIDR (Classless Inter-Domain Routing)"
+      ],
+      "Default NACL Behavior": [
+        "Network ACL",
+        "Inbound Rules",
+        "Outbound Rules"
+      ],
+      "Network ACLs and Their Default Rules": [
+        "Subnets",
+        "Security Groups",
+        "Packet Filtering"
+      ],
+      "Preferred Use Cases for Gateway Endpoints vs. Interface Endpoints": [
+        "AWS VPC",
+        "Route Tables",
+        "Security Groups"
+      ],
+      "Establishing Transitive Peering Connections": [
+        "BGP (Border Gateway Protocol)",
+        "VPC (Virtual Private Cloud)",
+        "Direct Connect"
+      ],
+      "Advantages of Direct Connect: Increased Bandwidth, Lower Cost, Consistent Network Experience": [
+        "Dedicated Connection",
+        "Latency",
+        "Data Transfer"
+      ],
+      "Auto-assigned Public IPv4 Addresses for Subnets": [
+        "Elastic IP Address",
+        "Internet Gateway",
+        "NAT Gateway"
+      ],
+      "Understanding CIDR Notation for Defining IP Ranges": [
+        "IPv4",
+        "Subnetting",
+        "Routing"
+      ],
+      "AWS Network Firewall Use Cases": [
+        "Stateful Inspection",
+        "Traffic Filtering",
+        "Threat Detection"
+      ],
+      "Use Case for NACLs in Blocking Specific IPs": [
+        "Network Access Control Lists (NACLs)",
+        "Stateless Firewall",
+        "Subnet-Level Security"
+      ],
+      "Range of IPs Defined by Different Subnet Masks": [
+        "Subnetting",
+        "CIDR (Classless Inter-Domain Routing)",
+        "IP Addressing"
+      ],
+      "Difference Between Public and Private IP Addresses": [
+        "IP Addressing",
+        "NAT (Network Address Translation)",
+        "Subnetting"
+      ],
+      "Importance of CIDR in Network Security and Management": [
+        "Subnetting",
+        "IP Addressing",
+        "Access Control Lists (ACLs)"
+      ],
+      "Using CloudFront with S3": [
+        "Content Delivery Network (CDN)",
+        "Origin Access Identity (OAI)",
+        "Caching Strategies"
+      ],
+      "Flow Logs and Their Uses": [
+        "Amazon VPC",
+        "Traffic Analysis",
+        "Security Best Practices"
+      ],
+      "NAT Instance Use Case": [
+        "Network Address Translation",
+        "Public IP Address",
+        "Private Subnet"
+      ],
+      "Direct Connect for Real-Time Data Feeds and Hybrid Environments": [
+        "Virtual Private Cloud (VPC)",
+        "Dedicated Connection",
+        "Transit Gateway"
+      ],
+      "NAT Gateway with High Availability": [
+        "Elastic IP",
+        "Route Table",
+        "VPC"
+      ],
+      "Integration of Direct Connect and VPN with Transit Gateway": [
+        "AWS Transit Gateway",
+        "Virtual Private Cloud (VPC)",
+        "Direct Connect"
+      ],
+      "Difference Between Interface Endpoints and Gateway Endpoints": [
+        "VPC Endpoint",
+        "AWS PrivateLink",
+        "Route Table"
+      ],
+      "Managing Route Tables for Network Security": [
+        "Subnets",
+        "Network Access Control Lists (NACLs)",
+        "Internet Gateways"
+      ],
+      "Levels of Flow Logs: VPC, Subnet, ENI": [
+        "VPC Flow Logs",
+        "Subnet Flow Logs",
+        "Elastic Network Interface (ENI)"
+      ],
+      "Egress Only Internet Gateway Use Case": [
+        "NAT Gateway",
+        "VPC Peering",
+        "Public vs Private Subnets"
+      ],
+      "Statelessness in NACLs": [
+        "Network Access Control List (NACL)",
+        "Stateful vs Stateless",
+        "Inbound and Outbound Rules"
+      ],
+      "Identifying Problematic IPs and Ports from Flow Logs": [
+        "Traffic Analysis",
+        "Security Groups",
+        "Network ACLs"
+      ],
+      "VPC Traffic Mirroring Use Case": [
+        "Traffic Analysis",
+        "Security Monitoring",
+        "Performance Optimization"
+      ],
+      "Bastion Host Use Case": [
+        "Secure Access",
+        "SSH Tunneling",
+        "Network Segmentation"
+      ],
+      "Accessing AWS Services Privately Using VPC Endpoints": [
+        "VPC (Virtual Private Cloud)",
+        "PrivateLink",
+        "Subnet"
+      ],
+      "Networking Costs in AWS": [
+        "Data Transfer Pricing",
+        "AWS Direct Connect",
+        "VPC Peering"
+      ],
+      "Cost and Scalability Considerations for VPC Endpoints": [
+        "VPC Peering",
+        "Data Transfer Costs",
+        "AWS PrivateLink"
+      ],
+      "Components of CIDR: Base IP and Subnet Mask": [
+        "CIDR notation",
+        "IP Addressing",
+        "Subnetting"
+      ],
+      "High Availability vs Cost Optimization": [
+        "Load Balancing",
+        "Redundancy",
+        "Latency Optimization"
+      ],
+      "Connecting Multiple VPCs Through Transit Gateway": [
+        "VPC Peering",
+        "Route Tables",
+        "Network Address Translation (NAT)"
+      ],
+      "Priority and Precedence of NACL Rules": [
+        "Network Access Control List (NACL)",
+        "Stateless vs. Stateful Filtering",
+        "Traffic Flow Management"
+      ],
+      "IPv6 for VPC": [
+        "CIDR Blocks",
+        "Subnetting",
+        "Route Tables"
+      ],
+      "Automatic Return Traffic in Stateful Security Groups": [
+        "Stateful Firewall",
+        "Security Group Rules",
+        "Inbound and Outbound Rules"
+      ],
+      "Using CIDR for Efficient IP Allocation in Networks": [
+        "IP Addressing",
+        "Subnetting",
+        "Routing Protocols"
+      ],
+      "Impact of NACL Rules on Network Traffic": [
+        "Network Access Control List (NACL)",
+        "Inbound and Outbound Rules",
+        "Subnet"
+      ],
+      "Internet Gateway and Its Role in Providing Internet Access": [
+        "VPC (Virtual Private Cloud)",
+        "Route Table",
+        "NAT Gateway"
+      ],
+      "Simplifying Network Topologies with Transit Gateway": [
+        "VPC (Virtual Private Cloud)",
+        "Peering Connection",
+        "Route Table"
+      ],
+      "Using CIDR for Security Group Rules and Networking in AWS": [
+        "CIDR Notation",
+        "IP Addressing",
+        "Security Groups"
+      ],
+      "Internet Connectivity in the Default VPC": [
+        "Default VPC",
+        "Internet Gateway",
+        "Route Tables"
+      ],
+      "Implicit and Explicit Association of Route Tables with Subnets": [
+        "Subnets",
+        "Route Tables",
+        "Network ACLs"
+      ],
+      "IPv4 CIDR Block and its Significance": [
+        "CIDR (Classless Inter-Domain Routing)",
+        "Subnets",
+        "IP Addressing"
+      ],
+      "Differences Between Public and Private IP Addresses in AWS": [
+        "Internet Gateway",
+        "NAT Gateway",
+        "VPC (Virtual Private Cloud)"
+      ],
+      "Direct Connect Cost Considerations": [
+        "Data Transfer Charges",
+        "Port Hourly Charges",
+        "Connection Fees"
+      ],
+      "Analyzing Flow Log Data with Athena and CloudWatch Logs Insights": [
+        "Amazon Athena",
+        "CloudWatch Logs",
+        "VPC Flow Logs"
+      ],
+      "VPC Peering Use Case": [
+        "VPC (Virtual Private Cloud)",
+        "CIDR Block",
+        "Route Tables"
+      ],
+      "Impact of Subnet Mask on the Number of Available IP Addresses": [
+        "Subnetting",
+        "CIDR (Classless Inter-Domain Routing)",
+        "IP Address Allocation"
+      ],
+      "Private vs. Public Subnet": [
+        "CIDR Notation",
+        "Route Tables",
+        "NAT Gateway"
+      ],
+      "Role of NAT Gateway and Internet Gateway in Network Traffic": [
+        "Network Address Translation (NAT)",
+        "Public and Private Subnets",
+        "Routing Tables"
+      ],
+      "Role of IANA in Defining Private and Public IP Address Ranges": [
+        "IPv4 Addressing",
+        "Address Allocation",
+        "Subnetting"
+      ],
+      "Importance of Ephemeral Ports in Network Communication": [
+        "Port Range",
+        "TCP/IP Protocols",
+        "Network Address Translation (NAT)"
+      ],
+      "NAT Gateway vs VPC Endpoint": [
+        "Public and Private Subnets",
+        "VPC Peering",
+        "Route Tables"
+      ],
+      "Sending Flow Logs to Different AWS Services": [
+        "VPC Flow Logs",
+        "Amazon S3",
+        "Amazon CloudWatch"
+      ],
+      "Connecting On-Premises Data Centers to AWS Using Direct Connect": [
+        "VPN (Virtual Private Network)",
+        "Hybrid Cloud",
+        "Data Transfer"
+      ],
+      "ENI as an Entry Point for Private AWS Services": [
+        "Elastic Network Interface (ENI)",
+        "Virtual Private Cloud (VPC)",
+        "PrivateLink"
+      ],
+      "Inter-Region Traffic": [
+        "Latency",
+        "Data Transfer Cost",
+        "Regional Availability"
+      ],
+      "Traffic Types and Costs": [
+        "Data Transfer Out",
+        "Data Transfer In",
+        "Inter-Region Data Transfer"
+      ],
+      "Instance-Level Security with Security Groups": [
+        "Virtual Private Cloud (VPC)",
+        "Network Access Control List (NACL)",
+        "AWS Identity and Access Management (IAM)"
+      ],
+      "Statefulness in Security Groups": [
+        "Firewall Rules",
+        "Ingress and Egress Traffic",
+        "Connection Tracking"
+      ],
+      "Understanding Route Tables and Their Role in Traffic Routing": [
+        "Subnetting",
+        "CIDR (Classless Inter-Domain Routing)",
+        "IP Addressing"
+      ],
+      "Optimizing Costs with Private IPs": [
+        "CIDR Notation",
+        "VPC Peering",
+        "NAT Gateway"
+      ],
+      "Subnet-Level Security with NACLs": [
+        "Network Access Control List (NACL)",
+        "CIDR Block",
+        "Traffic Filtering"
+      ],
+      "S3 Data Transfer Pricing": [
+        "Data Transfer Out",
+        "Data Transfer In",
+        "Bandwidth Costs"
+      ],
+      "Using AWS PrivateLink for Secure Network Connections": [
+        "VPC Endpoint",
+        "Security Groups",
+        "Peering Connections"
+      ],
+      "Difference Between Security Groups and NACLs": [
+        "Inbound Rules",
+        "Outbound Rules",
+        "Stateful vs Stateless"
+      ],
+      "Capturing Information from IP Traffic Using VPC Flow Logs": [
+        "Amazon VPC",
+        "Log Analysis",
+        "Security Group"
+      ],
+      "Applications of Different Private IP Ranges": [
+        "CIDR Notation",
+        "Subnetting",
+        "NAT (Network Address Translation)"
+      ],
+      "Subnet Allocation and Availability Zones": [
+        "CIDR (Classless Inter-Domain Routing)",
+        "VPC (Virtual Private Cloud)",
+        "Route Tables"
+      ]
+    },
+    "High Availability and Scalability": {
+      "Connection Termination by Load Balancer": [
+        "Session Persistence",
+        "Health Checks",
+        "Traffic Distribution"
+      ],
+      "In-flight Request Handling": [
+        "Load Balancing",
+        "Auto Scaling",
+        "Session Management"
+      ],
+      "Implications of Load Balancers on High Availability": [
+        "Failover Strategies",
+        "Traffic Distribution",
+        "Redundancy Methods"
+      ],
+      "SNI for Multiple Domains": [
+        "Load Balancing",
+        "Elastic Load Balancer (ELB)",
+        "Auto Scaling"
+      ],
+      "Distributed Systems": [
+        "Load Balancing",
+        "Fault Tolerance",
+        "Data Replication"
+      ],
+      "Use of Route Tables in Load Balancing": [
+        "Elastic Load Balancer (ELB)",
+        "Auto Scaling",
+        "Network Load Balancer (NLB)"
+      ],
+      "Redirecting Traffic from HTTP to HTTPS": [
+        "SSL/TLS Certificates",
+        "Load Balancing",
+        "Content Delivery Network (CDN)"
+      ],
+      "Dynamic Scaling": [
+        "Auto Scaling",
+        "Elastic Load Balancing",
+        "EC2 Instances"
+      ],
+      "Connection Draining in Classic Load Balancer vs. Application/Network Load Balancer": [
+        "Load Balancing",
+        "Zero Downtime Deployment",
+        "Health Checks"
+      ],
+      "Layer 4 vs Layer 7 Load Balancing": [
+        "TCP Load Balancing",
+        "HTTP Load Balancing",
+        "Network Load Balancer vs Application Load Balancer"
+      ],
+      "Routing Traffic to Multiple Applications": [
+        "Load Balancing",
+        "Auto Scaling",
+        "Failover"
+      ],
+      "Integrating NLB with EC2 Instances": [
+        "Network Load Balancer (NLB)",
+        "Elastic Load Balancing (ELB)",
+        "Auto Scaling"
+      ],
+      "Traffic Inspection and Management": [
+        "Load Balancing",
+        "Auto Scaling",
+        "Fault Tolerance"
+      ],
+      "Routing Based on URL Path and Hostname": [
+        "Load Balancing",
+        "Elastic Load Balancer (ELB)",
+        "Application Load Balancer (ALB)"
+      ],
+      "Using NLB with Private IPs": [
+        "Load Balancer",
+        "Availability Zones",
+        "Health Checks"
+      ],
+      "SSL Termination at Load Balancer": [
+        "Load Balancer",
+        "TLS Offloading",
+        "Application Layer Security"
+      ],
+      "Transparent Network Gateway Functionality": [
+        "Load Balancing",
+        "Fault Tolerance",
+        "Elastic Scaling"
+      ],
+      "Connecting ALB with On-premises Servers": [
+        "Application Load Balancer (ALB)",
+        "Health Checks",
+        "Auto Scaling"
+      ],
+      "Setting Connection Draining Parameters": [
+        "Load Balancer",
+        "Auto Scaling",
+        "Health Checks"
+      ],
+      "ACM Certificate Management": [
+        "SSL/TLS Certificates",
+        "Load Balancing",
+        "DNS Validation"
+      ],
+      "Layer 7 Load Balancer": [
+        "Application Load Balancer",
+        "Routing",
+        "Health Checks"
+      ],
+      "Using Query Strings for Routing": [
+        "Load Balancing",
+        "Distributed Systems",
+        "Traffic Management"
+      ],
+      "Load Balancing Traffic Distribution": [
+        "Elastic Load Balancer (ELB)",
+        "Auto Scaling",
+        "Health Checks"
+      ],
+      "Elastic Load Balancer Features": [
+        "Load Balancing",
+        "Health Checks",
+        "Auto Scaling"
+      ],
+      "Integration with Third-party Appliances": [
+        "Load Balancing",
+        "Failover Strategies",
+        "Cloud Interoperability"
+      ],
+      "Operation at Network Layer": [
+        "Load Balancing",
+        "Redundancy",
+        "Failover"
+      ],
+      "Static IP Assignment in Load Balancing": [
+        "Elastic Load Balancing",
+        "Network Load Balancer",
+        "IP Addressing"
+      ],
+      "Load Distribution Across AZs": [
+        "Availability Zones",
+        "Load Balancing",
+        "Fault Tolerance"
+      ],
+      "Vertical vs. Horizontal Scalability": [
+        "Load Balancing",
+        "Resource Allocation",
+        "Performance Optimization"
+      ],
+      "Impact on Traffic Imbalance": [
+        "Load Balancing",
+        "Auto Scaling",
+        "Fault Tolerance"
+      ],
+      "Purpose of Sticky Sessions": [
+        "Session Affinity",
+        "Load Balancing",
+        "Application State"
+      ],
+      "High Availability and Its Importance": [
+        "Redundancy",
+        "Failover",
+        "Load Balancing"
+      ],
+      "Health Check Protocols for NLB": [
+        "TCP Health Checks",
+        "HTTP Health Checks",
+        "DNS Resolution"
+      ],
+      "Impact of Stickiness on Load Distribution": [
+        "Load Balancer",
+        "Session Persistence",
+        "Traffic Distribution"
+      ],
+      "Connection Draining vs. Deregistration Delay": [
+        "Load Balancer",
+        "Auto Scaling",
+        "Instance Health Checks"
+      ],
+      "Default Settings for Cross Zone Load Balancing": [
+        "Load Balancer",
+        "Availability Zone",
+        "Health Checks"
+      ],
+      "Load Balancing Across Virtual Appliances": [
+        "Elastic Load Balancer (ELB)",
+        "Auto Scaling",
+        "Health Checks"
+      ],
+      "ALB and NLB Support for SNI": [
+        "Load Balancer",
+        "Network Load Balancer",
+        "Application Load Balancer"
+      ],
+      "SSL vs. TLS": [
+        "encryption",
+        "secure communication",
+        "data integrity"
+      ],
+      "How Sticky Sessions Work": [
+        "Load Balancer",
+        "Session Persistence",
+        "Client Stickiness"
+      ],
+      "ALB Target Group Routing": [
+        "Load Balancer",
+        "Health Checks",
+        "Auto Scaling"
+      ],
+      "Automated Scaling": [
+        "Elastic Load Balancing",
+        "Auto Scaling Groups",
+        "CloudWatch Alarms"
+      ],
+      "Implications of Scaling": [
+        "Load Balancing",
+        "Fault Tolerance",
+        "Elasticity"
+      ],
+      "Integration with Load Balancers": [
+        "Elastic Load Balancing (ELB)",
+        "Auto Scaling",
+        "Fault Tolerance"
+      ],
+      "Instance Lifecycle": [
+        "Auto Scaling",
+        "Load Balancing",
+        "Elasticity"
+      ],
+      "Importance of Health Checks": [
+        "Load Balancing",
+        "Failover Mechanisms",
+        "Monitoring Tools"
+      ],
+      "Application-based vs. Duration-based Cookies": [
+        "Session Persistence",
+        "Load Balancing",
+        "Fault Tolerance"
+      ],
+      "High Performance Load Balancing": [
+        "Elastic Load Balancer",
+        "Auto Scaling",
+        "Health Checks"
+      ],
+      "Certificate Expiration and Renewal": [
+        "SSL/TLS Certificates",
+        "Load Balancing",
+        "Health Checks"
+      ],
+      "Inter AZ Data Charges for NLB and GWLB": [
+        "Load Balancer",
+        "Data Transfer Costs",
+        "Amazon VPC"
+      ],
+      "Types of Managed Load Balancers": [
+        "Elastic Load Balancing",
+        "Health Checks",
+        "Auto Scaling"
+      ],
+      "Security Integration with Load Balancers": [
+        "Health Checks",
+        "Auto Scaling",
+        "SSL Termination"
+      ],
+      "Combining NLB with ALB": [
+        "Load Balancer",
+        "Health Checks",
+        "Traffic Distribution"
+      ],
+      "SNI Protocol": [
+        "Load Balancing",
+        "SSL/TLS",
+        "Multi-Domain Support"
+      ],
+      "Fixed Host Name for ALB": [
+        "Elastic Load Balancing",
+        "DNS Routing",
+        "Health Checks"
+      ],
+      "Implementing Stickiness for Load Balancers": [
+        "Session Persistence",
+        "Application Load Balancer",
+        "Elastic Load Balancing"
+      ],
+      "Using ALB with Containers and ECS": [
+        "Elastic Load Balancing",
+        "Amazon ECS",
+        "Microservices Architecture"
+      ],
+      "Multiple SSL Certificates Handling": [
+        "Load Balancing",
+        "Redundancy",
+        "Certificate Management"
+      ],
+      "Impact of Connection Draining Duration on Request Handling": [
+        "Load Balancer",
+        "Session Stickiness",
+        "Auto Scaling"
+      ],
+      "Security Policy Configuration": [
+        "Access Control Lists",
+        "Network Security Groups",
+        "Identity and Access Management"
+      ],
+      "Health Management": [
+        "Load Balancing",
+        "Auto Scaling",
+        "Fault Tolerance"
+      ],
+      "Integrating ALB with Lambda Functions": [
+        "Application Load Balancer (ALB)",
+        "Lambda Function Scaling",
+        "Serverless Architecture"
+      ]
+    },
+    "AWS Fundamentals": {
+      "Converting Single AZ to Multi AZ": [
+        "Availability Zone (AZ)",
+        "AWS RDS (Relational Database Service)",
+        "High Availability"
+      ],
+      "Non-Public Accessibility of RDS Proxy": [
+        "Amazon RDS",
+        "Database Proxy",
+        "Security Groups"
+      ],
+      "Automated Backups and Retention": [
+        "Data Recovery",
+        "Backup Lifecycle",
+        "AWS Backup Service"
+      ],
+      "Automated Database Instantiation with Aurora Serverless": [
+        "Aurora Serverless",
+        "Database Scaling",
+        "Serverless Architecture"
+      ],
+      "Manual DB Snapshots for Long-Term Storage": [
+        "Amazon RDS",
+        "Backup and Restore",
+        "Data Retention Policies"
+      ],
+      "Importance of Database Snapshots in RDS Custom": [
+        "RDS (Relational Database Service)",
+        "Backup and Restore Procedures",
+        "Data Durability and Availability"
+      ],
+      "Restoring from Automated Backup or Manual Snapshot": [
+        "EBS Snapshots",
+        "RDS Backups",
+        "Disaster Recovery"
+      ],
+      "Aurora Performance Improvements": [
+        "Database Scalability",
+        "Read Replicas",
+        "Storage Auto-Scaling"
+      ],
+      "Aurora vs. RDS Read Replicas": [
+        "Database Replication",
+        "High Availability",
+        "Performance Optimization"
+      ],
+      "Failover Mechanism in Multi AZ": [
+        "High Availability",
+        "Disaster Recovery",
+        "Load Balancing"
+      ],
+      "Integration with AWS Secrets Manager": [
+        "AWS Identity and Access Management (IAM)",
+        "Encryption and Decryption",
+        "AWS SDKs"
+      ],
+      "Memcached and SASL-Based Authentication": [
+        "In-memory caching",
+        "Authentication mechanisms",
+        "Distributed caching"
+      ],
+      "Read Replica Multi AZ Setup": [
+        "High Availability",
+        "Data Replication",
+        "Fault Tolerance"
+      ],
+      "Managed Database Service Benefits": [
+        "Scalability",
+        "High Availability",
+        "Automated Backups"
+      ],
+      "Differences between RDS and RDS Custom": [
+        "Database Engines",
+        "Deployment Options",
+        "Customization Features"
+      ],
+      "Caching Invalidation": [
+        "Cache TTL (Time to Live)",
+        "CDN (Content Delivery Network)",
+        "Edge Location"
+      ],
+      "Automated Provisioning": [
+        "Infrastructure as Code",
+        "AWS CloudFormation",
+        "Elastic Beanstalk"
+      ],
+      "How RDS Proxy Improves Efficiency": [
+        "Database Connection Pooling",
+        "Scalability",
+        "High Availability"
+      ],
+      "IAM Authentication for Redis": [
+        "AWS Identity and Access Management",
+        "Amazon ElastiCache",
+        "Redis security best practices"
+      ],
+      "Cost-Saving Trick Using Snapshots": [
+        "Snapshots",
+        "Amazon EC2",
+        "Cost Management"
+      ],
+      "Memcached Features: Multi-Node, Sharding, No High Availability": [
+        "Caching",
+        "Distributed Systems",
+        "Key-Value Store"
+      ],
+      "Aurora Machine Learning Integration": [
+        "Amazon Aurora",
+        "Machine Learning",
+        "AWS Lambda"
+      ],
+      "Use Cases for Aurora Machine Learning": [
+        "Machine Learning Models",
+        "Database Integration",
+        "Data Processing Pipelines"
+      ],
+      "Cross Region Replication in Aurora": [
+        "Data Replication",
+        "High Availability",
+        "Disaster Recovery"
+      ],
+      "Redis AUTH and Security Groups": [
+        "Authorization",
+        "Network Access Control List (NACL)",
+        "Virtual Private Cloud (VPC)"
+      ],
+      "IAM Roles for Database Authentication": [
+        "IAM Policies",
+        "Database User Management",
+        "Temporary Security Credentials"
+      ],
+      "Cloning Aurora Databases": [
+        "Amazon Aurora",
+        "Database Cloning",
+        "Replication"
+      ],
+      "Promoting Read Replicas to Independent Databases": [
+        "Replication",
+        "Database Migration",
+        "High Availability"
+      ],
+      "ElastiCache Data Loading Patterns: Lazy Loading, Write Through, Session Store": [
+        "Cache Miss",
+        "Data Consistency",
+        "Cache Eviction Strategies"
+      ],
+      "Defining Custom Endpoints for Workload Optimization": [
+        "Load Balancing",
+        "API Gateway",
+        "VPC Endpoints"
+      ],
+      "Scaling Capabilities": [
+        "Auto Scaling",
+        "Elastic Load Balancing",
+        "Amazon CloudWatch"
+      ],
+      "Comparison of Redis and Memcached": [
+        "Caching strategies",
+        "Data structures",
+        "Performance metrics"
+      ],
+      "Disaster Recovery with Multi AZ": [
+        "High Availability",
+        "Failover",
+        "Backup and Restore"
+      ],
+      "Aurora Backup Similarities to RDS": [
+        "Automated Backups",
+        "Point-in-Time Recovery",
+        "Snapshot Management"
+      ],
+      "Deactivating Automation Mode for Customization": [
+        "AWS Management Console",
+        "Resource Management",
+        "CloudFormation"
+      ],
+      "Disaster Recovery with Aurora Global Database": [
+        "High Availability",
+        "Data Replication",
+        "Failover Strategies"
+      ],
+      "High Availability Mechanisms in Aurora": [
+        "Fault Tolerance",
+        "Replication",
+        "Load Balancing"
+      ],
+      "Continuous Backups": [
+        "Data Recovery",
+        "Point-in-Time Restore",
+        "Snapshot Management"
+      ],
+      "Scaling Reads with Read Replicas": [
+        "Database Load Balancing",
+        "Latency Optimization",
+        "High Availability"
+      ],
+      "Lambda Functions and RDS Proxy": [
+        "Serverless Computing",
+        "Database Connectivity",
+        "Event-Driven Architecture"
+      ],
+      "Networking Costs for Read Replicas": [
+        "Amazon RDS",
+        "Data Transfer Pricing",
+        "Replication Lag"
+      ],
+      "DNS Name and Failover": [
+        "Route 53",
+        "Health Checks",
+        "Alias Records"
+      ],
+      "Storing Audit Logs in CloudWatch": [
+        "CloudTrail",
+        "Amazon S3",
+        "Log Groups"
+      ],
+      "RDS Proxy and Failover": [
+        "Amazon RDS",
+        "Database Connections",
+        "High Availability"
+      ],
+      "Controlling Network Access with Security Groups": [
+        "Inbound Rules",
+        "Outbound Rules",
+        "Network ACLs"
+      ],
+      "Managing and Scaling Databases in RDS Custom": [
+        "Relational Database Service (RDS)",
+        "Database Scaling",
+        "High Availability"
+      ],
+      "IAM Authentication and RDS Proxy": [
+        "AWS Identity and Access Management (IAM)",
+        "RDS (Relational Database Service)",
+        "Database Connection Pooling"
+      ],
+      "Replica Auto Scaling for High Read Traffic": [
+        "Read Replicas",
+        "Amazon RDS",
+        "Auto Scaling Policies"
+      ],
+      "Access to OS and Customization in RDS Custom": [
+        "RDS (Relational Database Service)",
+        "DB Instances",
+        "Database Engine"
+      ],
+      "Purpose of ElastiCache": [
+        "Caching",
+        "In-memory Data Store",
+        "Scalability"
+      ],
+      "Aurora Storage Auto Expansion": [
+        "Amazon Aurora",
+        "Database Scalability",
+        "Storage Management"
+      ],
+      "Redis Features: Multi AZ, Auto-Failover, Read Replicas, Data Durability": [
+        "High Availability",
+        "Data Replication",
+        "Cluster Mode"
+      ],
+      "Purpose of RDS Proxy": [
+        "Database Connection Pooling",
+        "High Availability",
+        "Scaling Database Connections"
+      ],
+      "Replication Process in Aurora": [
+        "Amazon Aurora",
+        "Read Replicas",
+        "High Availability"
+      ],
+      "No SSH Access for RDS and Aurora": [
+        "Database Security",
+        "Managed Database Services",
+        "Access Control"
+      ],
+      "Cross Region Replication in Global Aurora": [
+        "High Availability",
+        "Data Retention",
+        "Disaster Recovery"
+      ],
+      "ElastiCache and Application Code Changes": [
+        "Caching Strategies",
+        "Data Consistency",
+        "Application Performance Optimization"
+      ],
+      "Benefits of Using Caches": [
+        "Latency Reduction",
+        "Cost Efficiency",
+        "Scalability and Performance"
+      ]
+    },
+    "EC2 Instance Storage": {
+      "Process of Encrypting an Unencrypted EBS Volume": [
+        "EBS Encryption",
+        "Data at Rest",
+        "AWS Key Management Service (KMS)"
+      ],
+      "Advantages of EC2 Instance Store for Performance": [
+        "latency",
+        "throughput",
+        "volatile storage"
+      ],
+      "Capacity Provisioning and Billing": [
+        "On-Demand Instances",
+        "Reserved Instances",
+        "Spot Instances"
+      ],
+      "Use Cases for EFS": [
+        "File Storage",
+        "Data Sharing",
+        "Backup and Restore"
+      ],
+      "Differences Between Public, Custom, and Marketplace AMIs": [
+        "Amazon Machine Images (AMIs)",
+        "Instance Types",
+        "Pricing Models"
+      ],
+      "Encryption at Rest Using KMS": [
+        "Key Management Service (KMS)",
+        "Data Encryption Standard (AES)",
+        "Amazon S3 Encryption"
+      ],
+      "Regional Availability and Copying of AMIs": [
+        "Amazon Machine Image (AMI)",
+        "Elastic Block Store (EBS)",
+        "Instance Store"
+      ],
+      "EFS as a Shared Network File System Across Multiple Instances and AZs": [
+        "Elastic File System (EFS)",
+        "Availability Zones (AZs)",
+        "Network File System (NFS)"
+      ],
+      "EBS Volume Use Cases: Boot Volumes, High Throughput, Low Cost": [
+        "Amazon EBS",
+        "Instance Store",
+        "Elastic Block Storage"
+      ],
+      "Latency and Network Communication": [
+        "Throughput",
+        "I/O Operations Per Second (IOPS)",
+        "Network Bandwidth"
+      ],
+      "Automatic Handling of Encryption by EC2 and EBS": [
+        "Encryption keys",
+        "Data at rest",
+        "AWS Key Management Service (KMS)"
+      ],
+      "Minimal Impact on Latency from Encryption": [
+        "Data Encryption",
+        "I/O Performance",
+        "Latency Optimization"
+      ],
+      "IO Increase with Disk Size in gp2 and Independent IO in gp3 and io1": [
+        "Provisioned IOPS",
+        "Volume Types",
+        "Throughput Optimization"
+      ],
+      "Expanding to Multiple Regions: Imagine you have an EC2 instance configured in one region and need to replicate this configuration in another region. How would you use AMIs to accomplish this?": [
+        "Amazon Machine Images (AMIs)",
+        "Elastic Block Store (EBS)",
+        "Replication and Snapshots"
+      ],
+      "Default Termination Behavior of Root EBS Volumes": [
+        "EBS Volume",
+        "Root Volume",
+        "Instance Store"
+      ],
+      "EBS Volume Attachment and Detachment": [
+        "EBS Snapshot",
+        "Instance Store",
+        "Block Storage"
+      ],
+      "EFS as a Managed NFS for EC2 Instances": [
+        "NFS (Network File System)",
+        "Elastic Block Store (EBS)",
+        "Shared File System"
+      ],
+      "General Purpose SSD Volumes: gp2 vs. gp3": [
+        "IOPS (Input/Output Operations Per Second)",
+        "Throughput",
+        "Performance Scaling"
+      ],
+      "Transferring Data Between Availability Zones: Suppose you need to move an EBS volume from one availability zone to another. How would you use EBS snapshots to accomplish this task?": [
+        "EBS Snapshots",
+        "Availability Zones",
+        "EC2 Instance"
+      ],
+      "Compatibility with Linux-Based AMIs": [
+        "Amazon Machine Image (AMI)",
+        "Elastic Block Store (EBS)",
+        "Instance Types"
+      ],
+      "HDD Volumes: st1 vs. sc1": [
+        "Throughput",
+        "IOPS",
+        "Cost"
+      ],
+      "Benefits of Using Custom AMIs": [
+        "Amazon Machine Images (AMIs)",
+        "Marketplaces for AMIs",
+        "Instance Types"
+      ],
+      "Cost and Pay-per-Use Model of EFS": [
+        "Elastic File System (EFS)",
+        "Instance Store",
+        "Storage Classes"
+      ],
+      "Purpose of EBS Snapshots": [
+        "Elastic Block Store (EBS)",
+        "Data Backup and Recovery",
+        "Incremental Snapshots"
+      ],
+      "Functionality of Recycle Bin for EBS Snapshots": [
+        "EBS Volumes",
+        "Data Backup",
+        "Snapshot Lifecycle Management"
+      ],
+      "Advantages of Using Nitro with io1/io2 for High IOPS": [
+        "Nitro System",
+        "Provisioned IOPS (IO1/IO2)",
+        "EBS Volume Types"
+      ],
+      "Creating Encrypted Volumes from Snapshots": [
+        "Snapshots",
+        "Encryption Keys",
+        "Instance Types"
+      ],
+      "Fast Snapshot Restore and Its Costs": [
+        "AMI (Amazon Machine Image)",
+        "EBS (Elastic Block Store)",
+        "Snapshot Pricing"
+      ],
+      "EC2 Instance Store vs. Network Drive": [
+        "Block Storage",
+        "EBS (Elastic Block Store)",
+        "Data Persistence"
+      ],
+      "Benefits and Trade-offs of EBS Snapshot Archive": [
+        "EBS Volume",
+        "Data Durability",
+        "Cost Efficiency"
+      ],
+      "AMI Creation Process and EBS Snapshot Integration": [
+        "Amazon Machine Image (AMI)",
+        "Elastic Block Store (EBS)",
+        "Snapshot"
+      ],
+      "Comparison of IOPS Between Instance Store and EBS": [
+        "IOPS (Input/Output Operations Per Second)",
+        "Instance Store",
+        "Elastic Block Store (EBS)"
+      ],
+      "Volatility of Instance Store with EC2 Instance Termination": [
+        "Instance Store Volumes",
+        "Ephemeral Storage",
+        "Data Persistence"
+      ],
+      "Customizing EC2 Instances with AMIs": [
+        "Amazon Machine Image (AMI)",
+        "Elastic Block Store (EBS)",
+        "Instance Store"
+      ],
+      "Migrating EBS Volumes Across AZs Using Snapshots": [
+        "EBS Snapshots",
+        "Availability Zones",
+        "EC2 Instances"
+      ],
+      "Data Volatility in EC2 Instance Store": [
+        "Ephemeral Storage",
+        "Data Persistence",
+        "Instance Store vs EBS"
+      ],
+      "Performance and Storage Classes of EFS": [
+        "Elastic File System (EFS)",
+        "Throughput modes",
+        "Provisioned capacity"
+      ],
+      "Provisioned IOPS SSD Volumes: io1 vs. io2 Block Express": [
+        "EBS (Elastic Block Store)",
+        "Baseline Performance",
+        "Throughput Optimization"
+      ],
+      "Transferring EBS Volumes Across AZs and Regions": [
+        "EBS Snapshots",
+        "Regional Availability Zones",
+        "Data Transfer Costs"
+      ],
+      "Factors Defining EBS Volumes: Size, Throughput, and IOPS": [
+        "EBS Volume Types",
+        "Provisioned IOPS",
+        "Throughput Limits"
+      ],
+      "Differences Between General Purpose and Provisioned IOPS Volumes": [
+        "EBS (Elastic Block Store)",
+        "IOPS (Input/Output Operations Per Second)",
+        "Volume Types"
+      ],
+      "Impact of EBS Volume Backups on Performance": [
+        "EBS Snapshot",
+        "I/O Performance",
+        "Backup Frequency"
+      ],
+      "Creating a Custom AMI for Faster Boot Times: Suppose you frequently need to launch EC2 instances with specific software pre-installed. How would you use custom AMIs to achieve faster boot and configuration times for your instances?": [
+        "AMI (Amazon Machine Image)",
+        "EC2 Instance Types",
+        "Snapshot"
+      ],
+      "Use Cases for EC2 Instance Store": [
+        "Ephemeral Storage",
+        "High-Performance Computing",
+        "Data Processing"
+      ],
+      "EBS Volume Persistence": [
+        "Elastic Block Store",
+        "Snapshots",
+        "Volume Types"
+      ],
+      "AZ Boundaries for EBS Volumes": [
+        "EBS (Elastic Block Store)",
+        "Availability Zone",
+        "EC2 (Elastic Compute Cloud)"
+      ],
+      "EFS Compatibility with Linux and Use of POSIX System": [
+        "NFS Protocol",
+        "File System Permissions",
+        "Shared Storage"
+      ],
+      "Managing Long-term Storage Costs": [
+        "EBS Snapshots",
+        "Data Lifecycle Management",
+        "Cost Optimization Strategies"
+      ],
+      "Benefits of EBS Volume Encryption": [
+        "Data-at-rest encryption",
+        "IAM policies",
+        "KMS (Key Management Service)"
+      ],
+      "Snapshot Usage for Cross-AZ Movement": [
+        "Amazon EBS Snapshots",
+        "Cross Availability Zone",
+        "Data Replication"
+      ],
+      "Cost and Storage Tier Options for EFS": [
+        "Elastic File System (EFS)",
+        "Provisioned IOPS",
+        "Throughput"
+      ],
+      "High Availability and Scalability of EFS": [
+        "Elastic File System (EFS)",
+        "Load Balancing",
+        "Auto Scaling"
+      ],
+      "Attachment and Availability Zone Restrictions for EBS Volumes": [
+        "EBS Volume",
+        "EC2 Instance",
+        "Availability Zone"
+      ],
+      "Lifecycle Management and Storage Tiers in EFS": [
+        "Elastic File System (EFS)",
+        "Storage Classes",
+        "Data Lifecycle Management (DLM)"
+      ]
+    },
+    "Encryption": {
+      "Encryption and Decryption processes in different regions": [
+        "Key Management Service (KMS)",
+        "Data at Rest",
+        "Data in Transit"
+      ],
+      "The role of TLS and SSL in Encryption in Flight": [
+        "Encryption protocols",
+        "Secure Socket Layer (SSL)",
+        "Transport Layer Security (TLS)"
+      ],
+      "Organizing Parameters Using Hierarchies": [
+        "Key Management",
+        "Parameter Store",
+        "Data Encryption Standard"
+      ],
+      "Role of AWS Encryption SDK in Global Aurora encryption": [
+        "Data Encryption Key (DEK)",
+        "Key Management Service (KMS)",
+        "Encryption at Rest"
+      ],
+      "Provisioning and Managing TLS Certificates": [
+        "TLS Handshake",
+        "Certificate Authority",
+        "Public Key Infrastructure"
+      ],
+      "Integration of ACM with AWS Services like ALB, CloudFront, and API Gateway": [
+        "SSL/TLS Certificates",
+        "Secure Socket Layer",
+        "Application Load Balancer"
+      ],
+      "Integration of AWS KMS with IAM for authorization": [
+        "Key Management Service (KMS)",
+        "Identity and Access Management (IAM)",
+        "Encryption Keys"
+      ],
+      "Differences Between Edge-optimized, Regional, and Private API Gateway Endpoints": [
+        "SSL/TLS",
+        "Data at Rest Encryption",
+        "Data in Transit Encryption"
+      ],
+      "Automatic Key Rotation and its importance": [
+        "Data Protection",
+        "Key Management",
+        "Cryptography Principles"
+      ],
+      "Role of TLS Certificates in In-flight Encryption": [
+        "TLS Protocol",
+        "Public Key Infrastructure (PKI)",
+        "Data Integrity"
+      ],
+      "Pricing structure for KMS keys and API calls": [
+        "AWS KMS (Key Management Service)",
+        "Data encryption methods",
+        "Cost calculation for API requests"
+      ],
+      "Use cases for KMS Multi-Region Keys in Global Tables": [
+        "AWS KMS (Key Management Service)",
+        "Global Tables in DynamoDB",
+        "Data replication and consistency"
+      ],
+      "Methods for Validating Domain Ownership in ACM": [
+        "Domain Control Validation",
+        "ACM Certificate",
+        "DNS Validation"
+      ],
+      "Differences between AWS Owned Keys, AWS Managed Keys, and Customer Managed Keys": [
+        "Key Management Service (KMS)",
+        "Encryption at Rest",
+        "Access Control Policies"
+      ],
+      "Use cases for KMS Multi-Region Keys in Global Aurora": [
+        "Data Encryption",
+        "Key Management Service (KMS)",
+        "Multi-Region Data Replication"
+      ],
+      "Preventing Man-in-the-Middle Attacks using Encryption in Flight": [
+        "encryption protocols",
+        "SSL/TLS",
+        "public key infrastructure"
+      ],
+      "S3 Replication with Encryption": [
+        "Bucket Policies",
+        "Server-Side Encryption",
+        "Cross-Region Replication"
+      ],
+      "How TLS Certificates enable secure communication": [
+        "Public Key Infrastructure (PKI)",
+        "SSL/TLS Protocol",
+        "Certificate Authority (CA)"
+      ],
+      "Security implications of using Multi-Region Keys": [
+        "Key Management Service (KMS)",
+        "Data Encryption Standard (DES)",
+        "Advanced Encryption Standard (AES)"
+      ],
+      "Process and Benefits of Automatic Renewal in ACM": [
+        "SSL/TLS Certificates",
+        "Certificate Management",
+        "Public Key Infrastructure"
+      ],
+      "Auditing API calls to KMS through CloudTrail": [
+        "AWS KMS (Key Management Service)",
+        "CloudTrail",
+        "IAM Roles and Policies"
+      ],
+      "Encrypting Parameters with KMS": [
+        "Key Management Service (KMS)",
+        "Encryption Keys",
+        "Data Encryption Standard (DES)"
+      ],
+      "Storing Configuration and Secrets Securely": [
+        "AWS Secrets Manager",
+        "AWS Key Management Service (KMS)",
+        "Encryption at Rest"
+      ],
+      "Amazon Guard Duty": [
+        "Threat Detection",
+        "Security Monitoring",
+        "AWS CloudTrail"
+      ],
+      "Using ACM for Public and Private TLS Certificates": [
+        "TLS (Transport Layer Security)",
+        "Public Key Infrastructure (PKI)",
+        "Certificate Signing Request (CSR)"
+      ],
+      "Scaling EC2 Instances with Auto Scaling and Load Balancing": [
+        "Encryption at Rest",
+        "Encryption in Transit",
+        "AWS Key Management Service (KMS)"
+      ],
+      "Differences between Encryption in Flight, Server-Side Encryption at Rest, and Client-Side Encryption": [
+        "Data Integrity",
+        "Key Management",
+        "Compliance Standards"
+      ],
+      "Server-Side Encryption processes for securely storing data": [
+        "KMS (Key Management Service)",
+        "S3 (Simple Storage Service)",
+        "Data-at-Rest Encryption"
+      ],
+      "How Data Keys are used in Server-Side and Client-Side Encryption": [
+        "Data Encryption Keys (DEK)",
+        "Key Management Service (KMS)",
+        "Encryption at Rest"
+      ],
+      "Application Layer Defense with WAF and CloudFront": [
+        "Web Application Firewall (WAF)",
+        "Content Delivery Network (CDN)",
+        "SSL/TLS Encryption"
+      ],
+      "Integration of SSM Parameter Store with CloudFormation": [
+        "AWS Key Management Service (KMS)",
+        "Secrets Manager",
+        "IAM Roles and Policies"
+      ],
+      "Importance of HTTPS for secure data transmission": [
+        "SSL/TLS certificates",
+        "Data integrity",
+        "Authentication"
+      ],
+      "Using Version Tracking for Updated Parameters": [
+        "Parameter Store",
+        "IAM Roles",
+        "KMS (Key Management Service)"
+      ],
+      "Role of IAM Permissions in Accessing Parameters": [
+        "IAM Policies",
+        "Parameter Store",
+        "Access Control"
+      ],
+      "Types of KMS Keys: Symmetric and Asymmetric": [
+        "Key Management Service (KMS)",
+        "Encryption Algorithms",
+        "Digital Signatures"
+      ],
+      "Firewall Manager Use Case": [
+        "Data Encryption",
+        "Key Management",
+        "Access Control"
+      ],
+      "Functionality of KMS Multi-Region Keys": [
+        "AWS Key Management Service (KMS)",
+        "Customer Master Key (CMK)",
+        "Data Encryption Standard (DES)"
+      ],
+      "Blocking Malicious Requests Using WAF Rate-based Rules": [
+        "Web Application Firewall (WAF)",
+        "Rate Limiting",
+        "Threat Detection"
+      ],
+      "Importance of Key Material and Key ID in Multi-Region Keys": [
+        "Encryption Keys",
+        "Key Management Service (KMS)",
+        "Regional Key Policies"
+      ],
+      "Amazon Macie Use Case": [
+        "Data Classification",
+        "Sensitive Data Discovery",
+        "Data Masking"
+      ],
+      "Advantages of Client-Side Encryption with Multi-Region Keys": [
+        "Data Sovereignty",
+        "Key Management",
+        "Performance Optimization"
+      ],
+      "Ensuring data security with Client-Side Encryption where the server cannot decrypt data": [
+        "Encryption keys",
+        "Data-at-rest",
+        "End-to-end encryption"
+      ],
+      "Using CloudFront and Global Accelerator for Edge Location Mitigation": [
+        "TLS/SSL Encryption",
+        "Data at Rest Encryption",
+        "Key Management Service (KMS)"
+      ],
+      "Protecting EC2 Instances with Infrastructure Layer Defense": [
+        "Security Groups",
+        "Network ACLs",
+        "IAM Roles"
+      ],
+      "Encrypted AMI Sharing Process": [
+        "Encryption Key Management",
+        "Amazon Machine Image (AMI)",
+        "IAM Roles and Policies"
+      ],
+      "Differences between Primary and Replica Keys": [
+        "Data Integrity",
+        "Access Control",
+        "Symmetric vs Asymmetric Encryption"
+      ],
+      "AWS WAF Use Case": [
+        "Web Application Firewall",
+        "Threat Mitigation",
+        "HTTP/HTTPS Protocols"
+      ],
+      "Accessing Secrets Manager through Parameter Store": [
+        "AWS Secrets Manager",
+        "Amazon S3 Encryption",
+        "Key Management Service (KMS)"
+      ],
+      "AWS Secrets Manager Use Case": [
+        "Key Management Service (KMS)",
+        "Symmetric Encryption",
+        "Asymmetric Encryption"
+      ],
+      "Amazon Inspector Use Case": [
+        "Vulnerability Assessment",
+        "Security Best Practices",
+        "Compliance Standards"
+      ]
+    },
+    "Decoupling Applications": {
+      "Unlimited Throughput in SQS": [
+        "Message Queuing",
+        "Scalability",
+        "Asynchronous Processing"
+      ],
+      "Retention Periods for Messages": [
+        "Message Queueing",
+        "Temporary Storage",
+        "Message Lifecycle Management"
+      ],
+      "Exactly-once Send Capability": [
+        "Message Queues",
+        "Event Processing",
+        "Idempotence"
+      ],
+      "Decoupling Applications with Asynchronous Communication": [
+        "Message Queues",
+        "Event-Driven Architecture",
+        "Microservices"
+      ],
+      "FIFO Queue Ordering": [
+        "SQS (Simple Queue Service)",
+        "Message Ordering",
+        "Decoupled Architecture"
+      ],
+      "Docker Container Management on AWS": [
+        "Microservices Architecture",
+        "Serverless Computing",
+        "Container Orchestration"
+      ],
+      "Event-Based Communication": [
+        "Message Brokers",
+        "Event Sourcing",
+        "Asynchronous Processing"
+      ],
+      "Application Communication Patterns": [
+        "Event-Driven Architecture",
+        "Message Queues",
+        "Service-Oriented Architecture"
+      ],
+      "Comparison Between SQS, SNS, and Kinesis": [
+        "Message Queuing",
+        "Event Streaming",
+        "Publish/Subscribe Model"
+      ],
+      "Handling Long Processing Times": [
+        "Asynchronous Processing",
+        "Message Queues",
+        "Event-Driven Architecture"
+      ],
+      "Streaming Data with Kinesis": [
+        "Real-time Data Processing",
+        "Data Sharding",
+        "Event-driven Architecture"
+      ],
+      "Data Flow and Ordering in Kinesis Data Streams": [
+        "Shard",
+        "Producer",
+        "Consumer"
+      ],
+      "Message Flow in SQS": [
+        "Queue",
+        "Message Delay",
+        "Consumer"
+      ],
+      "Security and Encryption in Kinesis": [
+        "Data Encryption",
+        "Access Control",
+        "Secure Data Streaming"
+      ],
+      "Using the Fan-Out Pattern": [
+        "Amazon SNS (Simple Notification Service)",
+        "Amazon SQS (Simple Queue Service)",
+        "Event-Driven Architecture"
+      ],
+      "Decoupling with SNS Topics": [
+        "Amazon SNS",
+        "Message Queuing",
+        "Event-Driven Architecture"
+      ],
+      "Decoupling Application Tiers with SQS": [
+        "Amazon SQS (Simple Queue Service)",
+        "Message Queuing",
+        "Microservices Architecture"
+      ],
+      "Direct Connection in Synchronous Communication": [
+        "Synchronous vs Asynchronous Communication",
+        "Message Queues",
+        "Event-Driven Architecture"
+      ],
+      "Data Flow and Ordering in SQS FIFO Queues": [
+        "Message Ordering",
+        "Deduplication",
+        "Visibility Timeout"
+      ],
+      "Integrating SQS with Auto Scaling Groups": [
+        "Message Queuing",
+        "Load Balancing",
+        "Event-Driven Architecture"
+      ],
+      "Decoupling with SQS": [
+        "Amazon SQS",
+        "Message Queuing",
+        "Asynchronous Communication"
+      ],
+      "Data Ingestion and Consumption": [
+        "Event Streaming",
+        "Message Queues",
+        "Data Pipelines"
+      ],
+      "AWS vs. Third-Party Destinations": [
+        "Microservices",
+        "API Gateway",
+        "Event-Driven Architecture"
+      ],
+      "Implementing Message Filtering": [
+        "Message Broker",
+        "Publish/Subscribe Model",
+        "Topic Subscription"
+      ],
+      "Processing Messages with Visibility Timeout": [
+        "Amazon SQS",
+        "Message Queue",
+        "Visibility Timeout"
+      ],
+      "Managing Shards and Capacity": [
+        "Scalability",
+        "Load Balancing",
+        "Microservices Architecture"
+      ],
+      "Use of Partition Key and Group ID": [
+        "Data Sharding",
+        "Event Sourcing",
+        "Asynchronous Communication"
+      ],
+      "Publishing Messages to SNS": [
+        "SNS Topics",
+        "Message Filtering",
+        "Subscription Protocols"
+      ],
+      "Handling Sudden Spike Loads with SQS": [
+        "Amazon SQS",
+        "Message Queuing",
+        "Load Balancing"
+      ],
+      "Scaling Based on Queue Length": [
+        "Elastic Load Balancing",
+        "Message Queues",
+        "Auto Scaling"
+      ],
+      "Transforming Data with Lambda": [
+        "AWS Lambda",
+        "Event-Driven Architecture",
+        "Microservices"
+      ],
+      "SQS Security Measures": [
+        "IAM Policies",
+        "Encryption in Transit",
+        "Dead-letter Queues"
+      ],
+      "Message Visibility in SQS": [
+        "Message Visibility Timeout",
+        "Pollers",
+        "SQS Message Lifecycle"
+      ],
+      "Message Group and Deduplication": [
+        "SQS FIFO Queues",
+        "Message Deduplication ID",
+        "Message Group ID"
+      ],
+      "Subscribing to SNS Topics": [
+        "Amazon SNS",
+        "Message Brokers",
+        "Event-Driven Architecture"
+      ],
+      "Scaling with Middleware Services": [
+        "Load Balancing",
+        "Microservices Architecture",
+        "Message Queues"
+      ],
+      "FIFO Ordering with SNS and SQS": [
+        "Message Queuing",
+        "SQS Fifo Queues",
+        "SNS Topics"
+      ],
+      "FIFO Queue Throughput": [
+        "AWS SQS",
+        "Message Ordering",
+        "Throughput Limits"
+      ],
+      "Data Flow in Kinesis Data Firehose": [
+        "Data Sources",
+        "Data Transformation",
+        "Data Delivery"
+      ],
+      "Integration with AWS Services": [
+        "Event-Driven Architecture",
+        "Microservices",
+        "Message Queues"
+      ],
+      "Comparison Between Kinesis and SQS FIFO": [
+        "Message Queuing",
+        "Real-time Data Processing",
+        "Event-driven Architecture"
+      ],
+      "Handling Message Duplication and Ordering": [
+        "Message Queues",
+        "Idempotency",
+        "Event Ordering"
+      ],
+      "Balancing Visibility Timeout": [
+        "Visibility Timeout",
+        "Message Queuing",
+        "Distributed Systems"
+      ],
+      "Buffering and Near Real-Time Data Processing": [
+        "Event Streaming",
+        "Message Queues",
+        "Data Ingestion"
+      ],
+      "SQS as a Buffer for Database Writes": [
+        "Asynchronous Processing",
+        "Message Queues",
+        "Microservices Architecture"
+      ]
+    },
+    "EC2 Basics": {
+      "Spot Instance Workloads Suitability": [
+        "Spot Instances",
+        "On-Demand Instances",
+        "Instance Pricing Model"
+      ],
+      "Selecting Compute Power and Memory": [
+        "Instance Types",
+        "Virtual CPUs (vCPUs)",
+        "Elastic Block Store (EBS)"
+      ],
+      "Instance Flexibility with Convertible Reserved Instances": [
+        "Reserved Instances",
+        "Savings Plan",
+        "EC2 Instance Types"
+      ],
+      "Network Attached vs. Hardware Attached Storage": [
+        "Elastic Block Store (EBS)",
+        "Amazon S3",
+        "Instance Store"
+      ],
+      "Max Spot Price vs. Current Spot Price": [
+        "Spot Instances",
+        "EC2 Pricing Models",
+        "Bid Price"
+      ],
+      "Handling Firewall Rules": [
+        "Security Groups",
+        "Network ACLs",
+        "Ingress and Egress Rules"
+      ],
+      "Use Cases for Memory Optimized Instances": [
+        "RAM",
+        "CPU Optimization",
+        "Database Performance"
+      ],
+      "Use Cases for Compute Optimized Instances": [
+        "CPU Performance",
+        "Instance Types",
+        "Scalability"
+      ],
+      "Authorized IP Ranges": [
+        "Security Groups",
+        "Network Access Control List (NACL)",
+        "Elastic IP"
+      ],
+      "Instance Class, Generation, and Size": [
+        "vCPU",
+        "RAM",
+        "Network Performance"
+      ],
+      "Inbound and Outbound Traffic Control": [
+        "Security Groups",
+        "Network ACLs",
+        "Elastic Load Balancing"
+      ],
+      "Security Group Rules": [
+        "Inbound Rules",
+        "Outbound Rules",
+        "Network Access Control Lists"
+      ],
+      "Spot Fleet Allocation Strategies": [
+        "Spot Instances",
+        "On-Demand Instances",
+        "Fleet Management"
+      ],
+      "Choosing Operating Systems": [
+        "Instance Types",
+        "Amazon Machine Image (AMI)",
+        "Elastic Block Store (EBS)"
+      ],
+      "Launch Pools in Spot Fleets": [
+        "Spot Instances",
+        "Capacity Pools",
+        "Bid Price"
+      ],
+      "Capacity Reservation Purpose": [
+        "Instance Types",
+        "Pricing Model",
+        "Provisioned Throughput"
+      ],
+      "Naming Convention for EC2 Instances": [
+        "Instance Types",
+        "Tagging",
+        "AWS Resource Management"
+      ],
+      "Terminating vs. Stopping Spot Instances": [
+        "Spot Instances",
+        "EC2 Cost Management",
+        "Instance Lifecycle"
+      ],
+      "Configuring Network Settings": [
+        "VPC (Virtual Private Cloud)",
+        "Security Groups",
+        "Elastic IP"
+      ],
+      "Short-Term vs. Long-Term Workloads": [
+        "On-Demand Instances",
+        "Spot Instances",
+        "Reserved Instances"
+      ],
+      "Use Cases for General Purpose Instances": [
+        "Virtual Servers",
+        "Scalable Applications",
+        "Balanced Resources"
+      ],
+      "Cost Efficiency with Spot Instances": [
+        "Spot Pricing",
+        "On-Demand Instances",
+        "Instance Types"
+      ],
+      "EC2 Instance Connect for Browser-Based Access": [
+        "SSH",
+        "IAM Policies",
+        "Networking (VPC)"
+      ],
+      "Scaling Services with ASG": [
+        "Auto Scaling Group",
+        "Load Balancer",
+        "Instance Types"
+      ],
+      "Port Numbers and Their Uses": [
+        "TCP",
+        "UDP",
+        "Firewall",
+        "Security Groups"
+      ],
+      "Spot Block Duration": [
+        "Spot Instances",
+        "Pricing Model",
+        "Instance Types"
+      ],
+      "Referencing Security Groups": [
+        "Ingress Rules",
+        "Egress Rules",
+        "Network Access Control Lists (NACLs)"
+      ],
+      "Spot Request Types": [
+        "Spot Instances",
+        "Pricing Model",
+        "EC2 Auto Scaling"
+      ],
+      "Persistent vs. One-Time Spot Requests": [
+        "Spot Instances",
+        "EC2 Pricing Models",
+        "Capacity Pools"
+      ],
+      "Pricing History for Spot Instances": [
+        "Spot Price",
+        "Spot Instance Request",
+        "EC2 Pricing Model"
+      ],
+      "Cost Optimization Strategies": [
+        "Reserved Instances",
+        "Spot Instances",
+        "Auto Scaling"
+      ],
+      "Use Cases for Storage Optimized Instances": [
+        "EBS (Elastic Block Store)",
+        "IOPS (Input/Output Operations Per Second)",
+        "Amazon S3 (Simple Storage Service)"
+      ],
+      "Differences in Resource Allocation": [
+        "Instance Types",
+        "Elastic Load Balancing",
+        "Auto Scaling"
+      ],
+      "Savings Plan Flexibility": [
+        "Cost Optimization",
+        "Usage Commitment",
+        "Billing Options"
+      ],
+      "Bootstrapping with EC2 User Data": [
+        "User Data scripts",
+        "EC2 instance initialization",
+        "Cloud-init"
+      ],
+      "Physical Server Reservation with Dedicated Hosts": [
+        "Dedicated Instances",
+        "On-Demand Instances",
+        "Reserved Instances"
+      ],
+      "Capacity Reservation Without Time Commitment": [
+        "EC2 Instances",
+        "Reserved Instances",
+        "On-Demand Pricing"
+      ],
+      "Launch Templates vs. Manual Configuration": [
+        "Auto Scaling",
+        "Instance Types",
+        "AMI (Amazon Machine Image)"
+      ],
+      "Different Methods for Different Operating Systems": [
+        "AMI (Amazon Machine Image)",
+        "Instance Types",
+        "Elastic Block Store (EBS)"
+      ],
+      "Dedicated Host Licensing": [
+        "Dedicated Hosts",
+        "License Manager",
+        "Instance Types"
+      ],
+      "Spot Fleet Functionality": [
+        "EC2 Spot Instances",
+        "Pricing Model",
+        "Auto Scaling"
+      ],
+      "Optimization Types for Different Use Cases": [
+        "Cost Optimization",
+        "Performance Optimization",
+        "Scaling Optimization"
+      ],
+      "Canceling Spot Requests": [
+        "Spot Instances",
+        "AWS Management Console",
+        "EC2 Pricing"
+      ],
+      "Distributing Load Across Machines": [
+        "Load Balancer",
+        "Auto Scaling",
+        "Instance Types"
+      ]
+    },
+    "Serverless": {
+      "Lambda in VPC": [
+        "VPC Configuration",
+        "Security Groups",
+        "Subnets"
+      ],
+      "Securing API Gateway": [
+        "AWS IAM",
+        "CORS (Cross-Origin Resource Sharing)",
+        "Amazon Cognito"
+      ],
+      "Evolution of Serverless from FaaS": [
+        "Function as a Service (FaaS)",
+        "Microservices Architecture",
+        "Event-Driven Computing"
+      ],
+      "Serverless Architecture": [
+        "AWS Lambda",
+        "Event-Driven Computing",
+        "Microservices"
+      ],
+      "API Gateway Features and Benefits": [
+        "RESTful APIs",
+        "WebSocket APIs",
+        "Integration with AWS Lambda"
+      ],
+      "Invoking Lambda from RDS and Aurora": [
+        "Amazon RDS",
+        "AWS Lambda",
+        "Event-driven architecture"
+      ],
+      "Integration of AWS Services in Serverless Applications": [
+        "AWS Lambda",
+        "Amazon API Gateway",
+        "AWS Step Functions"
+      ],
+      "Event-Driven Architecture": [
+        "AWS Lambda",
+        "Amazon SNS",
+        "Amazon EventBridge"
+      ],
+      "Integrating DynamoDB with Other AWS Services": [
+        "AWS Lambda",
+        "API Gateway",
+        "EventBridge"
+      ],
+      "Using API Gateway with AWS Services": [
+        "Lambda",
+        "HTTP APIs",
+        "Integration Request"
+      ],
+      "Pricing Model for Lambda": [
+        "Request charges",
+        "Duration charges",
+        "Free tier usage"
+      ],
+      "On-Demand Execution": [
+        "Lambda Functions",
+        "Event-Driven Architecture",
+        "Pay-as-You-Go Pricing"
+      ],
+      "Container Image Requirements": [
+        "Docker",
+        "AWS Lambda",
+        "Container Registry"
+      ],
+      "Backup and Recovery Options": [
+        "AWS Lambda",
+        "Amazon S3",
+        "Amazon RDS"
+      ],
+      "Scaling and Management in Serverless Services": [
+        "Event-Driven Architecture",
+        "AWS Lambda",
+        "Automatic Scaling"
+      ],
+      "Authentication and Authorization using Cognito": [
+        "User Pool",
+        "Identity Pool",
+        "OAuth 2.0"
+      ],
+      "Cost Management": [
+        "AWS Lambda Pricing",
+        "Usage Metrics",
+        "Cost Allocation Tags"
+      ],
+      "Language Support for Lambda": [
+        "AWS Lambda",
+        "Event-driven architecture",
+        "Microservices"
+      ],
+      "Security and IAM Integration": [
+        "Identity and Access Management (IAM)",
+        "AWS Lambda",
+        "API Gateway"
+      ],
+      "Stream Processing with DynamoDB Streams and Kinesis": [
+        "Data Streams",
+        "Event-Driven Architecture",
+        "Lambda Functions"
+      ],
+      "Performance and Consistency": [
+        "Latency",
+        "Scalability",
+        "Event-driven architecture"
+      ],
+      "Data Replication and Disaster Recovery": [
+        "Eventual Consistency",
+        "Backup and Restore",
+        "Multi-AZ Deployment"
+      ],
+      "Real-time Data Processing": [
+        "AWS Lambda",
+        "Amazon Kinesis",
+        "Event-driven architecture"
+      ],
+      "TTL and Data Expiry Management": [
+        "DynamoDB",
+        "AWS Lambda",
+        "Event-Driven Architecture"
+      ],
+      "Data Storage and Retrieval in Serverless Using DynamoDB": [
+        "NoSQL",
+        "Scalability",
+        "AWS Lambda"
+      ],
+      "Step function use cases": [
+        "Workflow orchestration",
+        "Microservices coordination",
+        "Error handling and retries"
+      ],
+      "Function and Purpose of API Gateway in Serverless": [
+        "RESTful APIs",
+        "Microservices",
+        "AWS Lambda"
+      ],
+      "Integrating Cognito User Pools with API Gateway": [
+        "Authentication",
+        "Authorization",
+        "JWT Tokens"
+      ],
+      "API Gateway Deployment Types": [
+        "REST APIs",
+        "WebSocket APIs",
+        "HTTP APIs"
+      ],
+      "Integrating Lambda with API Gateway": [
+        "AWS Lambda",
+        "REST API",
+        "Event-driven architecture"
+      ],
+      "Capacity Planning": [
+        "Auto Scaling",
+        "Provisioned Concurrency",
+        "Cost Optimization"
+      ],
+      "Data Distribution and Replication": [
+        "Eventual Consistency",
+        "Data Partitioning",
+        "Load Balancing"
+      ],
+      "Short Execution Times": [
+        "AWS Lambda",
+        "Event-Driven Architecture",
+        "Microservices"
+      ],
+      "Real-time Streaming with API Gateway": [
+        "Amazon Kinesis",
+        "AWS Lambda",
+        "WebSocket API"
+      ],
+      "Cognito Identity Pools and AWS Services Access": [
+        "Authentication",
+        "User Management",
+        "Access Control"
+      ],
+      "Schema Evolution": [
+        "Data Serialization",
+        "API Gateway",
+        "AWS Lambda"
+      ]
+    },
+    "Snow Family": {
+      "Use Cases for Different Types of Storage Gateways": [
+        "Storage Gateway Types",
+        "On-Premises Storage Solutions",
+        "Data Transfer Methods"
+      ],
+      "Transferring Large Data Sets Efficiently": [
+        "AWS Snowball",
+        "AWS Snowmobile",
+        "Data Transfer Services"
+      ],
+      "File Systems for Windows with Amazon FSx": [
+        "Amazon FSx for Windows",
+        "Data Transfer",
+        "AWS Snowball"
+      ],
+      "Scheduled Data Synchronization with AWS DataSync": [
+        "Data Transfer",
+        "AWS Snowcone",
+        "DataSync Agent"
+      ],
+      "Scheduled Replication Tasks": [
+        "AWS Snowball",
+        "Data Transfer",
+        "Edge Computing"
+      ],
+      "Object Storage with Amazon S3 and S3 Glacier": [
+        "Data Transfer",
+        "Edge Computing",
+        "Cold Storage"
+      ],
+      "Differences Between FSx for Windows File Server, Lustre, NetApp ONTAP, and OpenZFS": [
+        "File Storage Solutions",
+        "Data Transfer Services",
+        "AWS Storage Services"
+      ],
+      "Using DataSync with Different AWS Storage Services": [
+        "Data Transfer Service",
+        "AWS Snowball",
+        "AWS S3"
+      ],
+      "Block Storage for EC2 Instances with EBS": [
+        "EBS Volume Types",
+        "EC2 Instance Types",
+        "Data Transfer"
+      ],
+      "Preserving File Permissions and Metadata": [
+        "Data Transfer",
+        "S3 Storage Classes",
+        "File System Hierarchy"
+      ],
+      "Scalable and Reliable Managed Service for File Transfers": [
+        "AWS Snowball",
+        "Data Transfer Service",
+        "Edge Computing"
+      ],
+      "Synchronizing Data Between On-Premises and AWS": [
+        "Data Transfer Service",
+        "Snowball",
+        "Snowcone"
+      ],
+      "Data Migration and Backup with Storage Gateway": [
+        "AWS Snowball",
+        "AWS Snowmobile",
+        "AWS Snowcone"
+      ],
+      "Physical Data Transfer with Snowcone, Snowball, and Snowmobile": [
+        "Data Transfer Service",
+        "Cold Storage",
+        "Edge Computing"
+      ],
+      "Compatibility with FSx NetApp ONTAP and FSx for OpenZFS": [
+        "Data Transfer Service",
+        "File Storage",
+        "AWS Snowball"
+      ],
+      "Snowball into Glacier with S3": [
+        "S3 Storage Classes",
+        "Data Transfer Service",
+        "AWS Snow Family"
+      ],
+      "Data Migration with Snow Family Devices": [
+        "Data Transfer",
+        "Edge Computing",
+        "AWS Snowball"
+      ],
+      "FTP, FTPS, and SFTP Interfaces with AWS Transfer Family": [
+        "AWS Transfer Family",
+        "Data Transfer",
+        "Managed File Transfer"
+      ],
+      "File System Deployment Options: Scratch vs. Persistent": [
+        "Data Migration",
+        "Edge Computing",
+        "Temporary Storage"
+      ],
+      "Using OpsHub for Snow Family Devices": [
+        "OpsHub",
+        "Snowball",
+        "Data Transfer"
+      ],
+      "Pricing Model for AWS Transfer Family": [
+        "Data Transfer Costs",
+        "Storage Pricing",
+        "Request Fees"
+      ],
+      "Integration with Authentication Systems": [
+        "IAM Roles",
+        "SAML Authentication",
+        "OAuth 2.0"
+      ],
+      "Integration with AWS Services and On-Premises Systems": [
+        "AWS Snowball",
+        "AWS Snowmobile",
+        "AWS Snowcone"
+      ],
+      "Edge Computing Capabilities": [
+        "AWS Snow Cone",
+        "AWS Snowball",
+        "AWS Snowmobile"
+      ],
+      "Secure File Transfers with FTPS and SFTP": [
+        "Data Transfer Service",
+        "AWS Snowball Edge",
+        "Security Protocols"
+      ],
+      "Bridging On-Premises and Cloud Storage with Storage Gateway": [
+        "AWS Storage Gateway",
+        "Hybrid Cloud Storage",
+        "Data Transfer Services"
+      ],
+      "Local Cache for Low-Latency Access": [
+        "Data Caching",
+        "Edge Computing",
+        "AWS Snowball"
+      ],
+      "High-Performance Computing with FSx for Lustre": [
+        "Lustre File System",
+        "Data Transfer",
+        "Amazon FSx"
+      ],
+      "Data Migration and Edge Computing with Snow Family": [
+        "AWS Snowcone",
+        "AWS Snowball",
+        "AWS Snowmobile"
+      ],
+      "Using FTP Protocols for Data Transfer to S3 or EFS": [
+        "Data Transfer",
+        "AWS Snowball",
+        "S3 Access Points"
+      ],
+      "Storage Gateway Deployment Options": [
+        "Hybrid Cloud Storage",
+        "AWS Snowball",
+        "AWS Snowmobile"
+      ],
+      "Physical Storage with EC2 Instance Storage": [
+        "EC2 Instance Storage Types",
+        "AWS Snowball",
+        "Data Transfer"
+      ],
+      "Launching Third-Party File Systems on AWS": [
+        "AWS Snowball",
+        "Data Transfer",
+        "Edge Computing"
+      ],
+      "Data Migration with AWS DataSync": [
+        "AWS Snowcone",
+        "AWS Snowball",
+        "AWS Snowmobile"
+      ],
+      "Processing Data at Edge Locations": [
+        "Data Transfer",
+        "Edge Computing",
+        "Snowball Edge"
+      ],
+      "Network File Systems for Linux with Amazon EFS": [
+        "Amazon S3",
+        "AWS DataSync",
+        "Amazon EC2"
+      ],
+      "Bridging On-Premises and Cloud Storage": [
+        "AWS Snowball",
+        "AWS Snowcone",
+        "AWS Snowmobile"
+      ]
+    },
+    "Data Analytics": {
+      "Integration with Third-Party Data Sources": [
+        "API",
+        "Data Pipeline",
+        "ETL (Extract, Transform, Load)"
+      ],
+      "Transforming Data Formats": [
+        "Data Normalization",
+        "Data Mapping",
+        "Data Serialization"
+      ],
+      "Data Transformation and Cleansing": [
+        "ETL (Extract, Transform, Load)",
+        "Data Normalization",
+        "Data Quality Assessment"
+      ],
+      "Ingesting Data into Redshift": [
+        "COPY command",
+        "Data Migration Service",
+        "Amazon S3"
+      ],
+      "Snapshots and Disaster Recovery in Redshift": [
+        "Data Backups",
+        "Point-in-Time Recovery",
+        "Cluster Restoration"
+      ],
+      "Querying Data with Federated Query": [
+        "Amazon Athena",
+        "Data Lake",
+        "SQL"
+      ],
+      "Using Redshift Spectrum for Querying S3 Data": [
+        "Amazon Redshift",
+        "Amazon S3",
+        "SQL (Structured Query Language)"
+      ],
+      "Data Ingestion Methods for OpenSearch": [
+        "AWS Lambda",
+        "Kinesis Data Streams",
+        "Amazon S3"
+      ],
+      "User and Group Management in QuickSight": [
+        "IAM Roles",
+        "Data Permissions",
+        "User Authentication"
+      ],
+      "Use cases for EMR": [
+        "Big Data Processing",
+        "Data Warehousing",
+        "Machine Learning"
+      ],
+      "Real-time Data Ingestion": [
+        "Streaming Data",
+        "Event Processing",
+        "Data Pipelines"
+      ],
+      "Data Warehousing with Redshift": [
+        "Amazon S3",
+        "SQL Queries",
+        "ETL Process"
+      ],
+      "Redshift for Analytics and Data Warehousing": [
+        "Data Lake",
+        "ETL (Extract, Transform, Load)",
+        "SQL Querying"
+      ],
+      "Security in OpenSearch via Cognito and IAM": [
+        "Amazon Cognito",
+        "AWS Identity and Access Management (IAM)",
+        "OpenSearch Security Plugin"
+      ],
+      "Role of SPICE Engine in Data Computation": [
+        "Data Processing",
+        "Query Optimization",
+        "Data Transformation"
+      ],
+      "Columnar Storage and Performance Improvement": [
+        "Data Warehousing",
+        "ETL (Extract, Transform, Load)",
+        "Query Optimization"
+      ],
+      "Combining Structured and Unstructured Data": [
+        "Data Integration",
+        "ETL Processes",
+        "Data Lakes"
+      ],
+      "Real-time Data Processing with OpenSearch and Lambda": [
+        "Data Stream",
+        "Event-Driven Architecture",
+        "Serverless Computing"
+      ],
+      "Extract, Transform, Load Process": [
+        "Data Integration",
+        "Data Warehousing",
+        "ETL Tools"
+      ],
+      "Using SQL to Query Data in S3": [
+        "Amazon Athena",
+        "S3 Select",
+        "SQL Syntax for Data Querying"
+      ],
+      "Comparing Redshift and Athena": [
+        "Data Warehousing",
+        "SQL Queries",
+        "Serverless Architecture"
+      ],
+      "Data Visualization with QuickSight": [
+        "Business Intelligence",
+        "Data Insights",
+        "Dashboard Creation"
+      ],
+      "Serverless Querying with Athena": [
+        "SQL",
+        "Data Lake",
+        "AWS Glue"
+      ],
+      "Analyzing Data Stored in Amazon S3": [
+        "Amazon S3 Select",
+        "Data Lake",
+        "AWS Glue"
+      ],
+      "Real-Time Data Processing": [
+        "Streaming Data",
+        "Batch Processing",
+        "Latency"
+      ],
+      "Cataloging Data Sets": [
+        "Metadata Management",
+        "Data Lake",
+        "Data Governance"
+      ],
+      "Analytics Queries in OpenSearch": [
+        "OpenSearch Cluster",
+        "Query DSL",
+        "Data Visualization"
+      ],
+      "Centralizing Data Storage with Data Lakes": [
+        "ETL (Extract, Transform, Load)",
+        "Data Governance",
+        "Big Data Processing"
+      ],
+      "Search Capabilities in OpenSearch": [
+        "Full-Text Search",
+        "Query DSL",
+        "Indexing Strategies"
+      ],
+      "Converting Data Formats with Glue": [
+        "ETL (Extract, Transform, Load)",
+        "Data Catalog",
+        "Apache Parquet"
+      ],
+      "Difference Between Dashboard and Analysis": [
+        "Data Visualization",
+        "Performance Metrics",
+        "Business Intelligence"
+      ],
+      "Integration with AWS Data Sources": [
+        "Amazon S3",
+        "AWS Glue",
+        "Amazon Redshift"
+      ],
+      "Use cases for Amazon MSK for Apache Kafka": [
+        "Data Streaming",
+        "Real-Time Analytics",
+        "Event-Driven Architecture"
+      ],
+      "Improving Athena Performance": [
+        "Data Partitioning",
+        "Query Optimization",
+        "Result Set Caching"
+      ]
+    },
+    "S3 Advanced": {
+      "Integration with Event Bridge": [
+        "Event Sources",
+        "Event Rules",
+        "Targets"
+      ],
+      "Aggregating Data Across AWS Organization": [
+        "Cross-Account Access",
+        "AWS Organizations",
+        "Amazon S3 Select"
+      ],
+      "Filtering Events": [
+        "Event Notifications",
+        "Lambda Triggers",
+        "Object Lifecycle Management"
+      ],
+      "Performance and Cost Benefits of S3 Select": [
+        "Data Retrieval",
+        "Cost Optimization",
+        "Query Performance"
+      ],
+      "Failure Resilience with Byte Range Fetches": [
+        "Partial Object Retrieval",
+        "Resumable Downloads",
+        "Error Handling in S3"
+      ],
+      "Exporting Metrics to S3": [
+        "Amazon CloudWatch",
+        "Data Lake",
+        "S3 Buckets"
+      ],
+      "Lifecycle Configuration": [
+        "S3 Bucket Lifecycle Policies",
+        "Object Storage Management",
+        "S3 Data Lifecycle Management"
+      ],
+      "Storage Costs vs. Data Transfer Costs": [
+        "S3 Pricing Models",
+        "Data Lifecycle Policies",
+        "Bandwidth Charges"
+      ],
+      "Requests per Second per Prefix": [
+        "Amazon S3 Performance",
+        "S3 Bucket Prefixing",
+        "S3 Request Rate Limits"
+      ],
+      "Authenticated Requesters": [
+        "Bucket Policy",
+        "IAM Permissions",
+        "Public Access Block"
+      ],
+      "Reducing Network Transfers and CPU Costs": [
+        "Data Transfer Optimization",
+        "Cost Management Strategies",
+        "Storage Class Analysis"
+      ],
+      "Cost Allocation in S3": [
+        "Tagging",
+        "Billing Reports",
+        "Cost Explorer"
+      ],
+      "Event Types in S3": [
+        "PUT Events",
+        "POST Events",
+        "DELETE Events"
+      ],
+      "Parallelization of Uploads and Downloads": [
+        "Multipart Upload",
+        "Transfer Acceleration",
+        "S3 Batch Operations"
+      ],
+      "Difference Between Free and Paid Metrics": [
+        "CloudWatch",
+        "Billing Metrics",
+        "Cost Optimization"
+      ],
+      "Integration with Lambda for Custom Actions": [
+        "AWS Lambda",
+        "Event Notifications",
+        "Serverless Architecture"
+      ],
+      "Bulk Operations on S3 Objects": [
+        "S3 Batch Operations",
+        "Object Manifest",
+        "AWS CLI"
+      ],
+      "Advanced Filtering and Multiple Destinations": [
+        "Event Notifications",
+        "S3 Select",
+        "Lambda Functions"
+      ],
+      "Generating Object Lists with S3 Inventory and S3 Select": [
+        "S3 Inventory",
+        "S3 Select",
+        "Amazon S3"
+      ],
+      "Prefix and Tag-based Rules": [
+        "S3 Object Lifecycle Management",
+        "S3 Storage Classes",
+        "S3 Event Notifications"
+      ],
+      "IAM Permissions for Event Notifications": [
+        "Identity and Access Management (IAM)",
+        "Event Notifications",
+        "Amazon Simple Storage Service (S3)"
+      ],
+      "Managing Retries and Tracking Progress": [
+        "Exponential Backoff",
+        "Request Metrics",
+        "Event Notifications"
+      ],
+      "Performance Optimization Techniques": [
+        "Data Lifecycle Management",
+        "Transfer Acceleration",
+        "Object Partitioning"
+      ],
+      "S3 Analytics for Lifecycle Optimization": [
+        "Data Lifecycle Policies",
+        "Storage Class Analysis",
+        "Intelligent-Tiering"
+      ],
+      "Event Notification Targets": [
+        "S3 Bucket",
+        "SNS (Simple Notification Service)",
+        "SQS (Simple Queue Service)"
+      ],
+      "Transfer Acceleration Mechanism": [
+        "Amazon S3 Bucket",
+        "CloudFront",
+        "Data Transfer"
+      ],
+      "Durability and Availability across Storage Classes": [
+        "Storage Class Analysis",
+        "Lifecycle Policies",
+        "Multi-Region Replication"
+      ],
+      "Identifying Cost Efficiencies": [
+        "Storage Classes",
+        "Data Lifecycle Management",
+        "Cost Explorer"
+      ],
+      "Manual vs. Automated Object Movement": [
+        "Lifecycle Policies",
+        "Event Notifications",
+        "AWS SDK Integration"
+      ],
+      "Storage Class Transitions": [
+        "S3 Storage Classes",
+        "Lifecycle Policies",
+        "Data Management"
+      ],
+      "SQL for Server-Side Filtering": [
+        "Amazon S3 Select",
+        "Data Lakes",
+        "Query Optimization"
+      ],
+      "Data Protection Best Practices": [
+        "Versioning",
+        "Lifecycle Policies",
+        "Server-Side Encryption"
+      ]
+    },
+    "Monitoring and Auditing": {
+      "Monitoring AWS Services with CloudWatch": [
+        "Metrics",
+        "Alarms",
+        "Logs"
+      ],
+      "Integrating CloudTrail with CloudWatch Logs and EventBridge": [
+        "AWS CloudTrail",
+        "CloudWatch Alarms",
+        "AWS Lambda"
+      ],
+      "Integrating EventBridge with CloudTrail for API Calls": [
+        "EventBridge",
+        "CloudTrail",
+        "API Gateway"
+      ],
+      "Auditing and Compliance of AWS Resources": [
+        "AWS CloudTrail",
+        "AWS Config",
+        "AWS IAM Policies"
+      ],
+      "Period Setting for High Resolution Custom Metrics": [
+        "CloudWatch",
+        "Custom Metrics",
+        "Data Granularity"
+      ],
+      "CoudWatch vs. CloudTrail vs. Config": [
+        "Metrics",
+        "Logs",
+        "Resource Configuration"
+      ],
+      "Creating and Using Custom Metrics": [
+        "CloudWatch",
+        "Metrics Collection",
+        "Dashboards"
+      ],
+      "Monitoring EC2 Instances with Status Checks and System Status Checks": [
+        "CloudWatch",
+        "Health Checks",
+        "Instance Metrics"
+      ],
+      "Monitoring Unusual Activity with CloudTrail Insights": [
+        "Event logging",
+        "Anomaly detection",
+        "CloudTrail data events"
+      ],
+      "AWS Managed vs. Custom Config Rules": [
+        "AWS Config",
+        "Compliance Management",
+        "CloudTrail"
+      ],
+      "Analyzing CloudTrail Logs with Athena": [
+        "AWS CloudTrail",
+        "Amazon Athena",
+        "Log Analysis"
+      ],
+      "Cross-Account Event Bus Permissions": [
+        "AWS Identity and Access Management (IAM)",
+        "EventBridge",
+        "CloudTrail"
+      ],
+      "Identifying Network Users via VPC Logs": [
+        "VPC Flow Logs",
+        "CloudTrail",
+        "AWS IAM"
+      ],
+      "Monitoring Serverless Applications": [
+        "AWS CloudWatch",
+        "AWS X-Ray",
+        "AWS Lambda"
+      ],
+      "Integration of CloudWatch Alarms with SNS and Lambda": [
+        "CloudWatch Metrics",
+        "Simple Notification Service (SNS)",
+        "AWS Lambda Functions"
+      ],
+      "Analyzing Logs for Top Contributors": [
+        "Log Management",
+        "Data Visualization",
+        "Anomaly Detection"
+      ],
+      "Composite Alarms for Multiple Metrics": [
+        "CloudWatch",
+        "Metrics",
+        "Alarms"
+      ],
+      "Sending Logs to CloudWatch": [
+        "CloudWatch Logs",
+        "Log Groups",
+        "Log Streams"
+      ],
+      "Structure of CloudWatch Logs": [
+        "Log Groups",
+        "Log Streams",
+        "Metric Filters"
+      ],
+      "Querying Logs with CloudWatch Logs Insights": [
+        "CloudTrail",
+        "Log Groups",
+        "Metrics"
+      ],
+      "Streaming CloudWatch Metrics to Kinesis Data Firehose": [
+        "Amazon CloudWatch",
+        "Kinesis Data Streams",
+        "Data Pipeline"
+      ],
+      "Creating Automated Dashboards for Application Health": [
+        "Data Visualization",
+        "Metrics Collection",
+        "Alerting Systems"
+      ],
+      "Using Machine Learning for Application Monitoring": [
+        "Anomaly Detection",
+        "Log Analysis",
+        "Predictive Analytics"
+      ],
+      "Using Event Patterns to Filter Events": [
+        "CloudWatch Events",
+        "EventBridge",
+        "Filtering Logic"
+      ],
+      "Archiving and Replaying Events": [
+        "Event Sources",
+        "Event Bus",
+        "Event Rules"
+      ],
+      "Integration of CloudWatch Insights with AWS Services": [
+        "CloudTrail",
+        "Log Groups",
+        "Metrics"
+      ],
+      "Exporting Logs to Amazon S3": [
+        "Log Management",
+        "Amazon S3 Bucket Policies",
+        "Data Retention Policies"
+      ],
+      "Collecting and Aggregating Container Metrics": [
+        "Metrics Collection",
+        "Container Orchestration",
+        "Monitoring Tools"
+      ],
+      "Recording and Tracking Configuration Changes": [
+        "Version Control",
+        "Change Management",
+        "Audit Trails"
+      ],
+      "Triggering Notifications on Root User Sign-In": [
+        "AWS CloudTrail",
+        "AWS SNS (Simple Notification Service)",
+        "IAM (Identity and Access Management)"
+      ],
+      "Scheduling Cron Jobs with EventBridge": [
+        "AWS CloudTrail",
+        "Amazon CloudWatch",
+        "AWS Lambda"
+      ],
+      "Actions on EC2 Instances Triggered by Alarms": [
+        "CloudWatch Alarms",
+        "EC2 Instance States",
+        "SNS Notifications"
+      ]
+    },
+    "DNS": {
+      "Alias Records and Simple Routing Policy": [
+        "Route 53",
+        "DNS Resolution",
+        "CNAME Records"
+      ],
+      "Domain Name Resolution Process": [
+        "DNS Records",
+        "DNS Resolution",
+        "Caching"
+      ],
+      "Simple routing policy for single resource": [
+        "Route 53",
+        "DNS records",
+        "Latency-based routing"
+      ],
+      "Differences Between CNAME and Alias Records": [
+        "DNS Records",
+        "Domain Name Resolution",
+        "Routing Traffic"
+      ],
+      "Mapping Hostnames to AWS Resources": [
+        "Domain Name System (DNS)",
+        "Route 53",
+        "Elastic IP"
+      ],
+      "Multiple values in simple routing policy": [
+        "Route 53",
+        "Load Balancing",
+        "DNS Records"
+      ],
+      "DNS Record Caching": [
+        "TTL (Time to Live)",
+        "DNS Resolver",
+        "Cache Invalidation"
+      ],
+      "DNS Caching": [
+        "TTL (Time to Live)",
+        "DNS Resolver",
+        "Cache Hit Rate"
+      ],
+      "No health checks with simple routing policy": [
+        "Routing Policy",
+        "DNS Records",
+        "Domain Name System"
+      ],
+      "How DNS Records Define Traffic Routing": [
+        "DNS Record Types",
+        "Traffic Management",
+        "TTL (Time to Live)"
+      ],
+      "Alias Record Restrictions for EC2 DNS Names": [
+        "Route 53",
+        "Elastic Load Balancing",
+        "DNS Resolution"
+      ],
+      "Routing Policies in Route 53": [
+        "Latency-based Routing",
+        "Geolocation Routing",
+        "Weighted Routing"
+      ],
+      "Route 53 Health Checks": [
+        "DNS Failover",
+        "Route 53 Monitoring",
+        "Health Check Thresholds"
+      ],
+      "Effect of High vs. Low TTL on DNS Traffic": [
+        "TTL (Time to Live)",
+        "DNS Caching",
+        "DNS Resolution Process"
+      ],
+      "TTL for DNS Records": [
+        "DNS Caching",
+        "Record Expiration",
+        "DNS Query"
+      ],
+      "Hierarchical Naming Structure of DNS": [
+        "Domain Name System (DNS) Zones",
+        "Fully Qualified Domain Name (FQDN)",
+        "Resource Records (RRs)"
+      ],
+      "Alias Records for Root Domains and Non-root Domains": [
+        "DNS Resolution",
+        "CNAME Records",
+        "Route 53"
+      ],
+      "DNS Query Process": [
+        "DNS Resolver",
+        "DNS Record Types",
+        "DNS Caching"
+      ],
+      "Cache Invalidation Strategy": [
+        "TTL (Time To Live)",
+        "DNS Propagation",
+        "Cache Refresh"
+      ],
+      "Alias Record Exception for TTL": [
+        "TTL (Time to Live)",
+        "CNAME Records",
+        "DNS Resolution"
+      ],
+      "Free Queries and Health Check Capabilities of Alias Records": [
+        "Alias Records",
+        "Health Checks",
+        "Route 53"
+      ],
+      "Route 53 routing policies": [
+        "Latency-based routing",
+        "Geo DNS",
+        "Failover routing"
+      ],
+      "Difference Between Public and Private Hosted Zones": [
+        "Domain Name System (DNS)",
+        "Route 53",
+        "DNS Records"
+      ],
+      "Route 53 as a Domain Registrar": [
+        "DNS Records",
+        "Domain Name System",
+        "TTL (Time to Live)"
+      ],
+      "DNS Record Types in Route 53": [
+        "A Record",
+        "CNAME Record",
+        "MX Record"
+      ],
+      "Client-side random selection of multiple IP addresses": [
+        "DNS Load Balancing",
+        "Round Robin DNS",
+        "Client-side Caching"
+      ],
+      "Alias records for AWS resources": [
+        "Route 53",
+        "CNAME records",
+        "A records"
+      ],
+      "Roles of Different DNS Servers": [
+        "Authoritative DNS Server",
+        "Recursive DNS Resolver",
+        "Root DNS Server"
+      ]
+    },
+    "IAM": {
+      "Combination of Password and Security Device": [
+        "Multi-Factor Authentication (MFA)",
+        "IAM Policies",
+        "Access Keys"
+      ],
+      "Policy Inheritance": [
+        "Access Control Policy",
+        "IAM Roles",
+        "Permission Boundaries"
+      ],
+      "Use Cases for CLI and SDK": [
+        "Command Line Interface",
+        "Software Development Kit",
+        "Identity and Access Management"
+      ],
+      "Policy Purpose": [
+        "Permissions",
+        "Policy Document",
+        "Principal"
+      ],
+      "Policy Structure": [
+        "Permission",
+        "Policy Document",
+        "IAM Role"
+      ],
+      "Password Policy Options": [
+        "Password Length",
+        "Password Complexity",
+        "Password Expiration"
+      ],
+      "EC2 Instance and IAM Role Interaction": [
+        "IAM Policies",
+        "EC2 Instance Profile",
+        "Security Credentials"
+      ],
+      "Principle of Least Privilege": [
+        "Access Control",
+        "Permissions",
+        "User Roles"
+      ],
+      "Common Roles": [
+        "IAM User",
+        "IAM Group",
+        "IAM Policy"
+      ],
+      "Security Benefits of MFA": [
+        "Authentication",
+        "Access Control",
+        "Identity Management"
+      ],
+      "Access Methods: Management Console, CLI, and SDK": [
+        "IAM Policies",
+        "IAM Roles",
+        "IAM Users"
+      ],
+      "Access Advisor Functionality": [
+        "permissions",
+        "roles",
+        "IAM policies"
+      ],
+      "Generating and Managing Access Keys": [
+        "IAM Users",
+        "Permissions Policies",
+        "MFA (Multi-Factor Authentication)"
+      ],
+      "Programming Languages Supported by SDK": [
+        "AWS SDK for Java",
+        "AWS SDK for Python (Boto3)",
+        "AWS SDK for JavaScript"
+      ],
+      "IAM Roles for AWS Services vs. Physical Users": [
+        "Access Control",
+        "Permissions Policy",
+        "Security Token Service (STS)"
+      ],
+      "User Grouping": [
+        "Policies",
+        "Roles",
+        "Permissions"
+      ],
+      "Root User vs. Regular Users": [
+        "IAM Policies",
+        "Access Keys",
+        "Multi-Factor Authentication (MFA)"
+      ],
+      "Multiple Group Memberships": [
+        "IAM Roles",
+        "Permission Policies",
+        "User Groups"
+      ],
+      "Group Containment": [
+        "IAM Roles",
+        "Policy Attachments",
+        "User Permissions"
+      ],
+      "Global Service": [
+        "Identity Provider",
+        "Access Control",
+        "Permissions Policy"
+      ],
+      "Third-Party MFA Devices": [
+        "Multi-Factor Authentication",
+        "Security Token Service",
+        "Identity and Access Management"
+      ],
+      "Assigning Permissions to AWS Services": [
+        "IAM Roles",
+        "Policies",
+        "Access Control"
+      ],
+      "Importance of Strong Passwords": [
+        "Authentication",
+        "Multi-Factor Authentication (MFA)",
+        "Password Policies"
+      ],
+      "Reducing Permissions Using Access Advisor": [
+        "Least Privilege Principle",
+        "IAM Policies",
+        "Access Control"
+      ],
+      "MFA as a Defense Mechanism": [
+        "Multi-Factor Authentication",
+        "Security Token Service",
+        "IAM Roles"
+      ],
+      "CLI Commands and Automation": [
+        "AWS CLI",
+        "IAM Policies",
+        "AWS SDK"
+      ],
+      "Inline Policy vs. Group Policy": [
+        "Permissions",
+        "Roles",
+        "Identity Management"
+      ],
+      "Security of Access Methods: Username/Password, MFA, Access Keys": [
+        "Authentication",
+        "Authorization",
+        "User Policy"
+      ]
+    },
+    "S3 Security": {
+      "Simplifying Security Management with Access Points": [
+        "Access Control Lists (ACLs)",
+        "Bucket Policies",
+        "IAM Roles and Policies"
+      ],
+      "Managing Security at Scale": [
+        "Access Control Policies",
+        "Encryption at Rest and in Transit",
+        "Bucket Policies"
+      ],
+      "Encryption in Transit": [
+        "SSL/TLS",
+        "Data Integrity",
+        "Secure Socket Layer"
+      ],
+      "Protecting Against DDoS Attacks": [
+        "DDoS Mitigation Techniques",
+        "AWS Shield",
+        "Amazon CloudFront"
+      ],
+      "Cross-Origin Requests": [
+        "CORS (Cross-Origin Resource Sharing)",
+        "S3 Bucket Policies",
+        "IAM (Identity and Access Management)"
+      ],
+      "Using Access Points for VPC and Internet Access": [
+        "Access Policies",
+        "Bucket Policies",
+        "IAM Roles"
+      ],
+      "Forcing Encryption with Bucket Policies": [
+        "Server-Side Encryption (SSE)",
+        "AWS Identity and Access Management (IAM)",
+        "S3 Bucket Policy"
+      ],
+      "Caching Content at Edge Locations": [
+        "CloudFront",
+        "Edge Cache",
+        "Origin Server"
+      ],
+      "Dynamic Object Transformation with S3 Object Lambda": [
+        "S3 Bucket Policies",
+        "IAM Roles and Policies",
+        "Data Encryption at Rest"
+      ],
+      "Types of Server-Side Encryption": [
+        "SSE-S3",
+        "SSE-KMS",
+        "SSE-C"
+      ],
+      "Use Cases for S3 Object Lambda": [
+        "Access Control Lists (ACLs)",
+        "Bucket Policies",
+        "AWS Identity and Access Management (IAM)"
+      ],
+      "Using KMS for Key Management": [
+        "encryption",
+        "key rotation",
+        "access control"
+      ],
+      "Retention Modes and Their Purposes": [
+        "S3 Object Locks",
+        "Data Lifecycle Policies",
+        "Versioning"
+      ],
+      "Configuring CORS for S3 Buckets": [
+        "CORS policy",
+        "Access Control Allow Origin",
+        "S3 bucket policy"
+      ],
+      "Defining Specific Access Policies for Different Data": [
+        "IAM (Identity and Access Management)",
+        "Bucket Policies",
+        "Access Control Lists (ACLs)"
+      ],
+      "Improving Read Performance and Reducing Latency": [
+        "Data Replication",
+        "Access Control Policies",
+        "CloudFront Distribution"
+      ],
+      "Using Legal Hold for Object Protection": [
+        "Object Lock",
+        "Retention Policy",
+        "S3 Bucket Policy"
+      ],
+      "Implementing WORM Model with Glacier Vault Lock": [
+        "WORM (Write Once Read Many)",
+        "Glacier Vault Lock policy",
+        "S3 Object Lock"
+      ],
+      "Client-Side vs. Server-Side Encryption": [
+        "Encryption Keys",
+        "Data Access Policies",
+        "Compliance Standards"
+      ],
+      "Web Browser Security Mechanism": [
+        "Cross-Origin Resource Sharing (CORS)",
+        "Content Security Policy (CSP)",
+        "Secure Sockets Layer (SSL)"
+      ],
+      "MFA Delete": [
+        "Multi-Factor Authentication",
+        "AWS Identity and Access Management (IAM)",
+        "S3 Bucket Policies"
+      ],
+      "Same Origin Policy": [
+        "Cross-Origin Resource Sharing (CORS)",
+        "Access Control Lists (ACLs)",
+        "Bucket Policies"
+      ],
+      "Reducing Data Duplication with S3 Object Lambda": [
+        "S3 Bucket Policies",
+        "IAM Roles and Permissions",
+        "Data Encryption"
+      ],
+      "Difference Between CloudFront and S3 Replication": [
+        "Content Delivery Network (CDN)",
+        "Data Replication",
+        "Access Control Policies"
+      ],
+      "Setting Retention Periods": [
+        "Lifecycle Policies",
+        "Versioning",
+        "Data Governance"
+      ],
+      "Integration of Lambda Functions with S3 Access Points": [
+        "Access Control Lists (ACLs)",
+        "AWS Identity and Access Management (IAM)",
+        "Bucket Policies"
+      ],
+      "Differences Between S3 Glacier Vault Lock and S3 Object Lock": [
+        "Data Retention Policies",
+        "Compliance Regulation",
+        "Access Control Mechanisms"
+      ],
+      "Origins for CloudFront": [
+        "Access Control Lists (ACLs)",
+        "Bucket Policies",
+        "AWS Identity and Access Management (IAM)"
+      ]
+    },
+    "Disaster Recovery": {
+      "Server Migration": [
+        "Data Backup",
+        "Failover",
+        "Recovery Time Objective"
+      ],
+      "On-Premise Strategy with Cloud": [
+        "Backup Solutions",
+        "Failover Systems",
+        "Data Replication"
+      ],
+      "AWS Migration Hub": [
+        "Application Discovery Service",
+        "AWS Database Migration Service",
+        "AWS CloudEndure Migration"
+      ],
+      "Database Snapshot Method": [
+        "Backup",
+        "Restoration",
+        "Point-in-Time Recovery"
+      ],
+      "RPO vs. RTO": [
+        "Recovery Point Objective",
+        "Recovery Time Objective",
+        "Business Continuity"
+      ],
+      "Cost vs. Recovery Time": [
+        "Disaster Recovery Plan",
+        "RTO (Recovery Time Objective)",
+        "RPO (Recovery Point Objective)"
+      ],
+      "On-premise vs. Cloud": [
+        "Data Backup",
+        "High Availability",
+        "Failover Solutions"
+      ],
+      "Percona XtraBackup Method": [
+        "Database Backup",
+        "Point-in-Time Recovery",
+        "Replication"
+      ],
+      "Backup and Restore": [
+        "Recovery Point Objective (RPO)",
+        "Recovery Time Objective (RTO)",
+        "Data Redundancy"
+      ],
+      "Homogeneous vs. Heterogeneous Migration": [
+        "Data Replication",
+        "Failover Strategy",
+        "Backup Solutions"
+      ],
+      "Resiliency and Self-Healing": [
+        "Fault Tolerance",
+        "Backup Strategies",
+        "Load Balancing"
+      ],
+      "Amazon Linux 2 AMI Deployment": [
+        "AMI (Amazon Machine Image)",
+        "Elastic Block Store (EBS)",
+        "Launch Configuration"
+      ],
+      "Warm Standby": [
+        "High Availability",
+        "Failover",
+        "Backup and Restore"
+      ],
+      "Migrating Databases with DMS": [
+        "AWS Database Migration Service (DMS)",
+        "Replication",
+        "Downtime Minimization"
+      ],
+      "Pilot Light": [
+        "Recovery Point Objective (RPO)",
+        "Recovery Time Objective (RTO)",
+        "CloudFormation"
+      ],
+      "Supported Database Engines": [
+        "Backup and Restore",
+        "Replication",
+        "Failover"
+      ],
+      "VMWare Cloud on AWS": [
+        "Failover",
+        "Backup Solutions",
+        "RTO and RPO"
+      ],
+      "Aurora Read Replica Method": [
+        "Read Replicas",
+        "High Availability",
+        "Failover Strategy"
+      ],
+      "AWS Application Discovery Service": [
+        "Application Inventory",
+        "Migration Planning",
+        "Dependency Mapping"
+      ],
+      "Automated Recovery": [
+        "Backup Solutions",
+        "Failover Mechanisms",
+        "Recovery Time Objective (RTO)"
+      ],
+      "AWS Application Migration Service Use Case": [
+        "Backup Strategies",
+        "Recovery Time Objective (RTO)",
+        "Recovery Point Objective (RPO)"
+      ],
+      "Hot Site / Multi-Site": [
+        "Recovery Time Objective (RTO)",
+        "Recovery Point Objective (RPO)",
+        "Business Continuity Planning (BCP)"
+      ],
+      "VM Import and Export": [
+        "AWS EC2",
+        "Backup Strategies",
+        "Data Replication"
+      ],
+      "MySQL Dump Utility Method": [
+        "Backup",
+        "Restore",
+        "Data Integrity"
+      ],
+      "AWS Backup Use Case": [
+        "Backup Strategy",
+        "Recovery Time Objective (RTO)",
+        "Recovery Point Objective (RPO)"
+      ],
+      "Database Migration to Aurora MySQL": [
+        "Backup and Restore",
+        "Replication Strategies",
+        "Failover Management"
+      ],
+      "Database Migration": [
+        "Data Integrity",
+        "Backup Solutions",
+        "Replication Strategies"
+      ]
+    },
+    "Access Management": {
+      "Restricting API Calls by IP Address": [
+        "API Gateway",
+        "Security Groups",
+        "Network Access Control Lists (ACLs)"
+      ],
+      "Differences Between AWS Managed Microsoft AD, AD Connector, and Simple AD": [
+        "Active Directory",
+        "Identity Federation",
+        "Directory as a Service"
+      ],
+      "Restricting Maximum Permissions with IAM Permission Boundaries": [
+        "IAM Roles",
+        "Policy Simulator",
+        "Least Privilege Principle"
+      ],
+      "Role of Domain Controllers in Active Directory": [
+        "Authentication",
+        "Authorization",
+        "Directory Services"
+      ],
+      "Applying Permission Boundaries to Users and Roles": [
+        "IAM Policies",
+        "Role-Based Access Control (RBAC)",
+        "Fine-Grained Access Control"
+      ],
+      "Using Permission Sets to Control Access": [
+        "Identity and Access Management (IAM)",
+        "Role-based Access Control (RBAC)",
+        "AWS Single Sign-On (SSO)"
+      ],
+      "Using Trust Connections to Share User Authentication Between On-Premises and AWS": [
+        "Federated Authentication",
+        "SAML (Security Assertion Markup Language)",
+        "Active Directory Integration"
+      ],
+      "Role of Session Policies in IAM": [
+        "IAM Roles",
+        "Temporary Security Credentials",
+        "Policy Evaluation Logic"
+      ],
+      "Managing Single Sign-On Across Multiple AWS Accounts and Applications": [
+        "AWS Identity and Access Management (IAM)",
+        "AWS Single Sign-On (SSO)",
+        "Federated Authentication"
+      ],
+      "Differences between Identity-based and Resource-based Policies": [
+        "IAM Roles",
+        "Policy Evaluation",
+        "Trust Relationships"
+      ],
+      "Delegating Responsibilities within Permission Boundaries": [
+        "IAM Policies",
+        "Role-Based Access Control (RBAC)",
+        "Resource-based Policies"
+      ],
+      "Integrating IAM Identity Center with Third-Party Identity Providers": [
+        "Single Sign-On (SSO)",
+        "Security Assertion Markup Language (SAML)",
+        "OAuth 2.0"
+      ],
+      "Setting S3 Bucket Policies": [
+        "IAM Policies",
+        "S3 Permissions",
+        "Resource-Based Policies"
+      ],
+      "Defining Access for Multiple Accounts Using IAM Identity Center": [
+        "IAM Roles",
+        "Single Sign-On (SSO)",
+        "AWS Organizations"
+      ],
+      "Limiting Access to Specific AWS Regions": [
+        "AWS Identity and Access Management (IAM)",
+        "Resource Policies",
+        "Service Control Policies (SCPs)"
+      ],
+      "Assigning Users and Groups to Permission Sets": [
+        "IAM Roles",
+        "Identity Federation",
+        "Access Control Policies"
+      ],
+      "Tag-Based Access Control for EC2": [
+        "IAM Policies",
+        "Resource Tags",
+        "Access Control Lists (ACLs)"
+      ],
+      "Proxying User Authentication Requests with AD Connector": [
+        "Active Directory",
+        "Single Sign-On (SSO)",
+        "LDAP (Lightweight Directory Access Protocol)"
+      ],
+      "Enforcing Multi-Factor Authentication": [
+        "Authentication Methods",
+        "Identity Provider",
+        "Access Control"
+      ],
+      "Impact of Explicit Deny in IAM Policies": [
+        "IAM Policies",
+        "Access Control",
+        "Security Best Practices"
+      ],
+      "Evaluating IAM Policies and Permissions": [
+        "IAM Roles",
+        "Access Control Lists (ACLs)",
+        "Policy Evaluation Logic"
+      ],
+      "Combining Permission Boundaries with AWS Organizations SCP": [
+        "Permission Boundaries",
+        "Service Control Policies (SCP)",
+        "IAM Roles"
+      ],
+      "Restricting Access to Organization Members": [
+        "IAM Policies",
+        "Service Control Policies",
+        "Multi-Factor Authentication"
+      ],
+      "Integrating On-Premises AD with AWS Directory Services": [
+        "Active Directory Federation Services",
+        "LDAP (Lightweight Directory Access Protocol)",
+        "AWS Single Sign-On"
+      ]
+    },
+    "EC2 advanced": {
+      "Data Persistence on Stop vs. Terminate": [
+        "Elastic Block Store (EBS)",
+        "Instance Store",
+        "Data Backup and Recovery"
+      ],
+      "Security Groups Attached to ENIs": [
+        "Elastic Network Interfaces (ENIs)",
+        "Network Access Control Lists (NACLs)",
+        "Firewall rules"
+      ],
+      "Benefits of Using DNS over Elastic IPs": [
+        "Domain Name System (DNS)",
+        "Elastic Load Balancing (ELB)",
+        "Route 53"
+      ],
+      "Hibernate Process and RAM State Preservation": [
+        "EC2 Instances",
+        "Amazon EBS",
+        "State Management"
+      ],
+      "ENI Creation and Management": [
+        "Elastic Network Interface (ENI)",
+        "Amazon Virtual Private Cloud (VPC)",
+        "IP Address Management"
+      ],
+      "Cluster Placement Group: High Performance, High Risk": [
+        "EC2 instance types",
+        "Networking performance",
+        "Low-latency connections"
+      ],
+      "Use of Elastic IPs": [
+        "Static IP Addressing",
+        "NAT Gateway",
+        "Public vs Private IPs"
+      ],
+      "Network Address Translation": [
+        "NAT Gateway",
+        "Public IP Address",
+        "VPC (Virtual Private Cloud)"
+      ],
+      "Operating System Compatibility": [
+        "AMI (Amazon Machine Image)",
+        "Instance Type",
+        "Virtualization"
+      ],
+      "Requirements for Hibernation": [
+        "EC2 Instance Types",
+        "Amazon EBS",
+        "Instance Store"
+      ],
+      "Network Performance in Cluster Placement Groups": [
+        "Low Latency",
+        "High Bandwidth",
+        "Instance Types"
+      ],
+      "Instance Type Compatibility": [
+        "Instance Types",
+        "Virtual CPUs (vCPUs)",
+        "Memory Allocation"
+      ],
+      "ENI Availability Zone Boundaries": [
+        "Elastic Network Interface (ENI)",
+        "Availability Zone (AZ)",
+        "Virtual Private Cloud (VPC)"
+      ],
+      "Assigning Private and Public IPs": [
+        "IP Addressing",
+        "Elastic IPs",
+        "Network Interfaces"
+      ],
+      "Public IP vs. Private IP": [
+        "Elastic IP",
+        "NAT Gateway",
+        "Security Group"
+      ],
+      "Private Network and Internet Access": [
+        "VPC (Virtual Private Cloud)",
+        "Security Groups",
+        "NAT Gateway"
+      ],
+      "ENI Attributes and Functions": [
+        "Elastic Network Interface (ENI)",
+        "Virtual Private Cloud (VPC)",
+        "Network Interface Attachment"
+      ],
+      "Hardware Failure Isolation in Spread and Partition Groups": [
+        "Availability Zones",
+        "Fault Tolerance",
+        "Elastic Load Balancing"
+      ],
+      "Spread Placement Group: Minimized Failure Risk": [
+        "EC2 Instance Types",
+        "Availability Zones",
+        "Fault Tolerance"
+      ],
+      "Instance Boot Process": [
+        "Amazon Machine Image (AMI)",
+        "Elastic Block Store (EBS)",
+        "Instance Metadata"
+      ],
+      "Network Connectivity for EC2 Instances": [
+        "VPC (Virtual Private Cloud)",
+        "Subnets",
+        "Security Groups"
+      ],
+      "Failover Using ENIs": [
+        "Elastic Network Interface (ENI)",
+        "High Availability",
+        "Amazon Route 53"
+      ],
+      "Differences between IPv4 and IPv6": [
+        "Address space",
+        "Header complexity",
+        "Network configuration"
+      ],
+      "Partition Placement Group: Distributed Across Racks": [
+        "EC2 instance types",
+        "Availability Zones",
+        "Network performance"
+      ]
+    },
+    "S3 Basics": {
+      "Bucket Naming Conventions": [
+        "Global Uniqueness",
+        "DNS Compliance",
+        "Character Limit"
+      ],
+      "Object Key Structure": [
+        "Object Keys",
+        "S3 Buckets",
+        "Namespace Collisions"
+      ],
+      "CRR vs. SRR": [
+        "Data Replication",
+        "Versioning",
+        "Bucket Policy"
+      ],
+      "Public Access Configuration": [
+        "Bucket Policy",
+        "IAM Policies",
+        "Access Control Lists (ACLs)"
+      ],
+      "Use Cases for SRR": [
+        "S3 Replication",
+        "Data Durability",
+        "Multi-Region Access"
+      ],
+      "Replication Mechanism": [
+        "Versioning",
+        "Data Consistency",
+        "Cross-Region Replication"
+      ],
+      "IAM Permissions and API Calls": [
+        "Access Policies",
+        "S3 Bucket Policies",
+        "AWS Identity and Access Management (IAM)"
+      ],
+      "Encryption at Upload": [
+        "Server-Side Encryption (SSE)",
+        "Client-Side Encryption",
+        "AWS Key Management Service (KMS)"
+      ],
+      "Use Cases of S3": [
+        "Data storage",
+        "Static website hosting",
+        "Backup and restore"
+      ],
+      "Actions in Bucket Policies": [
+        "IAM Policies",
+        "Bucket Policy Syntax",
+        "S3 Permissions"
+      ],
+      "Cross-Account Access": [
+        "IAM Roles",
+        "Bucket Policies",
+        "S3 Permissions"
+      ],
+      "Effect in Bucket Policies": [
+        "Allow",
+        "Deny",
+        "Policy Statement"
+      ],
+      "Source and Destination Buckets": [
+        "S3 Bucket Policies",
+        "Data Transfer",
+        "S3 Object Permissions"
+      ],
+      "Max Object Size and Multi-part Upload": [
+        "Object Storage",
+        "Multipart Upload",
+        "S3 Bucket"
+      ],
+      "Versioning in S3": [
+        "Object Storage",
+        "Data Retrieval",
+        "Lifecycle Policy"
+      ],
+      "Metadata and Tags": [
+        "Key-Value Pairs",
+        "Object Storage",
+        "Data Organization"
+      ],
+      "S3 as Backbone for Websites": [
+        "Static Website Hosting",
+        "Content Delivery Network (CDN)",
+        "Bucket Policies"
+      ],
+      "Principle in IAM Policies": [
+        "IAM Roles",
+        "Access Control",
+        "Policy Documents"
+      ],
+      "EC2 Instance Role": [
+        "IAM Roles",
+        "Instance Metadata",
+        "S3 Bucket Policies"
+      ],
+      "Resource Block in JSON Policies": [
+        "Amazon S3 Permissions",
+        "Bucket Policy",
+        "IAM Roles"
+      ],
+      "Use Cases for CRR": [
+        "Cross-Region Replication (CRR)",
+        "Data Durability",
+        "Disaster Recovery"
+      ]
+    },
+    "Containers on AWS": {
+      "Scheduling Tasks with EventBridge": [
+        "Amazon ECS (Elastic Container Service)",
+        "AWS Fargate",
+        "CloudWatch Events"
+      ],
+      "How would you process objects uploaded to S3 buckets automatically without managing servers?": [
+        "AWS Lambda",
+        "Amazon S3 Event Notifications",
+        "AWS Step Functions"
+      ],
+      "How would you scale a service to handle varying loads of messages in a queue?": [
+        "AWS Fargate",
+        "Amazon SQS",
+        "Elastic Load Balancing"
+      ],
+      "Load Balancer Integrations with ECS": [
+        "Elastic Load Balancing (ELB)",
+        "Amazon ECS Service Discovery",
+        "Container Auto Scaling"
+      ],
+      "Data Persistence on Amazon ECS with Amazon EFS": [
+        "Amazon ECS",
+        "Amazon EFS",
+        "Container Storage"
+      ],
+      "What service and configuration would you use to perform scheduled batch processing every hour using containers?": [
+        "Amazon ECS",
+        "AWS Fargate",
+        "Amazon CloudWatch Events"
+      ],
+      "IAM Roles for ECS Tasks and Instance Profiles": [
+        "Task Definition",
+        "Amazon ECS",
+        "Permissions Policy"
+      ],
+      "Monitoring Task States with EventBridge": [
+        "AWS Fargate",
+        "Amazon ECS",
+        "CloudWatch Events"
+      ],
+      "Fargate Launch Type Overview": [
+        "ECS (Elastic Container Service)",
+        "Container Instance",
+        "Task Definition"
+      ],
+      "How Docker Works on an Operating System": [
+        "Containerization",
+        "Dockerfile",
+        "Image Registry"
+      ],
+      "Storing Docker Images in Docker Repositories": [
+        "Amazon ECR",
+        "Container Registry",
+        "Docker Hub"
+      ],
+      "Scaling ECS Services with SQS Queue": [
+        "Amazon ECS",
+        "AWS Fargate",
+        "Amazon Simple Queue Service (SQS)"
+      ],
+      "Difference Between Docker and Virtual Machines": [
+        "Virtualization",
+        "Isolation",
+        "Resource Allocation"
+      ],
+      "Introduction to Docker and its Use Cases": [
+        "Docker Images",
+        "Container Orchestration",
+        "Microservices Architecture"
+      ],
+      "Getting Started with Docker: From Dockerfile to Docker Container": [
+        "Dockerfile",
+        "Docker Image",
+        "Docker Compose"
+      ],
+      "Managing ECS Tasks with EventBridge": [
+        "ECS Task Definitions",
+        "EventBridge Rules",
+        "CloudWatch Events"
+      ],
+      "Introduction to Amazon ECS and EC2 Launch Type": [
+        "Amazon ECS",
+        "EC2 Instances",
+        "Container Orchestration"
+      ]
+    },
+    "CloudFront": {
+      "Performance vs. Cost Trade-offs": [
+        "Latency",
+        "Data Transfer Costs",
+        "Cache Hit Ratio"
+      ],
+      "Health Checks and Automated Failover": [
+        "Origin Failover",
+        "Health Check Status",
+        "CloudFront Distributions"
+      ],
+      "Difference Between CloudFront and Global Accelerator": [
+        "Content Delivery Network (CDN)",
+        "Edge Locations",
+        "Latency Optimization"
+      ],
+      "Reducing Costs with Price Classes": [
+        "Price Class",
+        "Regional Edge Cache",
+        "Data Transfer Pricing"
+      ],
+      "Specifying Paths for Cache Invalidation": [
+        "Cache Behavior",
+        "Invalidation Request",
+        "TTL (Time to Live)"
+      ],
+      "Impact of TTL on Content Updates": [
+        "Time to Live (TTL)",
+        "Cache Invalidation",
+        "Content Delivery Network (CDN)"
+      ],
+      "Data Transfer Costs by Region": [
+        "data transfer pricing",
+        "AWS pricing calculator",
+        "usage-based billing"
+      ],
+      "Using Anycast IP for Traffic Routing": [
+        "Traffic Distribution",
+        "Low Latency",
+        "Global Network"
+      ],
+      "Forcing Cache Refresh with Invalidations": [
+        "Cache Invalidation",
+        "Distribution Settings",
+        "Object Expiration"
+      ],
+      "Improving Global Application Performance with Global Accelerator": [
+        "Performance Optimization",
+        "Latency Reduction",
+        "Multi-Region Deployment"
+      ]
+    },
+    "Machine Learning": {
+      "Kendra Use Case": [
+        "Natural Language Processing",
+        "Search Algorithms",
+        "Document Understanding"
+      ],
+      "Comprehend Medical Use Case": [
+        "Natural Language Processing",
+        "Healthcare Data Extraction",
+        "Entity Recognition"
+      ],
+      "Forecast Use Case": [
+        "Time Series Analysis",
+        "Model Evaluation Metrics",
+        "Feature Engineering"
+      ],
+      "Comprehend Use Case": [
+        "Natural Language Processing",
+        "Sentiment Analysis",
+        "Text Classification"
+      ],
+      "SageMaker Use Case": [
+        "Model Training",
+        "Data Preprocessing",
+        "Hyperparameter Tuning"
+      ],
+      "Lex + Connect Use Case": [
+        "Natural Language Processing",
+        "Chatbot Development",
+        "AWS Lambda"
+      ],
+      "Rekognition Use Case": [
+        "Image Analysis",
+        "Facial Recognition",
+        "Real-Time Processing"
+      ],
+      "Transcribe Use Case": [
+        "Speech Recognition",
+        "Natural Language Processing",
+        "Audio Data Processing"
+      ],
+      "Polly Use Case": [
+        "Text-to-Speech",
+        "Natural Language Processing",
+        "Voice Synthesis"
+      ],
+      "Personalize Use Case": [
+        "Recommendation Systems",
+        "User Behavior Analytics",
+        "Collaborative Filtering"
+      ],
+      "Translate Use Case": [
+        "Natural Language Processing",
+        "Neural Networks",
+        "Translation Models"
+      ]
+    },
+    "Data and Databases": {
+      "Comparing RDBMS and NoSQL Databases": [
+        "ACID Properties",
+        "Scalability",
+        "Data Model"
+      ],
+      "Selecting the Right Database for Workloads": [
+        "NoSQL",
+        "Relational Database",
+        "Database Optimization"
+      ],
+      "Use Cases for Object Store Databases": [
+        "Scalability",
+        "Data Lakes",
+        "Unstructured Data Storage"
+      ],
+      "Ongoing Replication Methods": [
+        "Asynchronous Replication",
+        "Synchronous Replication",
+        "Change Data Capture"
+      ],
+      "Internet Speed Impact on Data Transfer": [
+        "Latency",
+        "Bandwidth",
+        "Data Throughput"
+      ],
+      "Use cases for Kinesis Data Analytics": [
+        "real-time data processing",
+        "streaming analytics",
+        "machine learning integration"
+      ],
+      "Using Snowball for Large Data Transfers": [
+        "Data Transfer Service",
+        "AWS Snow Family",
+        "Data Migration"
+      ],
+      "Combining Snowball with DMS": [
+        "AWS Snowball",
+        "Database Migration Service (DMS)",
+        "Data Transfer"
+      ],
+      "Constraints and Use Cases for Each Transfer Method": [
+        "AWS Transfer Family",
+        "S3 Transfer Acceleration",
+        "AWS Direct Connect"
+      ]
+    },
+    "Edge Functions": {
+      "Sub-Millisecond Startup Times": [
+        "Cold Start",
+        "Latency",
+        "Service Edge"
+      ],
+      "Use Cases of Edge Functions": [
+        "Latency Reduction",
+        "Content Delivery Optimization",
+        "Real-Time Data Processing"
+      ],
+      "CloudFront Functions vs. Lambda@Edge": [
+        "Content Delivery Network (CDN)",
+        "Serverless Computing",
+        "Latency Reduction"
+      ],
+      "Customizing CDN Content": [
+        "Caching Strategies",
+        "Content Delivery Network (CDN)",
+        "Request Routing"
+      ],
+      "Request and Response Modification": [
+        "Lambda@Edge",
+        "CloudFront",
+        "Content Delivery Network (CDN)"
+      ],
+      "Executing Logic at the Edge": [
+        "Edge Computing",
+        "Low Latency",
+        "Data Processing at the Edge"
+      ]
+    },
+    "Cloudshell": {
+      "File Management in Cloud Shell": [
+        "Cloud Storage",
+        "Command Line Interface (CLI)",
+        "File Permissions"
+      ],
+      "Customizing Cloud Shell": [
+        "AWS CLI",
+        "IAM Permissions",
+        "Shell Environment Variables"
+      ],
+      "Cloud Shell Availability": [
+        "AWS CLI",
+        "Cloud9 IDE",
+        "AWS Management Console"
+      ],
+      "Command Execution in Cloud Shell": [
+        "AWS CloudShell",
+        "AWS CLI",
+        "Shell Environment"
+      ],
+      "Cloud Shell Environment Persistence": [
+        "Session Management",
+        "File Storage",
+        "Stateful Environment"
+      ],
+      "Cloud Shell vs. Terminal": [
+        "AWS CloudShell",
+        "Command Line Interface (CLI)",
+        "Integrated Development Environment (IDE)"
+      ]
+    },
+    "Auto Scaling Group": {
+      "Monitoring and Metrics": [
+        "CloudWatch",
+        "Scaling Policies",
+        "Health Checks"
+      ],
+      "Metrics for Scaling": [
+        "CloudWatch Alarms",
+        "Scaling Policies",
+        "EC2 Instances"
+      ],
+      "Dynamic Response": [
+        "Scaling Policies",
+        "CloudWatch Alarms",
+        "Instance Launch Configuration"
+      ],
+      "Configuration Time": [
+        "Health Check Grace Period",
+        "Scaling Policies",
+        "Launch Template"
+      ],
+      "Scaling Policies": [
+        "Thresholds",
+        "CloudWatch Alarms",
+        "Instance Scaling"
+      ],
+      "Cooldown Period": [
+        "Scaling Policies",
+        "CloudWatch Alarms",
+        "Instance Health Checks"
+      ]
+    },
+    "Services": {
+      "CloudFormation Use Case": [
+        "Infrastructure as Code",
+        "Template",
+        "Stack"
+      ],
+      "Cloud Formation Service Role": [
+        "IAM Role",
+        "CloudFormation Stack",
+        "AWS Resource Policies"
+      ],
+      "AWS Batch Use Case": [
+        "Job Definitions",
+        "Job Queues",
+        "Compute Environments"
+      ],
+      "AWS Cost Explorer and Anomaly Detection": [
+        "Cost Allocation Tags",
+        "Budgets",
+        "AWS Pricing Calculator"
+      ],
+      "SSM Session Manager Use Case": [
+        "AWS Systems Manager",
+        "EC2 Instance Management",
+        "Secure Shell Access"
+      ]
+    },
+    "Account Management": {
+      "Managing Multiple AWS Accounts": [
+        "AWS Organizations",
+        "Service Control Policies (SCPs)",
+        "Cross-Account Access"
+      ],
+      "Organizing Accounts Using OUs": [
+        "Organizational Units (OUs)",
+        "Root Account",
+        "Service Control Policies (SCPs)"
+      ],
+      "Billing Consolidation and Cost Savings": [
+        "Cost Allocation Tags",
+        "AWS Budgets",
+        "Consolidated Billing"
+      ],
+      "Automating Account Creation": [
+        "AWS Organizations",
+        "IAM (Identity and Access Management)",
+        "CloudFormation"
+      ],
+      "Applying SCPs for Security and Compliance": [
+        "Service Control Policies (SCPs)",
+        "AWS Organizations",
+        "Permissions Boundaries"
+      ]
+    }
+  }

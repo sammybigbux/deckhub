@@ -1,0 +1,1917 @@
+{
+  "IAM": {
+    "Suppose you work at a company with several employees. How would you group Alice, Bob, and Charles, who are all developers, and David and Edward, who work in operations, using IAM?": [
+      "IAM Policies",
+      "IAM Groups",
+      "IAM Roles"
+    ],
+    "Imagine you need to grant specific permissions to your development team. How would you assign a policy to the 'Developers' group that allows them to use and describe EC2 and CloudWatch services?": [
+      "IAM Policy",
+      "AWS Identity and Access Management (IAM)",
+      "IAM Roles"
+    ],
+    "If you have a user who no longer needs access to certain AWS services, what steps would you take to review and adjust their permissions according to the principle of least privilege?": [
+      "IAM Policies",
+      "Access Control",
+      "User Roles"
+    ],
+    "Applying Group Policies: Suppose you have a group of developers, Alice, Bob, and Charles, and you attach a policy to this group. How will this policy affect each member of the group?": [
+      "Permissions",
+      "Policies",
+      "User Group"
+    ],
+    "Using Inline Policies: Imagine Fred is a user who does not belong to any group. How would you assign specific permissions to Fred using an inline policy, and what are the benefits of doing this?": [
+      "Inline Policies",
+      "IAM Users",
+      "Permissions Management"
+    ],
+    "Managing Multiple Group Policies: If Charles belongs to both the developers' group and the audit team, and each group has its own policy, how will Charles's access be affected by these multiple policies?": [
+      "Policy Evaluation Logic",
+      "Access Control Lists (ACLs)",
+      "Identity-based Policies"
+    ],
+    "Implementing a Password Policy: Suppose you want to increase the security of your AWS account. How would you set up a password policy that requires users to change their passwords every 90 days and prevents password reuse?": [
+      "Password Policy",
+      "IAM Roles",
+      "Multi-Factor Authentication"
+    ],
+    "Using MFA for Enhanced Security: Imagine Alice is an administrator with access to sensitive resources. How would enabling MFA protect Alice's account even if her password is compromised?": [
+      "Multi-Factor Authentication",
+      "Security Token Service",
+      "Access Management"
+    ],
+    "Choosing an MFA Device: Suppose your organization wants to use MFA for all IAM users. What are the different types of MFA devices available, and how would you decide which one to use?": [
+      "MFA device types",
+      "AWS IAM best practices",
+      "MFA for enhanced security"
+    ],
+    "Using Different Access Methods: Suppose you need to manage your AWS services. How would you choose between using the Management Console, CLI, and SDK, and what are the security considerations for each method?": [
+      "AWS Management Console",
+      "AWS CLI",
+      "AWS SDK"
+    ],
+    "Generating Access Keys: Imagine you need to set up the CLI on your computer to interact with AWS services. How would you generate and securely manage your access keys?": [
+      "Access Keys",
+      "IAM Policies",
+      "AWS CLI"
+    ],
+    "Developing with the SDK: Suppose you are developing an application that needs to interact with AWS services programmatically. How would you use the AWS SDK for Python (Boto) to achieve this, and what are some benefits of using the SDK over other access methods?": [
+      "AWS SDK for Python (Boto)",
+      "IAM Roles",
+      "Security Credentials"
+    ],
+    "Using Cloud Shell for Command Execution: Suppose you need to execute AWS CLI commands but prefer not to use your local terminal. How would you set up and use Cloud Shell, and what are the benefits of doing so?": [
+      "AWS CLI",
+      "Cloud Shell",
+      "IAM Roles"
+    ],
+    "Managing Files in Cloud Shell: Imagine you need to create and manage files within Cloud Shell. How would you create a file, ensure its persistence, and download it to your local machine?": [
+      "Cloud Shell",
+      "File Storage",
+      "AWS CLI"
+    ],
+    "Customizing Cloud Shell: Suppose you want to improve your Cloud Shell user experience. How would you customize the font size, theme, and manage multiple tabs to enhance your workflow?": [
+      "Cloud Shell",
+      "User Experience",
+      "Customization"
+    ]
+  },
+  "EC2 Basics": {
+    "Selecting an Instance Type for Web Servers: Suppose you need to set up a web server for a moderate-traffic website. Which EC2 instance type would you choose and why?": [
+      "EC2 Instance Types",
+      "CPU and Memory Allocation",
+      "Cost Optimization"
+    ],
+    "Optimizing for Compute-Intensive Tasks: Imagine you are running machine learning models that require high computational power. How would you select and configure an appropriate EC2 instance type?": [
+      "EC2 Instance Types",
+      "CPU Architecture",
+      "Elastic Load Balancing"
+    ],
+    "Handling Large In-Memory Databases: Suppose your application requires processing large datasets in memory for real-time analytics. Which EC2 instance type would be best suited for this purpose and why?": [
+      "EC2 Instance Types",
+      "Memory-Optimized Instances",
+      "Elastic Compute Cloud (EC2)"
+    ],
+    "Configuring Security Groups for Web Servers: Suppose you need to set up a web server that can be accessed from the internet but also needs to securely transfer files. How would you configure the security group rules, including inbound and outbound traffic?": [
+      "Inbound Rules",
+      "Outbound Rules",
+      "Network Access Control List (NACL)"
+    ],
+    "Ensuring Secure Access for Administrators: Imagine you have multiple EC2 instances that administrators need to access securely. How would you set up security groups to allow SSH access while ensuring unauthorized IP addresses are blocked?": [
+      "Security Groups",
+      "SSH (Secure Shell)",
+      "IP Whitelisting"
+    ],
+    "Managing Inter-Instance Communication: Suppose you have several EC2 instances that need to communicate with each other for a load-balanced application. How would you configure security groups to allow secure communication between these instances without relying on IP addresses?": [
+      "Security Groups",
+      "Network Access Control List (NACL)",
+      "Amazon VPC"
+    ],
+    "Using SSH for Maintenance on Linux Servers: Suppose you need to connect to a Linux-based EC2 instance for maintenance tasks. How would you securely connect from a Mac or Linux computer?": [
+      "SSH (Secure Shell)",
+      "EC2 Instance",
+      "Public Key Infrastructure"
+    ],
+    "Accessing EC2 Instances from Windows: Imagine you have a Windows computer and need to connect to your EC2 instance. Which tool should you use to establish this connection?": [
+      "Remote Desktop Protocol (RDP)",
+      "EC2 Instance Connect",
+      "AWS Systems Manager Session Manager"
+    ],
+    "Browser-Based Connection with EC2 Instance Connect: Suppose you prefer not to use the command line or need a quick connection method that works across different operating systems. Which Amazon tool should you use to access your EC2 instance?": [
+      "EC2 Instance Connect",
+      "SSH Protocol",
+      "AWS Management Console"
+    ],
+    "Optimizing Costs for Long-Term Workloads: Suppose you are running a database expected to operate continuously for several years. Which EC2 purchasing option would you choose to optimize costs, and why?": [
+      "Reserved Instances",
+      "Savings Plans",
+      "Spot Instances"
+    ],
+    "Handling Short-Term, Unpredictable Workloads: Imagine you need to handle short-term, unpredictable workloads where you cannot predict the application behavior. Which EC2 purchasing option is most suitable, and why?": [
+      "On-Demand Instances",
+      "Auto Scaling",
+      "Spot Instances"
+    ],
+    "Ensuring High Availability for Critical Applications: Suppose you have critical applications that require guaranteed availability in a specific availability zone. Which EC2 purchasing option would you use to ensure this, and why?": [
+      "EC2 Instances",
+      "Reserved Instances",
+      "High Availability Zone"
+    ],
+    "Managing Cost-Effective Batch Jobs: Suppose you have batch jobs that are not time-sensitive but require a lot of computational power. Which EC2 instance purchasing option would you choose to optimize costs, and how would you configure it?": [
+      "Spot Instances",
+      "Reserved Instances",
+      "Auto Scaling"
+    ],
+    "Handling Spot Instance Termination: Imagine you are using spot instances for a data analysis task, and the spot price exceeds your max price. What are your options for handling the termination, and how would you proceed to ensure minimal disruption?": [
+      "Spot Instances",
+      "EC2 Pricing",
+      "Auto Scaling"
+    ],
+    "Implementing Spot Fleets for Resilient Workloads: Suppose you need to ensure high availability for a distributed workload while optimizing costs. How would you set up a spot fleet, and which allocation strategy would you choose?": [
+      "Spot Instances",
+      "Auto Scaling",
+      "Fleet Management"
+    ],
+    "Requesting a Spot Instance: Suppose you need to request a spot instance for a compute-intensive task. What parameters would you set to ensure cost efficiency while meeting your compute requirements?": [
+      "Spot Price",
+      "Instance Type",
+      "Request Duration"
+    ],
+    "Managing a Spot Fleet for Cost Savings: Imagine you need to manage a fleet of spot instances to ensure a steady compute capacity for a batch processing job. What allocation strategy and parameters would you choose to optimize cost savings and capacity?": [
+      "Spot Instances",
+      "Spot Fleet",
+      "Capacity Pools"
+    ],
+    "Ensuring Resource Availability with Capacity Reservations: Suppose you need to guarantee the availability of a specific EC2 instance type in a particular availability zone for a critical workload. What purchasing option would you use, and how would you configure it?": [
+      "Capacity Reservations",
+      "EC2 Instance Types",
+      "Availability Zones"
+    ]
+  },
+  "EC2 advanced": {
+    "Managing Network Access: Suppose you have an EC2 instance that needs to communicate with other instances within a private network and also needs to be accessible from the internet. How would you configure the IP addresses for this instance?": [
+      "Public IP",
+      "Private IP",
+      "Security Groups"
+    ],
+    "Ensuring Consistent Public Access: Imagine you have a web application running on an EC2 instance that must have a consistent public IP address, even if the instance stops and starts. What solution would you implement to achieve this?": [
+      "Elastic IP",
+      "Static IP",
+      "Public IP Addressing"
+    ],
+    "Optimizing Network Architecture: Suppose you need to design a network architecture for a scalable web application on AWS. How would you use public and private IPs, DNS, and load balancers to ensure both internal communication and external accessibility?": [
+      "Public IP Addressing",
+      "DNS Management",
+      "Elastic Load Balancing"
+    ],
+    "Optimizing for High Performance Computing: Suppose you need to run a big data job that requires high networking throughput and low latency between instances. Which placement group strategy would you use, and why?": [
+      "Placement Groups",
+      "Cluster Instances",
+      "Low Latency Networking"
+    ],
+    "Ensuring High Availability for Critical Applications: Imagine you have a critical application that must remain available even if some instances fail. Which placement group strategy would you choose to minimize the risk of simultaneous failures, and why?": [
+      "Placement Groups",
+      "Fault Tolerance",
+      "Elastic Load Balancing"
+    ],
+    "Scaling Big Data Applications: Suppose you are deploying a big data application like Hadoop or Cassandra that can be partition aware. How would you use partition placement groups to optimize the distribution of your instances and ensure fault tolerance?": [
+      "Partition Placement Groups",
+      "Fault Tolerance",
+      "Hadoop/Cassandra Architecture"
+    ],
+    "Ensuring Network Connectivity for EC2 Instances: Suppose you need to provide network connectivity to an EC2 instance in a specific availability zone. How would you configure the ENI, including its IP addresses and security groups?": [
+      "Elastic Network Interface (ENI)",
+      "IP Addressing",
+      "Security Groups"
+    ],
+    "Managing Failover for Critical Applications: Imagine you have a critical application running on an EC2 instance that requires a static private IP. How would you use ENIs to ensure failover capability between two instances in the same availability zone?": [
+      "Elastic Network Interface (ENI)",
+      "Failover Cluster",
+      "High Availability (HA)"
+    ],
+    "Optimizing Network Configuration: Suppose you need to attach multiple IP addresses to a single EC2 instance for a multi-homed network setup. How would you configure the ENIs to achieve this, and what are the key considerations?": [
+      "Elastic Network Interface (ENI)",
+      "Private IP Addresses",
+      "Multi-Homed Network Configuration"
+    ],
+    "Maintaining Application State Across Reboots: Suppose you have a long-running application that needs to maintain its in-memory state across reboots to reduce startup time. How would you configure EC2 hibernation to achieve this?": [
+      "EC2 Hibernation",
+      "Instance Store",
+      "Elastic Block Store (EBS)"
+    ],
+    "Ensuring Data Persistence on Instance Termination: Imagine you need to ensure certain data volumes persist even if an EC2 instance is terminated. How would you configure the instance and its volumes to achieve this?": [
+      "EBS Volumes",
+      "Snapshots",
+      "Instance Store"
+    ],
+    "Optimizing for Fast Boot Times: Suppose you have an application that takes a long time to initialize and you want to optimize for fast boot times after stopping the instance. How would you leverage EC2 hibernation to meet this requirement?": [
+      "EC2 Hibernation",
+      "Instance Initialization",
+      "Boot Time Optimization"
+    ]
+  },
+  "EC2 Instance Storage": {
+    "Data Persistence After Instance Termination: Suppose you need to ensure that the data on your EC2 instance persists even after the instance is terminated. How would you configure your EBS volumes to achieve this?": [
+      "Elastic Block Store (EBS)",
+      "Snapshot",
+      "Volume Attachment"
+    ],
+    "Managing Storage for High Availability: Imagine you need to set up a failover mechanism for your EC2 instances. How would you use EBS volumes to ensure quick recovery and minimal downtime?": [
+      "EBS Snapshots",
+      "Multi-AZ Deployment",
+      "Elastic Load Balancing"
+    ],
+    "Optimizing Storage Performance: Suppose you need to optimize the performance of your EC2 instance for a high I/O workload. How would you configure your EBS volumes, including capacity and IOPS, to meet this requirement?": [
+      "EBS Provisioned IOPS",
+      "EBS Volume Types",
+      "EC2 Performance Optimization"
+    ],
+    "Optimizing for High I/O Performance: Suppose you have an application that requires extremely high disk I/O performance. How would you configure your EC2 instance to meet this requirement using an EC2 Instance Store?": [
+      "EC2 Instance Store",
+      "I/O Performance",
+      "Provisioned IOPS"
+    ],
+    "Managing Temporary Data Storage: Imagine you need to store temporary data such as a buffer or cache that doesn't need to be retained long-term. How would you use an EC2 Instance Store for this purpose, and what considerations should you keep in mind?": [
+      "Ephemeral Storage",
+      "Data Persistence",
+      "Performance Optimization"
+    ],
+    "Ensuring Data Durability: Suppose you are using an EC2 Instance Store for high-performance operations but need to ensure data durability. What steps would you take to back up and replicate your data?": [
+      "EBS Snapshots",
+      "S3 Backup",
+      "Data Replication"
+    ],
+    "Optimizing Storage for a High-Performance Database: Imagine you are running a mission-critical database that requires consistent high IOPS performance. Which EBS volume type would you select to meet these requirements, and how would you configure it?": [
+      "EBS Volume Types",
+      "IOPS",
+      "Provisioned IOPS (io1)"
+    ],
+    "Cost-Effective Storage for Archive Data: Suppose you need to store a large amount of infrequently accessed archive data at the lowest possible cost. Which EBS volume type would be most suitable, and what are its characteristics?": [
+      "EBS Volume Types",
+      "Cold Storage",
+      "Lifecycle Policies"
+    ],
+    "Encrypting Data for Security Compliance: Suppose you need to ensure that all data stored on your EBS volumes is encrypted to meet security compliance requirements. How would you set up EBS volume encryption, and what benefits does it provide?": [
+      "EBS Encryption",
+      "Data at Rest",
+      "AWS Key Management Service (KMS)"
+    ],
+    "Managing Shared Storage for Multiple Instances: Suppose you need a network file system that multiple EC2 instances across different availability zones can access simultaneously. How would you configure and use EFS for this purpose?": [
+      "EFS (Elastic File System)",
+      "Availability Zones",
+      "NFS (Network File System)"
+    ],
+    "Optimizing for Cost and Performance: Imagine you have a mix of frequently and infrequently accessed files. How would you use EFS storage tiers and lifecycle policies to optimize for both cost and performance?": [
+      "EFS Storage Classes",
+      "Lifecycle Policies",
+      "Cost Optimization"
+    ],
+    "Handling Unpredictable Workloads: Suppose your application has unpredictable storage throughput requirements. How would you configure EFS to automatically scale throughput based on workload demand?": [
+      "Elastic File System (EFS)",
+      "Throughput Modes",
+      "Automatic Scaling"
+    ],
+    "Choosing Storage for a Single EC2 Instance: Suppose you need storage for an application that will run on a single EC2 instance in a specific AZ. Which storage option would you choose between EBS and EFS, and why?": [
+      "EBS (Elastic Block Store)",
+      "EFS (Elastic File System)",
+      "AZ (Availability Zone)"
+    ],
+    "Migrating Data Across Availability Zones: Imagine you need to move your data from an EC2 instance in one AZ to another AZ. How would you use EBS snapshots to accomplish this migration?": [
+      "EBS Snapshots",
+      "Availability Zones",
+      "Data Migration"
+    ],
+    "Setting Up Shared Storage for Multiple Instances: Suppose you need a shared storage solution for multiple EC2 instances across different AZs. How would you configure EFS to meet this requirement, and what are the benefits of using EFS in this scenario?": [
+      "EFS (Elastic File System)",
+      "Multi-AZ Availability",
+      "NFS (Network File System)"
+    ]
+  },
+  "High Availability and Scalability": {
+    "Handling Increased Load: Suppose your web application is experiencing a significant increase in traffic, causing slow response times and performance issues. You need to ensure your application can handle this increased load without downtime. How would you scale your infrastructure to address this issue?": [
+      "Elastic Load Balancing",
+      "Auto Scaling",
+      "Amazon CloudFront"
+    ],
+    "Ensuring High Availability: Imagine you are running a critical business application that must be available 24/7. To prevent downtime due to hardware failures or data center outages, what strategies would you implement to ensure high availability of your application?": [
+      "Load Balancing",
+      "Auto Scaling",
+      "Multi-AZ Deployments"
+    ],
+    "Scaling a Call Center: Suppose you manage a call center that receives a fluctuating number of calls throughout the day. During peak hours, the current setup cannot handle the call volume, resulting in long wait times for customers. What approach would you take to scale your call center efficiently to handle varying loads?": [
+      "Auto Scaling",
+      "Load Balancing",
+      "Elasticity"
+    ],
+    "Routing Traffic to Microservices: Suppose you have multiple microservices running on different EC2 instances, and you want to route traffic based on the URL path. How would you use an Application Load Balancer (ALB) to achieve this?": [
+      "Application Load Balancer",
+      "URL Path Routing",
+      "Microservices Architecture"
+    ],
+    "Integrating ALB with Lambda Functions: Imagine you have serverless functions that need to be exposed to the internet. How would you use an ALB to route traffic to these Lambda functions efficiently?": [
+      "Application Load Balancer",
+      "AWS Lambda",
+      "Serverless Architecture"
+    ],
+    "Managing On-premises and Cloud Traffic: Suppose you have an application that needs to route traffic to both on-premises servers and EC2 instances based on query string parameters. How would you configure an ALB to handle this?": [
+      "Application Load Balancer (ALB)",
+      "Routing Policies",
+      "Cross-Zone Load Balancing"
+    ],
+    "Handling TCP and UDP Traffic: Suppose you have an application that requires handling both TCP and UDP traffic efficiently with high performance. Which type of load balancer would you use and why?": [
+      "Load Balancer Types",
+      "Elastic Load Balancing",
+      "Layer 4 vs Layer 7 Load Balancing"
+    ],
+    "Static IP Requirement: Imagine your application must be accessible through a set of static IPs for security reasons. How would you configure the load balancing to meet this requirement?": [
+      "Elastic Load Balancing",
+      "Static IP Address",
+      "Network Load Balancer"
+    ],
+    "Combining NLB and ALB: Suppose you need the fixed IP benefits of a Network Load Balancer but also require the advanced routing capabilities of an Application Load Balancer. How would you set up the load balancing architecture to leverage both NLB and ALB?": [
+      "Load Balancer",
+      "Target Groups",
+      "Health Checks"
+    ],
+    "Deploying a Firewall for Traffic Inspection: Suppose you need to ensure that all network traffic to your application is inspected by a firewall before reaching the application. How would you use a gateway load balancer to achieve this?": [
+      "Gateway Load Balancer",
+      "Traffic Inspection",
+      "Network Security"
+    ],
+    "Implementing Intrusion Detection and Prevention: Imagine you want to deploy an intrusion detection and prevention system (IDPS) to monitor and block malicious traffic in your network. How would a gateway load balancer facilitate this setup?": [
+      "Gateway Load Balancer",
+      "Traffic Distribution",
+      "Network Security"
+    ],
+    "Managing Traffic Across Multiple Virtual Appliances: Suppose you have multiple virtual appliances that need to process traffic before it reaches your application. How can a gateway load balancer help distribute this traffic efficiently?": [
+      "Gateway Load Balancer",
+      "Traffic Distribution",
+      "Virtual Appliances"
+    ],
+    "Ensuring Consistent User Sessions: Suppose you have an application where users need to stay connected to the same backend instance to maintain their session data. How would you implement sticky sessions to achieve this?": [
+      "Sticky Sessions",
+      "Load Balancing",
+      "Session Persistence"
+    ],
+    "Managing Session Affinity for Multiple Users: Imagine you run an online service with multiple users accessing your application simultaneously. How can you use sticky sessions to ensure each user's requests are directed to the same EC2 instance?": [
+      "Sticky Sessions",
+      "Elastic Load Balancing",
+      "EC2 Instance"
+    ],
+    "Configuring Load Balancer Stickiness: Suppose you need to configure your load balancer to maintain session stickiness for user requests over a period of one day. How would you set up the load balancer and what type of cookie would you use?": [
+      "Session Cookies",
+      "Elastic Load Balancing",
+      "Sticky Sessions"
+    ],
+    "Balancing Traffic Across Multiple AZs: Suppose you have an application with EC2 instances spread across multiple availability zones. You want to ensure that the incoming traffic is evenly distributed across all instances, regardless of their AZ. How would you configure cross zone load balancing for this scenario?": [
+      "Load Balancer",
+      "Availability Zones (AZs)",
+      "Elastic Load Balancing (ELB)"
+    ],
+    "Handling Imbalanced Traffic Distribution: Imagine your application is experiencing imbalanced traffic due to a different number of EC2 instances in each availability zone. How would you use cross zone load balancing to address this issue and ensure a balanced load?": [
+      "Cross-Zone Load Balancing",
+      "Elastic Load Balancer",
+      "Availability Zones"
+    ],
+    "Enabling SSL/TLS for Secure Communication: Suppose you want to ensure secure communication between clients and your load balancer. How would you implement SSL/TLS certificates, and what are the benefits of using ACM for managing these certificates?": [
+      "SSL/TLS Certificates",
+      "AWS Certificate Manager (ACM)",
+      "Load Balancer"
+    ],
+    "Configuring SNI for Multiple Domains: Imagine you have multiple domains that need to be served by a single load balancer. How would you configure SNI to handle multiple SSL certificates, and which load balancers support this feature?": [
+      "Load Balancer",
+      "SSL Certificates",
+      "Server Name Indication (SNI)"
+    ],
+    "Handling Expiring SSL Certificates: You have an SSL certificate that is about to expire. What steps would you take to renew the certificate using ACM, and how does ACM simplify the management of certificate expiration and renewal?": [
+      "ACM (AWS Certificate Manager)",
+      "SSL/TLS Certificates",
+      "Automated Renewal"
+    ],
+    "Handling In-flight Requests During Instance Deregistration: Suppose you have an EC2 instance that needs to be deregistered or marked unhealthy. How would you configure connection draining to ensure that in-flight requests are completed before the instance is taken offline?": [
+      "Connection Draining",
+      "Load Balancer",
+      "Auto Scaling"
+    ],
+    "Optimizing Connection Draining for Short Requests: Imagine your application handles very short requests, typically less than one second. What connection draining parameter would you set to ensure efficient deregistration of instances while maintaining request handling?": [
+      "Connection Draining",
+      "Elastic Load Balancing",
+      "Instance Deregistration"
+    ],
+    "Managing Variable Traffic Loads: Imagine your e-commerce website experiences high traffic during holidays and sales events but has lower traffic during other times. How would you use an auto scaling group to handle these traffic fluctuations efficiently?": [
+      "Auto Scaling",
+      "Elastic Load Balancing",
+      "EC2 Instances"
+    ],
+    "Ensuring High Availability: Suppose you have a critical web application that needs to be highly available at all times. How would you configure an auto scaling group and load balancer to ensure that the application can handle server failures without downtime?": [
+      "Auto Scaling",
+      "Elastic Load Balancing",
+      "Health Checks"
+    ],
+    "Optimizing Resource Usage: Your web application is currently over-provisioned, leading to unnecessary costs. How can you use scaling policies and CloudWatch alarms to optimize the number of running instances based on actual usage patterns?": [
+      "Auto Scaling",
+      "CloudWatch Alarms",
+      "Instance Scaling Policies"
+    ]
+  },
+  "Auto Scaling Group": {
+    "Handling Increased Traffic with Dynamic Scaling: Imagine your website experiences a sudden spike in traffic due to a flash sale. How would you use target tracking scaling to ensure your auto scaling group automatically adjusts the number of EC2 instances to handle the increased load?": [
+      "EC2 Instances",
+      "Target Tracking Scaling",
+      "Auto Scaling Policies"
+    ],
+    "Optimizing Resource Usage with Scheduled Scaling: Suppose your business has predictable traffic patterns, with peak usage during business hours. How would you use scheduled scaling to adjust the capacity of your auto scaling group in anticipation of these patterns?": [
+      "Scheduled Scaling",
+      "Auto Scaling Policies",
+      "Traffic Patterns"
+    ]
+  },
+  "AWS Fundamentals": {
+    "Handling Unpredictable Workloads: Imagine your e-commerce website experiences seasonal spikes in traffic. During these peaks, your database usage increases significantly, risking running out of storage. How would enabling RDS Storage Auto Scaling help you handle this unpredictability without manual intervention?": [
+      "RDS Storage Auto Scaling",
+      "Database Performance",
+      "Cloud Scalability"
+    ],
+    "Scaling Database Reads: Suppose your application\u00e2\u20ac\u2122s database is experiencing high read traffic, which is affecting performance. How can using Aurora\u00e2\u20ac\u2122s read replicas help alleviate this issue?": [
+      "Read Replicas",
+      "Aurora",
+      "Database Scaling"
+    ],
+    "Ensuring High Availability: Imagine your application requires high availability and cannot afford downtime due to a database instance failure. How does Aurora's automatic failover mechanism help ensure continuous availability?": [
+      "Aurora",
+      "Automatic Failover",
+      "High Availability"
+    ],
+    "Optimizing Workload with Custom Endpoints: Imagine you have different types of workloads that require different performance levels. How can custom endpoints in Aurora help you manage these workloads?": [
+      "Custom Endpoints",
+      "Aurora Performance Tiers",
+      "Workload Management"
+    ],
+    "Managing Unpredictable Workloads: Your application has infrequent and unpredictable database usage. How does Aurora Serverless address this need, and what are the cost benefits?": [
+      "Aurora Serverless",
+      "Auto-scaling",
+      "Pay-per-use pricing"
+    ],
+    "Ensuring Disaster Recovery: How does setting up a Global Aurora database help in disaster recovery, and what are the benefits of cross-region replication?": [
+      "Global Aurora",
+      "Cross-Region Replication",
+      "Disaster Recovery Strategy"
+    ],
+    "Integrating Machine Learning: You want to implement fraud detection in your application without having machine learning expertise. How can Aurora's integration with AWS machine learning services help achieve this?": [
+      "AWS Aurora",
+      "Machine Learning Services",
+      "Fraud Detection"
+    ],
+    "Automating Backups: How can automated backups help you ensure your RDS database data is always recoverable up to five minutes ago?": [
+      "RDS (Relational Database Service)",
+      "Backup Retention Period",
+      "Point-in-Time Recovery"
+    ],
+    "Cost-Effective Database Management: If you only need an RDS database for two hours per month, how can you use manual DB snapshots to save costs?": [
+      "RDS (Relational Database Service)",
+      "DB Snapshots",
+      "Cost Optimization"
+    ],
+    "Restoring Databases from S3: How would you restore an on-premises MySQL database backup stored in Amazon S3 to a new RDS MySQL instance?": [
+      "Amazon RDS",
+      "AWS S3",
+      "MySQL Backup"
+    ],
+    "Using IAM Roles for Authentication: How can you authenticate to your RDS database using IAM roles instead of traditional username and password?": [
+      "IAM Roles",
+      "RDS (Relational Database Service)",
+      "AWS Security"
+    ],
+    "Securing Network Access: How would you use security groups to control which IP addresses or ports can access your RDS/Aurora database?": [
+      "Security Groups",
+      "RDS/Aurora",
+      "Network Access Control"
+    ],
+    "Auditing Database Activity: How can you enable and retain audit logs for your RDS/Aurora databases to monitor queries and activities over time?": [
+      "Amazon RDS",
+      "CloudTrail",
+      "Database Activity Streams"
+    ],
+    "Enhancing Database Efficiency: How can RDS Proxy improve the efficiency of your database connections and reduce stress on database resources?": [
+      "RDS Proxy",
+      "Connection Pooling",
+      "Database Scalability"
+    ],
+    "Reducing Failover Time: How does RDS Proxy help in reducing the failover time of your RDS database instances?": [
+      "RDS Proxy",
+      "failover management",
+      "database connection pooling"
+    ],
+    "Using IAM for Database Authentication: How can you enforce IAM authentication for your RDS database using RDS Proxy and securely store credentials?": [
+      "IAM Roles",
+      "RDS Proxy",
+      "AWS Secrets Manager"
+    ],
+    "Managing Database Connections with Lambda: How can RDS Proxy help manage and pool connections for Lambda functions to prevent connection overload on your RDS database instance?": [
+      "RDS Proxy",
+      "Connection Pooling",
+      "Database Connection Management"
+    ],
+    "Improving Database Performance: How can using Amazon ElastiCache help reduce the load on your RDS database for read-intensive workloads?": [
+      "Caching",
+      "Read Capacity",
+      "Database Scalability"
+    ],
+    "Making Applications Stateless: How can you use Amazon ElastiCache to store user session data and make your application stateless?": [
+      "ElastiCache",
+      "Session Management",
+      "Stateless Architecture"
+    ],
+    "Handling Cache Hits and Misses: How does an application interact with Amazon ElastiCache to handle cache hits and misses, and what are the benefits of this approach?": [
+      "Caching Strategies",
+      "Data Consistency",
+      "Performance Optimization"
+    ],
+    "Choosing Between Redis and Memcached: When should you use Redis versus Memcached based on features like high availability, backup, and persistence?": [
+      "In-memory data store",
+      "Persistence options",
+      "High availability configurations"
+    ],
+    "Implementing Cache Invalidation: What strategies can you use to ensure that only the most current data is stored in your cache to maintain data accuracy?": [
+      "Cache Expiration",
+      "Cache Versioning",
+      "Polling as a Fallback"
+    ],
+    "Implementing Redis AUTH: How can you use Redis AUTH and security groups to secure your Redis cluster?": [
+      "Redis AUTH",
+      "Security Groups",
+      "Amazon ElastiCache"
+    ],
+    "Using SSL for In-Flight Encryption: How does SSL in-flight encryption enhance the security of your data in ElastiCache?": [
+      "ElastiCache",
+      "SSL/TLS",
+      "Data Encryption"
+    ],
+    "Data Loading Patterns: When would you use Lazy Loading, Write Through, or ElastiCache as a session store in your application?": [
+      "Lazy Loading",
+      "Write Through Cache",
+      "ElastiCache"
+    ]
+  },
+  "DNS": {
+    "Registering a Domain: How would you register a domain name using a domain registrar such as Amazon Route 53 or GoDaddy?": [
+      "Domain Name System",
+      "Nameserver",
+      "Whois"
+    ],
+    "Understanding DNS Caching: What is the importance of DNS caching in improving response times for DNS queries?": [
+      "DNS Resolver",
+      "TTL (Time to Live)",
+      "Cache Hit Ratio"
+    ],
+    "Setting a High TTL for Stability: Suppose you have a stable application with infrequent DNS changes. How would setting a high TTL (e.g., 24 hours) affect your DNS traffic and client experience?": [
+      "TTL (Time to Live)",
+      "Caching",
+      "DNS Resolution"
+    ],
+    "Setting a Low TTL for Rapid Updates: Imagine you need to frequently update your DNS records due to dynamic changes in your application. How would setting a low TTL (e.g., 60 seconds) help in this scenario?": [
+      "TTL",
+      "DNS Records",
+      "Caching"
+    ],
+    "Mapping a Load Balancer to a Domain: You have a Load Balancer and want to map it to a domain you own (e.g., myapp.mydomain.com). How would you choose between using a CNAME and an Alias record?": [
+      "CNAME Record",
+      "Alias Record",
+      "DNS Resolution"
+    ],
+    "Handling Root Domains with Alias Records: You need to point a root domain (e.g., mydomain.com) to an AWS resource. How would you configure this using an Alias record?": [
+      "Route 53",
+      "Alias Record",
+      "CNAME"
+    ],
+    "Optimizing DNS Queries with Alias Records: You want to reduce costs and improve DNS query efficiency for your AWS resources. How can Alias records help achieve this?": [
+      "Route 53",
+      "DNS resolution",
+      "Cost optimization"
+    ]
+  },
+  "S3 Basics": {
+    "Website Backup You are responsible for ensuring the backup and disaster recovery of your company's website. You need to use a scalable storage solution to store backups and set up policies to replicate data to another AWS region. What AWS service will you use, and how will you configure it?": [
+      "Amazon S3",
+      "Replication Policies",
+      "Lifecycle Policies"
+    ],
+    "Archiving Data Your organization needs to archive large volumes of data that are infrequently accessed but must be retained for several years for compliance reasons. What service and storage class in AWS would be most cost-effective for this purpose?": [
+      "Amazon S3 Glacier",
+      "S3 Standard-IA",
+      "S3 Object Lifecycle Management"
+    ],
+    "Your company has on-premises storage systems but plans to extend its storage capabilities to the cloud. You need a solution that allows seamless integration between on-premises storage and cloud storage. Which AWS service will you use, and what feature will you leverage?": [
+      "AWS Storage Gateway",
+      "Hybrid Cloud Storage",
+      "S3 Compatibility"
+    ],
+    "User-Based Security You are tasked with ensuring that only specific users in your organization can access certain S3 buckets. You need to use IAM policies to control which API calls are allowed for specific IAM users. What steps will you take to implement this?": [
+      "IAM Policies",
+      "S3 Bucket Policy",
+      "Access Control Lists (ACLs)"
+    ],
+    "Your company needs to grant access to an S3 bucket to a user from another AWS account for a collaborative project. How will you configure the S3 bucket policies to allow cross-account access?": [
+      "Bucket Policy",
+      "Cross-Account Access",
+      "IAM Role"
+    ],
+    "You need to make an S3 bucket publicly accessible so that website visitors can access files stored within it. What configuration will you apply to the S3 bucket policy to achieve this, and what security considerations should you keep in mind?": [
+      "Bucket Policy",
+      "Public Access Block",
+      "IAM Permissions"
+    ],
+    "Cross-Region Replication for Compliance Your company needs to comply with data regulations that require storing copies of data in multiple geographic regions. How will you set up cross-region replication (CRR) in AWS S3, and what are the key steps involved?": [
+      "S3 Bucket",
+      "Data Replication",
+      "AWS IAM"
+    ],
+    "Same-Region Replication for Log Aggregation You manage multiple S3 buckets that store logs in the same region. How will you configure same-region replication (SRR) to aggregate these logs into a single bucket for easier analysis?": [
+      "S3 Buckets",
+      "Replication Configuration",
+      "Log Analysis"
+    ],
+    "Lower Latency Access Your users experience latency issues accessing data from a single region. How can cross-region replication (CRR) help provide lower latency access to data for users in different geographic locations?": [
+      "Cross-Region Replication",
+      "Bucket Policy",
+      "Data Consistency Model"
+    ],
+    "Frequently Accessed Data Your team is developing a mobile application that requires frequent access to user data with low latency and high throughput. Which S3 storage class will you choose, and why?": [
+      "Amazon S3 Standard",
+      "Latency Optimization",
+      "Throughput Performance"
+    ],
+    "Disaster Recovery and Backups Your company needs a cost-effective solution for storing backup data that is infrequently accessed but requires rapid access when needed. Which S3 storage class will you use, and what are the key characteristics?": [
+      "S3 Glacier",
+      "S3 Intelligent-Tiering",
+      "S3 Standard-IA"
+    ],
+    "Secondary Backup Storage You have an on-premises backup solution and need a secondary, cost-effective backup in the cloud. You are okay with lower availability as long as the data can be recreated if necessary. Which S3 storage class fits this need?": [
+      "S3 Glacier",
+      "S3 Intelligent-Tiering",
+      "S3 Standard-IA"
+    ]
+  },
+  "S3 Advanced": {
+    "EC2 Application and Thumbnail Management You have an application on EC2 that creates thumbnails from profile photos uploaded to Amazon S3. The thumbnails need to be kept for 60 days and can be easily recreated from the original photos. The source images should be immediately retrievable for 60 days, after which retrieval can take up to six hours. How would you design the storage class transitions and lifecycle rules for this use case?": [
+      "S3 Lifecycle Policies",
+      "S3 Storage Classes",
+      "S3 Object Management"
+    ],
+    "Recovery of Deleted S3 Objects Your company policy requires that deleted S3 objects should be recoverable immediately for 30 days and within 48 hours for up to 365 days. How would you configure S3 versioning and lifecycle rules to meet this requirement?": [
+      "S3 Versioning",
+      "S3 Lifecycle Policies",
+      "S3 Object Lock"
+    ],
+    "Cost Management for Large Files You are managing a bucket with very large files that are frequently downloaded by external users. To manage costs effectively, you want to shift the data transfer costs to the users who download the files. How will you configure your S3 bucket to enable Requester Pays, and what are the implications for the users?": [
+      "Requester Pays",
+      "S3 Bucket Policy",
+      "Data Transfer Costs"
+    ],
+    "Sharing Large Datasets with Other Accounts Your organization needs to share large datasets with multiple AWS accounts. To ensure that the data transfer costs are not borne by your organization, you decide to use the Requester Pays feature. How will you set this up, and what requirements must be met by the requesters?": [
+      "Requester Pays Buckets",
+      "Amazon S3 Access Control Lists (ACLs)",
+      "AWS Identity and Access Management (IAM)"
+    ],
+    "Filtering Specific Event Types You want to set up an S3 Event Notification to only trigger when JPEG images are uploaded to your bucket. How will you configure the event filtering to achieve this, and what are the potential targets you can send these notifications to?": [
+      "S3 Event Notification",
+      "Event Filtering",
+      "SNS (Simple Notification Service)"
+    ],
+    "Automating Image Thumbnail Generation You need to automatically generate thumbnails for all images uploaded to your S3 bucket. How will you configure S3 Event Notifications to trigger a Lambda function that creates the thumbnails, and what IAM permissions are required?": [
+      "S3 Event Notifications",
+      "AWS Lambda",
+      "IAM Permissions"
+    ],
+    "Accelerating Transfers Across Regions You need to upload a large file from the United States to an S3 bucket in Australia as quickly as possible. How will you utilize S3 Transfer Acceleration, and what is the role of edge locations in this process?": [
+      "S3 Transfer Acceleration",
+      "Edge Locations",
+      "Amazon CloudFront"
+    ],
+    "Copying Objects Between Buckets: You need to copy a large number of objects from one S3 bucket to another. How will you use S3 Batch Operations to perform this task efficiently, and what are the key parameters you need to set?": [
+      "S3 Batch Operations",
+      "Manifest File",
+      "Job Priority"
+    ],
+    "Understanding Storage Across AWS Organization: You need to analyze and optimize storage across your entire AWS Organization to discover anomalies and apply protection best practices. Which AWS service would you use?": [
+      "Amazon S3",
+      "S3 Storage Classes",
+      "AWS CloudTrail"
+    ],
+    "Identifying Cost Efficiencies: Your company is looking to optimize storage costs across all S3 buckets by identifying underutilized resources and inefficient storage. Which AWS service provides the necessary metrics and insights?": [
+      "S3 Storage Lens",
+      "Cost Explorer",
+      "S3 Intelligent-Tiering"
+    ]
+  },
+  "S3 Security": {
+    "Encrypting Objects with AWS Managed Keys: You need to ensure that all objects uploaded to your S3 bucket are encrypted using keys managed by AWS. Which server-side encryption method would you use?": [
+      "SSE-S3",
+      "KMS (AWS Key Management Service)",
+      "Server-Side Encryption"
+    ],
+    "Managing Encryption Keys with KMS: Your organization requires full control over encryption keys and wants to track their usage. Which server-side encryption method should you use, and what AWS service will help manage the keys?": [
+      "KMS (Key Management Service)",
+      "Server-Side Encryption (SSE)",
+      "Encryption at Rest"
+    ],
+    "Encrypting Data Client-Side: You prefer to handle encryption on the client side before uploading data to S3 to maintain full control over the encryption process. What encryption approach will you use?": [
+      "Client-Side Encryption",
+      "AWS Key Management Service (KMS)",
+      "Encryption Algorithms"
+    ],
+    "Enabling Cross-Origin Requests: You need to configure your S3 bucket to allow a web application hosted on a different domain to access its resources. Which security feature will you use?": [
+      "CORS (Cross-Origin Resource Sharing)",
+      "Bucket Policies",
+      "IAM Roles"
+    ],
+    "Understanding Same Origin Policy: Explain the concept of the same origin policy and how it relates to web security. Which feature allows web applications to securely request resources from different origins?": [
+      "CORS",
+      "Data Protection",
+      "Bucket Policy"
+    ],
+    "Implementing WORM Model: You need to ensure that objects in your Glacier vault cannot be modified or deleted for compliance reasons. Which feature will you use?": [
+      "Object Lock",
+      "Compliance Mode",
+      "S3 Glacier"
+    ],
+    "Locking Policies for Compliance: To meet strict data retention requirements, you need to lock your Glacier Vault so that its policy cannot be changed or deleted. What feature should you implement?": [
+      "Immutability",
+      "S3 Object Lock",
+      "Compliance Mode"
+    ],
+    "Choosing Retention Modes: Your organization requires certain objects to be immutable and undeletable by any user, including the root user. Which retention mode will you use in S3 Object Lock?": [
+      "Object Lock",
+      "Governance Mode",
+      "Compliance Mode"
+    ],
+    "Managing Access for Different Data Types: Your S3 bucket contains finance data, sales data, and analytics data. You need to ensure that finance users only access finance data, sales users only access sales data, and analytics users have read-only access to both. Which feature will help you manage this?": [
+      "IAM Policies",
+      "S3 Bucket Policies",
+      "Access Control Lists (ACLs)"
+    ],
+    "Providing Private Access Through VPC: You want an EC2 instance in your VPC to access your S3 bucket without going through the internet. Which feature allows you to define access points for VPC origin, and what additional configuration is needed?": [
+      "VPC Endpoint",
+      "S3 Access Points",
+      "IAM Policies"
+    ],
+    "Creating Separate Access Points for Teams: Your organization wants to create separate access points for different teams (e.g., finance, sales) to access specific data within an S3 bucket. Which feature should you use to achieve this?": [
+      "S3 Access Points",
+      "IAM Policies",
+      "S3 Bucket Policies"
+    ],
+    "Dynamic Data Modification: You need to modify objects stored in an S3 bucket dynamically before they are retrieved by an application. Which AWS feature allows you to perform this task without duplicating the objects?": [
+      "S3 Event Notifications",
+      "AWS Lambda",
+      "S3 Object Lambda"
+    ],
+    "Redacting Sensitive Data: Your analytics application requires access to data in an S3 bucket, but certain sensitive information must be redacted before retrieval. Which AWS feature will you use to achieve this?": [
+      "AWS Macie",
+      "Data Loss Prevention (DLP)",
+      "S3 Object Lambda"
+    ],
+    "Improving Global Read Performance: You need to ensure that users around the world experience low latency when accessing your website's content. Which AWS service would you use to cache the content at various global locations?": [
+      "Amazon CloudFront",
+      "Content Delivery Network (CDN)",
+      "Caching Strategies"
+    ]
+  },
+  "CloudFront": {
+    "Improving Global Read Performance: You need to ensure that users around the world experience low latency when accessing your website's content. Which AWS service would you use to cache the content at various global locations?": [
+      "CDN (Content Delivery Network)",
+      "Edge Locations",
+      "Caching Strategy"
+    ],
+    "Securing S3 Bucket Access: You want to ensure that only CloudFront can access your S3 bucket content. Which feature will you use to achieve this?": [
+      "Origin Access Identity",
+      "Bucket Policy",
+      "Signed URLs"
+    ],
+    "Providing DDoS Protection: Your web application needs protection against DDoS attacks. Which AWS service provides this protection while also distributing your content globally?": [
+      "DDoS Mitigation",
+      "Global Content Delivery",
+      "AWS Shield"
+    ],
+    "Optimizing Costs for Global Content Delivery: Your company needs to deliver content globally but wants to minimize costs. Which CloudFront feature allows you to select edge locations based on pricing to achieve this?": [
+      "Edge Locations",
+      "CloudFront Pricing Model",
+      "Geo-Restriction"
+    ],
+    "Balancing Performance and Cost: You want to ensure good performance for your CloudFront distribution without using the most expensive regions. Which price class will you choose to balance performance and cost?": [
+      "Price Class",
+      "Edge Locations",
+      "Caching"
+    ],
+    "Maximizing Performance with Global Edge Locations: Your organization requires the best possible performance for content delivery worldwide, regardless of cost. Which CloudFront price class should you select?": [
+      "CloudFront Price Class",
+      "Edge Locations",
+      "Content Delivery Network (CDN)"
+    ],
+    "Immediate Content Update: You have updated files in your S3 bucket and want CloudFront to serve the new content immediately, bypassing the TTL. Which feature will you use to invalidate the cached content at edge locations?": [
+      "Cache Invalidation",
+      "TTL (Time to Live)",
+      "Edge Locations"
+    ],
+    "Partial Cache Refresh: You have updated images in a specific directory and need CloudFront to refresh only the images without invalidating the entire cache. How will you specify the path for cache invalidation?": [
+      "Cache Invalidation",
+      "TTL (Time to Live)",
+      "Cache Behavior"
+    ],
+    "Ensuring Latest Content Delivery: Your website's index.html file has been updated, and you want to ensure that all users get the latest version immediately. Which CloudFront feature allows you to invalidate this specific file in the cache?": [
+      "Cache Invalidation",
+      "Distributions",
+      "TTL (Time to Live)"
+    ],
+    "Improving Performance for Global Users: Your application is deployed in a single AWS region, but you have users worldwide who experience high latency. Which AWS service will help reduce latency by routing traffic through the nearest edge location using Anycast IP?": [
+      "Edge Locations",
+      "Latency Optimization",
+      "Content Delivery Network"
+    ],
+    "Non-HTTP Use Cases Requiring Static IPs: You need to improve the performance of a global gaming application that requires low-latency connections and static IP addresses. Which AWS service is best suited for this use case?": [
+      "Global Accelerator",
+      "Static IP Addresses",
+      "Latency Optimization"
+    ],
+    "Ensuring Consistent Performance and Fast Failover: Your global application needs to ensure consistent performance with low latency and have fast regional failover in case of issues. Which AWS service provides intelligent routing and health checks to achieve this?": [
+      "Global Accelerator",
+      "Route 53",
+      "Elastic Load Balancing"
+    ]
+  },
+  "Snow Family": {
+    "Efficient Data Transfer for Large Data Sets: Your organization needs to transfer hundreds of terabytes of data to AWS, but network transfer is too slow and unreliable. Which AWS service and device would you use to perform the data migration?": [
+      "AWS Snowball",
+      "AWS Snowmobile",
+      "Data Transfer"
+    ],
+    "Processing Data in Remote Locations: You need to process data in a remote location with limited internet connectivity, such as a mining station underground. Which AWS service and device would allow you to perform edge computing in this scenario?": [
+      "AWS Snowball",
+      "AWS Snowcone",
+      "Edge Computing"
+    ],
+    "Migrating Existing Windows File Server to AWS: Your organization has a Windows File Server on-premises and wants to migrate it to AWS while maintaining compatibility with SMB protocol and Active Directory. Which AWS service will you use?": [
+      "AWS Snowball",
+      "AWS Snowmobile",
+      "AWS Storage Gateway"
+    ],
+    "High-Performance Computing for Financial Modeling: You need a file system that supports high-performance computing (HPC) for financial modeling and can handle large-scale data processing with low latency. Which AWS service should you choose?": [
+      "Amazon S3",
+      "AWS Lambda",
+      "AWS Batch"
+    ],
+    "Extending On-Premises Storage to the Cloud: Your organization has a mix of on-premises and cloud storage and needs to bridge the two for data backup and disaster recovery. Which AWS service and specific gateway would you use to connect on-premises storage to Amazon S3?": [
+      "AWS Snowball",
+      "AWS Storage Gateway",
+      "Data Transfer"
+    ],
+    "Low-Latency Access to Frequently Used Data: You need to provide low-latency access to frequently accessed data stored in AWS while maintaining a local cache for your on-premises applications. Which AWS service and specific gateway would you use?": [
+      "AWS Snowcone",
+      "AWS Snowball",
+      "AWS Storage Gateway"
+    ],
+    "Backing Up Tape Archives to the Cloud: Your company uses a tape-based backup system and wants to transition to a cloud-based solution while maintaining compatibility with existing tape backup processes. Which AWS service and specific gateway would you use to back up tapes to Amazon S3 and Glacier?": [
+      "AWS Snowball",
+      "AWS Snowmobile",
+      "AWS Storage Gateway"
+    ],
+    "Secure File Transfers to Amazon S3: Your organization needs to securely transfer files to Amazon S3 using a protocol that encrypts data in transit. Which AWS service and protocol would you use?": [
+      "AWS Snowball",
+      "AWS Direct Connect",
+      "SFTP (SSH File Transfer Protocol)"
+    ],
+    "Integrating FTP Service with Active Directory: You need to provide FTP access to Amazon EFS for your users and integrate the authentication with your existing Active Directory system. Which AWS service would you choose to achieve this?": [
+      "Amazon EFS",
+      "AWS Transfer Family",
+      "Active Directory Service"
+    ],
+    "Synchronizing On-Premises Data to AWS S3: Your organization needs to synchronize data from on-premises servers to Amazon S3, including all file permissions and metadata. Which AWS service and protocol would you use to achieve this?": [
+      "AWS Snowball",
+      "AWS DataSync",
+      "Amazon S3"
+    ],
+    "Scheduled Data Replication Between AWS Services: You need to replicate data between Amazon S3 and Amazon EFS on a daily schedule, ensuring that all metadata is preserved. Which AWS service would you use for this task?": [
+      "Data Transfer",
+      "Data Lifecycle Management",
+      "AWS DataSync"
+    ],
+    "Data Transfer with Limited Network Capacity: Your company needs to transfer a large amount of data to AWS, but the network capacity is limited. Which AWS service and device would you use to facilitate this transfer?": [
+      "AWS Snowball",
+      "AWS Snowmobile",
+      "Data Transfer Appliance"
+    ],
+    "Archiving Data to Cold Storage: Your organization needs to archive less frequently accessed data from Amazon S3 to a lower-cost storage class. Which AWS service would you use for this purpose?": [
+      "Amazon S3 Glacier",
+      "Data Lifecycle Management",
+      "AWS Snowball"
+    ],
+    "Synchronizing On-Premises Volumes to AWS: You need to back up on-premises server volumes to AWS with scheduled synchronization and metadata preservation. Which AWS service would you choose?": [
+      "AWS Snowball",
+      "Data Transfer",
+      "Edge Computing"
+    ],
+    "High-Performance Computing File System for Linux: Your team requires a high-performance file system for a Linux-based HPC workload, compatible with Lustre clients. Which AWS service should you use?": [
+      "Lustre",
+      "Amazon S3",
+      "Amazon EBS"
+    ]
+  },
+  "Decoupling Applications": {
+    "Handling Sudden Traffic Spikes: Your e-commerce application experiences sudden spikes in purchase activity, which overwhelms the shipping service. Which AWS service would you use to decouple these services and handle the traffic efficiently?": [
+      "AWS SQS",
+      "AWS Lambda",
+      "AWS SNS"
+    ],
+    "Real-Time Data Streaming: Your company needs to process a continuous stream of data for real-time analytics. Which AWS service should you use to handle this requirement?": [
+      "Amazon Kinesis",
+      "AWS Lambda",
+      "Amazon Simple Queue Service (SQS)"
+    ],
+    "Distributing Notifications: You need to send notifications to multiple subscribers whenever a new order is placed in your system. Which AWS service would be best suited for this use case?": [
+      "Amazon SNS",
+      "Event-Driven Architecture",
+      "Pub/Sub Messaging"
+    ],
+    "Processing Orders Efficiently: Your e-commerce application needs to process orders and ship items without overloading the system during peak times. How can you use AWS services to ensure that order processing and shipping tasks are handled efficiently?": [
+      "Amazon SQS",
+      "AWS Lambda",
+      "Amazon SNS"
+    ],
+    "Scaling Video Processing: You have an application that processes video uploads, which can be resource-intensive and vary in volume. How can you design a system using AWS services to handle the varying load without impacting the user experience?": [
+      "Amazon S3",
+      "AWS Lambda",
+      "Amazon Elastic Transcoder"
+    ],
+    "Secure Message Handling: You need to ensure that messages sent and received through your SQS queue are encrypted both in transit and at rest. Which AWS features and services will you use to achieve this?": [
+      "Amazon SQS",
+      "AWS Key Management Service (KMS)",
+      "TLS/SSL Encryption"
+    ],
+    "Ensuring Single Message Processing: Your application needs to ensure that each message is processed exactly once, even if processing takes longer than expected. How can you use AWS services to manage message visibility and avoid duplicate processing?": [
+      "Amazon SQS",
+      "Visibility Timeout",
+      "Idempotency"
+    ],
+    "Handling Long Processing Times: A consumer in your application sometimes requires more time to process a message than the default visibility timeout allows. What steps can you take to ensure the message remains invisible to other consumers while it is being processed?": [
+      "Visibility Timeout",
+      "Message Queue",
+      "Long Polling"
+    ],
+    "Ensuring Message Order: You have a logging service that must process log entries in the exact order they were generated to maintain data integrity. Which AWS service should you use to guarantee that log messages are processed in the order they were sent?": [
+      "Amazon SQS",
+      "FIFO Queues",
+      "Message Group ID"
+    ],
+    "Handling Duplicates: Your application sends the same message multiple times by accident. Which AWS service feature can help you ensure that only one copy of each message is processed, even if duplicates are sent within a short timeframe?": [
+      "Amazon SQS",
+      "Message Deduplication",
+      "FIFO Queues"
+    ],
+    "Scaling Auto Scaling Groups: You have an application that experiences variable load, with sudden spikes in traffic. Which AWS service can you use to automatically scale the number of EC2 instances in your Auto Scaling Group based on the number of messages in a queue?": [
+      "Auto Scaling",
+      "Amazon SQS",
+      "Elastic Load Balancing"
+    ],
+    "Buffering Database Writes: During a major sale, your e-commerce application needs to ensure that every order is processed, even if your database is temporarily overloaded. Which AWS service can act as a buffer to ensure all orders are eventually written to the database without being lost?": [
+      "Amazon SQS",
+      "Amazon SNS",
+      "Amazon Kinesis"
+    ],
+    "Decoupling Notifications: You have a buying service that needs to notify multiple systems (email, fraud detection, shipping, and an SQS queue) whenever a purchase is made. Which AWS service allows you to send a single message that all these systems can receive?": [
+      "Amazon SNS",
+      "Message Broker",
+      "Event-Driven Architecture"
+    ],
+    "Handling Multiple Subscribers: Your application needs to broadcast a message to thousands of subscribers whenever a new event occurs. Which AWS service provides a publish-subscribe model that supports millions of subscriptions per topic?": [
+      "Amazon SNS",
+      "Pub/Sub Messaging",
+      "Event-Driven Architecture"
+    ],
+    "Integrating with Other AWS Services: You need to trigger a Lambda function, send an email notification, and log an event in a Kinesis Data Firehose stream whenever a specific condition is met in your application. Which AWS service can facilitate this integration?": [
+      "Amazon Simple Notification Service (SNS)",
+      "AWS Lambda",
+      "Amazon Kinesis"
+    ],
+    "Multiple SQS Queue Subscriptions: You have a buying service that needs to send messages to multiple SQS queues without directly writing to each queue. Which AWS services and pattern would you use to achieve this?": [
+      "SNS (Simple Notification Service)",
+      "Message Broker",
+      "Publish/Subscribe Pattern"
+    ],
+    "Filtered Message Delivery: Your application sends various order statuses (placed, canceled, declined) to an SNS topic, and you need different SQS queues to receive only specific order statuses. How can you implement this?": [
+      "SNS (Simple Notification Service)",
+      "SQS (Simple Queue Service)",
+      "Message Filtering"
+    ],
+    "Scaling Data Ingestion: Your application needs to ingest a large amount of streaming data and process it in near real-time. You have many producers sending data and require the ability to replay data for up to a year. Which AWS service and mode would you use to handle this?": [
+      "Amazon Kinesis",
+      "Event Streaming",
+      "Data Replay"
+    ],
+    "Data Processing with Enhanced Throughput: You have multiple consumers that need to process the same data stream with high throughput and low latency. What feature of Kinesis Data Streams would you enable to meet this requirement?": [
+      "Kinesis Shard",
+      "Enhanced Fan-out",
+      "Data Stream Partitioning"
+    ],
+    "Data Transformation and Delivery: Your application needs to send data to Amazon S3 and transform it using a Lambda function before storage. Which service would you use and what configuration options are available to ensure near real-time data delivery?": [
+      "Amazon S3",
+      "AWS Lambda",
+      "Amazon Kinesis"
+    ],
+    "Integration with Third-Party Services: Your company uses Datadog for monitoring and you need to stream log data directly from your applications to Datadog. How would you configure Kinesis Data Firehose to achieve this?": [
+      "Kinesis Data Firehose",
+      "Data Streaming",
+      "Log Management"
+    ],
+    "Buffering and Batch Processing: You have a use case where data needs to be processed in batches every 5 minutes and the batch size should be at least 10 MB before sending it to Amazon Redshift. How would you configure Kinesis Data Firehose to meet this requirement?": [
+      "Kinesis Data Firehose",
+      "Batch processing",
+      "Amazon Redshift"
+    ],
+    "Tracking GPS Data of Trucks: Imagine you have 100 trucks on the road, each sending GPS data regularly to AWS. You need to ensure the data is processed in the order it was sent for each truck. How would you use Kinesis Data Streams and partition keys to achieve this?": [
+      "Kinesis Data Streams",
+      "Partition Keys",
+      "Data Ordering"
+    ],
+    "Scaling Consumers with SQS FIFO: You need to process messages from multiple sources (e.g., trucks) and want to scale the number of consumers based on the number of sources. How would you use SQS FIFO and group IDs to manage and scale this workload?": [
+      "SQS FIFO (First-In-First-Out)",
+      "Message Group ID",
+      "Consumer Scaling"
+    ]
+  },
+  "Serverless": {
+    "How would you design an application architecture that does not require server management?": [
+      "AWS Lambda",
+      "API Gateway",
+      "DynamoDB"
+    ],
+    "Which services would you use to build a fully serverless web application?": [
+      "AWS Lambda",
+      "Amazon API Gateway",
+      "AWS Amplify"
+    ],
+    "How can you ensure scalable data processing without provisioning servers?": [
+      "AWS Lambda",
+      "Amazon S3",
+      "AWS Step Functions"
+    ],
+    "How would you handle intermittent workloads with minimal cost?": [
+      "AWS Lambda",
+      "API Gateway",
+      "Event-driven architecture"
+    ],
+    "What service would you use to process and transform data streams on-the-fly?": [
+      "AWS Lambda",
+      "Amazon Kinesis",
+      "AWS Step Functions"
+    ],
+    "How can you run scheduled tasks without managing servers?": [
+      "AWS Lambda",
+      "Amazon EventBridge",
+      "AWS Step Functions"
+    ],
+    "Managing unpredictable workloads: How would you configure DynamoDB for an application with variable traffic patterns?": [
+      "Auto Scaling",
+      "Provisioned Throughput",
+      "On-Demand Capacity Mode"
+    ],
+    "Handling large-scale data: What DynamoDB features make it suitable for applications requiring massive data storage and high throughput?": [
+      "Scalability",
+      "Provisioned Throughput",
+      "Global Secondary Indexes"
+    ],
+    "Processing DynamoDB updates in real-time: How would you handle real-time processing of changes in your DynamoDB table?": [
+      "AWS Lambda",
+      "DynamoDB Streams",
+      "Event-Driven Architecture"
+    ],
+    "Implementing cross-region replication: What steps would you take to enable data replication across multiple regions using DynamoDB?": [
+      "DynamoDB Streams",
+      "Global Tables",
+      "AWS Lambda"
+    ],
+    "Managing session data with TTL: How would you manage session data to automatically delete it after a certain period?": [
+      "Time to Live (TTL)",
+      "AWS Lambda",
+      "Amazon DynamoDB"
+    ],
+    "Performing analytics on DynamoDB data: What process would you use to perform analytics on data stored in DynamoDB?": [
+      "AWS Lambda",
+      "Amazon Athena",
+      "Amazon QuickSight"
+    ],
+    "Exposing Lambda Functions as HTTP Endpoints: How would you enable clients to invoke your Lambda functions via HTTP?": [
+      "API Gateway",
+      "HTTP Trigger",
+      "Lambda Integration"
+    ]
+  },
+  "Edge Functions": {
+    "How would you minimize latency for logic execution close to users?": [
+      "Latency Optimization",
+      "Edge Computing",
+      "Content Delivery Network (CDN)"
+    ],
+    "Which service would you use to customize CDN content at high scale?": [
+      "CDN",
+      "Lambda@Edge",
+      "Content Delivery Network"
+    ],
+    "How can you manage functions for both viewer and origin requests?": [
+      "AWS Lambda@Edge",
+      "CloudFront",
+      "Request and Response Interception"
+    ],
+    "What service supports JavaScript for high-scale, latency-sensitive CDN customizations?": [
+      "CDN (Content Delivery Network)",
+      "Lambda@Edge",
+      "Edge Computing"
+    ]
+  },
+  "Data Transfer": {
+    "Implementing API Security: What methods can be used to secure your API Gateway?": [
+      "Authentication",
+      "Authorization",
+      "Encryption"
+    ],
+    "Handling Real-time Data: How would you set up real-time data streaming using API Gateway?": [
+      "API Gateway",
+      "Amazon Kinesis",
+      "WebSocket API"
+    ],
+    "How do you choose a database for a write-heavy workload with fluctuating data access patterns?": [
+      "Database Sharding",
+      "Load Balancing",
+      "Data Consistency Models"
+    ],
+    "Suppose you need to transfer 200 Terabytes of data to AWS using a 100 Mbps internet connection. How long will it take and is this method suitable?": [
+      "Data Transfer Speed",
+      "Upload Time Calculation",
+      "AWS Data Transfer Options"
+    ],
+    "Suppose you have provisioned a 1 Gbps Direct Connect line. How long will it take to transfer 200 Terabytes of data?": [
+      "bandwidth",
+      "latency",
+      "transfer speed"
+    ],
+    "Suppose you need to transfer a large amount of data to AWS quickly and reliably. How can you use Snowball to achieve this?": [
+      "AWS Snowball",
+      "Data Migration",
+      "Physical Data Transfer"
+    ],
+    "Suppose you have ongoing data replication needs. Which AWS services and methods can you use for this purpose?": [
+      "AWS DataSync",
+      "AWS Snowball",
+      "Amazon S3 Replication"
+    ],
+    "Suppose you need to combine Snowball with DMS for database migration. How does this process work?": [
+      "AWS Snowball",
+      "Database Migration Service (DMS)",
+      "Data Transfer Appliance"
+    ]
+  },
+  "Databases": {
+    "What database options are suitable for a workload requiring strong schema and SQL queries?": [
+      "Relational Database",
+      "SQL",
+      "ACID Compliance"
+    ],
+    "Which database would you select for a workload involving large object storage and infrequent access?": [
+      "Amazon S3",
+      "Object Storage",
+      "Cold Storage"
+    ],
+    "How do you handle search and free text queries in a database?": [
+      "Full-Text Search",
+      "Indexing",
+      "Query Optimization"
+    ],
+    "What considerations are important for choosing a database to support a BI and analytics workload?": [
+      "Scalability",
+      "Data Warehousing",
+      "Query Performance"
+    ]
+  },
+  "Data Analytics": {
+    "How would you analyze large datasets stored in Amazon S3 without moving the data?": [
+      "Amazon Athena",
+      "AWS Glue",
+      "Amazon Redshift Spectrum"
+    ],
+    "What format and techniques would you use to reduce the cost of queries in Athena?": [
+      "Partitioning",
+      "Columnar Storage",
+      "Data Compression"
+    ],
+    "How can you set up data partitions in S3 to improve query performance?": [
+      "S3 Buckets",
+      "Data Partitioning",
+      "Amazon Athena"
+    ],
+    "How would you enable Athena to query data from both S3 and on-premises databases?": [
+      "AWS Glue",
+      "Data Catalog",
+      "Federated Queries"
+    ],
+    "What are the benefits of using serverless query services like Athena for ad hoc queries and business intelligence?": [
+      "serverless architecture",
+      "ad hoc querying",
+      "data lake"
+    ],
+    "How would you set up an analytics engine that scales to petabytes of data with 10x better performance than other data warehouses?": [
+      "Amazon Redshift",
+      "Serverless Architecture",
+      "Data Lake"
+    ],
+    "What database would you use to perform fast joins and aggregations for intensive data warehousing?": [
+      "SQL",
+      "Data Warehouse",
+      "ETL"
+    ],
+    "How can you ensure disaster recovery for a Redshift cluster in a single AZ?": [
+      "Redshift Snapshots",
+      "Cross-Region Replication",
+      "Backup and Restore Strategy"
+    ],
+    "How would you automate the process of loading data from S3 into Redshift using Kinesis Data Firehose?": [
+      "Amazon Kinesis",
+      "AWS Glue",
+      "Redshift Spectrum"
+    ],
+    "How would you enable search functionality for partial matches in your application?": [
+      "Full-Text Search",
+      "Indexing",
+      "Query Optimization"
+    ],
+    "Which service would you use to perform analytics queries on a non-relational database with flexible indexing?": [
+      "Amazon Athena",
+      "Amazon DynamoDB",
+      "Amazon Redshift Spectrum"
+    ],
+    "How can you automate the process of ingesting CloudWatch Logs into OpenSearch?": [
+      "CloudWatch Logs",
+      "OpenSearch",
+      "Data Ingestion"
+    ],
+    "What architecture would you use to integrate DynamoDB with OpenSearch for enhanced search capabilities?": [
+      "DynamoDB Streams",
+      "Amazon Kinesis",
+      "Elasticsearch Service"
+    ],
+    "How can you achieve near real-time data ingestion from Kinesis Data Streams to OpenSearch?": [
+      "Kinesis Data Firehose",
+      "Data Transformation",
+      "Event Streaming"
+    ],
+    "How would you create interactive dashboards connected to various data sources?": [
+      "Business Intelligence",
+      "Data Visualization",
+      "ETL (Extract, Transform, Load)"
+    ],
+    "Which QuickSight feature helps prevent some columns from being displayed to certain users?": [
+      "Row-Level Security",
+      "Data Permissions",
+      "User Roles"
+    ],
+    "How would you transform and load data from S3 into Redshift?": [
+      "ETL",
+      "Amazon Redshift",
+      "Amazon S3"
+    ],
+    "What tool can you use to convert CSV files in S3 to Parquet format for better performance with Athena?": [
+      "AWS Glue",
+      "Amazon Athena",
+      "S3 Select"
+    ],
+    "How can you automate ETL processes using Glue and Lambda or EventBridge?": [
+      "ETL (Extract, Transform, Load)",
+      "AWS Glue",
+      "AWS Lambda"
+    ],
+    "How would you centralize and manage data from various sources for analytics?": [
+      "Data Warehouse",
+      "ETL (Extract, Transform, Load)",
+      "Data Lake"
+    ],
+    "What service can help you automate the collection and transformation of data into a data lake?": [
+      "AWS Glue",
+      "Amazon S3",
+      "ETL (Extract, Transform, Load)"
+    ],
+    "How would you design a serverless pipeline to collect and process data from IoT devices?": [
+      "AWS Lambda",
+      "Amazon Kinesis",
+      "AWS IoT Core"
+    ],
+    "What service would you use to transform and cleanse data in real-time?": [
+      "AWS Glue",
+      "Amazon Kinesis",
+      "AWS Data Pipeline"
+    ],
+    "How can you query and analyze data stored in an S3 bucket using SQL?": [
+      "Amazon Athena",
+      "S3 Select",
+      "AWS Glue"
+    ]
+  },
+  "Monitoring and Auditing": {
+    "How would you monitor the CPU utilization of your EC2 instances?": [
+      "CloudWatch",
+      "EC2 Metrics",
+      "AWS Management Console"
+    ],
+    "What service can you use to create a custom metric for memory usage?": [
+      "CloudWatch",
+      "Custom Metrics",
+      "Data Monitoring"
+    ],
+    "How would you store and manage application logs in AWS?": [
+      "Amazon CloudWatch",
+      "AWS CloudTrail",
+      "AWS S3"
+    ],
+    "What service would you use to query and analyze log data in CloudWatch Logs?": [
+      "CloudWatch Insights",
+      "Log Group",
+      "Metric Filter"
+    ],
+    "How can you export CloudWatch Logs to Amazon S3?": [
+      "CloudWatch Logs",
+      "Amazon S3",
+      "Log Export"
+    ],
+    "Which service can be used for real-time streaming of log data to multiple destinations?": [
+      "Amazon Kinesis",
+      "CloudWatch Logs",
+      "Logstash"
+    ],
+    "How would you set up a notification system for a breached threshold using CloudWatch?": [
+      "CloudWatch Alarms",
+      "SNS (Simple Notification Service)",
+      "Metric Thresholds"
+    ],
+    "What would you use to combine multiple metrics into a single alarm?": [
+      "CloudWatch Alarm",
+      "Composite Alarm",
+      "Metric Math"
+    ],
+    "How can you automate EC2 instance recovery using CloudWatch?": [
+      "CloudWatch Alarms",
+      "Auto Recovery",
+      "EC2 Instance Status Checks"
+    ],
+    "How would you schedule a Lambda function to run every hour?": [
+      "EventBridge",
+      "CloudWatch Events",
+      "Lambda Cron Expressions"
+    ],
+    "What service can you use to react to specific API calls within your AWS account?": [
+      "AWS CloudTrail",
+      "EventBridge",
+      "AWS Lambda"
+    ],
+    "How would you monitor the performance of your serverless applications?": [
+      "AWS CloudWatch",
+      "Lambda Metrics",
+      "X-Ray"
+    ],
+    "What service would you use to collect metrics and logs from your ECS containers?": [
+      "Amazon CloudWatch",
+      "AWS X-Ray",
+      "Amazon ECS Logging Driver"
+    ],
+    "How can you create an automated dashboard to troubleshoot an application using multiple AWS services?": [
+      "AWS CloudWatch",
+      "Amazon CloudTrail",
+      "AWS X-Ray"
+    ],
+    "How would you track who terminated an EC2 instance?": [
+      "CloudTrail",
+      "AWS IAM",
+      "EC2 Instance Logs"
+    ],
+    "What steps would you take to retain CloudTrail logs for more than 90 days?": [
+      "S3 Storage",
+      "CloudTrail Insights",
+      "AWS Config"
+    ],
+    "How would you track and remediate non-compliant security group settings?": [
+      "AWS CloudTrail",
+      "AWS Config",
+      "Security Hub"
+    ],
+    "What steps would you take to receive alerts when S3 buckets become publicly accessible?": [
+      "Amazon S3 Bucket Policies",
+      "AWS CloudTrail",
+      "AWS Config"
+    ]
+  },
+  "Account Management": {
+    "Suppose you are managing multiple AWS accounts and want to consolidate billing for cost savings. Which services/tools would you use to solve this?": [
+      "AWS Organizations",
+      "Consolidated Billing",
+      "Cost Explorer"
+    ],
+    "Suppose you need to enforce tagging standards across all your AWS accounts. Which services/tools would you use to solve this?": [
+      "AWS Organizations",
+      "AWS CloudFormation",
+      "AWS Config"
+    ],
+    "Suppose you are setting up a new organization with separate environments for development, testing, and production. Which services/tools would you use to solve this?": [
+      "AWS Organizations",
+      "AWS IAM",
+      "AWS Control Tower"
+    ]
+  },
+  "Access Management": {
+    "Suppose you need to restrict API calls to AWS services to only be made from your company's network. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "VPC Endpoints",
+      "AWS Shield"
+    ],
+    "Suppose your organization wants to deny access to certain AWS services in specific regions. Which services/tools would you use to solve this?": [
+      "AWS Organizations",
+      "Service Control Policies (SCPs)",
+      "IAM Policies"
+    ],
+    "Suppose you need to allow actions on EC2 instances only if they have a specific tag and the user has a specific tag. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "Resource Tags",
+      "AWS Organizations"
+    ],
+    "Suppose you want to delegate permissions to a developer while ensuring they cannot grant themselves higher privileges. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "IAM Roles",
+      "Least Privilege Principle"
+    ],
+    "Suppose you need to ensure that a user can only access S3, even if they have AdministratorAccess. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "Service Control Policies",
+      "Resource-based Policies"
+    ],
+    "Suppose you are setting up permission boundaries for different IAM roles in your organization. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "AWS Organizations",
+      "Service Control Policies"
+    ],
+    "Suppose you want to prevent any actions in specific AWS regions. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "Service Control Policies (SCPs)",
+      "AWS Organizations"
+    ],
+    "Suppose you need to provide a single login for users across multiple AWS accounts and business applications. Which services/tools would you use to solve this?": [
+      "AWS Single Sign-On",
+      "AWS Identity and Access Management (IAM)",
+      "AWS Organizations"
+    ],
+    "Suppose you are integrating AWS IAM Identity Center with an external identity provider like Okta. Which services/tools would you use to solve this?": [
+      "SAML",
+      "AWS Single Sign-On",
+      "Identity Federation"
+    ],
+    "Suppose you need to grant developers full access to development accounts but only read-only access to production accounts. Which services/tools would you use to solve this?": [
+      "IAM Policies",
+      "AWS Organizations",
+      "AWS Identity and Access Management (IAM)"
+    ],
+    "Suppose you want to define fine-grained permissions based on user attributes such as department or job title. Which services/tools would you use to solve this?": [
+      "AWS Identity and Access Management (IAM)",
+      "AWS Organizations",
+      "Attribute-Based Access Control (ABAC)"
+    ],
+    "Suppose you need to provide centralized security management for user accounts, computers, and other objects within your organization. Which services/tools would you use to solve this?": [
+      "AWS Identity and Access Management (IAM)",
+      "AWS Single Sign-On (SSO)",
+      "AWS Organizations"
+    ],
+    "Suppose you want to create a trust connection between your on-premises Active Directory and AWS to share user authentication. Which services/tools would you use to solve this?": [
+      "AWS Directory Service",
+      "AWS IAM",
+      "AWS VPN"
+    ],
+    "Suppose you need to proxy authentication requests from AWS to your on-premises Active Directory. Which services/tools would you use to solve this?": [
+      "AWS Directory Service",
+      "AWS Single Sign-On",
+      "AWS Identity and Access Management"
+    ],
+    "Suppose your organization does not have an on-premises Active Directory but needs a directory service for AWS. Which services/tools would you use to solve this?": [
+      "AWS Directory Service",
+      "Amazon Cognito",
+      "AWS Single Sign-On"
+    ]
+  },
+  "Encryption": {
+    "Suppose you are transmitting sensitive data over a public network and want to prevent eavesdropping. Which services/tools would you use to solve this?": [
+      "SSL/TLS",
+      "AES (Advanced Encryption Standard)",
+      "VPN (Virtual Private Network)"
+    ],
+    "Suppose you need to securely store sensitive data on a server and ensure it is encrypted at rest. Which services/tools would you use to solve this?": [
+      "AWS KMS",
+      "Amazon S3 Server-Side Encryption",
+      "Amazon RDS Encryption"
+    ],
+    "Suppose you want to ensure that even the storage service cannot decrypt your sensitive data. Which services/tools would you use to solve this?": [
+      "KMS (Key Management Service)",
+      "Client-side encryption",
+      "AWS CloudHSM"
+    ],
+    "Suppose you are implementing a web application that requires secure login credentials to be transmitted over the internet. Which services/tools would you use to solve this?": [
+      "TLS (Transport Layer Security)",
+      "AWS Key Management Service (KMS)",
+      "AWS Certificate Manager"
+    ],
+    "Suppose you are tasked with preventing unauthorized access to data as it travels between a client and a server. Which services/tools would you use to solve this?": [
+      "SSL/TLS",
+      "VPN",
+      "AWS Key Management Service (KMS)"
+    ],
+    "Suppose you need to encrypt data at rest in an EBS volume. Which services/tools would you use to solve this?": [
+      "AWS Key Management Service (KMS)",
+      "EBS Encryption",
+      "AWS Identity and Access Management (IAM)"
+    ],
+    "Suppose you want to audit every API call made to use your encryption keys. Which services/tools would you use to solve this?": [
+      "AWS CloudTrail",
+      "AWS KMS",
+      "AWS IAM"
+    ],
+    "Suppose you need to manage encryption keys and ensure they are automatically rotated every year. Which services/tools would you use to solve this?": [
+      "AWS Key Management Service (KMS)",
+      "AWS Secrets Manager",
+      "AWS CloudTrail"
+    ],
+    "Suppose you need to ensure data encrypted in one AWS region can be decrypted in another region without re-encrypting. Which services/tools would you use to solve this?": [
+      "AWS KMS",
+      "Customer Managed Keys",
+      "Cross-Region Key Sharing"
+    ],
+    "Suppose you are working with a global DynamoDB table and need to encrypt specific attributes such as Social Security numbers. Which services/tools would you use to solve this?": [
+      "AWS KMS",
+      "DynamoDB Encryption at Rest",
+      "Data Encryption Standards"
+    ],
+    "Suppose you need to achieve low-latency encryption and decryption for a globally distributed Aurora database. Which services/tools would you use to solve this?": [
+      "AWS Key Management Service (KMS)",
+      "AWS Certificate Manager",
+      "AWS Secrets Manager"
+    ],
+    "Suppose you need to store configuration settings securely for your application. Which services/tools would you use to solve this?": [
+      "AWS Secrets Manager",
+      "AWS Systems Manager Parameter Store",
+      "KMS (Key Management Service)"
+    ],
+    "Suppose you want to ensure that your application secrets are encrypted at rest and in transit. Which services/tools would you use to solve this?": [
+      "AWS KMS",
+      "AWS Certificate Manager",
+      "AWS Secrets Manager"
+    ],
+    "Suppose you want to organize your parameters in a structured way to simplify IAM policy management. Which services/tools would you use to solve this?": [
+      "AWS Secrets Manager",
+      "AWS Systems Manager Parameter Store",
+      "AWS Identity and Access Management (IAM)"
+    ],
+    "Suppose you need to secure your website with HTTPS. Which services/tools would you use to solve this?": [
+      "SSL/TLS Certificates",
+      "AWS Certificate Manager",
+      "Amazon CloudFront"
+    ],
+    "Suppose you want to ensure automatic renewal of your TLS certificates for your applications. Which services/tools would you use to solve this?": [
+      "AWS Certificate Manager",
+      "TLS",
+      "SSL"
+    ],
+    "Suppose you need to validate your domain ownership using DNS for your public certificate. Which services/tools would you use to solve this?": [
+      "Route 53",
+      "ACM (AWS Certificate Manager)",
+      "DNS Verification"
+    ],
+    "Suppose you are setting up an API Gateway with global clients and need TLS encryption. Which services/tools would you use to solve this?": [
+      "TLS (Transport Layer Security)",
+      "AWS Certificate Manager",
+      "Amazon API Gateway"
+    ],
+    "Suppose you are setting up a web application and want to protect it from DDoS attacks using edge services. Which services/tools would you use to solve this?": [
+      "AWS Shield",
+      "AWS WAF",
+      "Amazon CloudFront"
+    ],
+    "Suppose your backend is not compatible with CloudFront and you need to ensure DDoS protection. Which services/tools would you use to solve this?": [
+      "AWS Shield",
+      "AWS WAF",
+      "Amazon Route 53"
+    ],
+    "Suppose you want to protect your EC2 instances from high traffic and malicious requests. Which services/tools would you use to solve this?": [
+      "AWS WAF (Web Application Firewall)",
+      "AWS Shield",
+      "Elastic Load Balancing"
+    ],
+    "Suppose you need to block specific IP addresses and geographies from accessing your application. Which services/tools would you use to solve this?": [
+      "AWS WAF",
+      "AWS Shield",
+      "Security Groups"
+    ],
+    "Suppose you are designing an API that requires protection from DDoS attacks while hiding backend resources. Which services/tools would you use to solve this?": [
+      "AWS Shield",
+      "Amazon CloudFront",
+      "AWS WAF"
+    ]
+  },
+  "Networking": {
+    "Suppose you need to create a security group rule that allows access only from a specific IP address. Which CIDR notation would you use?": [
+      "CIDR notation",
+      "Security Group",
+      "IP Address"
+    ],
+    "Suppose you are designing a large private network and need a vast range of IP addresses. Which private IP range would you choose and why?": [
+      "CIDR",
+      "Private IP Address Range",
+      "Subnetting"
+    ],
+    "Suppose you need to allow multiple subnets within a VPC to communicate with each other. How would you use CIDR to configure this?": [
+      "CIDR Block",
+      "VPC Peering",
+      "Route Table"
+    ],
+    "Suppose you are tasked with setting up a home network. Which CIDR range would you use for your private IP addresses and why?": [
+      "CIDR notation",
+      "Private IP address ranges",
+      "Subnetting"
+    ],
+    "Suppose you need to convert an IP range to CIDR notation for configuring a network. How would you approach this task?": [
+      "CIDR",
+      "IP Address",
+      "Subnet Mask"
+    ],
+    "Suppose you need to ensure that your EC2 instances launched in a VPC have internet connectivity by default. Which VPC setting would you use?": [
+      "Internet Gateway",
+      "Route Table",
+      "Public Subnet"
+    ],
+    "Suppose you want to configure an EC2 instance with both a public and a private IPv4 address. How would you achieve this in the default VPC?": [
+      "Public IP Address",
+      "Private IP Address",
+      "Elastic Network Interface"
+    ],
+    "Suppose you are troubleshooting why your new EC2 instance in the default VPC cannot access the internet. Which VPC components should you check?": [
+      "Internet Gateway",
+      "Route Table",
+      "Network ACL"
+    ],
+    "Suppose you need to create a subnet that spans multiple Availability Zones for high availability. How would you configure this?": [
+      "Subnet",
+      "Availability Zone",
+      "High Availability"
+    ],
+    "Suppose you want to analyze traffic going in and out of your subnets for security purposes. Which feature would you enable?": [
+      "VPC Flow Logs",
+      "Security Groups",
+      "Network Access Control Lists (NACLs)"
+    ],
+    "Suppose you need to allow incoming HTTP traffic to an EC2 instance. How would you configure the security group and NACL?": [
+      "Security Group",
+      "Network Access Control List (NACL)",
+      "Inbound Rules"
+    ],
+    "Suppose you want to block a specific IP address from accessing any resources in a subnet. Which networking tool would you use, and how would you configure it?": [
+      "Network ACLs",
+      "Security Groups",
+      "Route Tables"
+    ],
+    "Suppose you have an EC2 instance that needs to communicate with a database in a private subnet. What configurations are necessary in the security groups and NACLs to allow this communication?": [
+      "Security Groups",
+      "Network ACLs",
+      "Private Subnet"
+    ],
+    "Suppose you observe that your application is experiencing connectivity issues. How would you troubleshoot and ensure that both security groups and NACLs are correctly configured?": [
+      "Security Groups",
+      "Network ACL (NACL)",
+      "VPC (Virtual Private Cloud)"
+    ],
+    "Suppose you need to restrict outbound traffic from a specific subnet to a range of IP addresses. How would you achieve this using NACLs?": [
+      "Network ACL",
+      "Subnet",
+      "Outbound Rules"
+    ],
+    "Suppose you need to access Amazon S3 and DynamoDB from a private subnet without incurring additional costs. Which type of VPC endpoint would you use?": [
+      "VPC Endpoint",
+      "Interface Endpoint",
+      "Gateway Endpoint"
+    ],
+    "Suppose you want to securely connect your on-premises data center to an AWS service without going through the public internet. Which VPC endpoint would you use?": [
+      "VPC endpoint",
+      "PrivateLink",
+      "Direct Connect"
+    ],
+    "Suppose your application in a private subnet needs to access multiple AWS services privately. How would you configure the VPC endpoints?": [
+      "VPC Endpoint",
+      "PrivateLink",
+      "Service Gateway"
+    ],
+    "Suppose you observe high costs associated with NAT gateway usage for accessing AWS services. How can VPC endpoints help reduce these costs?": [
+      "NAT Gateway",
+      "VPC Endpoint",
+      "Data Transfer Costs"
+    ],
+    "Suppose you need to monitor and troubleshoot connectivity issues within your VPC. Which services/tools would you use to solve this?": [
+      "Amazon CloudWatch",
+      "VPC Flow Logs",
+      "AWS CloudTrail"
+    ],
+    "Suppose you want to capture detailed IP traffic information from your VPC and store it for later analysis. Which services/tools would you use to solve this?": [
+      "VPC Flow Logs",
+      "Amazon S3",
+      "CloudWatch"
+    ],
+    "Suppose you notice an unusual amount of SSH traffic in your VPC. How would you set up an alert for this?": [
+      "Amazon CloudWatch",
+      "VPC Flow Logs",
+      "AWS Lambda"
+    ],
+    "Suppose you need to analyze VPC Flow Logs using SQL queries. Which services/tools would you use to solve this?": [
+      "Amazon Athena",
+      "Amazon S3",
+      "AWS CloudTrail"
+    ],
+    "Suppose you need to connect your AWS VPC to your corporate data center using a private connection. Which services/tools would you use to solve this?": [
+      "AWS Direct Connect",
+      "VPN Gateway",
+      "VPC Peering"
+    ],
+    "Suppose you have a customer gateway device with a public IP address. How would you establish a site-to-site VPN connection with your AWS VPC?": [
+      "VPN Gateway",
+      "Customer Gateway",
+      "AWS VPC"
+    ],
+    "Suppose your customer gateway device is behind a NAT device with a public IP. Which IP address should you use for the CGW in the site-to-site VPN connection?": [
+      "NAT (Network Address Translation)",
+      "Public IP Address",
+      "Customer Gateway (CGW)"
+    ],
+    "Suppose you need to enable communication between multiple customer networks and your AWS VPC using VPN connections. Which services/tools would you use to solve this?": [
+      "AWS Site-to-Site VPN",
+      "Virtual Private Gateway",
+      "AWS Transit Gateway"
+    ],
+    "Suppose you need to ensure route propagation for a site-to-site VPN connection in your VPC. What steps would you take?": [
+      "VPN Gateway",
+      "Route Table",
+      "Dynamic Routing Protocol"
+    ],
+    "Suppose you need to establish a private connection between your on-premises data center and AWS for high bandwidth data transfers. Which services/tools would you use to solve this?": [
+      "AWS Direct Connect",
+      "VPN Gateway",
+      "Transit Gateway"
+    ],
+    "Suppose you need to connect to both private resources (e.g., EC2 instances) and public AWS resources (e.g., Amazon S3) from your on-premises data center. How would you configure Direct Connect?": [
+      "AWS Direct Connect",
+      "VLAN",
+      "Virtual Private Cloud (VPC)"
+    ],
+    "Suppose your organization needs a private connection to AWS but also requires data encryption for added security. What setup would you use?": [
+      "AWS Direct Connect",
+      "Virtual Private Network (VPN)",
+      "IPSec"
+    ],
+    "Suppose you need to connect multiple VPCs in different AWS regions to your on-premises data center using a single connection. Which services/tools would you use to solve this?": [
+      "AWS Direct Connect",
+      "VPC Peering",
+      "Transit Gateway"
+    ],
+    "Suppose you need to transfer data to AWS within a week, and there is no existing Direct Connect connection. What alternative solutions might you consider?": [
+      "AWS Snowball",
+      "AWS DataSync",
+      "AWS Transfer Family"
+    ],
+    "Suppose you need to connect multiple VPCs in your AWS environment without establishing individual VPC peering connections. Which service would you use to solve this?": [
+      "AWS Transit Gateway",
+      "VPC Peering",
+      "Route Tables"
+    ],
+    "Suppose your organization requires a private connection between your on-premises data center and multiple VPCs. How would you configure this using Direct Connect and Transit Gateway?": [
+      "AWS Direct Connect",
+      "AWS Transit Gateway",
+      "Virtual Private Gateway"
+    ],
+    "Suppose you need to manage network traffic and control which VPCs can communicate with each other within your AWS environment. What tools and services would you use?": [
+      "VPC Peering",
+      "Network ACLs",
+      "Security Groups"
+    ],
+    "Suppose your company needs to establish secure communication between multiple data centers and AWS VPCs using VPN connections. How would you optimize the bandwidth?": [
+      "VPN",
+      "Bandwidth Optimization",
+      "AWS Direct Connect"
+    ],
+    "Suppose you need to connect multiple VPCs without overlapping CIDRs. Which service would you use?": [
+      "VPC Peering",
+      "AWS Transit Gateway",
+      "CIDR Block"
+    ],
+    "Suppose you need to provide internet access to instances in a private subnet. How would you configure this using a NAT Gateway?": [
+      "NAT Gateway",
+      "Private Subnet",
+      "Route Table"
+    ],
+    "Suppose you want to log and analyze the traffic in your VPC. Which service would you use, and how would you set it up?": [
+      "VPC Flow Logs",
+      "CloudWatch",
+      "Amazon S3"
+    ],
+    "Suppose you need a secure connection between your on-premises data center and AWS that doesn't go over the public internet. Which service would you use?": [
+      "AWS Direct Connect",
+      "VPN Gateway",
+      "AWS Site-to-Site VPN"
+    ],
+    "Suppose you need to enable private access to S3 and DynamoDB from within your VPC. Which VPC endpoint type would you use?": [
+      "VPC Endpoint",
+      "Interface Endpoint",
+      "Gateway Endpoint"
+    ],
+    "Suppose you want to connect your VPC to multiple customer VPCs without using the public internet. Which service would you implement?": [
+      "AWS Transit Gateway",
+      "VPC Peering",
+      "AWS Direct Connect"
+    ]
+  },
+  "Disaster Recovery": {
+    "Suppose you need to ensure minimal data loss in case of a disaster. Which strategy should you consider?": [
+      "Backup Solutions",
+      "Failover Mechanism",
+      "Recovery Point Objective (RPO)"
+    ],
+    "Suppose you want to minimize downtime during a disaster recovery. What factors should you consider?": [
+      "RPO",
+      "RTO",
+      "Backup Strategies"
+    ],
+    "Suppose you have a critical application that cannot afford significant downtime. Which disaster recovery strategy should you use?": [
+      "High Availability",
+      "Backup and Restore",
+      "Cold Site"
+    ],
+    "Suppose you need to implement a cost-effective disaster recovery plan. What strategy would you recommend?": [
+      "Backup and Restore",
+      "Pilot Light",
+      "Multi-Site Redundancy"
+    ],
+    "Suppose you are using an on-premise data center and want to leverage AWS for disaster recovery. What approach should you take?": [
+      "Backup and Restore",
+      "Pilot Light",
+      "Warm Standby"
+    ],
+    "Suppose you need to migrate a PostgreSQL database from on-premise to AWS RDS PostgreSQL. What tool would you use?": [
+      "AWS Database Migration Service",
+      "Schema Conversion Tool",
+      "Continuous Data Replication"
+    ],
+    "Suppose you want to migrate a database from Microsoft SQL Server to Amazon Aurora. What steps would you take?": [
+      "Database Migration Service",
+      "Schema Conversion Tool",
+      "Backup and Restore"
+    ],
+    "Suppose you need to continuously replicate data from an on-premises Oracle database to an Amazon RDS MySQL database. What tools and methods would you use?": [
+      "AWS Database Migration Service",
+      "Replication",
+      "Backup and Restore"
+    ],
+    "Suppose you need to ensure high availability and data redundancy during a database migration. How would you set this up?": [
+      "Multi-AZ Deployments",
+      "Read Replicas",
+      "Backup and Restore"
+    ],
+    "Suppose you need to run Amazon Linux 2 on your on-premise infrastructure. What virtual machine software can you use?": [
+      "VMware vSphere",
+      "Oracle VirtualBox",
+      "Microsoft Hyper-V"
+    ],
+    "Suppose you want to migrate existing VMs and applications from on-premise to EC2. Which AWS feature would you use?": [
+      "AWS Migration Hub",
+      "AWS Server Migration Service",
+      "AWS Application Migration Service"
+    ],
+    "Suppose you need to gather information about your on-premise servers for a migration plan. Which AWS service should you use?": [
+      "AWS Application Discovery Service",
+      "Migration Hub",
+      "AWS Server Migration Service"
+    ]
+  }
+}

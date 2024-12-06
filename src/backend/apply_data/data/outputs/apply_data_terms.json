@@ -1,0 +1,26 @@
+{
+    "Networking": {
+        "NAT Gateway vs. Instance, Role of Inbound and Outbound Rules in Security Groups and NACLs, Private IP vs Public IP": false,
+        "Understanding CIDR Notation for Defining IP Ranges, Difference Between Public and Private IP Addresses, Internet Gateway and Its Role in Providing Internet Access": false,
+        "Default NACL Behavior, Traffic Flow and Evaluation Process in Security Groups and NACLs, Priority and Precedence of NACL Rules": false,
+        "Role of the Default VPC in AWS Accounts, DNS and Route Table Configuration for VPC Endpoints, Internet Connectivity in the Default VPC": false,
+        "Importance of CIDR in Network Security and Management, Range of IPs Defined by Different Subnet Masks, Differences Between Public and Private IP Addresses in AWS": false,
+        "Components of CIDR: Base IP and Subnet Mask, Private vs. Public Subnet, Statefulness in Security Groups": false,
+        "Network ACLs and Their Default Rules, Difference Between Security Groups and NACLs, Instance-Level Security with Security Groups": false,
+        "Using CIDR for Efficient IP Allocation in Networks, Impact of Subnet Mask on the Number of Available IP Addresses, Role of NAT Gateway and Internet Gateway in Network Traffic": false,
+        "Managing Route Tables for Network Security, Understanding Route Tables and Their Role in Traffic Routing, Impact of NACL Rules on Network Traffic": false,
+        "Automatic Return Traffic in Stateful Security Groups, IPv4 CIDR Block and its Significance, Subnet-Level Security with NACLs": false,
+        "Using CIDR for Security Group Rules and Networking in AWS, Applications of Different Private IP Ranges": false,
+        "Cross-Region and Cross-Account Connectivity Using Transit Gateway, Flow Logs and Their Uses, Identifying Problematic IPs and Ports from Flow Logs": false,
+        "NAT Gateway with High Availability, Use Case for NACLs in Blocking Specific IPs, Statelessness in NACLs": false,
+        "Using Flow Logs to Monitor and Troubleshoot Connectivity Issues, Public and Private IPv4 DNS Names for EC2 Instances, VPC Peering Use Case": false,
+        "Free Access to Amazon S3 and DynamoDB Using Gateway Endpoints, Auto-assigned Public IPv4 Addresses for Subnets, NAT Gateway vs VPC Endpoint": false,
+        "AWS Network Firewall Use Cases, Difference Between Interface Endpoints and Gateway Endpoints, Networking Costs in AWS": false,
+        "Using CloudFront with S3, ENI as an Entry Point for Private AWS Services, Importance of Ephemeral Ports in Network Communication": false,
+        "Accessing AWS Services Privately Using VPC Endpoints, Sending Flow Logs to Different AWS Services, Optimizing Costs with Private IPs": false,
+        "Bastion Host Use Case, Levels of Flow Logs: VPC, Subnet, ENI, Capturing Information from IP Traffic Using VPC Flow Logs": false,
+        "NAT Instance Use Case, Implicit and Explicit Association of Route Tables with Subnets, Traffic Types and Costs": false,
+        "IPv6 for VPC, Inter-Region Traffic, Subnet Allocation and Availability Zones": false,
+        "S3 Data Transfer Pricing": false
+    }
+}
