@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { Avatar, ProgressBar } from "@skeletonlabs/skeleton";
   import { page } from "$app/stores";
   import ReturnIcon from "../../../../assets/icons/return-icon.svg";
   import SingleCard from "./SingleCard.svelte";

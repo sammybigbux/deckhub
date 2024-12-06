@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "VITE_BASE_URL=https://deckhub-backend-staging-1086653848406.us-central1.run.app" > .env.staging
           npm ci
-          npm run build
+          npm run build --mode staging
 
       # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
       - name: Authenticate with Google Cloud
