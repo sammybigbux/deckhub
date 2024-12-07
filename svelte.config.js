@@ -13,7 +13,12 @@ const config = {
       fallback: 'index.html' // Ensures SPA behavior
     }),
     prerender: {
-      entries: ['*'] // Ensures that all routes are prerendered at build time
+      entries: [
+        '/', // Your homepage
+        '/new/learn/AWS%20Certified%20Solutions%20Architect',
+        '/new/learn/AWS%20Certified%20Solutions%20Architect/overview',
+        '/new/learn/AWS%20Certified%20Solutions%20Architect/open'
+      ]
     }
   }
 };
