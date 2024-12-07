@@ -42,7 +42,7 @@ LEARN_DATA = load_json(static_data_dir / 'learn_data.json')
 UNDERSTAND_DATA = load_json(static_data_dir / 'understand_data.json')
 APPLY_DATA = load_json(static_data_dir / 'apply_data.json')
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=['http://localhost:5173', 'https://deckhubapp.web.app'])
+CORS(app, supports_credentials=True, origins=['http://localhost:5173', 'https://deckhubapp.web.app', 'https://deckhubapp--staging-b0b395us.web.app/'])
 user_manager = UserManager()
 def get_data_from_id(userID):
     """Helper function to retrieve the module type from the userID."""
