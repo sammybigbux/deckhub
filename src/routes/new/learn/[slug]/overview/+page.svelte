@@ -214,10 +214,10 @@
 
   onDestroy(async () => {
     // Cleanup logic when navigating away within the app
-    if (!cleanupEnvTriggered) {
-      await cleanupEnv();  // Await the cleanup to ensure it completes
-      cleanupEnvTriggered = true;
-    }
+    // if (!cleanupEnvTriggered) {
+    //   await cleanupEnv();  // Await the cleanup to ensure it completes
+    //   cleanupEnvTriggered = true;
+    // }
 
     // Ensure window object exists before using it (for SSR compatibility)
     if (typeof window !== 'undefined') {

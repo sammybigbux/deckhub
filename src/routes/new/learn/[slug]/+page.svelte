@@ -102,8 +102,8 @@
   onMount(async () => {
     await retrieveSectionData(); // Initial fetch
     setTimeout(async () => {
-      await retrieveSectionData(); // Fetch again after 500ms
-    }, 500);
+      await retrieveSectionData(); // Fetch again after 1000ms
+    }, 1000);
   });
 </script>
 

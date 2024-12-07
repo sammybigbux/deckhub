@@ -210,7 +210,12 @@
       <!-- Buttons -->
       <div class="w-full flex justify-center gap-4 mb-8">
         <button on:click={() => (window.location.href = '/about')} class="button outline-blue w-[233px]">Learn more</button>
-        <button class="button primary-blue w-[233px]">Full version</button>
+        <button 
+          class="button primary-blue w-[233px]" 
+          on:click={handlePurchase}
+        >
+          Full version
+        </button>
       </div>
     </div>
     {/if}
