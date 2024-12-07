@@ -42,7 +42,11 @@ LEARN_DATA = load_json(static_data_dir / 'learn_data.json')
 UNDERSTAND_DATA = load_json(static_data_dir / 'understand_data.json')
 APPLY_DATA = load_json(static_data_dir / 'apply_data.json')
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=['http://localhost:5173', 'https://deckhubapp.web.app', 'https://deckhubapp--staging-b0b395us.web.app/'])
+CORS(app, supports_credentials=True, origins=[
+    "http://localhost:5173",
+    "https://deckhubapp.web.app",
+    "https://deckhubapp--staging-b0b395us.web.app"
+])
 user_manager = UserManager()
 def get_data_from_id(userID):
     """Helper function to retrieve the module type from the userID."""
@@ -485,6 +489,16 @@ def get_remaining_terms():
     remaining_terms = term_manager.get_remaining_terms()
     return jsonify({'message': f"Here are the remaining terms:\n{remaining_terms}"})
 
+@app.route('/create_user_if_not_exists', methods=['OPTIONS'])
+def handle_preflight():
+    response = jsonify({"message": "Preflight check passed"})
+    response.headers["Access-Control-Allow-Origin"] = request.headers.get("Origin", "*")
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    return response, 200
+
+
 # The below endpoints are mainly for interacting with firebase for the purpose of the rest of the website (not the chat part)
 @app.route('/create_user_if_not_exists', methods=['POST'])
 def create_user_if_not_exists():
@@ -814,3 +828,11 @@ if __name__ == '__main__':
         app.run(host='localhost', port=5000, debug=True)
     else:
         app.run(host='0.0.0.0', port=8080, debug=True)
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = request.headers.get("Origin", "*")
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+    response.headers["Access-Control-Allow-Credentials"] = "true"
+    return response
