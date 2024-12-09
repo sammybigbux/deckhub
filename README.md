@@ -30,7 +30,7 @@ Secure files from Google Drive are required to host this locally but if you push
 5. **Place the `firebase_key.json` file into the backend directory:**
    - This is a secret file located in the Google Drive and needs to be requested from the project owner.
 
-6. **Create an OpenAI assistant and update the assistant ID:**
+6. **Create an OpenAI assistant and update the assistant ID:** (Deprecated)
    - Visit [OpenAI Playground](https://platform.openai.com/playground/), create an AI assistant, and use the prompt provided in the Google Drive.
    - Update the `assistant_id` at the top of the `app.py` file to the assistant you created. You will need to replace the current assistant ID with the one generated from the assistant you're using:
      ```python
