@@ -16,7 +16,7 @@ The backend primarily consists of:
 The `app.py` file defines the main Flask application that handles various endpoints. It handles:
 - **Initializing and cleaning user environments** (`/initialize_env`, `/cleanup_env`)
 - **Starting and managing user sessions** (`/start_thread`, `/send_message`) (deprecated)
-- **Handling term-based functionality** (`/get_terms_data`, `/get_question`, `/update_status`, etc.)
+- **Handling term-based functionality** (`/get_terms_data`, `/get_question`, `/update_progress`, `update_incorrect`, etc.)
 - **Interacting with Firestore and Stripe for user data and payment processing** (`/create_user_if_not_exists`, `/api/create-checkout-session`, `/webhook`)
 
 Key components include:
