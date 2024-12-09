@@ -36,37 +36,10 @@ The frontend of the platform is built using **Svelte** with **TypeScript** and u
 - **UI Elements**:
   - The page consists of tabbed content where each tab shows a specific section of the user's information.
 
-### 4. Chat Pages (Learn, Understand, Apply)
-The chat pages (e.g., `learn-multiple`, `learn-open`, `understand-multiple`, `apply-multiple`) are built on similar structures with differences based on the mode (multiple choice or open-ended).
+### 4. Chat Pages (Apply, Understand, Learn, or Diagnostic, Concept Mastery, Term Mastery)
+The chat pages (e.g., `/new/learn/open` and `/new/learn/overview`) utilize dynamic routing to produce different elements depending on the relevant exam (AWS Certified Solutions Architect).
 
-#### Learn-Multiple Page (`learn-multiple.svelte`)
-- **Purpose**: Delivers multiple-choice questions to the user based on terms relevant to their study.
-- **Stores**:
-  - `messageFeed` holds the conversation history.
-  - `related_terms` holds terms related to the current question.
-  - `currentTerm` and `currentQuestionData` store the current question’s data.
-- **Functions**:
-  - `retrieveTermsData`: Fetches the user's progress (total and solved terms).
-  - `retrieveQuestion`: Fetches the next question from the backend and updates the chat.
-  - `displayAnswerResponse`: Displays feedback (correct/incorrect) when the user answers a question.
-  - `toggle_multi`: Switches between multiple-choice and open-ended modes.
-  - `updateStatus`: Updates the user’s progress after answering correctly.
-  - `sendMessage`: Sends a user query to the backend and streams back a response.
-- **UI Elements**:
-  - The page includes a chat interface where the **AI Coach** guides the user through questions.
-  - Users answer multiple-choice questions by clicking on buttons representing the options.
-
-#### Learn-Open Page (`learn-open.svelte`)
-- **Purpose**: Similar to `learn-multiple` but for open-ended questions.
-- **Key Differences**:
-  - Instead of multiple-choice, users submit their own written responses.
-  - The function `change_difficulty` adjusts the AI's response difficulty.
-
-### General Components
-Across all pages, common components include:
-- **Avatar**: Displays the profile picture of the user or AI in the chat.
-- **ProgressBar**: Shows the user's progress within the session (e.g., total terms completed out of total terms).
-- **Textareas** for user input and **buttons** for interactions such as answering questions or navigating through sections.
+(Currently a lot of churn in this area so waiting for that before solidifying documenation)
 
 ### Firebase Integration
 - The `userId` store from Firebase handles user authentication.
