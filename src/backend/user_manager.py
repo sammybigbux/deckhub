@@ -97,6 +97,7 @@ class UserManager:
 
             # Write changes to both terms.json and hierarchy.json
             section_progress = self.term_managers[userID]["term_manager"].write_terms_to_file()
+            print(f"Section progress within user_manager.cleanup_user_session after calling write_terms_to_file: {section_progress}")
             self.term_managers[userID]["term_manager"].submit_hierarchy_changes()
 
             # Define the files to process

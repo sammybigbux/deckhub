@@ -178,6 +178,7 @@ class TermManager:
             json.dump(self.hierarchy, f, indent=4)
 
     def write_terms_to_file(self):
+        # there is something wrong with the section progress, it doesn't match with the data sent to cleanup_env which you can see in the console.
         """Write the stored terms to the user's terms.json, merging only true values."""
 
         # Write the updated terms back to terms.json
@@ -189,6 +190,7 @@ class TermManager:
 
         # Submit section progress for the user manager
         section_progress_data = self.get_section_data()
+        print(f"Section progress data within term_manager.write_terms_to_file() before calculating sections completed: {section_progress_data}")
 
         # Calculate sections_completed and sections_total
         sections_completed = sum(section["progressValue"] for section in section_progress_data)
@@ -415,28 +417,43 @@ class TermManager:
         """Retrieve terms that haven't been solved yet in the current specificity.
         If no terms are unsolved in the current section, iterate through other sections
         to find unsolved terms at the same specificity level, updating self.section."""
+        
+        print(f"Starting get_not_passed_terms. Current section: {self.section}, specificity: {self.specificity}")
+
         # Get unsolved terms in the current section and specificity
         not_passed_terms = [
             term for term, solved in self.terms.get(self.section, {}).get(self.specificity, {}).items() if not solved
         ]
-        
+        print(f"Unsolved terms in section '{self.section}' with specificity '{self.specificity}': {not_passed_terms}")
+
         # If there are unsolved terms, return them
         if not_passed_terms:
+            print(f"Returning unsolved terms: {not_passed_terms}")
             return not_passed_terms
 
         # Otherwise, iterate through other sections to find unsolved terms in the same specificity
         section_index = self.section_order.index(self.section)
+        print(f"Current section index: {section_index}, total sections: {len(self.section_order)}")
+
         if section_index + 1 == len(self.section_order):
+            print(f"No more sections to check. Current specificity: {self.specificity}")
             if self.specificity == "special topics":
+                print("Reached the end of specificity levels. Returning None.")
                 return None
             else:
-                self.specificity = self.SPECIFICITY_ORDER[self.SPECIFICITY_ORDER.index(self.specificity) + 1]
+                # Move to the next specificity level
+                next_specificity_index = self.SPECIFICITY_ORDER.index(self.specificity) + 1
+                self.specificity = self.SPECIFICITY_ORDER[next_specificity_index]
+                print(f"Moved to next specificity level: {self.specificity}")
         else:
-            self.section = self.section_order[self.section_order.index(self.section) + 1]
-            return self.get_not_passed_terms()
+            # Move to the next section
+            self.section = self.section_order[section_index + 1]
+            print(f"Moved to next section: {self.section}")
 
-        # Return None if no unsolved terms are found in any section
-        return None
+        # Recursive call to check the new section or specificity
+        print(f"Recursively calling get_not_passed_terms with section '{self.section}' and specificity '{self.specificity}'")
+        return self.get_not_passed_terms()
+
 
     def get_remaining_terms(self):
         """Get unsolved terms in the current specificity."""

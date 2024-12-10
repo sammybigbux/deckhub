@@ -214,6 +214,7 @@ def initialize_with_user_information():
 
 @app.route('/cleanup_env', methods=['POST'])
 def cleanup_user_session():
+    print(f"Here is the package sent to cleanup_env: {request.json}")
     if request.is_json:
         userID = request.json.get('userID')  # Handle JSON payload from fetch()
     else:
@@ -232,6 +233,7 @@ def cleanup_user_session():
             return jsonify({"error": "Invalid module or user progress"}), 400
 
         user_ref = db.collection('users').document(userID)
+        user_doc_dict = user_ref.get().to_dict()
         data_update = {"deck_progress": {
                     exam: {
                         module: {
@@ -241,13 +243,21 @@ def cleanup_user_session():
                     }
                 }}
         
+        print(f"This is the user data we get from firestore initially: {user_doc_dict}")
+        print(f"This is what we want to update with in app.py: {data_update}")
+        
 
         # Update Firestore with the user progress
         user_ref.set(
             data_update,
             merge=True  # Use merge to only update the specified fields
         )
+        
+        after_update = user_ref.get().to_dict()
+        print(f"User data after update: {after_update}")
 
+        # We are updating the dictionary with the outer progress bar with {data_update}
+        print(f"User progress updated for {userID} in Firestore: {data_update}")
         return jsonify({"message": "User session cleaned up successfully"}), 200
     except Exception as e:
         print(f"Error in cleanup_user_session: {e}")

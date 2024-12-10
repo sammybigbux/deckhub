@@ -37,6 +37,7 @@
   let remainingFreeQuestions = 2;
   let newMessage = "";
   let cleanupEnvTriggered = false; // ensure that cleanup is only called once
+  let beforeUnloadTriggered = false;
   let specificity = "Foundational";
   let userOwnership = false; // whether or not the user owns this module
   const moduleLevels = {
@@ -45,6 +46,7 @@
     "Term Mastery": "learn"
   };
 
+  let firstQuestion = true;
   let currentTerm = "";
   let current_related_terms = {"term1": {"definition": "", "connection": ""}, "term2": {"definition": "", "connection": ""}, "term3": {"definition": "", "connection": ""}}; // attributes are "explanation" and "elaborate"
   let correct_response_data = {"explanation": "", "elaborate": ""}; // attributes are "explanation" and "elaborate"
@@ -63,7 +65,7 @@
     {
       id: 0,
       sender: "bot",
-      message: `Hi! This is your <strong>AI Coach</strong> for the <strong>AWS SAA-03 Exam</strong>! The goal of this section is to help you recall terms and definitions for the exam through multiple choice. Are you ready to get started?`,
+      message: `Hi! This is your <strong>AI Coach</strong> for the <strong>AWS SAA-03 Exam</strong>! The goal of this section is to help you recall terms and definitions for the exam through multiple choice. Let's start with a question.`,
       type: "text",
     },
   ];
@@ -390,7 +392,12 @@
     }
 
   async function generateNextQuestion(term) {
-    newMessage = "Next question.";
+    firstQuestion = false;
+    newMessage = "Give me a question";
+    if (term) {
+      console.log("Term: ", term);
+      newMessage = "Give me the " + term.replace(/_/g, ' ');
+    }
     const userID = await getUserID();  // Wait for userID to be populated
     const payload = {
             term: term, // in case we want the user to set the term
@@ -410,6 +417,7 @@
         if (!data.related_terms) {
             data.related_terms = [];
         }
+        console.log("You are trying to send this option in with the generate question payload:", data.option1);
         sendMessage({
           id: generateId(),
           sender: "bot",
@@ -428,12 +436,15 @@
         const url = new URL(window.location.href);
         const currentSection = url.searchParams.get('section');
 
-        // in other words, if the section changes with the new question
-        sectionName = data.section;
-        if (currentSection !== sectionName) {
-          const url = new URL(window.location.href);
-          url.searchParams.set('section', sectionName);
+        // If the section changes with the new question
+        if (currentSection !== data.section) {
+            // Update the 'section' parameter in the URL
+            url.searchParams.set('section', data.section);
+
+            // Assign the updated URL back to the browser
+            window.history.pushState({}, '', url);
         }
+        console.log("The url after setting the section:", url);
         current_related_terms = data.related_terms;
 
         // update params in url if necessary
@@ -627,86 +638,103 @@
 
     // Function to clean up the environment on destroy
     async function cleanupEnv() {
-      const userID = await getUserID(); // Wait for userID to be populated
+    try {
+        const userID = await getUserID(); // Wait for userID to be populated
 
-      // Extract exam from the URL
-      const url = new URL(window.location.href);
-      const pathParts = url.pathname.split('/');
-      const exam = decodeURIComponent(pathParts[pathParts.length - 1]); // Second-to-last part of the URL path
+        // Extract exam from the URL
+        const url = new URL(window.location.href);
+        const pathParts = url.pathname.split('/');
+        const exam = decodeURIComponent(pathParts[pathParts.length - 1]); // Second-to-last part of the URL path
 
-      // Validate required data
-      if (!userID || !exam) {
-          console.error("Missing required data for cleanup.");
-          return;
-      }
+        // Validate required data
+        if (!userID || !exam) {
+            console.error("Missing required data for cleanup.");
+            return;
+        }
 
-      // Construct the payload
-      const payload = {
-          userID: userID,
-          exam: exam
-      };
+        // Construct the payload
+        const payload = {
+            userID: userID,
+            exam: exam
+        };
 
-      console.log("Sending this to the /cleanup_env endpoint:", payload);
+        console.log("Sending this to the /cleanup_env endpoint:", payload);
 
+        const response = await fetch(`${base_url}/cleanup_env`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // Ensure credentials (cookies) are included
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to clean up environment: ${response.statusText}`);
+        }
+
+        console.log('Environment cleaned up successfully.');
+    } catch (error) {
+        console.error('Error cleaning up environment:', error);
+    }
+}
+
+    // Function to send a cleanup request before the page unloads
+  async function sendCleanupEnv() {
       try {
-          const response = await fetch(`${base_url}/cleanup_env`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              credentials: 'include', // Ensure credentials (cookies) are included
-              body: JSON.stringify(payload)
-          });
+          const userID = await getUserID();  // Replace with actual userID logic
+          const url = new URL(window.location.href);
+          const pathParts = url.pathname.split('/');
+          console.log("pathPArts: ", pathParts);
+          const examName = decodeURIComponent(pathParts[3]);
+          console.log("examName: ", examName);
+          const payload = JSON.stringify({ userID: userID, exam: examName });
 
-          if (!response.ok) {
-              throw new Error(`Failed to clean up environment: ${response.statusText}`);
-          }
-          console.log('Environment cleaned up successfully.');
+          // Use Blob to send JSON data via sendBeacon
+          const blob = new Blob([payload], { type: 'application/json' });
+          navigator.sendBeacon(`${base_url}/cleanup_env`, blob);
       } catch (error) {
-          console.error('Error cleaning up environment:', error);
+          console.error('Error sending cleanup request with sendBeacon:', error);
       }
   }
 
-    // Function to send a cleanup request before the page unloads
-    async function sendCleanupEnv() {
-        const userID = await getUserID();  // Replace with actual userID logic
-        const payload = JSON.stringify({ userID: userID });
-        
-        // Use Blob to send JSON data via sendBeacon
-        const blob = new Blob([payload], { type: 'application/json' });
-        navigator.sendBeacon(`${base_url}/cleanup_env`, blob);
-    }
+  function handleBeforeUnload() {
+      if (!beforeUnloadTriggered) {
+          beforeUnloadTriggered = true;
+          sendCleanupEnv(); // Ensure cleanup runs before page unloads
+      }
+  }
 
-    onMount(async () => {
+  onMount(async () => {
+    try {
         await initializeEnv();  // Ensure initializeEnv completes first
         scrollToBottom();  // Scroll the chat window
         await retrieveTermsData();  // Initial data load
         await checkUserOwnership();  // Check if the user owns the module
 
+        console.log("Initial Module Name:", moduleName);
+        console.log("Initial Section Name:", sectionName);
+
         if (typeof window !== 'undefined') {
-            window.addEventListener('beforeunload', () => {
-                if (!cleanupEnvTriggered) {
-                    cleanupEnvTriggered = true;
-                    sendCleanupEnv();  // Ensure cleanup runs before page unloads
-                }
-            });
+            window.addEventListener('beforeunload', handleBeforeUnload);
         }
+    } catch (error) {
+        console.error('Error during onMount:', error);
+    }
+});
 
-          console.log("Initial Module Name:", moduleName);
-          console.log("Initial Section Name:", sectionName);
-
-    });
-
-    onDestroy(async () => {
-        // Cleanup logic when navigating away within the app
+onDestroy(async () => {
+    try {
         if (!cleanupEnvTriggered) {
-            await cleanupEnv();  // Await the cleanup to ensure it completes
             cleanupEnvTriggered = true;
+            await cleanupEnv(); // Await the cleanup to ensure it completes
         }
 
-        // Ensure window object exists before using it (for SSR compatibility)
         if (typeof window !== 'undefined') {
-            window.removeEventListener('beforeunload', sendCleanupEnv);
+            window.removeEventListener('beforeunload', handleBeforeUnload);
         }
-    });
+    } catch (error) {
+        console.error('Error during onDestroy:', error);
+    }
+});
 </script>
 
 <OutOfFundModal {remainingFreeQuestions} />
@@ -777,10 +805,10 @@
       <Button
         variant="primary-blue"
         className="!min-w-0 !w-[750px] !h-[44px] lg:text-nowrap"
-        on:click={handleViewTerms}
+        on:click={(event) => firstQuestion ? generateNextQuestion() : handleViewTerms(event)}
         disabled={activePlan === "FREE" && remainingFreeQuestions <= 0}
       >
-        View Terms
+        {firstQuestion ? "Give me a question" : "View Terms"}
       </Button>
     {:else}
       <Button
@@ -801,7 +829,6 @@
         Next Question
       </Button>
     {/if}
-  
     </form>
   </div>
 </div>

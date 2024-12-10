@@ -52,19 +52,19 @@
     }
   
     .fade-in-middle-1 {
-      animation-delay: 1.5s;
+      animation-delay: 1s;
     }
   
     .fade-in-middle-2 {
-      animation-delay: 3s;
+      animation-delay: 2s;
     }
   
     .fade-in-middle-3 {
-      animation-delay: 4.5s;
+      animation-delay: 3s;
     }
   
     .fade-in-button {
-      animation-delay: 6s;
+      animation-delay: 4s;
     }
   
     .custom-button-container {
