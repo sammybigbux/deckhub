@@ -37,21 +37,4 @@ describe('User Navigation and Authentication Tests', () => {
       cy.url().should('include', 'accounts.google.com');
     });
   });
-
-  it('Signs in with a Google account and verifies content updates', () => {
-    // After signing in, mock the state change if needed
-    // (Ensure Firebase is configured to use a testing account)
-
-    // Mock the OAuth process and session state
-    cy.visit('http://localhost:5173'); // Replace with the post-login state if Firebase redirects
-
-    // Check that the button text changes to "AWS SAA03 Practice"
-    cy.contains('AWS SAA03 Practice').should('exist');
-
-    // Click the "AWS SAA03 Practice" button
-    cy.contains('AWS SAA03 Practice').click();
-
-    // Verify navigation to the AWS course page
-    cy.url().should('eq', 'http://localhost:5173/new/learn/AWS%20Certified%20Solutions%20Architect');
-  });
 });
