@@ -140,6 +140,13 @@ def send_message_endpoint():
     # Return a streaming response using stream_with_context
     return Response(stream_with_context(event_stream()), content_type='text/event-stream')
 
+@app.route('/api/reset_cloud_progress', methods=['POST'])
+def reset_cloud_progress():
+    data = request.json
+    userID = data.get('userID')
+    print(f"Got userID from script as: {userID}")
+    user_manager.reset_user_progress(userID)
+    return jsonify({"message": "User progress reset successfully"}), 200    
 
 @app.route('/update_progress', methods=['POST'])
 def update_progress():
