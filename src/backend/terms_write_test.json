@@ -59,7 +59,7 @@
     },
     "Machine Learning": {
         "foundational": {
-            "sagemaker_rekognition_question": true
+            "sagemaker_rekognition_question": false
         },
         "intermediate": {
             "comprehend_forecast_kendra_question": false,
@@ -70,7 +70,7 @@
     },
     "CloudFront": {
         "foundational": {
-            "cloudfront_cache_management_question": true,
+            "cloudfront_cache_management_question": false,
             "cloudfront_performance_cost_cache_question": false
         },
         "intermediate": {

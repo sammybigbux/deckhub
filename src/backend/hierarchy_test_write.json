@@ -1,40 +1,40 @@
 {
     "multi_account_management_question": {
-        "weight": 0,
+        "weight": 1,
         "downstream": {
             "Managing Multiple AWS Accounts": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "AWS Organizations": 0,
-                    "Management Account": 0,
-                    "Member Account": 0,
-                    "Cross-Account Roles": 0
+                    "AWS Organizations": 0.5,
+                    "Management Account": 0.5,
+                    "Member Account": 0.5,
+                    "Cross-Account Roles": 0.5
                 }
             },
             "Organizing Accounts Using OUs": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "Organizational Units (OUs)": 0,
-                    "Root OU": 0
+                    "Organizational Units (OUs)": 0.5,
+                    "Root OU": 0.5
                 }
             },
             "Billing Consolidation and Cost Savings": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "Consolidated Billing": 0,
-                    "Aggregated Usage": 0,
-                    "Savings Plans": 0
+                    "Consolidated Billing": 0.5,
+                    "Aggregated Usage": 0.5,
+                    "Savings Plans": 0.5
                 }
             }
         }
     },
     "scp_security_compliance_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "Applying SCPs for Security and Compliance": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "Service Control Policies (SCPs)": 0.5
+                    "Service Control Policies (SCPs)": 0
                 }
             }
         }
@@ -51,19 +51,19 @@
         }
     },
     "cloudformation_costexplorer_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "CloudFormation Use Case": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "CloudFormation": 0.5
+                    "CloudFormation": 0
                 }
             },
             "AWS Cost Explorer and Anomaly Detection": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "AWS Cost Explorer": 0.5,
-                    "AWS Cost Anomaly Detection": 0.5
+                    "AWS Cost Explorer": 0,
+                    "AWS Cost Anomaly Detection": 0
                 }
             }
         }
@@ -142,14 +142,14 @@
         }
     },
     "cloudshell_command_execution_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "Cloud Shell Availability": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {}
             },
             "Command Execution in Cloud Shell": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {}
             }
         }
@@ -181,27 +181,27 @@
         }
     },
     "edge_functions_use_case_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "Use Cases of Edge Functions": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "Viewer Request": 0.5,
-                    "Origin Response": 0.5
+                    "Viewer Request": 0,
+                    "Origin Response": 0
                 }
             },
             "CloudFront Functions vs. Lambda@Edge": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "Lambda@Edge": 0.5,
-                    "Viewer Response": 0.5
+                    "Lambda@Edge": 0,
+                    "Viewer Response": 0
                 }
             },
             "Request and Response Modification": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "Origin Request": 0.5,
-                    "Viewer Response": 0.5
+                    "Origin Request": 0,
+                    "Viewer Response": 0
                 }
             }
         }
@@ -330,18 +330,18 @@
         }
     },
     "sagemaker_rekognition_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "SageMaker Use Case": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "SageMaker": 0.5
+                    "SageMaker": 0
                 }
             },
             "Rekognition Use Case": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "Rekognition": 0.5
+                    "Rekognition": 0
                 }
             }
         }
