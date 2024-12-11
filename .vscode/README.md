@@ -130,7 +130,7 @@ To preserve your login session:
 
 1. Close all Chrome instances.
 2. Open Chrome with remote debugging enabled:
-`C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebugProfile
+`"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\ChromeDebugProfile"
 - Ensure the path to Chrome is correct.
 - The --user-data-dir argument creates a fresh profile for debugging. Remove it if you prefer using your existing profile, but close all other Chrome instances first.
 3. In the opened Chrome window, navigate to http://localhost:5173 and log in to your application. Keep this window open.
