@@ -19,7 +19,7 @@
   import { slide } from "svelte/transition";
   import { get } from 'svelte/store';
   import { userId } from '../../../../../lib/firebase';
-  import { solvedTerms, totalTerms, totalCompleted, totalIncorrect, total_questions } from "../../../../../stores/random_store";
+  import { solvedTerms, totalTerms, totalCompleted, totalIncorrect, total_questions, sectionName } from "../../../../../stores/random_store";
   import { onMount, onDestroy } from 'svelte';
   import { getModalStore } from '@skeletonlabs/skeleton';
   import type { ModalSettings } from '@skeletonlabs/skeleton';
@@ -31,7 +31,6 @@
 
   let chatEle: HTMLDivElement;
   let moduleName: string | null = "";
-  let sectionName: string | null = "";
   let activePlan: "CHOICE" | "FREE" = "CHOICE";
   let activeDifficulty: "EASY" | "NORMAL" | "HARD" = "EASY";
   let remainingFreeQuestions = 2;
@@ -76,7 +75,6 @@
   $: {
     const searchParams = new URLSearchParams($page.url.search);
     moduleName = searchParams.get("module");
-    sectionName = searchParams.get("section");
     const parts = $page.url.pathname.split('/');
     certification = decodeURIComponent(parts[3]);
     if ($solvedTerms >= 20) {
@@ -84,7 +82,11 @@
     }
   }
 
-  console.log("Section name",sectionName)
+  const searchParams = new URLSearchParams($page.url.search);
+  sectionName.set(searchParams.get("section"));
+  console.log('sectionName set to this in the beginning: ', $sectionName);
+
+  console.log("Section name",$sectionName)
   console.log("Module name",moduleName)
 
   async function updateIncorrect() {
@@ -343,13 +345,13 @@
 
   async function handleViewTerms() {
     const userIdValue = get(userId);
-    if (!sectionName) {
+    if (!$sectionName) {
         console.error('No active section found');
         return;
     }
 
     try {
-        const response = await fetch(`${base_url}/get_term_list?section=${sectionName}&userId=${userIdValue}`, {
+        const response = await fetch(`${base_url}/get_term_list?section=${$sectionName}&userId=${userIdValue}`, {
             method: 'GET',
         });
 
@@ -402,7 +404,7 @@
     const payload = {
             term: term, // in case we want the user to set the term
             userID: userID,  // Add userID to the payload
-            section: sectionName
+            section: $sectionName
         };
     try {
         const response = await fetch(`${base_url}/get_question`, {
@@ -434,15 +436,16 @@
         });
         currentTerm = data.term;
         const url = new URL(window.location.href);
-        const currentSection = url.searchParams.get('section');
 
         // If the section changes with the new question
-        if (currentSection !== data.section) {
+        if ($sectionName !== data.section) {
             // Update the 'section' parameter in the URL
             url.searchParams.set('section', data.section);
 
             // Assign the updated URL back to the browser
             window.history.pushState({}, '', url);
+            sectionName.set(data.section);
+            console.log('sectionName set from question data: ', $sectionName);
         }
         console.log("The url after setting the section:", url);
         current_related_terms = data.related_terms;
@@ -711,7 +714,7 @@
         await checkUserOwnership();  // Check if the user owns the module
 
         console.log("Initial Module Name:", moduleName);
-        console.log("Initial Section Name:", sectionName);
+        console.log("Initial Section Name:", $sectionName);
 
         if (typeof window !== 'undefined') {
             window.addEventListener('beforeunload', handleBeforeUnload);
@@ -740,7 +743,7 @@ onDestroy(async () => {
 <OutOfFundModal {remainingFreeQuestions} />
 
 <div class="pt-8 px-5 xl:px-12 min-h-full flex flex-col">
-  <ChatHeader {moduleName} {sectionName} {handleActivePlanChange} solvedTerms={$solvedTerms} totalTerms={$totalTerms} specificity={specificity}/>
+  <ChatHeader {moduleName} {handleActivePlanChange} solvedTerms={$solvedTerms} totalTerms={$totalTerms} specificity={specificity}/>
 
   <ChooseDifficulty
     {activeDifficulty}
