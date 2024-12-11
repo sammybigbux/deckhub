@@ -18,6 +18,7 @@ describe('User Navigation and Authentication Tests', () => {
   
   it('Navigates to the About page when clicking the About button', () => {
     // Click the "About" button
+    cy.contains('About').should('be.visible');
     cy.contains('About').click();
 
     // Verify that the user is taken to the /about page
@@ -25,8 +26,11 @@ describe('User Navigation and Authentication Tests', () => {
   });
 
   it('Clicks "Try it out" and ensures the Google sign-in prompt appears', () => {
+    // Go to the about page
+    cy.contains('About').click();
+    
     // Go back to the home page
-    cy.go('back');
+    cy.go(-1);
 
     // Click the "Try it out" button
     cy.contains('Try it out').click();
