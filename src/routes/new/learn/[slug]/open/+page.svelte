@@ -511,7 +511,8 @@
     }, 300); // as the new message is added after 300ms
   }
   function generateId() {
-    return Math.round(Math.random() * 1000);
+    console.log("IM GENERATING ID!!!!!!!!!!!!!!")
+    return Date.now() + Math.floor(Math.random() * 1000);
   }
 
   async function triggerReportModal(modalStore) {
