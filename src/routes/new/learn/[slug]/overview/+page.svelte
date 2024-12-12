@@ -12,7 +12,7 @@
   import { get } from 'svelte/store';
   import { Avatar } from "@skeletonlabs/skeleton";
   import { goto } from '$app/navigation'; // Added for navigatio
-  import {active_section_title, moduleName} from "../../../../../stores/random_store";
+  import {active_section_title, moduleName, already_initialized} from "../../../../../stores/random_store";
 
   const isLocalhost = true;
   const base_url = import.meta.env.VITE_BASE_URL;
@@ -139,6 +139,7 @@
   }
 
   async function initializeEnv() {
+    already_initialized.set(true);
     const userID = await getUserID();  // Wait for userID to be populated
     const payload = { userID: userID, module: moduleLevels[$moduleName] };  // Add userID to the payload
 
