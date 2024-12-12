@@ -1,7 +1,12 @@
 <script>
   import CheckIcon from "../../../../../assets/icons/check-circle.svg";
+  import { term_from_overview, moduleName, active_section_title } from "../../../../../stores/random_store";
+  import { goto } from '$app/navigation';
 
-  export let onStudyClick;
+  export function onStudyClick(title) {
+    term_from_overview.set(title);
+    goto(`/new/learn/AWS%20Certified%20Solutions%20Architect/open?module=${$moduleName}&section=${$active_section_title}`);
+  }
   export let isCompleted = false;
   export let title = "banana";
   export let isChat = false;
