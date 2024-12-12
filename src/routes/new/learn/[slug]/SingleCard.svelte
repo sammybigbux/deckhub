@@ -5,6 +5,10 @@
   import LockIcon from "../../../../assets/icons/Lock-Icon.svg";
   import Star from "../../../../assets/icons/star.svg";
   import { goto } from '$app/navigation';  // Import goto for navigation
+  import { already_initialized, active_section_title, moduleName } from '../../../../stores/random_store';
+  import { userId } from '../../../../lib/firebase';
+  import { get } from 'svelte/store';
+  
 
   export let title: string = "Learn";
   export let description: string =
@@ -16,12 +20,105 @@
   export let smartLink: string = "/learn-open";
   export let viewLink: string = "";
 
+  const moduleLevels = {
+    "Diagnostic": "apply",
+    "Concept Explorer": "understand",
+    "Term Mastery": "learn"
+  };
+
+  async function getUserID() {
+    return new Promise((resolve, reject) => {
+      const uid = get(userId);  // Get current value of userId
+      if (uid) {
+        resolve(uid);  // If userID is already set, return it
+      } else {
+        // Wait for userID to be populated
+        const unsubscribe = userId.subscribe(value => {
+          if (value) {
+            resolve(value);
+            unsubscribe();  // Unsubscribe once the userID is populated
+          }
+        });
+      }
+    });
+  }
+
   let isCompleted = progressValue === progressMax;
+  let activeSection = "";
+  const base_url = import.meta.env.VITE_BASE_URL;
 
   const handleView = () => {
     // Use SvelteKit's goto function for navigation
+
     goto(viewLink);
   };
+
+  async function initializeEnv() {
+    const userID = await getUserID();  // Wait for userID to be populated
+    const payload = { userID: userID, module: moduleLevels[title] };  // Add userID to the payload
+
+    try {
+      const response = await fetch(`${base_url}/initialize_env`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to initialize environment: ${response.statusText}`);
+      }
+      console.log('Environment initialized successfully.');
+    } catch (error) {
+      console.error('Error initializing environment:', error);
+    }
+  }
+
+  async function fetchSectionsData() {
+    let activeSection = null;
+    try {
+      const userIdValue = get(userId);
+      console.log("User id is: ", userIdValue);
+      const response = await fetch(`${base_url}/get_section_data?userID=${userIdValue}`, {
+        method: 'GET'
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch sections data');
+      }
+
+      // Parse the JSON response and assign it to SECTIONS_DATA
+      let SECTIONS_DATA = await response.json();
+
+      // Update values for progress bar
+      SECTIONS_DATA.forEach(section => {
+          section.sections.forEach(subSection => {
+            if (subSection.isActive) {
+              activeSection = subSection;
+              active_section_title.set(activeSection.title);
+            }
+          });
+        });
+
+      } catch (error) {
+        console.error('Error fetching sections data:', error);
+      }
+      return activeSection;
+    }
+
+    // Function to handle the button click
+    async function navigate_to_chat() {
+      const slug = "AWS Certified Solutions Architect";
+      try {
+        await initializeEnv();
+        const fetchedSection = await fetchSectionsData(); // Fetch the section data
+        already_initialized.set(true); // Reset already_initialized
+        goto(`/new/learn/${slug}/open/?module=${$moduleName}&section=${fetchedSection.title}`); // Navigate to the overview page
+      } catch (error) {
+        console.error('Error handling continue click:', error);
+      }
+    }
+
 </script>
 
 <li>
@@ -66,11 +163,13 @@
         >
           <div class="h-[1px] w-full bg-[#56C0F0]/25" />
           <p class="title">Study</p>
-          <div class="flex gap-4 items-center mt-2">
-            <a href={standardLink} class="button primary-blue w-full">
-              Continue
-            </a>
-          </div>
+          <Button
+            variant="primary-blue"
+            on:click={navigate_to_chat}
+            className="w-full"
+          >
+            Continue
+          </Button>
         </div>
       </div>
     {/if}

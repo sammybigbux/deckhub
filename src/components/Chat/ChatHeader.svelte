@@ -5,8 +5,8 @@
   import PlanTabs from "./PlanTabs.svelte";
   import { sectionName } from '../../stores/random_store';
   import { onMount, onDestroy } from 'svelte';
+  import {moduleName} from "../../stores/random_store"
 
-  export let moduleName: string | null = "";
   export let activePlan: "CHOICE" | "FREE" = "CHOICE";
   export let handleActivePlanChange = (event: CustomEvent) => {};
   export let solvedTerms = 0;
@@ -24,11 +24,11 @@
       text={slug}
     />
     <BreadcrumbRoute
-      route="/new/learn/{slug}/overview?module={moduleName}"
-      text={moduleName}
+      route="/new/learn/{slug}/overview?module={$moduleName}"
+      text={$moduleName}
     />
     <BreadcrumbRoute
-      route="/new/learn/{slug}/open?module={moduleName}&section={$sectionName}"
+      route="/new/learn/{slug}/open?module={$moduleName}&section={$sectionName}"
       text={$sectionName}
     />
   </div>
@@ -37,7 +37,7 @@
     class="xl:absolute xl:top-[26px] 2xl:left-[calc(50%-26px)] xl:left-1/2 xl:-translate-x-1/2 flex lg:items-center max-xl:gap-7 gap-2 flex-col 2xl:gap-7 lg:mx-auto"
   >
     <div class="flex items-center gap-6">
-      <p class="font-bold">{specificity ? specificity.charAt(0).toUpperCase() + specificity.slice(1).toLowerCase() : moduleName}</p>
+      <p class="font-bold">{specificity ? specificity.charAt(0).toUpperCase() + specificity.slice(1).toLowerCase() : $moduleName}</p>
       <ProgressBar
         isVertical={false}
         width="336px"

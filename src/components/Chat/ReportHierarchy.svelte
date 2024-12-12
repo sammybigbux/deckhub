@@ -218,6 +218,20 @@
         .attr("height", "100%")
         .attr("viewBox", `0 0 ${width} ${height - 50}`);
 
+    // Define the arrowhead marker within your existing SVG
+    svg.append("defs")
+        .append("marker")
+        .attr("id", "arrowhead")
+        .attr("viewBox", "0 -5 10 10") // Defines the coordinate system for the marker
+        .attr("refX", 10) // Position of the arrowhead on the end of the line
+        .attr("refY", 0)
+        .attr("markerWidth", 6) // Size of the marker
+        .attr("markerHeight", 6)
+        .attr("orient", "auto") // Orient to follow the line
+        .append("path")
+        .attr("d", "M0,-5L10,0L0,5") // The arrowhead shape
+        .attr("fill", "white"); // Arrowhead color
+
     const tooltip = d3.select("#my_dataviz")
         .append("div")
         .attr("class", "tooltip")
@@ -230,12 +244,15 @@
         .style("pointer-events", "none")
         .style("opacity", 0);
 
+    // Create links with directional arrows
     const link = svg
         .selectAll("line")
         .data(graph.links)
         .enter()
         .append("line")
-        .style("stroke", "#aaa");
+        .attr("stroke", "#aaa")
+        .attr("stroke-width", 2)
+        .attr("marker", "url(#arrowhead)"); // Attach the arrowhead
 
     const node = svg
         .selectAll("g")
@@ -257,12 +274,13 @@
         .attr("ry", 10)
         .attr("width", (d) => {
             if (d.id.includes("?")) {
-                // Use a fixed width for nodes with "?" in their id
-                return d.group === "section" ? 150 : d.group === "concept" ? 120 : 90;
+                // Calculate the width for the word "Undiscovered"
+                const undiscoveredTextWidth = getTextWidth("Undiscovered", "15px Arial") + 30; // Increased padding
+                return Math.max(undiscoveredTextWidth, d.group === "section" ? 150 : d.group === "concept" ? 120 : 90);
             }
             const defaultWidth = d.group === "section" ? 150 : d.group === "concept" ? 120 : 90;
-            const textWidth = getTextWidth(d.id, "12px Arial") + 20; // Add padding
-            return Math.max(defaultWidth, textWidth); // Use the larger of the default or calculated width
+            const textWidth = getTextWidth(d.id, "15px Arial"); // Calculate text width
+            return Math.max(defaultWidth, textWidth + 30); // Increased padding
         })
         .attr("height", (d) => {
             if (d.group === "section") return 60;
@@ -270,78 +288,49 @@
             return 40;
         })
         .attr("x", (d) => {
-            if (d.id.includes("?")) {
-                // Use a fixed position for nodes with "?" in their id
-                const defaultWidth = d.group === "section" ? 150 : d.group === "concept" ? 120 : 90;
-                return -(defaultWidth / 2);
-            }
-            const defaultWidth = d.group === "section" ? 150 : d.group === "concept" ? 120 : 90;
-            const textWidth = getTextWidth(d.id, "12px Arial") + 20;
-            return -(Math.max(defaultWidth, textWidth) / 2); // Center horizontally
+            const width = d.id.includes("?")
+                ? Math.max(getTextWidth("Undiscovered", "15px Arial") + 30, d.group === "section" ? 150 : d.group === "concept" ? 120 : 90)
+                : Math.max(getTextWidth(d.id, "15px Arial") + 30, d.group === "section" ? 150 : d.group === "concept" ? 120 : 90);
+            return -(width / 2); // Center horizontally
         })
         .attr("y", (d) => -((d.group === "section" ? 60 : d.group === "concept" ? 50 : 40) / 2))
         .style("fill", getNodeFill)
         .style("stroke", "white")
-        .style("stroke-width", 2)
-        .on("mouseover", function (event, d) {
-            const tooltipText = d.id.includes("?") 
-                ? "This area is waiting to be unlocked! Answer more questions to reveal how it connects to your learning path."
-                : d.group === "section" 
-                    ? "This is a key question, each of which uncovers a potential area of study."
-                    : d.group === "concept" 
-                        ? "This concept connects key terms, helping you see the bigger picture."
-                        : d.group === "term" 
-                            ? "A foundational term that is key to understanding important concepts."
-                            : "Unknown group type.";
+        .style("stroke-width", 2);
 
-            tooltip
-                .style("opacity", 1)
-                .html(tooltipText)
-                .style("left", `${event.pageX + 10}px`)
-                .style("top", `${event.pageY - 40}px`);
+    node.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0.35em")
+        .style("font-size", "15px")
+        .style("fill", "white")
+        .style("pointer-events", "none")
+        .style("font-weight", "bold")
+        .selectAll("tspan")
+        .data((d) => {
+            if (d.id.includes("?")) {
+                // If d.id contains "?", set text to "Undiscovered"
+                return ["Undiscovered"];
+            }
+
+            // Get the capitalized words
+            const words = convertToCapitalizedWords(d.id).split(' ');
+
+            // If more than 3 words, split into two lines
+            if (words.length > 3) {
+                return [
+                    words.slice(0, 3).join(' '), // First three words
+                    words.slice(3).join(' '),   // Remaining words
+                ];
+            }
+
+            // If 3 or fewer words, return as a single line
+            return [words.join(' ')];
         })
-        .on("mousemove", function (event) {
-            tooltip
-                .style("left", `${event.pageX + 10}px`)
-                .style("top", `${event.pageY - tooltip.node().offsetHeight - 30}px`);
-        })
-        .on("mouseout", function () {
-            tooltip.style("opacity", 0);
-        });
-
-        node.append("text")
-          .attr("text-anchor", "middle")
-          .attr("dy", "0.35em")
-          .style("font-size", "12px")
-          .style("fill", "white")
-          .style("pointer-events", "none")
-          .selectAll("tspan")
-          .data((d) => {
-              if (d.id.includes("?")) {
-                  // If d.id contains "?", set text to "Undiscovered"
-                  return ["Undiscovered"];
-              }
-
-              // Get the capitalized words
-              const words = convertToCapitalizedWords(d.id).split(' ');
-
-              // If more than 3 words, split into two lines
-              if (words.length > 3) {
-                  return [
-                      words.slice(0, 3).join(' '), // First three words
-                      words.slice(3).join(' '),   // Remaining words
-                  ];
-              }
-
-              // If 3 or fewer words, return as a single line
-              return [words.join(' ')];
-          })
-          .enter()
-          .append("tspan")
-          .attr("x", 0) // Center align text
-          .attr("dy", (d, i) => (i === 0 ? 0 : "1.2em")) // Add line spacing for subsequent lines
-          .text((line) => line);
-
+        .enter()
+        .append("tspan")
+        .attr("x", 0) // Center align text
+        .attr("dy", (d, i) => (i === 0 ? 0 : "1.2em")) // Add line spacing for subsequent lines
+        .text((line) => line);
 
     const simulation = d3.forceSimulation(graph.nodes)
         .force("link", d3.forceLink(graph.links).id((d) => d.id).distance(160))
@@ -363,6 +352,7 @@
         });
     }
 }
+
 
 
 </script>

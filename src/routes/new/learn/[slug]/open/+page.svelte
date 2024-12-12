@@ -19,7 +19,7 @@
   import { slide } from "svelte/transition";
   import { get } from 'svelte/store';
   import { userId } from '../../../../../lib/firebase';
-  import { solvedTerms, totalTerms, totalCompleted, totalIncorrect, total_questions, sectionName, term_from_overview, moduleName } from "../../../../../stores/random_store";
+  import { solvedTerms, totalTerms, totalCompleted, totalIncorrect, total_questions, sectionName, term_from_overview, moduleName, already_initialized } from "../../../../../stores/random_store";
   import { onMount, onDestroy } from 'svelte';
   import { getModalStore } from '@skeletonlabs/skeleton';
   import type { ModalSettings } from '@skeletonlabs/skeleton';
@@ -27,6 +27,7 @@
 
 
   const base_url = import.meta.env.VITE_BASE_URL;
+  const max_questions_demo = 10;
   let time_left_estimated = false;
 
   let chatEle: HTMLDivElement;
@@ -76,9 +77,6 @@
     moduleName.set(searchParams.get("module"));
     const parts = $page.url.pathname.split('/');
     certification = decodeURIComponent(parts[3]);
-    if ($solvedTerms >= 20) {
-      triggerReportModal(modalStore);
-    }
   }
 
   const searchParams = new URLSearchParams($page.url.search);
@@ -576,7 +574,8 @@
           });
           
           const data = await response.json();
-          if (data.solvedTerms >= 10) {
+          if (data.solvedTerms >= max_questions_demo && !userOwnership) {
+            console.log("userOwnership: ", userOwnership);
             await triggerReportModal(modalStore);
           }
           totalTerms.set(data.totalSpecificityTerms)  // Reactive updates
@@ -708,10 +707,12 @@
 
   onMount(async () => {
     try {
-        await initializeEnv();  // Ensure initializeEnv completes first
+      if (!already_initialized) {
+        await initializeEnv(); 
+      }
         scrollToBottom();  // Scroll the chat window
-        await retrieveTermsData();  // Initial data load
         await checkUserOwnership();  // Check if the user owns the module
+        await retrieveTermsData();  // Initial data load
 
         console.log("Initial Module Name:", $moduleName);
         console.log("Initial Section Name:", $sectionName);
@@ -749,7 +750,7 @@ onDestroy(async () => {
 <OutOfFundModal {remainingFreeQuestions} />
 
 <div class="pt-8 px-5 xl:px-12 min-h-full flex flex-col">
-  <ChatHeader {$moduleName} {handleActivePlanChange} solvedTerms={$solvedTerms} totalTerms={$totalTerms} specificity={specificity}/>
+  <ChatHeader {handleActivePlanChange} solvedTerms={$solvedTerms} totalTerms={$totalTerms} specificity={specificity}/>
 
   <ChooseDifficulty
     {activeDifficulty}
