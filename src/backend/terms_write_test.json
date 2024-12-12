@@ -59,7 +59,7 @@
     },
     "Machine Learning": {
         "foundational": {
-            "sagemaker_rekognition_question": false
+            "sagemaker_rekognition_question": true
         },
         "intermediate": {
             "comprehend_forecast_kendra_question": false,

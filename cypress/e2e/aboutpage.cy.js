@@ -73,5 +73,6 @@ describe('About page component rendering tests', () => {
 
         // Ensure the back to top button sends the user to the top of the screen
         cy.url().should('include', '#top');
+        cy.window().its('scrollY').should('equal', 0);
     });
   });
