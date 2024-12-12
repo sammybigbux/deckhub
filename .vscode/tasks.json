@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "dev",
+        "type": "npm",
+        "script": "dev",
+        "isBackground": true,
+        "problemMatcher": {
+          "owner": "custom",
+          "pattern": [
+            {
+              "regexp": "."
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "use --host",
+            "endsPattern": "terminated"
+          }
+        }
+      }
+    ]
+  }

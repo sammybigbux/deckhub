@@ -3,8 +3,9 @@
   import BreadcrumbRoute from "../BreadcrumbRoute.svelte";
   import ProgressBar from "../ProgressBar.svelte";
   import PlanTabs from "./PlanTabs.svelte";
+  import { sectionName } from '../../stores/random_store';
+  import { onMount, onDestroy } from 'svelte';
 
-  export let sectionName: string | null = "";
   export let moduleName: string | null = "";
   export let activePlan: "CHOICE" | "FREE" = "CHOICE";
   export let handleActivePlanChange = (event: CustomEvent) => {};
@@ -27,8 +28,8 @@
       text={moduleName}
     />
     <BreadcrumbRoute
-      route="/new/learn/{slug}/open?module={moduleName}&section={sectionName}"
-      text={sectionName}
+      route="/new/learn/{slug}/open?module={moduleName}&section={$sectionName}"
+      text={$sectionName}
     />
   </div>
 

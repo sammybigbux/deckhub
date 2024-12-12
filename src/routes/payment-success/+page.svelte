@@ -2,8 +2,14 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "firebase/app";
     import { getAuth } from "firebase/auth";
+    import { userId } from '../../lib/firebase';
+    import { onMount } from 'svelte';
+    import { get } from 'svelte/store';
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
+
+    let payment_confirmed = false;
+    const base_url = import.meta.env.VITE_BASE_URL;
     
     // Your web app's Firebase configuration
     const firebaseConfig = {
@@ -14,10 +20,51 @@
       messagingSenderId: "1086653848406",
       appId: "1:1086653848406:web:ad7fa7ec34c3061cc694f7"
     };
+
+    async function confirm_payment() {
+      const productName = "AWS Certified Solutions Architect";
+      const userID = await getUserID();
+      const response = await fetch(`${base_url}/confirm_payment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ user_id: userID, product_name: productName })
+      });
+      if (response.ok) {
+      console.log("Post request successful");
+      } else {
+      console.error("Post request failed");
+      }
+    }
+
+    async function getUserID() {
+        return new Promise((resolve, reject) => {
+            const uid = get(userId);  // Get current value of userId
+            if (uid) {
+                resolve(uid);  // If userID is already set, return it
+            } else {
+                // Wait for userID to be populated
+                const unsubscribe = userId.subscribe(value => {
+                    if (value) {
+                        resolve(value);
+                        unsubscribe();  // Unsubscribe once the userID is populated
+                    }
+                });
+            }
+        });
+    }
     
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+
+    onMount(async () => {
+      if (!payment_confirmed) {
+        confirm_payment();
+        payment_confirmed = true;
+      }
+    });
     </script>
     
     <style>

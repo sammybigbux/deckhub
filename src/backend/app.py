@@ -140,6 +140,13 @@ def send_message_endpoint():
     # Return a streaming response using stream_with_context
     return Response(stream_with_context(event_stream()), content_type='text/event-stream')
 
+@app.route('/api/reset_cloud_progress', methods=['POST'])
+def reset_cloud_progress():
+    data = request.json
+    userID = data.get('userID')
+    print(f"Got userID from script as: {userID}")
+    user_manager.reset_user_progress(userID)
+    return jsonify({"message": "User progress reset successfully"}), 200    
 
 @app.route('/update_progress', methods=['POST'])
 def update_progress():
@@ -562,7 +569,7 @@ def create_user_if_not_exists():
                 # Create a new user document in Firestore
                 user_ref.set({
                     'displayName': display_name,
-                    'decks_owned': ["AWS Solutions Architect Associate"],
+                    'decks_owned': [],
                     'email': email,
                     'stripe_customer_id': customer['id'],
                     'user_id': user_id,
@@ -778,9 +785,22 @@ def create_checkout_session():
     
     except Exception as e:
         return jsonify(error=str(e)), 403
+    
+@app.route('/confirm_payment', methods=['POST']) # delete this when we fix webhook
+def payment_successful():
+    data = request.get_json()
+    user_id = data['user_id']
+    product_name = data['product_name']
+    # Update the user's document in Firestore
+    user_ref = db.collection('users').document(user_id)
+    user_ref.update({
+        'decks_owned': firestore.ArrayUnion([product_name])
+    })
+    return jsonify({'message': 'Payment successful! User document updated.'})
 
 @app.route('/webhook', methods=['POST'])
 def webhook_received():
+    print(f"Webhook received with payload: {request.data}")
     payload = request.data.decode('utf-8')
     sig_header = request.headers.get('Stripe-Signature')
     event = None
@@ -792,9 +812,12 @@ def webhook_received():
         return 'Invalid payload', 400
     except stripe.error.SignatureVerificationError:
         return 'Invalid signature', 400
+    
+    print(f"Webhook received is of type: {event['type']}")
 
     # Handle specific event types
     if event['type'] == 'checkout.session.completed':
+        print('Checkout session completed!')
         session = event['data']['object']
 
         try:

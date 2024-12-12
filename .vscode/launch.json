@@ -2,16 +2,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:5173",
-            "webRoot": "${workspaceFolder}",
-            "runtimeArgs": [
-                "--incognito",  // Opens Chrome in incognito mode
-                "--disable-web-security", // (Use cautiously) Disables web security
-                "--disable-blink-features=AutomationControlled"
-            ]
-        }
+            "name": "Attach to Existing Chrome with Dev Server",
+            "type": "pwa-chrome",
+            "request": "attach",
+            "port": 9222,
+            "urlFilter": "http://localhost:5173/*",
+            "webRoot": "C:\\Users\\samue\\Downloads\\softigital-deckhub-frontend-f42a4e76ee6d",
+            "sourceMaps": true,
+            "preLaunchTask": "dev"
+          },
+      {
+        "name": "Debug Flask App",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "C:\\Users\\samue\\Downloads\\softigital-deckhub-frontend-f42a4e76ee6d\\src\\backend\\app.py",
+        "console": "integratedTerminal",
+        "args": ["run", "--no-debugger", "--no-reload"],
+        "env": {
+          "FLASK_APP": "app.py",
+          "FLASK_ENV": "development"
+        },
+        "jinja": true,
+        "cwd": "C:\\Users\\samue\\Downloads\\softigital-deckhub-frontend-f42a4e76ee6d\\src\\backend"  // Set the correct working directory
+      }
     ]
-}
+  }

@@ -11,12 +11,12 @@
   import { onMount, onDestroy } from 'svelte';
   import { get } from 'svelte/store';
   import { Avatar } from "@skeletonlabs/skeleton";
-  import { goto } from '$app/navigation'; // Added for navigation
+  import { goto } from '$app/navigation'; // Added for navigatio
+  import {active_section_title, moduleName} from "../../../../../stores/random_store";
 
   const isLocalhost = true;
   const base_url = import.meta.env.VITE_BASE_URL;
 
-  let moduleName = "";
   let selectedSectionTitle = '';
   let activeSection = null;
   let isDataFetched = false;
@@ -24,7 +24,7 @@
   $: slug = $page.params.slug;
   $: {
     const searchParams = new URLSearchParams($page.url.search);
-    moduleName = searchParams.get("module");
+    moduleName.set(searchParams.get("module"));
   }
 
   const moduleLevels = {
@@ -65,6 +65,7 @@
           }
           if (subSection.isActive) {
             activeSection = subSection;
+            active_section_title.set(activeSection.title);
           }
         });
       });
@@ -104,7 +105,7 @@
   const handleResume = () => {
     cleanupEnvTriggered = true;
     // Use SvelteKit's goto function for navigation
-    goto(`/new/learn/${slug}/open?module=${moduleName}&section=${activeSection.title}`);
+    goto(`/new/learn/${slug}/open?module=${$moduleName}&section=${activeSection.title}`);
   };
 
   const handleOpenSection = () => {
@@ -139,7 +140,7 @@
 
   async function initializeEnv() {
     const userID = await getUserID();  // Wait for userID to be populated
-    const payload = { userID: userID, module: moduleLevels[moduleName] };  // Add userID to the payload
+    const payload = { userID: userID, module: moduleLevels[$moduleName] };  // Add userID to the payload
 
     try {
       const response = await fetch(`${base_url}/initialize_env`, {
@@ -236,34 +237,39 @@
       />
 
       <BreadcrumbRoute
-        route="/new/learn/{slug}/overview?module={moduleName}"
-        text={moduleName}
+        route="/new/learn/{slug}/overview?module={$moduleName}"
+        text={$moduleName}
       />
     </div>
 
     <div
-      class="xl:absolute xl:top-[26px] 2xl:left-[calc(50%-26px)] xl:left-1/2 xl:-translate-x-1/2 flex items-center max-xl:gap-6 gap-2 2xl:gap-6 max-lg:mx-auto"
-    >
-      <p class="font-bold xl:text-sm 2xl:text-base">{moduleName}</p>
-      <ProgressBar
-        isVertical={false}
-        width="336px"
-        height="16px"
-        borderRadius="24px"
-        containerBg="#111827"
-        value={completed}
-        max={total}
-        labelSize="12px"
-        containerClass="max-xl:!gap-6 2xl:!gap-6 !gap-2"
-        progressClass="xl:!w-[150px] xl:!h-[10px] 2xl:!h-[16px] 2xl:!w-[336px]"
-      />
-    </div>
+    class="
+      hidden xl:flex
+      lg:absolute lg:top-[26px] lg:left-1/2 lg:-translate-x-1/2
+      2xl:left-[calc(50%-26px)]
+      items-center gap-2 2xl:gap-6 max-lg:mx-auto
+    "
+  >
+    <p class="font-bold xl:text-sm 2xl:text-base">{$moduleName}</p>
+    <ProgressBar
+      isVertical={false}
+      width="336px"
+      height="16px"
+      borderRadius="24px"
+      containerBg="#111827"
+      value={completed}
+      max={total}
+      labelSize="12px"
+      containerClass="max-xl:!gap-6 2xl:!gap-6 !gap-2"
+      progressClass="xl:!w-[150px] xl:!h-[10px] 2xl:!h-[16px] 2xl:!w-[336px]"
+    />
+  </div>
   </div>
 
   <div
     class="flex flex-col items-center justify-center gap-10 mx-auto max-2xl:mt-5"
   >
-    <h1 class="font-bold text-4xl capitalize">{moduleName}</h1>
+    <h1 class="font-bold text-4xl capitalize">{$moduleName}</h1>
 
     {#if isDataFetched}
       <div class="relative w-full h-[696px]">

@@ -69,6 +69,16 @@ class UserManager:
         except Exception as e:
             print(f"Error managing JSON files for user {userID}: {e}")
             return None
+        
+    def reset_user_progress(self, userID):
+        for filename in ['apply_data_terms.json', 'hierarchy.json']:
+            blob = storage.bucket().blob(f'{userID}/{filename}')
+            if blob.exists():
+                blob.delete()
+                print(f"File {filename} for user {userID} has been successfully removed.")
+            else:
+                print(f"File {filename} for user {userID} does not exist and cannot be removed.")
+
 
     def initialize_user_session(self, userID, module_type):
         # Initialize the user session and download the terms.json file
