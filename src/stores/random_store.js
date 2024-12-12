@@ -9,3 +9,6 @@ export const totalIncorrect = writable(0);
 export const total_questions = writable(0);
 
 export const sectionName = writable(''); // this is for the section name
+export const term_from_overview = writable(''); // this is for the term from the overview page
+export const moduleName = writable(''); // this is for the module name
+export const active_section_title = writable(''); // this is for the active section title
