@@ -442,7 +442,7 @@
             url.searchParams.set('section', data.section);
 
             // Assign the updated URL back to the browser
-            window.history.pushState({}, '', url);
+            window.history.replaceState({}, '', url) //.pushState({}, '', url);
             sectionName.set(data.section);
             console.log('sectionName set from question data: ', $sectionName);
         }
