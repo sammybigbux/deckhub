@@ -5,9 +5,11 @@
   import SingleCard from "./SingleCard.svelte";
   import { userId } from '../../../../lib/firebase';
   import { get } from 'svelte/store';
+  import { moduleName } from '../../../../stores/random_store';
 
   const base_url = import.meta.env.VITE_BASE_URL;
 
+  let activeSection = null;
   let slug = $page.params.slug;
   $: slug = $page.params.slug;
   let isHovered = false;
@@ -21,6 +23,8 @@
   let learnProgress = { "sections_completed": 0, "sections_total": 1 };
   let understandProgress = { "sections_completed": 0, "sections_total": 1 };
   let applyProgress = { "sections_completed": 0, "sections_total": 1 };
+
+  
 
   const handleGoBack = () => {
     window.location.href = `/new/my-cards`;
@@ -146,9 +150,8 @@
           description="Answer scenario-based practice questions designed to uncover your learning needs."
           progressValue={applyProgress.sections_completed}
           progressMax={applyProgress.sections_total}
-          standardLink={`/new/learn/${slug}/overview?module=Diagnostic`}
           smartLink={`/new/learn/${slug}/overview?module=Diagnostic`}
-          viewLink={`/new/learn/${slug}/overview?module=Diagnostic`}
+          viewLink={`/new/learn/${slug}/overview?module=Diagnostic`},
         />
       </div>
 

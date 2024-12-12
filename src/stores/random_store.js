@@ -12,3 +12,4 @@ export const sectionName = writable(''); // this is for the section name
 export const term_from_overview = writable(''); // this is for the term from the overview page
 export const moduleName = writable(''); // this is for the module name
 export const active_section_title = writable(''); // this is for the active section title
+export const already_initialized = writable(true) // this is to see if we clicked the resume or overview before going into chat

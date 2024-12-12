@@ -14,9 +14,7 @@
   // Reactive store bindings
   $: totalCompletedValue = $totalCompleted;
   $: totalIncorrectValue = $totalIncorrect;
-  $: totalQuestionsValue = $total_questions;
   $: solvedTermsValue = $solvedTerms;
-  $: totalTermsValue = $totalTerms;
 
   // Apply module calculations
   const initialTime = 30 * 3600; // 30 hours in seconds
@@ -43,24 +41,10 @@
   $: timeDisplaySaved = formatTime(timeSaved);
   $: timeDisplayFilteredModule = formatTime(timeLeftFiltered);
   $: timeDisplayFilteredSpecificity = formatTime(timeLeftFilteredSpecificity);
-
-  const dispatch = createEventDispatcher();
-
+  
   // Previous difficulty tracking
   $: prevDifficulty = activeDifficulty;
   $: showDifficulties = false;
-
-  const handleDifficulty = (difficulty: "EASY" | "NORMAL" | "HARD") => {
-    if (difficulty === prevDifficulty) {
-      showDifficulties = !showDifficulties;
-    } else {
-      activeDifficulty = difficulty;
-      prevDifficulty = difficulty;
-      showDifficulties = false;
-
-      dispatch("difficultyChange", { difficulty });
-    }
-  };
 
   function formatTime(seconds) {
     const hours = Math.floor(seconds / 3600); // Hours stay as-is, rounded down.
@@ -116,11 +100,6 @@
   .time-value {
     font-size: 2rem;
     font-weight: bold;
-  }
-
-  .icon {
-    width: 1rem;
-    height: 1rem;
   }
 
   .separator {
