@@ -2,7 +2,7 @@
   import { fade, slide } from 'svelte/transition';
   import { createCheckoutSession } from "$lib/stripe";
   import SectionAnimation from './SectionAnimation.svelte';
-  import FamiliarityUnfamiliaritySection from './ReportHierarchy.svelte';
+  import ReportHierarchy from './ReportHierarchy.svelte';
 
   // Props to receive data from the parent component
   export let correct_of_twenty = 0;
@@ -152,7 +152,7 @@
           </h1>
         </div>
 
-        <FamiliarityUnfamiliaritySection
+        <ReportHierarchy
         scope="strong"
         hierarchy={strongHierarchy}
       />
@@ -173,7 +173,7 @@
         </h1>
       </div>
 
-      <FamiliarityUnfamiliaritySection
+      <ReportHierarchy
         scope="weak"
         hierarchy={weakHierarchy}
       />
@@ -195,10 +195,10 @@
           Based on your answers, we estimate studying will take <span class="text-warning-400">30 hours</span> with traditional methods, but just <span class="text-warning-400">{timeTotal} hours</span> with Deckhub.
         </p>
         <p class="text-base sm:text-lg lg:text-xl text-center mt-2 text-muted 2xl:pt-10 pt-4">
-          (If you make $20.00 per hour then that's <span class="text-warning-400">{moneySaved} </span> saved 💸)
+          That’s <span class="text-warning-400">{timeSaved} hours saved</span>, enough to {get_task_from_hours()}
         </p>
         <p class="text-base sm:text-lg lg:text-xl text-center mt-2 text-muted 2xl:pt-10 pt-4">
-          (That’s <span class="text-warning-400">{timeSaved} hours saved</span>, enough to {get_task_from_hours()}!)
+          ( If you make $20.00 per hour then that's <span class="text-warning-400">{moneySaved} </span> saved 💸)
         </p>
       </div>
 

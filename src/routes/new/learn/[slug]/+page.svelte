@@ -5,7 +5,6 @@
   import SingleCard from "./SingleCard.svelte";
   import { userId } from '../../../../lib/firebase';
   import { get } from 'svelte/store';
-  import { moduleName } from '../../../../stores/random_store';
 
   const base_url = import.meta.env.VITE_BASE_URL;
 

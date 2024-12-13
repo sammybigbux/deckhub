@@ -213,6 +213,7 @@ def initialize_with_user_information():
     
     try:
         # Initialize the session for the user with the given module type
+        print(f"Trying to initialize user session for {userID} for module {module_type}")
         user_manager.initialize_user_session(userID, module_type)
         return jsonify({"message": f"Environment initialized successfully for id {userID} and module {module_type}"}), 200
     except Exception as e:

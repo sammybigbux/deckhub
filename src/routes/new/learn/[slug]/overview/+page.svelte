@@ -55,7 +55,7 @@
 
       // Parse the JSON response and assign it to SECTIONS_DATA
       SECTIONS_DATA = await response.json();
-
+      
       // Update values for progress bar
       SECTIONS_DATA.forEach(section => {
         section.sections.forEach(subSection => {
@@ -140,7 +140,7 @@
 
   async function initializeEnv() {
     const userID = await getUserID();  // Wait for userID to be populated
-    const payload = { userID: userID, module: moduleLevels[$moduleName.replace(/,/g, "")] };  // Add userID to the payload
+    const payload = { userID: userID, module: moduleLevels[$moduleName]};  // Add userID to the payload
 
     try {
       const response = await fetch(`${base_url}/initialize_env`, {

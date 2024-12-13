@@ -24,6 +24,7 @@
   import { getModalStore } from '@skeletonlabs/skeleton';
   import type { ModalSettings } from '@skeletonlabs/skeleton';
   import ReportModal from '../../../../../components/Chat/ReportModal.svelte';
+  import {goto} from '$app/navigation';
 
 
   const base_url = import.meta.env.VITE_BASE_URL;
@@ -85,6 +86,12 @@
 
   console.log("Section name",$sectionName)
   console.log("Module name",$moduleName)
+
+  const navigate_to_next = () => {
+    const modules = ["Diagnostic", "Concept Explorer", "Term Mastery"];
+    const next_module = modules[modules.indexOf($moduleName) + 1];
+    goto(`/new/learn/${certification}/overview?module=${next_module}`);
+  };
 
   async function updateIncorrect() {
         totalIncorrect.update((n) => n + 1);
@@ -646,7 +653,7 @@
         // Extract exam from the URL
         const url = new URL(window.location.href);
         const pathParts = url.pathname.split('/');
-        const exam = decodeURIComponent(pathParts[pathParts.length - 1]); // Second-to-last part of the URL path
+        const exam = decodeURIComponent(pathParts[pathParts.length - 2]); // Second-to-last part of the URL path
 
         // Validate required data
         if (!userID || !exam) {
@@ -764,6 +771,22 @@ onDestroy(async () => {
   <div
     class="flex flex-col items-center justify-center gap-4 mt-4 pb-[26px] h-full flex-1"
   >
+    <!-- {#if $totalIncorrect >= 10}
+      <aside class="alert variant-ghost">
+        <div>🔓</div>
+        
+        <div class="alert-message">
+          <h3 class="h3">New Unlock</h3>
+          <p>You've now answered enough questions to access the Diagnostic - {specificity[0].toUpperCase() + specificity.slice(1)}</p>
+        </div>
+        
+        <div class="alert-actions">
+          <button class="btn btn-primary" on:click={navigate_to_next}>
+            Go to Diagnostic
+          </button>
+        </div>
+      </aside>
+    {/if} -->
     <!-- Conversation -->
     <div
       class="max-w-[1116px] xl:w-[1116px] overflow-y-auto flex flex-col gap-4 hide-scrollbar pt-10 max-h-[calc(100vh-352px)] xl:max-h-[calc(100vh-230px)] custom-padding custom-padding-2"

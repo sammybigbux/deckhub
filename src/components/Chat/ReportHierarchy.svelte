@@ -147,17 +147,31 @@
   }
 
   function convertToCapitalizedWords(inputString) {
-    return inputString
-        .split('_') // Split the string into an array of words using the underscore as a delimiter
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
-        .reduce((result, word, index) => {
-            // Add a newline after the third word
-            if (index === 3) {
-                return result + '\n' + word;
-            }
-            return result + (result ? ' ' : '') + word;
-        }, ''); // Join the words together, handling the newline after the 3rd word
-}
+        const dictionary = {
+            "cloudformation_costexplorer_question": "CloudFormation CostExplorer Question",
+            "multi_account_management_question": "Multi-Account Management Question",
+            "sagemaker_rekognition_question": "SageMaker Rekognition Question",
+            "cloudshell_command_execution_question": "CloudShell Command Execution Question",
+            "scp_security_compliance_question": "SCP Security Compliance Question"
+        };
+
+        // Check if the input string exists in the dictionary
+        if (dictionary[inputString]) {
+            return dictionary[inputString];
+        }
+
+        // Default behavior if no dictionary match
+        return inputString
+            .split('_') // Split the string into an array of words using the underscore as a delimiter
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+            .reduce((result, word, index) => {
+                // Add a newline after the third word
+                if (index === 3) {
+                    return result + '\n' + word;
+                }
+                return result + (result ? ' ' : '') + word;
+            }, ''); // Join the words together, handling the newline after the 3rd word
+    }
 
 
   function getNodeFill(d) {

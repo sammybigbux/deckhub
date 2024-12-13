@@ -83,7 +83,7 @@ class UserManager:
     def initialize_user_session(self, userID, module_type):
         # Initialize the user session and download the terms.json file
         module_name = self.get_module_name(module_type)
-        if userID in self.term_managers:
+        if userID in self.term_managers and self.term_managers[userID]["module"] == module_type:
             print(f"User {userID} already has a session running")
         else:
             print(f"Getting module name: {module_name} for user {userID}")
@@ -131,6 +131,7 @@ class UserManager:
                     print(f"Local {local_path} not found, skipping upload")
 
             # Remove the user from term_managers after cleanup
+
             if userID in self.term_managers:
                 del self.term_managers[userID]
                 print(f"Removed user {userID} from term_managers")

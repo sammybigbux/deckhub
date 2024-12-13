@@ -174,9 +174,6 @@ class TermManager:
         with open(self.hierarchy_path, 'w') as f:
             json.dump(self.hierarchy, f, indent=4)
 
-        with open("hierarchy_test_write.json", 'w') as f:
-            json.dump(self.hierarchy, f, indent=4)
-
     def write_terms_to_file(self):
         # there is something wrong with the section progress, it doesn't match with the data sent to cleanup_env which you can see in the console.
         """Write the stored terms to the user's terms.json, merging only true values."""
@@ -318,6 +315,7 @@ class TermManager:
 
             # Append the section data to the main list
             SECTIONS_DATA.append(section_data)
+        print("SECTIONS DATA returned by get_section_data in term_manager.py: ", SECTIONS_DATA)
 
         return SECTIONS_DATA
     

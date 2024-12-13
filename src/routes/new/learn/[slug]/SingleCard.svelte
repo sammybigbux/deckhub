@@ -19,13 +19,11 @@
   export let standardLink: string = "/learn-multiple";
   export let smartLink: string = "/learn-open";
   export let viewLink: string = "";
-
   const moduleLevels = {
-    "Diagnostic": "apply",
+    "Term Mastery": "learn",
     "Concept Explorer": "understand",
-    "Term Mastery": "learn"
+    "Diagnostic": "apply"
   };
-
   async function getUserID() {
     return new Promise((resolve, reject) => {
       const uid = get(userId);  // Get current value of userId
@@ -49,13 +47,15 @@
 
   const handleView = () => {
     // Use SvelteKit's goto function for navigation
+    console.log
 
-    goto(viewLink);
+    goto(viewLink.split(",").join(""));
   };
 
   async function initializeEnv() {
     const userID = await getUserID();  // Wait for userID to be populated
     const payload = { userID: userID, module: moduleLevels[title] };  // Add userID to the payload
+    console.log("payload sent ")
 
     try {
       const response = await fetch(`${base_url}/initialize_env`, {
@@ -113,7 +113,8 @@
         await initializeEnv();
         const fetchedSection = await fetchSectionsData(); // Fetch the section data
         already_initialized.set(true); // Reset already_initialized
-        goto(`/new/learn/${slug}/open/?module=${$moduleName}&section=${fetchedSection.title}`); // Navigate to the overview page
+        console.log("Within SingleCard your moduleName is ", $moduleName);
+        goto(`/new/learn/${slug}/open/?module=${title}&section=${fetchedSection.title}`); // Navigate to the overview page
       } catch (error) {
         console.error('Error handling continue click:', error);
       }
