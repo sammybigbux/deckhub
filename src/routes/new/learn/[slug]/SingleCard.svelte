@@ -166,7 +166,7 @@
           <Button
             variant="primary-blue"
             on:click={navigate_to_chat}
-            className="w-full"
+            className="w-full max-w-[270px]"
           >
             Continue
           </Button>
