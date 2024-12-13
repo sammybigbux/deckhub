@@ -140,11 +140,7 @@
 
   async function initializeEnv() {
     const userID = await getUserID();  // Wait for userID to be populated
-    console.log('Initializing environment for user:', userID);
-    console.log('Module:', $moduleName);
-    console.log('Module level:', moduleLevels);
-    console.log('Module level:', moduleLevels[$moduleName.replace(/,/g, "")]);
-    const payload = { userID: userID, module: moduleLevels[$moduleName] };  // Add userID to the payload
+    const payload = { userID: userID, module: moduleLevels[$moduleName.replace(/,/g, "")] };  // Add userID to the payload
 
     try {
       const response = await fetch(`${base_url}/initialize_env`, {
