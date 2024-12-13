@@ -9,6 +9,10 @@
   import Upvote from "../../../assets/icons/upvote.svg";
   import Button from "../../../components/Button.svelte";
 
+  function go_to_learn() {
+    goto('/new/learn/AWS Solutions Architect');
+  }
+
   function handleClick() { // update input later to make the navigation variable
     goto('/new/learn/AWS Solutions Architect');
   }
@@ -57,7 +61,7 @@
         <Button
           variant="primary-green"
           className="absolute -bottom-1 -right-1 w-[200px] duration-300 opacity-0 group-hover:opacity-100"
-          handleClick={handleClick}
+          handleClick={go_to_learn}
           >View Fix</Button
         >
       {:else}

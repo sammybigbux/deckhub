@@ -17,14 +17,17 @@
 
 	function handleToggleClick() {
 		toggleFilter = !toggleFilter;
-
+		console.log("Toggle filter:", toggleFilter);
 		if (toggleFilter) {
 			// Sort by upvotes
+			console.log("Sorting by upvotes...");
 			requests = requests.sort((a, b) => b.upvotes - a.upvotes);  // descending order
 		} else {
 			// Sort by timestamp
-			requests = requests.sort((a, b) => b.timestamp - a.timestamp);  // descending order
+			console.log("Sorting by timestamp...");
+			requests = requests.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 		}
+		console.log("Requests after sorting:", requests);
 	}
 
 	async function handleSubmit() {
@@ -131,7 +134,7 @@
 			id: "1",
 			solved: true,
 			subscribers: [],
-			text: "Test Bounty",
+			text: "Can you add a free demo",
 			timestamp: new Date(),
 			upvotes: 0,
 		},
@@ -139,7 +142,7 @@
 			id: "1",
 			solved: true,
 			subscribers: [],
-			text: "Test Bounty 2",
+			text: "Can you unlock other modules without having to finish all the questions",
 			timestamp: new Date(),
 			upvotes: 0,
 			isUnderReview: true,
