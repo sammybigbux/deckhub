@@ -51,19 +51,19 @@
         }
     },
     "cloudformation_costexplorer_question": {
-        "weight": 0,
+        "weight": 1,
         "downstream": {
             "CloudFormation Use Case": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "CloudFormation": 0
+                    "CloudFormation": 0.5
                 }
             },
             "AWS Cost Explorer and Anomaly Detection": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "AWS Cost Explorer": 0,
-                    "AWS Cost Anomaly Detection": 0
+                    "AWS Cost Explorer": 0.5,
+                    "AWS Cost Anomaly Detection": 0.5
                 }
             }
         }
@@ -95,14 +95,14 @@
         }
     },
     "auto_scaling_monitoring_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "Monitoring and Metrics": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "CPU Utilization": 0.5,
-                    "Custom Metrics": 0.5,
-                    "Network In/Out": 0.5
+                    "CPU Utilization": 0,
+                    "Custom Metrics": 0,
+                    "Network In/Out": 0
                 }
             }
         }
@@ -181,42 +181,42 @@
         }
     },
     "edge_functions_use_case_question": {
-        "weight": 0,
+        "weight": 1,
         "downstream": {
             "Use Cases of Edge Functions": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "Viewer Request": 0,
-                    "Origin Response": 0
+                    "Viewer Request": 0.5,
+                    "Origin Response": 0.5
                 }
             },
             "CloudFront Functions vs. Lambda@Edge": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "Lambda@Edge": 0,
-                    "Viewer Response": 0
+                    "Lambda@Edge": 0.5,
+                    "Viewer Response": 0.5
                 }
             },
             "Request and Response Modification": {
-                "weight": 0,
+                "weight": 0.5,
                 "downstream": {
-                    "Origin Request": 0,
-                    "Viewer Response": 0
+                    "Origin Request": 0.5,
+                    "Viewer Response": 0.5
                 }
             }
         }
     },
     "edge_logic_execution_question": {
-        "weight": 1,
+        "weight": 0,
         "downstream": {
             "Executing Logic at the Edge": {
-                "weight": 0.5,
+                "weight": 0,
                 "downstream": {
-                    "Lambda@Edge": 0.5,
-                    "Origin Request": 0.5,
-                    "Origin Response": 0.5,
-                    "Viewer Request": 0.5,
-                    "Viewer Response": 0.5
+                    "Lambda@Edge": 0,
+                    "Origin Request": 0,
+                    "Origin Response": 0,
+                    "Viewer Request": 0,
+                    "Viewer Response": 0
                 }
             }
         }

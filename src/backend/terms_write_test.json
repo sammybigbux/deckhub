@@ -71,7 +71,7 @@
     "CloudFront": {
         "foundational": {
             "cloudfront_cache_management_question": false,
-            "cloudfront_performance_cost_cache_question": false
+            "cloudfront_performance_cost_cache_question": true
         },
         "intermediate": {
             "cloudfront_performance_costs_question": false,
