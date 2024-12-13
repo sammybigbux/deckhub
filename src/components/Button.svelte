@@ -7,7 +7,7 @@
 
   const dispatch = createEventDispatcher();
 
-  function handleClick(event) {
+  export let handleClick = function handleClick(event) {
     dispatch('click', event); // Dispatch the click event to the parent
   }
 

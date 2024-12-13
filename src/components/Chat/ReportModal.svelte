@@ -12,64 +12,65 @@
 
   $: timeTotal = Math.round(traditionalStudyTime * (incorrect_of_twenty / 10));
   $: timeSaved = traditionalStudyTime - timeTotal;
+  $: moneySaved = `$${(timeSaved * 20).toFixed(2)}`;
 
 
   function get_task_from_hours() {
-  const hours = Math.round(parseFloat(timeSaved)); // Round to the nearest whole number
+    const hours = Math.round(parseFloat(timeSaved)); // Round to the nearest whole number
 
-  switch (hours) {
-    case 1:
-      return "clean your kitchen thoroughly, including the fridge";
-    case 2:
-      return "watch Remember the Titans";
-    case 3:
-      return "watch the Fellowship of the Ring";
-    case 4:
-      return "read the entirety of the Great Gatsby";
-    case 5:
-      return "read the entirety of Exhalation by Ted Chiang (which we highly recommend)";
-    case 6:
-      return "read the entirety of the Song of Achilles by Madeline Miller";
-    case 7:
-      return "deep-clean your apartment, top to bottom";
-    case 8:
-      return "take a full day off work to relax and recharge";
-    case 9:
-      return "watch the entire Lord of the Rings trilogy (theatrical cut)";
-    case 10:
-      return "watch all eight Star Wars movies (the good ones at least)";
-    case 11:
-      return "read Catch-22 by Joseph Heller";
-    case 12:
-      return "watch the entire Lord of the Rings trilogy (extended editions)";
-    case 13:
-      return "read Harry Potter and the Goblet of Fire";
-    case 14:
-      return "read Harry Potter and the Order of the Phoenix";
-    case 15:
-      return "listen to the Ready Player One audiobook";
-    case 16:
-      return "listen to the entirety of the Guns, Germs, and Steal audiobook";
-    case 17:
-      return "listen to the Night Watch by Terry Pratchett audiobook";
-    case 18:
-      return "run all the way from San Francisco to San Jose and back (assuming don't take any breaks)";
-    case 19:
-      return "take an overnight train ride to somewhere new and interesting";
-    case 20:
-      return "take a full weekend off to relax and recharge";
-    case 21:
-      return "run all the way from San Francisco to San Jose and back (assuming don't take any breaks)";
-    case 22:
-      return "listen to the Secret History by Donna Tart audiobook";
-    case 23:
-      return "listen to the entire Three Musketeers audiobook";
-    case 24:
-      return "take three full workdays off to relax and recharge";
-    default:
-      return "take on a project or adventure you’ve always wanted to try!";
+    switch (hours) {
+      case 1:
+        return "clean your kitchen thoroughly, including the fridge 🧼";
+      case 2:
+        return "watch Remember the Titans";
+      case 3:
+        return "watch the Fellowship of the Ring 🧙‍♂️💍🚶🗡️🚶‍♂️";
+      case 4:
+        return "read the entirety of the Great Gatsby";
+      case 5:
+        return "read the entirety of Exhalation by Ted Chiang (which we highly recommend)";
+      case 6:
+        return "read the entirety of the Song of Achilles by Madeline Miller 🗡️🛡️😠";
+      case 7:
+        return "deep-clean your apartment, top to bottom";
+      case 8:
+        return "take a full day off work to relax and recharge";
+      case 9:
+        return "watch the entire Lord of the Rings trilogy (theatrical cut) 🧙‍♂️💍🚶🗡️🚶‍♂️";
+      case 10:
+        return "watch all eight Star Wars movies (the good ones at least)";
+      case 11:
+        return "read Catch-22 by Joseph Heller";
+      case 12:
+        return "watch the entire Lord of the Rings trilogy (extended editions) 🧙‍♂️💍🚶🗡️🚶‍♂️";
+      case 13:
+        return "read Harry Potter and the Goblet of Fire";
+      case 14:
+        return "read Harry Potter and the Order of the Phoenix";
+      case 15:
+        return "listen to the Ready Player One audiobook 🔑🕹️👦";
+      case 16:
+        return "listen to the entirety of the Guns, Germs, and Steal audiobook";
+      case 17:
+        return "listen to the Night Watch by Terry Pratchett audiobook";
+      case 18:
+        return "run all the way from San Francisco to San Jose and back 🌉🏃‍♂️🏙️";
+      case 19:
+        return "take an overnight train ride to somewhere new and interesting";
+      case 20:
+        return "take a full weekend off to relax and recharge";
+      case 21:
+        return "run all the way from San Francisco to San Jose and back 🌉🏃‍♂️🏙️";
+      case 22:
+        return "listen to the Secret History by Donna Tart audiobook";
+      case 23:
+        return "listen to the entire Three Musketeers audiobook";
+      case 24:
+        return "take three full workdays off to relax and recharge 💤🛌";
+      default:
+        return "take on a project or adventure you’ve always wanted to try!";
+    }
   }
-}
 
 
 
@@ -192,6 +193,9 @@
       <div class="w-full flex flex-col items-center justify-center flex-grow margin px-5">
         <p class="font-bold text-2xl sm:text-3xl lg:text-5xl text-center">
           Based on your answers, we estimate studying will take <span class="text-warning-400">30 hours</span> with traditional methods, but just <span class="text-warning-400">{timeTotal} hours</span> with Deckhub.
+        </p>
+        <p class="text-base sm:text-lg lg:text-xl text-center mt-2 text-muted 2xl:pt-10 pt-4">
+          (If you make $20.00 per hour then that's <span class="text-warning-400">{moneySaved} </span> saved 💸)
         </p>
         <p class="text-base sm:text-lg lg:text-xl text-center mt-2 text-muted 2xl:pt-10 pt-4">
           (That’s <span class="text-warning-400">{timeSaved} hours saved</span>, enough to {get_task_from_hours()}!)

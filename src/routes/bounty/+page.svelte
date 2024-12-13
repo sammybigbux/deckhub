@@ -1,8 +1,17 @@
-<script>
+<script lang='ts'>
   import { onMount, onDestroy } from 'svelte';
   import { get } from 'svelte/store';
   import { isLoggedIn, auth} from '$lib/firebase';
-  
+
+  type Request = {
+    id: string;
+    solved: boolean;
+    subscribers: string[];
+    text: string;
+    timestamp: string; // ISO date string
+    upvotes: number;
+};
+
 
 
   let requestText = '';
@@ -10,6 +19,7 @@
   let user = null;
   let unsubscribe;
   let isSubscribed = true;
+  let dateFiltering = false;
 
   async function handleSubmit() {
       if (!get(isLoggedIn)) {
@@ -59,6 +69,7 @@
         requests = await response.json();
 
         console.log("Requests received and parsed successfully:", requests);
+        requests = _order_requests(requests);
     } catch (error) {
         console.error('Error fetching requests:', error);
     }
@@ -81,6 +92,27 @@
       } catch (error) {
           console.error('Error toggling upvote:', error);
       }
+  }
+
+  function _order_requests(requests: Request[]): Request[] {
+    if (!requests || !Array.isArray(requests)) {
+        console.error("Invalid requests array provided for sorting.");
+        return [];
+    }
+
+    return requests.sort((a, b) => {
+        if (dateFiltering) {
+            // Sort by timestamp in descending order (newest first)
+            return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+        } else {
+            // Sort by upvotes in descending order (highest votes first)
+            return b.upvotes - a.upvotes;
+        }
+    });
+}
+
+  function toggleFiltering() {
+
   }
 
   onMount(() => {
