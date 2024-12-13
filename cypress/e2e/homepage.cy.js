@@ -25,8 +25,11 @@ describe('User Navigation and Authentication Tests', () => {
   });
 
   it('Clicks "Try it out" and ensures the Google sign-in prompt appears', () => {
+    // Go to the about page
+    cy.contains('About').click();
+    
     // Go back to the home page
-    cy.go('back');
+    cy.go(-1);
 
     // Click the "Try it out" button
     cy.contains('Try it out').click();
