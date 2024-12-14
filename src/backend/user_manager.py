@@ -10,7 +10,7 @@ else:
 class UserManager:
     def __init__(self):
         # Dictionary to store term_manager for each user along with the module type
-        self.term_managers = {}
+        self.term_managers = {} 
 
     def get_module_name(self, module_type):
         # Get the module_name based on the module type provided in the request

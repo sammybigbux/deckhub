@@ -15,8 +15,9 @@
   $: isHovered = false;
 
   // Define locked variables
-  let understand_locked = false;
+  let understand_locked = true;
   let learn_locked = true;
+  
 
   // Progress data for each section
   let learnProgress = { "sections_completed": 0, "sections_total": 1 };
