@@ -21,6 +21,7 @@ else:
     from firebase_admin_init_cloud import db, bucket
 
 load_dotenv() # get env variables from .env file
+
 api_key = os.getenv('OPENAI_API_KEY').replace("'", "")
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY').replace("'", "")
 webhook_secret = os.getenv('WEBHOOK_SECRET').replace("'", "")
