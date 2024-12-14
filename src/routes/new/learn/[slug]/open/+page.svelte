@@ -856,7 +856,7 @@ onDestroy(async () => {
       <Button
         variant="primary-blue"
         className="!min-w-0 !w-[350px] !h-[44px] lg:text-nowrap"
-        on:click={generateNextQuestion}
+        on:click={() => generateNextQuestion()}
         disabled={activePlan === "FREE" && remainingFreeQuestions <= 0}
       >
         Next Question

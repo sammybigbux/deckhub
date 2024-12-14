@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import Handshake from "../../assets/about/handshake.png";
-	import ProcessVideo from "../../assets/about/process-video.svg";
+	import ProcessVideo from "../../assets/about/process-video.png";
 
 	// References for elements
 	let adaptivityHeader, adaptivityText;

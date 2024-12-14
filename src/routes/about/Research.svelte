@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from "svelte";
+	import networkDemo from "../../assets/about/network-demo.png";
 
 	// Individual references for elements
 	let h3Element;
@@ -82,14 +83,14 @@
     </div>
 
     <figure
-      class="max-w-full xl:max-w-[778px]"
+      class="max-w-full xl:max-w-[850px] min-w-[300px] h-auto mt-[-20px]"
       bind:this={videoElement}
       class:visible={videoVisible}
     >
       <img
-        src="https://placehold.co/780x420"
+        src={networkDemo}
         alt="research video"
-        class="w-full h-auto xl:max-w-[778px] xl:max-h-[420px]"
+        class="w-full h-auto xl:max-w-[850px] xl:max-h-[600px]"
       />
     </figure>
   </div>

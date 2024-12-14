@@ -15,7 +15,7 @@
   $: isHovered = false;
 
   // Define locked variables
-  let understand_locked = true;
+  let understand_locked = false;
   let learn_locked = true;
 
   // Progress data for each section

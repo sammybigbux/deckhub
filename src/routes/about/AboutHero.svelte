@@ -1,5 +1,5 @@
 <script>
-	import homePreview from "../../assets/about/home-preview.svg";
+	import homePreview from "../../assets/about/home-preview.png";
 	import DiagnosticMini from "../../assets/about/DiagnosticMini.mp4";
 </script>
 
@@ -9,7 +9,7 @@
 	<h1 class="font-bold text-2xl lg:text-4xl">About</h1>
 
 	<div class="flex flex-col gap-8 lg:gap-[40px] justify-center items-center">
-		<figure class="w-full max-w-[90%] lg:max-w-[818px]">
+		<figure class="w-full max-w-[100%] lg:max-w-[818px]">
 			<img src={homePreview} alt="home laptop preview" class="w-full h-auto" />
 		</figure>
 		<!-- <video 
