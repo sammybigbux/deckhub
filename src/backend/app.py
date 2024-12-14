@@ -5,8 +5,6 @@ from functools import lru_cache
 from openai import OpenAI
 from flask import Flask, request, jsonify, Response, stream_with_context, make_response
 from flask_cors import CORS
-import openai
-import re
 from dotenv import load_dotenv
 from pathlib import Path
 from firebase_admin import firestore, auth
