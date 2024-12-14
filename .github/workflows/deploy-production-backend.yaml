@@ -54,6 +54,8 @@ jobs:
             --set-env-vars "LOCAL=False" \
             --set-env-vars "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}" \
             --set-env-vars "WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}"
+            --set-env-vars "VITE_BASE_URL=https://deckhub-backend-1086653848406.us-central1.run.app" \
+            --set-env-vars "TEST_ENV_URL=https://deckhub-backend-1086653848406.us-central1.run.app"
 
       # Step 8: Run backend tests
       - name: Run backend tests
