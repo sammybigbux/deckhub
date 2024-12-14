@@ -3,7 +3,7 @@ name: Deploy Frontend to Production on merge into main
 on:
   push:
     branches:
-      - main  # Triggers on any merge into the main branch
+      - main  # Triggers on any merge into the staging branch
 
 jobs:
   build_and_deploy:
@@ -14,9 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies and build the frontend
+      # Step 2: Install dependencies and build the frontend with BASE_URL for staging
       - name: Install dependencies and build frontend
-        run: npm ci && npm run build
+        run: |
+          npm ci
+          npm run build
+        env: 
+          VITE_BASE_URL: https://deckhub-backend-1086653848406.us-central1.run.app
 
       # Step 3: Authenticate with Google Cloud (using service account from GOOGLE_APPLICATION_CREDENTIALS)
       - name: Authenticate with Google Cloud
@@ -24,15 +28,15 @@ jobs:
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Google Cloud service account key
 
-      # Step 4: Deploy frontend to Firebase Hosting (live)
-      - name: Deploy frontend to Firebase Hosting (live)
+      # Step 4: Deploy frontend to Firebase Hosting (staging)
+      - name: Deploy frontend to Firebase Hosting (staging)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}  # GitHub token to authenticate with Firebase Hosting
           firebaseServiceAccount: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}  # Use the same service account key for Firebase Hosting
           projectId: deckhubapp  # Firebase project ID
-          channelId: live  # Deploy to the live (production) channel
+          channelId: live  # Deploy to the staging channel
 
-      # Step 5: Echo the production URL
-      - name: Echo production URL
-        run: echo "Production URL -> https://deckhub.web.app/"
+      # Step 5: Echo the staging URL
+      - name: Echo staging URL
+        run: echo "Prod URL -> https://deckhub.web.app/"
